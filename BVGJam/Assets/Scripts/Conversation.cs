@@ -9,6 +9,8 @@ public class Conversation {
 
     public string starter;
 
+    public List<int> finalStates;
+
     public Conversation_NPCState[] states;
 
     public Conversation_Transition[] transitions;

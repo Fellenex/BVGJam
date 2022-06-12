@@ -2,6 +2,7 @@
     "conversations" : [
         {"id" : "opener",
         "starter" : "player",
+        "finalstates" : [],
         "states" : [
             {"index" : "0",
                 "speaker" : "Casey",

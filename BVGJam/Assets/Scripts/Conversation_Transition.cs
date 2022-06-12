@@ -8,6 +8,6 @@ public class Conversation_Transition {
     public int target;
     public string text;
     public string mood;
-    public StoryCondition[] conditions;
-    public StoryTrigger[] triggers;
+    public string[] conditions;
+    public string[] triggers;
 }

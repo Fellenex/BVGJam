@@ -7,23 +7,18 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour, IDialogMessages {
 
-    static string PLAYER_NAME = "Couleur";
-
-    enum Speaker {Player, NPC, NONE}
+    //Speaker.NONE happens when the player is choosing their dialog option
+    enum Speaker {PLAYER, NPC, NONE}
     Speaker activeSpeaker;
-    string activeSpeakerName;
-    string activeMood;
-
-    bool isNPCFinished = false;
-
-    Conversation activeConversation;
 
     public DialogGraphics graphics;        // a handle to update the graphics
 
-    DialogDataJSON json;
+    bool isNPCFinished = false;
 
-    int activeStateIndex = 0;
+    DialogDataJSON json;
+    Conversation activeConversation;
     Conversation_NPCState activeState;
+    Conversation_Transition activeTransition;
 
     void Start() {
         graphics = GetComponent<DialogGraphics>();
@@ -34,71 +29,107 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
         //Load the .json file with this NPC's conversations
         activeConversation = readFile(jsonFilename);
         activeState = activeConversation.states[0];
+        activeTransition = null;
 
         if (activeConversation.starter == "player") {
-            Debug.Log("Player is starting conversation");
-            playerSpeaking(getPossibleTransitions());
+            //If the player is starting the conversation and they only have
+            //  one opening line, then they just say it right away
+            List<Conversation_Transition> initialOptions = getPossibleTransitions();
+            if (initialOptions.Count == 1){
+                activeTransition = initialOptions[0];
+                playerSpeaking(initialOptions[0]);
+            }
+            else if (initialOptions.Count == 0){
+                //TODO do we need to check for something here for "Gracefully ended" conversations?
+                Debug.Log("What to do here?");
+            }
+            else {
+                //If the player has more than one choice, then let them choose!
+                playerChoosing(getPossibleTransitions());
+            }
+            
         }
         else{
             //TODO / NOTE : Assumes the first NPC state is the conversation starter
             //  Also therefore assumes the first NPC state's mood is the starting mood
-            Debug.Log(npcName + " is starting conversation");
             npcSpeaking(activeState);
         }
 
-        Debug.Log("Started a dialog: " + npcName + " and " + PLAYER_NAME + " are having a(n) "+activeMood+" conversation" +activeSpeakerName+" started it");
+        //Debug.Log("Started a dialog: " + npcName + " and " + PLAYER_NAME + " are having a(n) "+activeMood+" conversation" +activeSpeakerName+" started it");
 
     }
 
     void Update() {
-        //Only let the player advance the state if the NPC is currently speaking
-        if (activeSpeaker == Speaker.NPC
-            && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space))) {
+        //Only let the player advance the state if they are not currently choosing
+        if (activeSpeaker != Speaker.NONE
+            && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
             advanceConversation();
         }
-
         if (Input.GetKeyDown(KeyCode.X)) {
             closeConversation();
         }
     }
 
-    public void playerChoosing() {
-        //Split up functionality between speaking and choosing
+    /*
+        Consider whether we should be e.g., setting activeTransition = null in playerChoosing or npcSpeaking
+        similarly for activeState
+    */
 
+    public void playerChoosing(List<Conversation_Transition> _playerTransitions) {
+        activeSpeaker = Speaker.NONE;
+        graphics.playerIsChoosing(_playerTransitions);
     }
 
-    public void playerSpeaking(List<Conversation_Transition> _playerTransitions) {
-        activeSpeaker = Speaker.Player;
-        activeSpeakerName = PLAYER_NAME;
+    public void playerSpeaking(Conversation_Transition _chosenTransition) {
+        activeSpeaker = Speaker.PLAYER;
+        activeTransition = _chosenTransition;
 
-        //TODO Assumes the first player transition listed is the mood-setting one
-        //NOTE: Kinda janky with different moods for multiple starting positions
-        activeMood = _playerTransitions[0].mood;
-
-        graphics.playerIsSpeaking(_playerTransitions, activeMood);
+        if (_chosenTransition.triggers.Length > 0) {
+            //By choosing this transition, we have triggered some code change
+            foreach(string triggerText in _chosenTransition.triggers){
+                StoryTriggers.trigger(triggerText);
+            }
+        }
+        graphics.playerIsSpeaking(_chosenTransition);
     }
 
     public void npcSpeaking(Conversation_NPCState _npcState) {
         activeSpeaker = Speaker.NPC;
-
-        //TODO do we actually need activeSpeakerName here in DialogManager?
-        activeSpeakerName = _npcState.speaker;
         activeState = _npcState;
-
-        graphics.npcIsSpeaking(_npcState.speaker, _npcState.text, _npcState.mood);
+        graphics.npcIsSpeaking(_npcState);
     }
 
+    //TODO timers to auto-advance based on how many characters the text is?
     public void advanceConversation(){
+
+        //Player was speaking their line when the trigger to advance happened
+        //Move forward to the next NPC speaking state
+        if (activeSpeaker == Speaker.PLAYER) {
+            npcSpeaking(getNewNPCState(activeTransition));
+        }
+
         //Swap from NPC speaking back to player dialog options
-        List<Conversation_Transition> currTransitions = getPossibleTransitions();
-        if (currTransitions.Count > 0) {
-            playerSpeaking(currTransitions);
+        else if (activeSpeaker == Speaker.NPC) {
+            List<Conversation_Transition> currTransitions = getPossibleTransitions();
+            if (currTransitions.Count > 0) {
+
+                //Force the transition if there's only one choice unless it
+                //  has a precondition or a trigger (a "special" transition)
+                if ((currTransitions.Count == 1)
+                        && currTransitions[0].conditions.Length == 0
+                        && currTransitions[0].triggers.Length == 0) {
+                    playerSpeaking(currTransitions[0]);
+                }
+                else {
+                    playerChoosing(currTransitions);
+                }
+            }
+            else{
+                //The player has advanced and they have no more options, so close things up
+                closeConversation();
+            }
         }
     }
-
-    
-
-    
 
     public void closeConversation() {
         GetComponent<CloseDialogWindow>().dialogClose();
@@ -146,23 +177,27 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
         return possibleTransitions;
     }
 
+
+    //Gets the NPC state that will result from taking _transition
     public Conversation_NPCState getNewNPCState(Conversation_Transition _transition) {
         return activeConversation.states[_transition.target];
     }
 
-
+    //Checks to see if player meets the preconditions for a given transition
     public bool playerMeetsPreconditions(Conversation_Transition _transition) {
-        Debug.Log("Condition Required: " + _transition.conditions);
+        Debug.Log("Condition(s) Required: " + _transition.conditions);
+        foreach (string condition in _transition.conditions) {
+            if (!StoryConditions.doesPlayerMeetCondition(condition)){
+                //We have found a precondition the player does not meet.
+                return false;
+            }
+        }
+        //If we have not yet returned false, then we have met all the preconditions
         return true;
     }
 
-    //User has selected a text option!
+    //User has selected a text option! We should display it
     public void buttonClicked(Button button) {
-        Debug.Log("Clicked :" + button.GetComponentInChildren<Text>().text);
-
-        //Find the transition object associated with the button that was just clicked
-        //Then, determine which NPC state should be entered as a result of the transition
-        //Then, hand control back over to the NPC to display their text
-        npcSpeaking(getNewNPCState(button.GetComponent<TransitionHolder>().transition));
+        playerSpeaking(button.GetComponent<TransitionHolder>().transition);
     }
 }

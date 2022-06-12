@@ -373,6 +373,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747989189}
     m_Modifications:
+    - target: {fileID: 6187658069371000307, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24
+      objectReference: {fileID: 0}
     - target: {fileID: 8761101846414191305, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
         type: 3}
       propertyPath: m_RootOrder
@@ -432,6 +437,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761101848087288914, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82260e348a455dc4c9a7f9b6651f4b6d, type: 3}

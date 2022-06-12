@@ -6,15 +6,19 @@ using TMPro;
 
 public class DialogGraphics : MonoBehaviour {
 
-    public Text activeSpeakerText;
-    public Image activeSpeakerImage;
+    private string playerName = "Couleur";
+
+    public Text playerNameplate;
+    public Text npcNameplate;
+    public Image activePlayerImage;
+    public Image activeNPCImage;
 
     public Button[] playerTextButtonBoxes;
 
     public Text npcText;
+    public Text playerText;
 
     public Sprite[] playerDialogIcons;
-
     public Sprite[] npcDialogIcons_casey;
     public Sprite[] npcDialogIcons_joe;
     public Sprite[] npcDialogIcons_mark;
@@ -30,8 +34,8 @@ public class DialogGraphics : MonoBehaviour {
 
     
     void Awake() {
-
         //Needs to be on Awake() instead of Start()
+        //  I think(?) because the sprite references in these arrays are editor-assigned
         mapNameToSprites = new Dictionary<string,Sprite[]>{
             {"Casey", npcDialogIcons_casey},
             {"Joe", npcDialogIcons_joe},
@@ -41,7 +45,9 @@ public class DialogGraphics : MonoBehaviour {
         };
     }
 
-    public void playerIsSpeaking(List<Conversation_Transition> _playerTextOptions, string _playerMood) {
+
+    //Display all of the elements to let a player choose their next dialog option
+    public void playerIsChoosing(List<Conversation_Transition> _playerTextOptions) {
         resetTextElements();
         
         Conversation_Transition[] optionArray = _playerTextOptions.ToArray();
@@ -66,26 +72,56 @@ public class DialogGraphics : MonoBehaviour {
             Debug.Log(optionArray);
         }
 
-        activeSpeakerImage.sprite = playerDialogIcons[mapMoodToIndex[_playerMood]];
-        activeSpeakerText.text = "Couleur";
+        //Disable all the icons while options are displayed
+        activePlayerImage.enabled = false;
+        activeNPCImage.enabled = false;
+
+        playerNameplate.enabled = false;
+        npcNameplate.enabled = false;
     }
 
-    public void npcIsSpeaking(string _speakersName, string _npcText, string _npcMood) {
+
+    //Player has chosen a dialog option, so show them speaking it
+    public void playerIsSpeaking(Conversation_Transition _playerChoice) {
         resetTextElements();
 
         //Update the main text body
-        npcText.text = _npcText;
+        playerText.text = _playerChoice.text;
 
-        Debug.Log(_speakersName);
-        Debug.Log(mapMoodToIndex[_npcMood]);
-        Debug.Log(mapNameToSprites[_speakersName]);
+        //Find the right icon for the player based on their mood
+        activePlayerImage.sprite = playerDialogIcons[mapMoodToIndex[_playerChoice.mood]];
+        activePlayerImage.enabled = true;
+        activeNPCImage.enabled = false;
+
+        //Swap nameplates
+        playerNameplate.text = playerName;
+        playerNameplate.enabled = true;
+        npcNameplate.enabled = false;
+    }
+
+
+    //NPC is speaking, so show them speaking it
+    public void npcIsSpeaking(Conversation_NPCState _npcState) {
+    //string _speakersName, string _npcText, string _npcMood) {
+        resetTextElements();
+
+        //Update the main text body
+        npcText.text = _npcState.text;
+
+        Debug.Log(_npcState.speaker);
+        Debug.Log(mapMoodToIndex[_npcState.mood]);
+        Debug.Log(mapNameToSprites[_npcState.speaker]);
 
         //Find the correct list of NPC sprites to pull from, and then
         //  use the one whose mood matches the supplied _playerMood
-        activeSpeakerImage.sprite = mapNameToSprites[_speakersName][mapMoodToIndex[_npcMood]];
-        
-        //Show the name of the NPC currently speaking
-        activeSpeakerText.text = _speakersName;
+        activeNPCImage.sprite = mapNameToSprites[_npcState.speaker][mapMoodToIndex[_npcState.mood]];
+        activePlayerImage.enabled = false;
+        activeNPCImage.enabled = true;
+
+        //Swap nameplates
+        npcNameplate.text = _npcState.speaker;
+        playerNameplate.enabled = false;
+        npcNameplate.enabled = true;
     }
 
     public void resetTextElements() {
@@ -95,7 +131,10 @@ public class DialogGraphics : MonoBehaviour {
             playerTextButtonBoxes[i].GetComponentInChildren<Text>().text = "";
             playerTextButtonBoxes[i].gameObject.SetActive(false);
         }
+
+        playerText.text = "";
+        //playerNameplate.text = "";        //don't need this since the player nameplate doesn't change
         npcText.text = "";
-        activeSpeakerText.text = "";
+        npcNameplate.text = "";
     }
 }

@@ -7,7 +7,7 @@ public class NPC_Behaviour : MonoBehaviour {
     public int dialogIconOffsetHeight = 30;
     public Rigidbody2D rigidbody;
 
-    public float wander = 5f;
+    //public float wander = 5f;
 
     public float speed = 4f;
 
@@ -21,11 +21,13 @@ public class NPC_Behaviour : MonoBehaviour {
 
     void Update() {
         //Debug.Log(wander);
+        /*
         wander -= Time.deltaTime;
         if (wander <= 0) {
             wander = 5;
             move();
         }
+        */
     }
 
     void move() {

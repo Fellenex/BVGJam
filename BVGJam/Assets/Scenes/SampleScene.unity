@@ -518,9 +518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1965482532}
-  - component: {fileID: 1965482531}
   - component: {fileID: 1965482533}
-  - component: {fileID: 1965482534}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -528,18 +526,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1965482531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965482530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca8dd20dbac0e347a6c9aed55c37045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1965482532
 Transform:
   m_ObjectHideFlags: 0
@@ -568,15 +554,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcPrefab: {fileID: 3795280135728259503, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
     type: 3}
---- !u!114 &1965482534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965482530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b72434ba65e9f3c47853faf915dc45c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

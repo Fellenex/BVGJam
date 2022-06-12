@@ -2,6 +2,7 @@
     "conversations" : [
         {"id" : "opener",
         "starter" : "npc",
+        "finalStates" : ["4"],
         "states" : [
             {"index" : "0",
                 "speaker" : "Mark",
@@ -55,7 +56,7 @@
                 "text" : "Sorry for being rude. Here, take this.",
                 "mood" : "neutral",
                 "conditions" : ["isRich"],                    
-                "triggers" : ["giveToMark"]               
+                "triggers" : []               
             },
             {   "source" : "3",
                 "target" : "4",
