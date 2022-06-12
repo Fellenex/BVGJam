@@ -1,0 +1,57 @@
+{
+    "conversations" : [
+        {"id" : "opener",
+        "starter" : "player",
+        "states" : [
+            {"index" : "0",
+                "speaker" : "Casey",
+                "text" : "",
+                "mood" : "pleased"},
+
+            {"index" : "1",
+                "speaker" : "Casey",
+                "text" : "What's that now?",
+                "mood" : "pleased"},
+
+            {"index" : "2",
+                "speaker" : "Casey",
+                "text" : "Speak up now!",
+                "mood" : "neutral"}
+                ,
+            {"index" : "3",
+                "speaker" : "Casey",
+                "text" : "You're so quiet!",
+                "mood" : "upset"}
+        ],
+        "transitions" : [
+            {   "source" : "0",
+                "target" : "1",
+                "text" : "How's it going my dude?",
+                "mood" : "pleased",
+                "conditions" : [],
+                "triggers" : []                
+            },
+            {   "source" : "1",
+                "target" : "2",
+                "text" : "Sorry, can you hear me?",
+                "mood" : "pleased",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "1",
+                "target" : "2",
+                "text" : "How's it going my dude?",
+                "mood" : "neutral",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "2",
+                "target" : "3",
+                "text" : "How's it going my dude?",
+                "mood" : "upset",
+                "conditions" : [],
+                "triggers" : []
+            }
+        ]}
+    ]
+}

@@ -1,0 +1,27 @@
+Instead of having a DialogPopup Scene, the old project has:
+
+AttractionEntryHolder.prefab
+	contains AttractionEntryGraphics.cs (contains references to visual elements within to edit)
+		all of these are children elements so they come for free every instantiation
+
+
+GameManager holds a reference to the AttractionEntryHolder prefab
+	this can be instantiated whenever
+
+
+
+
+
+
+Currently (10:25pm)
+
+	DialogData.cs
+		loads a scene with one or more parameters
+		get parameter value
+		set parameter value
+
+	DialogGraphics.cs
+		sets text to blank depending on starting speaker
+
+	DialogManager.cs
+		tells graphics what to do based on the values from DialogData

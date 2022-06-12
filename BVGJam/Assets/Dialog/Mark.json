@@ -1,0 +1,69 @@
+{
+    "conversations" : [
+        {"id" : "opener",
+        "starter" : "npc",
+        "states" : [
+            {"index" : "0",
+                "speaker" : "Mark",
+                "text" : "Howdy! What's your name?",
+                "mood" : "pleased"},
+
+            {"index" : "1",
+                "speaker" : "Mark",
+                "text" : "Oh are you one of them city folk?",
+                "mood" : "neutral"},
+
+            {"index" : "2",
+                "speaker" : "Mark",
+                "text" : "I hope that works out for you.",
+                "mood" : "upset"},
+
+            {"index" : "3",
+                "speaker" : "Mark",
+                "text" : "Wow, you're so generous!",
+                "mood" : "pleased"},
+
+            {"index" : "4",
+                "speaker" : "Mark",
+                "text" : "...",
+                "mood" : "neutral"}
+        ],
+        "transitions" : [
+            {   "source" : "0",
+                "target" : "4",
+                "text" : "Get lost!",
+                "mood" : "upset",
+                "conditions" : [],
+                "triggers" : ["wasRude"]                
+            },
+            {   "source" : "0",
+                "target" : "1",
+                "text" : "I ain't got no name.",
+                "mood" : "neutral",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "1",
+                "target" : "2",
+                "text" : "Sure am.",
+                "mood" : "neutral",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "2",
+                "target" : "3",
+                "text" : "Sorry for being rude. Here, take this.",
+                "mood" : "neutral",
+                "conditions" : ["isRich"],                    
+                "triggers" : ["giveToMark"]               
+            },
+            {   "source" : "3",
+                "target" : "4",
+                "text" : "Don't mention it.",
+                "mood" : "neutral",
+                "conditions" : [],           
+                "triggers" : []
+            }
+        ]}
+    ]
+}

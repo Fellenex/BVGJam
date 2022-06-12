@@ -1,0 +1,60 @@
+Overworld tasks
+~	Popup overhead dialog icons when player is near NPC
+	Fix the ground collision (use a "mask collider" (??) instead of a box collider)
+
+Game Controller tasks
+v	"Game constants" organization v1 (player triggers)
+	Conversation states for each NPC 
+
+Popup dialog (primary)
+	Overlay on main screen (positioning, size. don't fuss too hard because it'll change)
+
+v	Disables movement keys (bool value on player "inDialog")
+	
+	Displays a set of text options for players to choose
+~		v1. Buttons with text on them
+		v2. Text mesh
+		v3. Progressive text spoken by NPC
+
+v	Arguments supplied to scene when loaded
+v		Conversation ID	loads in	
+			first conversation state
+			first NPC mood's picture
+
+	Images swap between NPC and player depending on who's speaking
+		Swap to player icon when text options appear or after they've chosen?
+
+	
+Popup dialog (special)
+	Overlay on main screen
+	All black background
+	Text
+		v1 display text
+		v2 progressive text
+
+
+
+Wasting way too much time on the dialog overhead thing not appearing above properly
+Moving on to the dialog window argument passing after a snack
+
+TODO add DontDestroyOnLoad(gameObject) to GameController
+TODO make gamecontroller static
+
+
+AttractionScreen.cs
+	attractionParameters = FindObjectOfType<AttractionScreenParameters>();
+	var attractionConfig = attractionParameters.attractionConfig;
+
+AttractionScreenParameters.cs
+	public AttractionConfig ac
+
+	Awake(){
+		DontDestroyOnLoad(gameObject);
+	}
+
+
+AttractionConfig.cs
+	[CreateAssetMenu(fileName = "New Attraction Config", menuName = "Configs/AttractionConfig", order=0)]
+	public class AttractionConfig : ScriptableObject{
+		vars...
+	}
