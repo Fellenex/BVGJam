@@ -5,20 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class DialogIconTrigger : MonoBehaviour {
 
-    public GameObject prefabDialogIcon;         //the icon to create
+
+    //A link to the dialog icon for this NPC
+    public GameObject dialogIcon;
+
     private GameObject npc;                  //the parent npc with the dialog icon
 
-    //Keep track of the dialog icon so we can get rid of it when the player leaves the trigger
-    private GameObject dialogIconReference;
     private GameObject playerReference;
 
     private bool dialogPossible = false;
     private int verticalOffset;
     
     void Start() {
-        npc = transform.parent.gameObject;
+        npc = gameObject.transform.parent.gameObject;
+        //dialogIcon = npc.GetComponentInChildren
+        //npc.GetComponentInChildren<DialogIcon>();
         NPC_Behaviour behaviour = npc.GetComponent<NPC_Behaviour>();
-        verticalOffset = behaviour.dialogIconOffsetHeight;
+
+        //verticalOffset = behaviour.dialogIconOffsetHeight;
 
         playerReference = GameObject.FindGameObjectWithTag("Player");
     }
@@ -40,8 +44,8 @@ public class DialogIconTrigger : MonoBehaviour {
 
             //TODO find the conversation id based on in-game data, rather than assuming
             jsonDict.Add("id", "opener");
-            
             jsonDict.Add("name", npc.GetComponent<NPC_Behaviour>().npcName);
+            jsonDict.Add("display_name", npc.GetComponent<NPC_Behaviour>().displayName);
             DialogData.load("DialogWindow", jsonDict);
         }
     }
@@ -61,9 +65,10 @@ public class DialogIconTrigger : MonoBehaviour {
 
             //Debug.Log("Spawned at " + dPos + " , " + transform.position);
 
-            dialogIconReference = Object.Instantiate(prefabDialogIcon, transform.parent.transform.position, Quaternion.identity);
-            //dialogIconReference.transform.parent = gameObject.parent.GetComponentInParent<Transform>();
-            dialogIconReference.transform.parent = transform.parent;
+            dialogIcon.SetActive(true);
+            //dialogIconReference = Object.Instantiate(prefabDialogIcon, transform.parent.transform.position, Quaternion.identity);
+            ////dialogIconReference.transform.parent = gameObject.parent.GetComponentInParent<Transform>();
+            //dialogIconReference.transform.parent = transform.parent;
 
 
             //dialogIconReference.transform.Translate(new Vector3 (0, offset, 0));
@@ -78,6 +83,7 @@ public class DialogIconTrigger : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D col) {
         dialogPossible = false;
-        Object.Destroy(dialogIconReference);
+        dialogIcon.SetActive(false);
+        //Object.Destroy(dialogIconReference);
     }
 }

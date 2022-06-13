@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 using UnityEngine.UI;
 
 
@@ -105,7 +106,14 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
         //Player was speaking their line when the trigger to advance happened
         //Move forward to the next NPC speaking state
         if (activeSpeaker == Speaker.PLAYER) {
-            npcSpeaking(getNewNPCState(activeTransition));
+
+            try {
+                npcSpeaking(getNewNPCState(activeTransition));
+            }
+            catch (Exception e){
+                Debug.Log("No more states available from NPC");
+                closeConversation();
+            }
         }
 
         //Swap from NPC speaking back to player dialog options
