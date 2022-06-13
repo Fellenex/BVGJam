@@ -1,0 +1,93 @@
+{
+    "conversations" : [
+        {"id" : "opener",
+        "starter" : "npc",
+        "finalStates" : ["4"],
+        "states" : [
+            {"index" : "0",
+                "speaker" : "Grandma Yaga",
+                "text" : "Good morning, sleepy head! I trust you slept well?",
+                "mood" : "neutral"},
+
+            {"index" : "1",
+                "speaker" : "Grandma Yaga",
+                "text" : "I have a special duty for you today...",
+                "mood" : "neutral"},
+
+            {"index" : "2",
+                "speaker" : "Grandma Yaga",
+                "text" : "A few friends of mine have some important ingredients I need. Be a dear and fetch them for me, please!",
+                "mood" : "upset"},
+
+            {"index" : "3",
+                "speaker" : "Grandma Yaga",
+                "text" : "Thank you so much, youngling! Trust your heart to find what you need.",
+                "mood" : "pleased"}
+        ],
+        "transitions" : [
+            {   "source" : "0",
+                "target" : "4",
+                "text" : "Your crying kept me awake. Keep it down!",
+                "mood" : "upset",
+                "conditions" : [],
+                "triggers" : ["wasRude"]                
+            },
+            {   "source" : "0",
+                "target" : "1",
+                "text" : "Is everything alright, Grandma Yaga?",
+                "mood" : "neutral",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "0",
+                "target" : "1",
+                "text" : "I slept like a baby! Thanks for asking!",
+                "mood" : "pleased",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "1",
+                "target" : "2",
+                "text" : "Happy to help! What can I do for you, Grandma Yaga?",
+                "mood" : "pleased",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "1",
+                "target" : "2",
+                "text" : "Hehe, you said 'doody.'",
+                "mood" : "pleased",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "2",
+                "target" : "3",
+                "text" : "Of course! Do you have a list of what I need?",
+                "mood" : "pleased",
+                "conditions" : [],                    
+                "triggers" : []               
+            },
+            {   "source" : "2",
+                "target" : "3",
+                "text" : "On it!",
+                "mood" : "pleased",
+                "conditions" : [],                    
+                "triggers" : []               
+            },
+            {   "source" : "3",
+                "target" : "4",
+                "text" : "Oh, uh... okay! Bye, Grandma Yaga!",
+                "mood" : "neutral",
+                "conditions" : [],           
+                "triggers" : []
+            },
+            {   "source" : "3",
+                "target" : "4",
+                "text" : "I'm excited to meet your friends! See you soon!",
+                "mood" : "pleased",
+                "conditions" : [],           
+                "triggers" : []
+            }
+        ]}
+    ]
+}

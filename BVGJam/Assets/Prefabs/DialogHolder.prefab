@@ -729,7 +729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.0000305, y: 93}
+  m_AnchoredPosition: {x: -3.0000305, y: -24}
   m_SizeDelta: {x: 527.6391, y: 39.249138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3508434561824270821
@@ -1239,6 +1239,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  npcDialogIcons_grandma:
+  - {fileID: 21300000, guid: 9f2ed14937f24074fb7fe60e7097ce6c, type: 3}
+  - {fileID: 21300000, guid: 78bbf76db0502f04eb3d913bcd5b8164, type: 3}
+  - {fileID: 21300000, guid: 84058a32a65bf48489066661a179be92, type: 3}
 --- !u!114 &8761101847154650361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,7 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9056604, g: 0.8843005, b: 0.8843005, a: 0.87058824}
+  m_Color: {r: 0.9056604, g: 0.8843005, b: 0.8843005, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

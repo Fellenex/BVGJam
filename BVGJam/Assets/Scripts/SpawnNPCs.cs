@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnNPCs : MonoBehaviour {
 
     public GameObject npcPrefab;
+    public GameObject grandmaPrefab;
 
 
 
@@ -15,6 +16,10 @@ public class SpawnNPCs : MonoBehaviour {
 
         GameObject mark = Object.Instantiate<GameObject>(npcPrefab, new Vector3(-5, 0, 0), Quaternion.identity);
         mark.GetComponent<NPC_Behaviour>().npcName = "Mark";
+
+        GameObject babayaga = Object.Instantiate<GameObject>(grandmaPrefab, new Vector3(-10, 0, 0), Quaternion.identity);
+        babayaga.GetComponent<NPC_Behaviour>().npcName = "Grandma_Yaga";
+
         //rafael.GetComponent<SpriteRenderer>().sprite = rafae
         
         //Resources.Load<Sprite>("Sprites/Rafael/overworld.jpg");

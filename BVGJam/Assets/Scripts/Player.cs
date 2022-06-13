@@ -2,43 +2,78 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour {
+    private static readonly int WalkingLeftHash = Animator.StringToHash("WalkingLeft");
+    private static readonly int WalkingRightHash = Animator.StringToHash("WalkingRight");
 
-    public float moveSpeed = 2f;
+    public float moveSpeed = 1f;
     public float jumpSpeed = 1.1f;
+    public float maxSpeed = 100f;
 
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
+    private Animator playerAnimator;
 
     public bool dialogOpen = false;
 
     void Start() {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     void Update() {
-
         //Don't let the player move while a dialog window is open
         if (!dialogOpen) {
-            move();
+            //Check for input keys to set movement
+            moveLeft();
+            moveRight();
+            moveUp();
+            
+            //Check for lack of input keys to reset movement
+            stopLeft();
+            stopRight();
+            standStill();
         }
     }
 
-
-    private void move() {
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
+    public void moveLeft() {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
             //add movement left
-            rigidbody.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Impulse);
+            playerAnimator.SetTrigger(WalkingLeftHash);
+            rb.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
+    public void moveRight() {
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
             //add movement right
-            rigidbody.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Impulse);
+            GetComponent<Animator>().SetTrigger(WalkingRightHash);
+            rb.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Force);
         }
+    }
 
+    public void moveUp() {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) {
-            //add movement up
-            rigidbody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+        }
+    }
+
+    public void stopLeft() {
+        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftArrow)) {
+            //Stop moving left
+            playerAnimator.ResetTrigger(WalkingLeftHash);
+        }
+    }
+
+    public void stopRight() {
+        if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.RightArrow)) {
+            playerAnimator.ResetTrigger(WalkingRightHash);
+        }
+    }
+
+    public void standStill() {
+        if (!Input.anyKey) {
+            playerAnimator.ResetTrigger(WalkingLeftHash);
+            playerAnimator.ResetTrigger(WalkingRightHash);
         }
     }
 

@@ -24,6 +24,7 @@ public class DialogGraphics : MonoBehaviour {
     public Sprite[] npcDialogIcons_mark;
     public Sprite[] npcDialogIcons_maverick;
     public Sprite[] npcDialogIcons_nicki;
+    public Sprite[] npcDialogIcons_grandma;
 
     private Dictionary<string,int> mapMoodToIndex =
         new Dictionary<string,int>{{"neutral", 0}, {"pleased", 1}, {"upset", 2}};
@@ -41,7 +42,9 @@ public class DialogGraphics : MonoBehaviour {
             {"Joe", npcDialogIcons_joe},
             {"Mark", npcDialogIcons_mark},
             {"Maverick", npcDialogIcons_maverick},
-            {"Nicki", npcDialogIcons_nicki}
+            {"Nicki", npcDialogIcons_nicki},
+
+            {"Grandma Yaga", npcDialogIcons_grandma}
         };
     }
 
@@ -89,14 +92,14 @@ public class DialogGraphics : MonoBehaviour {
         playerText.text = _playerChoice.text;
 
         //Find the right icon for the player based on their mood
+        activeNPCImage.enabled = false;
         activePlayerImage.sprite = playerDialogIcons[mapMoodToIndex[_playerChoice.mood]];
         activePlayerImage.enabled = true;
-        activeNPCImage.enabled = false;
 
         //Swap nameplates
+        npcNameplate.enabled = false;
         playerNameplate.text = playerName;
         playerNameplate.enabled = true;
-        npcNameplate.enabled = false;
     }
 
 
@@ -112,10 +115,10 @@ public class DialogGraphics : MonoBehaviour {
         Debug.Log(mapMoodToIndex[_npcState.mood]);
         Debug.Log(mapNameToSprites[_npcState.speaker]);
 
+        activePlayerImage.enabled = false;
         //Find the correct list of NPC sprites to pull from, and then
         //  use the one whose mood matches the supplied _playerMood
         activeNPCImage.sprite = mapNameToSprites[_npcState.speaker][mapMoodToIndex[_npcState.mood]];
-        activePlayerImage.enabled = false;
         activeNPCImage.enabled = true;
 
         //Swap nameplates
