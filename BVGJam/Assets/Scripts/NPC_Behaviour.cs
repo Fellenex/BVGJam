@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPC_Behaviour : MonoBehaviour {
     public string npcName = "FillerName";
     public string displayName = "Filler Name";
+    public string conversationId = "opener";
 
     void Start() {
         //rigidbody = GetComponent<Rigidbody2D>();

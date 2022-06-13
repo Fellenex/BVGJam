@@ -2,7 +2,7 @@
     "conversations" : [
         {"id" : "opener",
         "starter" : "npc",
-        "finalStates" : ["4"],
+        "finalStates" : ["3"],
         "states" : [
             {"index" : "0",
                 "speaker" : "Grandma Yaga",

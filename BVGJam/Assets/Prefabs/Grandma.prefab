@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3795280134575161698, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: dialogAvailableSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bb1f8d9d38ab34e4aa72ac9366e898ea,
+        type: 3}
+    - target: {fileID: 3795280134575161698, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: dialogUnavailableSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fb4694493d510444e9798ceb91724106,
+        type: 3}
     - target: {fileID: 3795280134575161699, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: m_LocalScale.x

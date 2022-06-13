@@ -8,27 +8,23 @@ public class DialogIconTrigger : MonoBehaviour {
 
     //A link to the dialog icon for this NPC
     public GameObject dialogIcon;
+    public Sprite dialogAvailableSprite;
+    public Sprite dialogUnavailableSprite;
 
     private GameObject npc;                  //the parent npc with the dialog icon
-
+    private NPC_Behaviour behaviour;
     private GameObject playerReference;
 
-    private bool dialogPossible = false;
-    private int verticalOffset;
+    private bool triggerActive = false;
     
     void Start() {
         npc = gameObject.transform.parent.gameObject;
-        //dialogIcon = npc.GetComponentInChildren
-        //npc.GetComponentInChildren<DialogIcon>();
-        NPC_Behaviour behaviour = npc.GetComponent<NPC_Behaviour>();
-
-        //verticalOffset = behaviour.dialogIconOffsetHeight;
-
+        behaviour = npc.GetComponent<NPC_Behaviour>();
         playerReference = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update() {
-        if (dialogPossible) {
+        if (triggerActive) {
             checkForDialogWindowPopup();
         }
     }
@@ -37,16 +33,25 @@ public class DialogIconTrigger : MonoBehaviour {
         if (!playerReference.GetComponent<Player>().dialogOpen
                 && Input.GetKeyDown(KeyCode.E)){
 
-            playerReference.GetComponent<Player>().dialogOpen = true;
+            //Only let the player open a dialog if they have not finished this conversation
+            if (!StoryConditions.hasFinishedConversation(behaviour.conversationId)) {
+                dialogIcon.GetComponent<SpriteRenderer>().sprite = dialogAvailableSprite;
 
-            //Setup npc name and conversation ID to send over to the new scene
-            Dictionary<string, string> jsonDict = new Dictionary<string,string>();
+                playerReference.GetComponent<Player>().dialogOpen = true;
 
-            //TODO find the conversation id based on in-game data, rather than assuming
-            jsonDict.Add("id", "opener");
-            jsonDict.Add("name", npc.GetComponent<NPC_Behaviour>().npcName);
-            jsonDict.Add("display_name", npc.GetComponent<NPC_Behaviour>().displayName);
-            DialogData.load("DialogWindow", jsonDict);
+                //Setup npc name and conversation ID to send over to the new scene
+                Dictionary<string, string> jsonDict = new Dictionary<string,string>();
+
+                //TODO find the conversation id based on in-game data, rather than assuming
+                jsonDict.Add("id", behaviour.conversationId);
+                jsonDict.Add("name", behaviour.npcName);
+                jsonDict.Add("display_name", behaviour.displayName);
+                DialogData.load("DialogWindow", jsonDict);
+            }
+            else{
+                dialogIcon.GetComponent<SpriteRenderer>().sprite = dialogUnavailableSprite;
+                    
+            }
         }
     }
 
@@ -55,13 +60,12 @@ public class DialogIconTrigger : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col) {
 
         if (col.gameObject.name == "Player") {
-            
-            dialogPossible = true;
+            triggerActive = true;
 
             //Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
 
             //Get the offset position for the dialog icon, instantiate it, and set its position
-            Vector3 dPos = new Vector3(transform.position.x, transform.position.y + verticalOffset, 0);
+            //Vector3 dPos = new Vector3(transform.position.x, transform.position.y + verticalOffset, 0);
 
             //Debug.Log("Spawned at " + dPos + " , " + transform.position);
 
@@ -82,7 +86,7 @@ public class DialogIconTrigger : MonoBehaviour {
     }
 
     void OnTriggerExit2D(Collider2D col) {
-        dialogPossible = false;
+        triggerActive = false;
         dialogIcon.SetActive(false);
         //Object.Destroy(dialogIconReference);
     }

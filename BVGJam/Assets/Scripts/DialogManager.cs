@@ -29,6 +29,8 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
 
         //Load the .json file with this NPC's conversations
         activeConversation = readFile(jsonFilename);
+        StoryConditions.startConversation(npcName, activeConversation.id);
+
         activeState = activeConversation.states[0];
         activeTransition = null;
 
@@ -140,6 +142,11 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
     }
 
     public void closeConversation() {
+
+        //If we are in a final state for the NPC, then we mark this conversation as completed
+        if (activeConversation.finalStates.Contains(activeState.index)) {
+            StoryConditions.finishConversation(activeConversation.id);
+        }
         GetComponent<CloseDialogWindow>().dialogClose();
     }
 

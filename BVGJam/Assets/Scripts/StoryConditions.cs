@@ -15,7 +15,7 @@ public static class StoryConditions {
     
     //Keep track of which conversations have been completed
     //  Maps a conversation ID to a truth value
-    public static Dictionary<string, bool> conversationStatus;
+    public static Dictionary<string, bool> conversationCompleted;
 
     //A holder for the remaining conditions not otherwise covered by conversation status
     public static Dictionary<string, bool> secondaryConditions;
@@ -33,7 +33,7 @@ public static class StoryConditions {
     public static void setupConditionMapping(){
         //TODO set up any conditions we want to do additional things with here
         npcConversations = new Dictionary<string, List<string>>();
-        conversationStatus = new Dictionary<string, bool>();
+        conversationCompleted = new Dictionary<string, bool>();
         //threadStatus = new Dictionary<string, bool>();
         secondaryConditions = new Dictionary<string, bool>();
         inventoryItems = new List<string>();
@@ -74,10 +74,26 @@ public static class StoryConditions {
     }
 
     public static void startConversation(string _npcName, string _conversationId){
-        npcConversations[_npcName].Add(_conversationId);
-        conversationStatus[_conversationId] = false;
+        try {
+            npcConversations[_npcName].Add(_conversationId);
+        }
+        catch (KeyNotFoundException e) {
+            npcConversations[_npcName] = new List<string>();
+            npcConversations[_npcName].Add(_conversationId);
+        }
+        conversationCompleted[_conversationId] = false;
     }
     public static void finishConversation(string _conversationId){
-        conversationStatus[_conversationId] = true;
+        conversationCompleted[_conversationId] = true;
+    }
+
+    //A li'l wrapper to safely check if a conversation has been completed
+    public static bool hasFinishedConversation(string _conversationId) {
+        try {
+            return conversationCompleted[_conversationId];
+        }
+        catch (KeyNotFoundException) {
+            return false;
+        }
     }
 }
