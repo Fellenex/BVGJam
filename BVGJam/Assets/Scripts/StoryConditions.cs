@@ -22,13 +22,14 @@ public static class StoryConditions {
 
     /*
     //Keep track of which "threads" have been completed.
-    //  The threads are the main story checkpoints\
+    //  The threads are the main story checkpoints
     enum Threads {RED, YELLOW, GREEN, PURPLE, ORANGE};
     public static Dictionary<string, bool> threadStatus;
     */
 
     //A holder for the inventory items a player has obtained
     public static List<string> inventoryItems;
+
 
     public static void setupConditionMapping(){
         //TODO set up any conditions we want to do additional things with here
@@ -37,8 +38,6 @@ public static class StoryConditions {
         //threadStatus = new Dictionary<string, bool>();
         secondaryConditions = new Dictionary<string, bool>();
         inventoryItems = new List<string>();
-
-        secondaryConditions["isRich"] = true;
     }
 
     public static bool hasInventoryItem(string _itemName) {
@@ -49,12 +48,24 @@ public static class StoryConditions {
         inventoryItems.Add(_itemName);
     }
 
+    public static bool doesPlayerMeetCondition(string _condition) {
+        if (_condition[0].ToString() == "!"){ 
+            //We want to check that the player has /not/ met the condition
+            return(!checkCondition(_condition.Substring(1, _condition.Length-1)));
+        }
+        else{ 
+            //We want to check that the player /has/ met the condition
+            return(checkCondition(_condition));
+        }
+    }
+
     //Returns bool indicating whether or not _condition has been met.
     //A li'l wrapper to check a condition and instantiate the list entry if it has yet to be set
-    public static bool doesPlayerMeetCondition(string _condition) {
+    private static bool checkCondition(string _condition) {
         bool truthValue;
         try {
             truthValue = secondaryConditions[_condition];
+            
         }
         catch (Exception e){
             truthValue = false;

@@ -6,6 +6,6 @@ public class SetupConditionsAndTriggers : MonoBehaviour {
     //Setup the global configuration for the game
     void Start() {
         StoryConditions.setupConditionMapping();
-        StoryTriggers.setupTriggerMapping();
+        StoryTriggers.setupTriggers();
     }
 }
