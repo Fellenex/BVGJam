@@ -37,13 +37,16 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
 
         //Load the .json file with this NPC's conversations
         activeConversation = readFile(jsonFilename);
-        StoryConditions.startConversation(npcName, activeConversation.id);
-
-        activeState = activeConversation.states[0]; 
-        activeTransition = null;
-        Debug.Log("Final states");
-        foreach ( var x in activeConversation.finalStates){
-            Debug.Log(x.ToString());
+        try {
+            //Setup things needed for starting a conversation
+            StoryConditions.startConversation(npcName, activeConversation.id);
+            activeState = activeConversation.states[0]; 
+            activeTransition = null;
+        }
+        catch (NullReferenceException e) {
+            //Break out of the start function early to avoid more errors
+            //  due to an unavailable file
+            return;
         }
 
         if (activeConversation.starter == "player") {
@@ -200,18 +203,20 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
         }
     }
 
+    //"Gracefully" close out the conversation.
     public void closeConversation() {
-        Debug.Log("Checking to see if "+activeState.index+" is a final state");
-        foreach ( var x in activeConversation.finalStates){
-            Debug.Log(x.ToString());
-        }
-        //If we are in a final state for the NPC, then we mark this conversation as completed
-        
-        foreach (int state in activeConversation.finalStates) {
-            if (activeState.index == state) {
-                Debug.Log("Completed conversation "+activeState.index);
-                StoryConditions.finishConversation(activeConversation.id);
+        try {
+            //If we are in a final state for the NPC, then we mark this conversation as completed
+            foreach (int state in activeConversation.finalStates) {
+                if (activeState.index == state) {
+                    Debug.Log("Completed conversation "+activeState.index);
+                    StoryConditions.finishConversation(activeConversation.id);
+                }
             }
+        }
+        catch (NullReferenceException e) {
+            //If we are closing out of the conversation because there was some issue
+            //  obtaining the conversation, then it won't have any finalStates property.
         }
         GetComponent<CloseDialogWindow>().dialogClose();
     }
@@ -232,7 +237,7 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
                 }
             }
             if (activeConversation == null) {
-                Debug.LogError("No conversation with id " + DialogData.getParam("id") + " found");
+                Debug.Log("No conversation with id " + DialogData.getParam("id") + " found");
             }
         }
         else{

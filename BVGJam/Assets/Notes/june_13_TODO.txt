@@ -1,0 +1,45 @@
+Add NPC Prefabs
+v	Joe
+v	Casey
+v	Nicki
+v	Mark
+v	Maverick
+
+Dialog System improvements
+v	NPC multistate
+v	Player multistate
+	Automatic Timers
+	Progressive Text
+
+	How to tell which conversation ID we'll be using?
+	extra system for this somewhere
+
+Each NPC Prefab needs
+	(finished joe's)
+	standing_right
+	standing_left
+	script to swap between the left/right sprites
+
+
+
+v everywhere that uses state.text will now need to use state.statement.text
+v everywhere that uses state.mood will need to now use state.statement.text.mood
+v Update all statements during time where NPC has control
+v NPC turns towards player when the player talks to them
+	NPC turns towards player when the player walks away from them
+v Bigger bug (not graceful) - game freezes if you talk to an NPC and the .json doesn't exist
+v Script for flipping instead of all this animation nonsense. Super simple flips for NPCs
+~Various NullReferenceExceptions as a result of the dialog system
+
+A way to explain input methods
+	(screen for name input and keybind display)
+Blackened screen with colour text for emphasis
+	use static class like DialogData but for DramaticScreen
+
+Start importing triggers/conditions into code files
+	special triggers gotta have extra attention
+	trigger debug visuals on ui?
+
+probably not
+	Little sounds while NPCs are talking
+	Coloured text based on speaker's mood

@@ -8,5 +8,4 @@ public class SetupConditionsAndTriggers : MonoBehaviour {
         StoryConditions.setupConditionMapping();
         StoryTriggers.setupTriggerMapping();
     }
-
 }

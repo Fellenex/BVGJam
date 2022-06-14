@@ -27,7 +27,7 @@ public class DialogIconTrigger : MonoBehaviour {
 
     void Update() {
         if (triggerActive) {
-            checkForDialogWindowPopup();
+            checkForDialogInitiation();
         }
     }
 
@@ -38,15 +38,34 @@ public class DialogIconTrigger : MonoBehaviour {
             triggerActive = true;
             dialogIcon.SetActive(true);
         }
+
+        //Look towards the player as they arrive
+        lookTowardsPlayer();
     }
 
     //Remove the dialog icon that popped up
     void OnTriggerExit2D(Collider2D col) {
         triggerActive = false;
         dialogIcon.SetActive(false);
+
+        //Look towards the player as they leave
+        lookTowardsPlayer();
     }
     
-    public void checkForDialogWindowPopup() {
+    void lookTowardsPlayer() {
+        //Player is to the left of the NPC, so make the NPC face left
+        if (playerReference.transform.position.x < transform.position.x) {
+            Debug.Log("player is left");
+            npc.GetComponent<SpriteFlip>().faceLeft();
+        }
+        //Player is to the right of the NPC, so make the NPC face right
+        else if (playerReference.transform.position.x > transform.position.x) {
+            Debug.Log("player is right");
+            npc.GetComponent<SpriteFlip>().faceRight();
+        }
+    }
+
+    public void checkForDialogInitiation() {
         if (!playerReference.GetComponent<Player>().dialogOpen
                 && Input.GetKeyDown(KeyCode.E)){
 
