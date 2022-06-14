@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +19,8 @@ public class DialogIconTrigger : MonoBehaviour {
     private bool triggerActive = false;
 
     private string dialogSceneName = "DialogWindow";
+
+    DialogDataJSON json;
     
     void Start() {
         npc = gameObject.transform.parent.gameObject;
@@ -37,30 +40,30 @@ public class DialogIconTrigger : MonoBehaviour {
         if (col.gameObject.name == "Player") {
             triggerActive = true;
             dialogIcon.SetActive(true);
+            //Look towards the player as they arrive
+            lookTowardsPlayer();
         }
-
-        //Look towards the player as they arrive
-        lookTowardsPlayer();
     }
 
     //Remove the dialog icon that popped up
     void OnTriggerExit2D(Collider2D col) {
-        triggerActive = false;
-        dialogIcon.SetActive(false);
-
-        //Look towards the player as they leave
-        lookTowardsPlayer();
+        if (col.gameObject.name == "Player") {
+            triggerActive = false;
+            dialogIcon.SetActive(false);
+            //Look towards the player as they leave
+            lookTowardsPlayer();
+        }
     }
     
     void lookTowardsPlayer() {
         //Player is to the left of the NPC, so make the NPC face left
         if (playerReference.transform.position.x < transform.position.x) {
-            Debug.Log("player is left");
+            Debug.Log("player is left of "+npc.name);
             npc.GetComponent<SpriteFlip>().faceLeft();
         }
         //Player is to the right of the NPC, so make the NPC face right
         else if (playerReference.transform.position.x > transform.position.x) {
-            Debug.Log("player is right");
+            Debug.Log("player is right of "+npc.name);
             npc.GetComponent<SpriteFlip>().faceRight();
         }
     }
@@ -76,16 +79,40 @@ public class DialogIconTrigger : MonoBehaviour {
                 playerReference.GetComponent<Player>().dialogOpen = true;
 
                 //Setup npc name and conversation ID to send over to the new scene
-                Dictionary<string, string> jsonDict = new Dictionary<string,string>();
+                Dictionary<string, string> dData = new Dictionary<string,string>();
 
-                jsonDict.Add("id", behaviour.conversationId);
-                jsonDict.Add("name", behaviour.npcName);
+                //dData.Add("id", behaviour.conversationID);
+                dData.Add("name", behaviour.npcName);
                 //jsonDict.Add("display_name", behaviour.displayName);
-                DialogData.load(dialogSceneName, jsonDict);
+                DialogData.setActiveConversation(advancedReadFile(behaviour.conversationJson, behaviour.conversationId));
+                DialogData.load(dialogSceneName, dData);
             }
             else{
                 dialogIcon.GetComponent<SpriteRenderer>().sprite = dialogUnavailableSprite;
             }
         }
+    }
+
+    public Conversation advancedReadFile(TextAsset _conversationsFile, string _id) {
+        Debug.Log("trying to find " + _conversationsFile.name);
+        Conversation acCo = null;
+
+        string fileContents = _conversationsFile.ToString();
+        Debug.Log("Found the following: ");
+        Debug.Log(fileContents);
+        json = DialogDataJSON.CreateFromJSON(fileContents);
+
+        Debug.Log("looking for id "+_id);
+        //Loop through the conversations to try to find a matching id
+        foreach (Conversation con in json.conversations) {
+            if (_id == con.id){
+                acCo = con;
+                break;
+            }
+        }
+        if (acCo == null) {
+            Debug.Log("No conversation(x) with id " + _id + " found");
+        }
+        return acCo;
     }
 }

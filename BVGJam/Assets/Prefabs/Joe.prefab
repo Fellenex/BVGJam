@@ -26,6 +26,11 @@ PrefabInstance:
       propertyPath: conversationId
       value: opener_joe
       objectReference: {fileID: 0}
+    - target: {fileID: 5362147572540200515, guid: 9c79140a5be04cb4fb485835f438e725,
+        type: 3}
+      propertyPath: conversationJson
+      value: 
+      objectReference: {fileID: 4900000, guid: 820b9190e5440ea4283729e802880241, type: 3}
     - target: {fileID: 5362147572540200516, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_Sprite
@@ -55,12 +60,12 @@ PrefabInstance:
     - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.7
+      value: -38.2
       objectReference: {fileID: 0}
     - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.429232
+      value: -6.3
       objectReference: {fileID: 0}
     - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
@@ -105,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 5362147573423781515, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_Size.x
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8121322402105224697, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}

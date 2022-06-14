@@ -15,4 +15,9 @@ public class CloseDialogWindow : MonoBehaviour {
         playerReference.GetComponent<Player>().dialogOpen = false;
         SceneManager.UnloadSceneAsync("DialogWindow");
     }
+
+    public void dramaticDialogClose() {
+        playerReference.GetComponent<Player>().dialogOpen = false;
+        SceneManager.UnloadSceneAsync("DramaticDialogWindow");
+    }
 }

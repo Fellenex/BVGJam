@@ -5,12 +5,21 @@ using UnityEngine.SceneManagement;
 
 public static class DialogData {
 
+    private static Conversation activeConversation;
     private static Dictionary<string, string> parameters;
+
+
+    public static void setActiveConversation(Conversation _ac){
+        activeConversation = _ac;
+    }
+    public static Conversation getActiveConversation() {
+        return activeConversation;
+    }
 
     public static void load(string _sceneName, Dictionary<string, string> _parameters = null) {
         DialogData.parameters = _parameters;
         
-        if (_sceneName == "DialogWindow") {
+        if (_sceneName == "DialogWindow" || _sceneName == "DramaticDialogWindow") {
             SceneManager.LoadScene(_sceneName, LoadSceneMode.Additive);
         }
         else{
@@ -22,7 +31,7 @@ public static class DialogData {
         DialogData.parameters = new Dictionary<string, string>();
         DialogData.parameters.Add(_key, _val);
 
-        if (_sceneName == "DialogWindow") {
+        if (_sceneName == "DialogWindow" || _sceneName == "DramaticDialogWindow") {
             SceneManager.LoadScene(_sceneName, LoadSceneMode.Additive);
         }
         else{

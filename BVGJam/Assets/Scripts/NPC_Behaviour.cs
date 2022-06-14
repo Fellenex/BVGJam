@@ -7,6 +7,8 @@ public class NPC_Behaviour : MonoBehaviour {
     public string displayName = "Filler Name";
     public string conversationId = "opener";
 
+    public TextAsset conversationJson;
+
     void Start() {
         //rigidbody = GetComponent<Rigidbody2D>();
 

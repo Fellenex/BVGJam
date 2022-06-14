@@ -32,11 +32,10 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
     void Start() {
         graphics = GetComponent<DialogGraphics>();
 
+        //Load up the data setup through the DialogData class
         string npcName = DialogData.getParam("name");
-        string jsonFilename = "Assets/Dialog/" + npcName + ".json";
+        activeConversation = DialogData.getActiveConversation();
 
-        //Load the .json file with this NPC's conversations
-        activeConversation = readFile(jsonFilename);
         try {
             //Setup things needed for starting a conversation
             StoryConditions.startConversation(npcName, activeConversation.id);
