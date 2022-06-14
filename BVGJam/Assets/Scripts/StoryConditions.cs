@@ -20,15 +20,12 @@ public static class StoryConditions {
     //A holder for the remaining conditions not otherwise covered by conversation status
     public static Dictionary<string, bool> secondaryConditions;
 
-    /*
-    //Keep track of which "threads" have been completed.
-    //  The threads are the main story checkpoints
-    enum Threads {RED, YELLOW, GREEN, PURPLE, ORANGE};
-    public static Dictionary<string, bool> threadStatus;
-    */
 
-    //A holder for the inventory items a player has obtained
-    public static List<string> inventoryItems;
+    /*
+    We don't need to populate any of the default conditions, since
+        we automatically set them as false if we are checking the condition
+        and it has yet to be added to secondaryConditions.
+    */
 
 
     public static void setupConditionMapping(){
@@ -37,19 +34,11 @@ public static class StoryConditions {
         conversationCompleted = new Dictionary<string, bool>();
         //threadStatus = new Dictionary<string, bool>();
         secondaryConditions = new Dictionary<string, bool>();
-        inventoryItems = new List<string>();
     }
 
-    public static bool hasInventoryItem(string _itemName) {
-        return(inventoryItems.Contains(_itemName));
-    }
-
-    public static void addInventoryItem(string _itemName) {
-        inventoryItems.Add(_itemName);
-    }
 
     public static bool doesPlayerMeetCondition(string _condition) {
-        if (_condition[0].ToString() == "!"){ 
+        if (_condition[0] == '!'){ 
             //We want to check that the player has /not/ met the condition
             return(!checkCondition(_condition.Substring(1, _condition.Length-1)));
         }
@@ -59,13 +48,12 @@ public static class StoryConditions {
         }
     }
 
-    //Returns bool indicating whether or not _condition has been met.
+    //Returns bool indicating whether or not _condition is set to true in secondaryConditions
     //A li'l wrapper to check a condition and instantiate the list entry if it has yet to be set
     private static bool checkCondition(string _condition) {
         bool truthValue;
         try {
             truthValue = secondaryConditions[_condition];
-            
         }
         catch (Exception e){
             truthValue = false;

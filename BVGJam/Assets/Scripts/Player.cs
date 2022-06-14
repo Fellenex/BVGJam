@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
 
     void Start() {
         jumpForce = 4f;
-        maxSpeed = 1500;
+        maxSpeed = 20000;
         rb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
 

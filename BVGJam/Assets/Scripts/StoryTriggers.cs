@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class StoryTriggers {
+
+    private static string triggerPrefix = "get";
+    private static string conditionPrefix = "have";
+
     public static string[] triggers;
-    
     //Overarching colour triggers
     public static string getBlue = "getBlue";
     public static string getRed = "getRed";
@@ -25,7 +28,7 @@ public static class StoryTriggers {
     //
     public static string getPaladinBloodGood = "getPaladinBloodGood";
     public static string getPaladinBloodBad = "getPaladinBloodBad";
-    public static string getYourBloood = "getYourBlood";
+    public static string getYourBlood = "getYourBlood";
     public static string getAssassinsBlood = "getAssassinsBlood";
     //
     public static string getSonicSpore = "getSonicSpore";
@@ -45,7 +48,6 @@ public static class StoryTriggers {
 
     //Other triggers
     public static string getFoundKnife = "getFoundKnife";
-    public static string getYourBlood = "getYourBlood";
 
 
 
@@ -121,10 +123,15 @@ public static class StoryTriggers {
         else{
             //Unless there was a special case, we just turn
             //  "get<TRIGGER>" into "have<TRIGGER>"
-
-            //TODO more granular, in-case one of the triggers has "get" as a non-prefix substring
-            _triggerName.Replace("get", "have");
-            StoryConditions.playerHasMetCondition(_triggerName);
+            StoryConditions.playerHasMetCondition(convertTriggerIntoCondition(_triggerName));
         }
+    }
+
+    //A li'l helper function to turn trigger names into condition names.
+    //e.g., we turn "getToxicSweat" into "haveToxicSweat";
+    private static string convertTriggerIntoCondition(string _triggerName){
+        string returnString = conditionPrefix + _triggerName.Substring(triggerPrefix.Length, _triggerName.Length - triggerPrefix.Length);
+        Debug.Log(returnString);
+        return(returnString);
     }
 }

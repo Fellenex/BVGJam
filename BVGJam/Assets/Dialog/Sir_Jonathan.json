@@ -106,7 +106,7 @@
                 ],
                 "optionText" : "I could challenge his masculinity in a push-up contest...",
                 "conditions" : [],
-                "triggers" : []
+                "triggers" : ["getToxicSweat"]
             },
 
             {   "source" : "4",
