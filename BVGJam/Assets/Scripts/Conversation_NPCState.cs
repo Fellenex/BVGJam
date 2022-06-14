@@ -7,6 +7,5 @@ public class Conversation_NPCState {
 
     public int index;
     public string speaker;
-    public string text;
-    public string mood;
+    public Conversation_Statement[] statements;
 }

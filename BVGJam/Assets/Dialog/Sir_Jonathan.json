@@ -1,0 +1,124 @@
+{
+    "conversations" : [
+        {"id" : "opener_joe",
+        "starter" : "npc",
+        "finalStates" : ["4"],
+        "states" : [
+            {"index" : "0",
+                "speaker" : "Sir_Jonathan",
+                "statements" : [
+                    {"text" : "Why hello there fellow traveler!",
+                        "mood" : "pleased"},
+                    {"text" : "My Name is Sir Jonathan!",
+                        "mood" : "pleased"},
+                    {"text" : "What brings you to me today?",
+                        "mood" : "pleased"}
+                ]
+            },
+
+            {"index" : "1",
+                "speaker" : "Sir_Jonathan",
+                "statements" : [
+                        {"text" : "Blue? Is that a friend of yours or...",
+                            "mood" : "neutral"}
+                ]
+            },
+
+            {"index" : "2",
+                "speaker" : "Sir_Jonathan",
+                "statements" : [
+                    {"text" : "Oh?",
+                        "mood" : "neutral"}
+                ]
+            },
+
+            {"index" : "3",
+                "speaker" : "Sir_Jonathan",
+                "statements" : [
+                    {"text" : "The concept of Blue?",
+                        "mood" : "neutral"},
+                    {"text" : "Oh!",
+                        "mood" : "neutral"},
+                    {"text" : "How very abstract!",
+                        "mood" : "pleased"}
+                ]
+            },
+            {"index" : "4",
+                "speaker" : "Sir_Jonathan",
+                "statements" : [
+                    {"text" : "How can I help?",
+                        "mood" : "pleased"}
+                ]
+            }
+            
+        ],
+        "transitions" : [
+            {   "source" : "0",
+                "target" : "1",
+                "statements" : [
+                    {"text" : "Well...",
+                        "mood" : "neutral"},
+                    {"text" : "I'm looking for Blue",
+                        "mood" : "neutral"}
+                    ],
+                "optionText" : "",
+                "conditions" : [],
+                "triggers" : []                
+            },
+            {   "source" : "1",
+                "target" : "2",
+                "statements" : [
+                    {"text" : "Not a friend, or a tangible thing really.",
+                        "mood" : "pleased"}
+                ],
+                "optionText" : "",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "2",
+                "target" : "3",
+                "statements" : [
+                    {"text" : "It's more of a conceptual thing",
+                        "mood" : "pleased"}
+                ],
+                "optionText" : "",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "3",
+                "target" : "4",
+                "statements" : [
+                    {"text" : "*Hmmmm. I wonder if Paladin sweat is blue enough...*",
+                        "mood" : "neutral"},
+                    {"text" : "Well...",
+                        "mood" : "neutral"}
+                ],
+                "optionText" : "",
+                "conditions" : [],
+                "triggers" : []
+            },
+
+            {   "source" : "4",
+                "target" : "5",
+                "statements" : [
+                    {"text" : "I doubt you’d be able to help. I could easily handle this on my own.",
+                        "mood" : "neutral"}
+                ],
+                "optionText" : "I could challenge his masculinity in a push-up contest...",
+                "conditions" : [],
+                "triggers" : []
+            },
+
+            {   "source" : "4",
+                "target" : "6",
+                "statements" : [
+                    {"text" : "Hmmm. I’m gonna walk around some more. I’ll let you know if I find anything!",
+                        "mood" : "neutral"}
+                ],
+                "optionText" : "I should find another way to make him sweat",
+                "conditions" : [],
+                "triggers" : []
+            }
+        ]}
+    ]
+}

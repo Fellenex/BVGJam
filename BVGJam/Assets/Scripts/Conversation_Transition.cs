@@ -6,8 +6,8 @@ using UnityEngine;
 public class Conversation_Transition {
     public int source;
     public int target;
-    public string text;
-    public string mood;
+    public Conversation_Statement[] statements;
+    public string optionText;
     public string[] conditions;
     public string[] triggers;
 }

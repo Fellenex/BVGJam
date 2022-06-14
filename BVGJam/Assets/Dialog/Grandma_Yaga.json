@@ -1,26 +1,26 @@
 {
     "conversations" : [
-        {"id" : "opener",
+        {"id" : "opener_grandma",
         "starter" : "npc",
         "finalStates" : ["3"],
         "states" : [
             {"index" : "0",
-                "speaker" : "Grandma Yaga",
+                "speaker" : "Grandma_Yaga",
                 "text" : "Good morning, sleepy head! I trust you slept well?",
                 "mood" : "neutral"},
 
             {"index" : "1",
-                "speaker" : "Grandma Yaga",
+                "speaker" : "Grandma_Yaga",
                 "text" : "I have a special duty for you today...",
                 "mood" : "neutral"},
 
             {"index" : "2",
-                "speaker" : "Grandma Yaga",
+                "speaker" : "Grandma_Yaga",
                 "text" : "A few friends of mine have some important ingredients I need. Be a dear and fetch them for me, please!",
                 "mood" : "upset"},
 
             {"index" : "3",
-                "speaker" : "Grandma Yaga",
+                "speaker" : "Grandma_Yaga",
                 "text" : "Thank you so much, youngling! Trust your heart to find what you need.",
                 "mood" : "pleased"}
         ],
@@ -34,7 +34,7 @@
             },
             {   "source" : "0",
                 "target" : "1",
-                "text" : "Is everything alright, Grandma Yaga?",
+                "text" : "Is everything alright, Grandma_Yaga?",
                 "mood" : "neutral",
                 "conditions" : [],
                 "triggers" : []
@@ -48,7 +48,7 @@
             },
             {   "source" : "1",
                 "target" : "2",
-                "text" : "Happy to help! What can I do for you, Grandma Yaga?",
+                "text" : "Happy to help! What can I do for you, Grandma_Yaga?",
                 "mood" : "pleased",
                 "conditions" : [],
                 "triggers" : []
@@ -76,7 +76,7 @@
             },
             {   "source" : "3",
                 "target" : "4",
-                "text" : "Oh, uh... okay! Bye, Grandma Yaga!",
+                "text" : "Oh, uh... okay! Bye, Grandma_Yaga!",
                 "mood" : "neutral",
                 "conditions" : [],           
                 "triggers" : []

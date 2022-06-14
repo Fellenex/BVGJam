@@ -71,6 +71,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogIcon: {fileID: 593147592443714946}
+  dialogAvailableSprite: {fileID: 0}
+  dialogUnavailableSprite: {fileID: 0}
 --- !u!1 &3795280135728259503
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +149,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d5081643dced22b4090bebf78b7592d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e9dd316617b2e324a8cecd6d8b06cc38, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -196,7 +198,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.76, y: 19.86}
+    oldSize: {x: 4.38, y: 4.26}
     newSize: {x: 3, y: 3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -229,10 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fda0f1b66853d4a896d9d84ce8baec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogIconOffsetHeight: 30
-  rigidbody: {fileID: 3795280135728259499}
-  speed: 4
   npcName: FillerName
+  displayName: Filler Name
+  conversationId: opener
 --- !u!1001 &3116311121244952734
 PrefabInstance:
   m_ObjectHideFlags: 0

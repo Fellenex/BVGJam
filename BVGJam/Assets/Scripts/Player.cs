@@ -16,9 +16,12 @@ public class Player : MonoBehaviour {
 
     void Start() {
         jumpForce = 4f;
-        maxSpeed = 250;
+        maxSpeed = 1500;
         rb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+
+        //Make the player's stopping force a little snappier
+        rb.drag = 20f;
     }
 
     void FixedUpdate() {

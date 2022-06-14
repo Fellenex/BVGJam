@@ -9,7 +9,7 @@ public class Conversation {
 
     public string starter;
 
-    public List<int> finalStates;
+    public int[] finalStates;
 
     public Conversation_NPCState[] states;
 

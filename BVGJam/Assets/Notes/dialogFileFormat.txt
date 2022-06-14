@@ -1,0 +1,25 @@
+each conversation:
+	needs to have unique id string. first one should be "opener_<name>"
+	needs to have starter == "npc" or "player"
+	finalStates (note capital S) is a list of numbers (as strings) - "3", "5", etc.
+		if conversation is repeatable, make it an empty list []
+	the first state of states should have "index" : "0" and then they count up in order from there.
+
+each state's
+	index has to be a number (as string)
+	speaker name should have underscores instead of spaces
+	statements is a list of objects each having text&mood, to be displayed one element per window
+		has to be a list, even if there's one element
+	mood is either "neutral", "pleased", or "upset"
+
+each transition's
+	source and target as numbers (as strings) referencing states
+	statements are formatted the same as they are for states
+	optionText should be set for transitions which have duplicate source states
+		(e.g., having two transitions 4->5 and 4->6 gives the player an option to choose between them. When choosing which option, the buttons will display the optionText field. When displaying the speech resulting from the chosen option, the text box will display the "text" field.)
+		(e.g., if there is only one transition available from state 4 then the option text for that transition will never be shown (the dialog just proceeds straight to the 
+
+
+
+
+
