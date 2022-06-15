@@ -37,7 +37,7 @@ public static class StoryConditions {
     }
 
 
-    public static bool doesPlayerMeetCondition(string _condition) {
+    public static bool playerMeetsCondition(string _condition) {
         if (_condition[0] == '!'){ 
             //We want to check that the player has /not/ met the condition
             return(!checkCondition(_condition.Substring(1, _condition.Length-1)));

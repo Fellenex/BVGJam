@@ -9,7 +9,9 @@ public class Conversation {
 
     public string starter;
 
-    public int[] finalStates;
+    public string[] finalStates;
+
+    public string[] metaconditions;
 
     public Conversation_NPCState[] states;
 

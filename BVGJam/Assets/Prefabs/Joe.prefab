@@ -28,9 +28,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5362147572540200515, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
+      propertyPath: dialogIconUpset
+      value: 
+      objectReference: {fileID: 21300000, guid: 292f3e9150a9a3b4da75f820b79c4a04,
+        type: 3}
+    - target: {fileID: 5362147572540200515, guid: 9c79140a5be04cb4fb485835f438e725,
+        type: 3}
       propertyPath: conversationJson
       value: 
       objectReference: {fileID: 4900000, guid: 820b9190e5440ea4283729e802880241, type: 3}
+    - target: {fileID: 5362147572540200515, guid: 9c79140a5be04cb4fb485835f438e725,
+        type: 3}
+      propertyPath: dialogIconNeutral
+      value: 
+      objectReference: {fileID: 21300000, guid: b84b7825239812e49804ca5650d589a3,
+        type: 3}
+    - target: {fileID: 5362147572540200515, guid: 9c79140a5be04cb4fb485835f438e725,
+        type: 3}
+      propertyPath: dialogIconPleased
+      value: 
+      objectReference: {fileID: 21300000, guid: 5885e4298dd37164abcdd0da56060bd4,
+        type: 3}
     - target: {fileID: 5362147572540200516, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_Sprite
@@ -59,13 +77,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38.2
+      value: -2298
       objectReference: {fileID: 0}
     - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.3
+      value: 502
       objectReference: {fileID: 0}
     - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
@@ -114,6 +142,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8121322402105224697, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 2214916798627622300}
+    - target: {fileID: 8121322402105224697, guid: 9c79140a5be04cb4fb485835f438e725,
+        type: 3}
       propertyPath: leftFacingSprite
       value: 
       objectReference: {fileID: 21300000, guid: f880d42bf5748264d978d403f3679d6f,
@@ -126,4 +159,11 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents:
     - {fileID: 1468070609, guid: 9c79140a5be04cb4fb485835f438e725, type: 3}
+    - {fileID: 5362147572540200513, guid: 9c79140a5be04cb4fb485835f438e725, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c79140a5be04cb4fb485835f438e725, type: 3}
+--- !u!212 &2214916798627622300 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5362147572540200516, guid: 9c79140a5be04cb4fb485835f438e725,
+    type: 3}
+  m_PrefabInstance: {fileID: 6113315271190379480}
+  m_PrefabAsset: {fileID: 0}

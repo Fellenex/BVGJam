@@ -7,7 +7,7 @@ public class CloseDialogWindow : MonoBehaviour {
     
     private GameObject playerReference;
 
-    void Start() {
+    void Awake() {
         playerReference = GameObject.FindGameObjectWithTag("Player");
     }
 

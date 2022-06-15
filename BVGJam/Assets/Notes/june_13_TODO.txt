@@ -34,14 +34,3 @@ v Script for flipping instead of all this animation nonsense. Super simple flips
 v Start importing triggers/conditions into code files
 	special triggers gotta have extra attention
 	trigger debug visuals on ui?
-
-Metacondition directives between NPC conversation IDs
-
-A way to explain input methods
-	(screen for name input and keybind display)
-
-Remove conversation-exiting
-
-probably not
-	Little sounds while NPCs are talking
-	Coloured text based on speaker's mood

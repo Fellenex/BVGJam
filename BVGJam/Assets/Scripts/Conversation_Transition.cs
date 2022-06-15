@@ -4,8 +4,8 @@ using UnityEngine;
 
 [System.Serializable]
 public class Conversation_Transition {
-    public int source;
-    public int target;
+    public string source;
+    public string target;
     public Conversation_Statement[] statements;
     public string optionText;
     public string[] conditions;

@@ -1,0 +1,396 @@
+{
+	"conversations": [{
+		"id": "opener_joe",
+		"starter": "npc",
+		"finalStates": ["A10", "B2"],
+		"metaconditions" : [],
+		"states": [{
+				"index": "0",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "Why hello there fellow traveler!",
+						"mood": "pleased"
+					},
+					{
+						"text": "My Name is Sir Jonathan!",
+						"mood": "pleased"
+					},
+					{
+						"text": "What brings you to me today?",
+						"mood": "pleased"
+					}
+				]
+			},
+
+			{
+				"index": "1",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "Blue? Is that a friend of yours or...",
+					"mood": "neutral"
+				}]
+			},
+
+			{
+				"index": "2",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "Oh?",
+					"mood": "neutral"
+				}]
+			},
+
+			{
+				"index": "3",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "The concept of Blue?",
+						"mood": "neutral"
+					},
+					{
+						"text": "Oh!",
+						"mood": "neutral"
+					},
+					{
+						"text": "How very abstract!",
+						"mood": "pleased"
+					}]
+				
+			},
+
+			{
+				"index": "4",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "How can I help?",
+					"mood": "pleased"
+				}]
+
+			},
+			{
+				"index": "A1",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "Helping others brings me joy! Please, I insist.",
+					"mood": "neutral"
+				}]
+
+			},
+			{
+				"index": "A2",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "Yes? I’ve been working on them for quite some time.",
+					"mood": "neutral"
+				}]
+
+			},
+			{
+				"index": "A3",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "I’ll have you know that I organize all of my Quests by Muscle Groupings!",
+						"mood": "upset"
+					},
+					{
+						"text": "In fact...",
+						"mood": "neutral"
+					},
+					{
+						"text": "I'll have you know that today is Chest Quest day.",
+						"mood": "pleased"
+					}]
+				
+
+			},
+			{
+				"index": "A4",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "Bring it on, coward!",
+						"mood": "neutral"
+					},
+					{
+						"text": "I will not yield to my lactic acids!",
+						"mood": "neutral"
+					}]
+				
+			},
+			{
+				"index": "A5",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "I doubled your push-up count.",
+						"mood": "neutral"
+					},
+					{
+						"text": "That better prove my worth to you.",
+						"mood": "neutral"
+					},
+					{
+						"text": "Now, what can I help you with?",
+						"mood": "neutral"
+					}]
+				
+
+			},
+			{
+				"index": "A6",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "Excuse me?",
+						"mood": "neutral"
+					}]
+					
+				
+			},
+			{
+				"index": "A7",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "How did you know I sweat Blue?",
+						"mood": "neutral"
+					}]
+					
+				
+			},
+			{
+				"index": "A8",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "…",
+						"mood": "neutral"
+					}]
+				
+			},
+			{
+				"index": "A9",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "…",
+						"mood": "neutral"
+					}]
+			},
+			{
+				"index": "A10",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "…",
+						"mood": "neutral"
+					}]
+				
+			},
+			{
+				"index": "B1",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "Sounds like a plan, young one. What’s your name?",
+					"mood": "neutral"
+				}]
+
+			},
+			{
+				"index": "B2",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "A fitting name. Good luck on your quest for Blue!",
+					"mood": "neutral"
+				}]
+
+			}
+		],
+		"transitions": [{
+				"source": "0",
+				"target": "1",
+				"statements": [{
+						"text": "Well...",
+						"mood": "neutral"
+					},
+					{
+						"text": "I'm looking for Blue",
+						"mood": "neutral"
+					}
+				],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "1",
+				"target": "2",
+				"statements": [{
+					"text": "Not a friend, or a tangible thing really.",
+					"mood": "pleased"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "2",
+				"target": "3",
+				"statements": [{
+					"text": "It's more of a conceptual thing",
+					"mood": "pleased"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "3",
+				"target": "4",
+				"statements": [{
+						"text": "*Hmmmm. I wonder if Paladin sweat is blue enough...*",
+						"mood": "neutral"
+					},
+					{
+						"text": "Well...",
+						"mood": "neutral"
+					}
+				],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "A1",
+				"target": "A2",
+				"statements": [{
+					"text": "But your muscles…",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "A2",
+				"target": "A3",
+				"statements": [{
+					"text": "That’s surprising. They look neglected…",
+					"mood": "neutral"
+				}, {
+					"text": "as if you’ve been questless for quite some time.",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "A3",
+				"target": "A4",
+				"statements": [{
+					"text": "Well, let’s see if you’ve got the XP to back that up…",
+					"mood": "neutral"
+				}, {
+					"text": "…in a push-up competition!",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "A4",
+				"target": "A5",
+				"statements": [{
+					"text": "But your muscles…",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": ["getToxicSweat"]
+			},
+			{
+				"source": "A5",
+				"target": "A6",
+				"statements": [{
+					"text": "You already have.",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "A6",
+				"target": "A7",
+				"statements": [{
+					"text": "I just needed some of your Blue sweat.",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "A7",
+				"target": "A8",
+				"statements": [{
+					"text": "I didn’t…",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},			
+			{
+				"source": "A8",
+				"target": "A9",
+				"statements": [{
+					"text": "…",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "A9",
+				"target": "A10",
+				"statements": [{
+					"text": "Well, have a nice day!",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "B1",
+				"target": "B2",
+				"statements": [{
+					"text": "I’m Pal!",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": ["getBlueHunt"]
+			},
+			{
+				"source": "4",
+				"target": "A1",
+				"statements": [{
+					"text": "I doubt you’d be able to help. I could easily handle this on my own.",
+					"mood": "neutral"
+				}],
+				"optionText": "I could challenge his masculinity in a push-up contest...",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "4",
+				"target": "B1",
+				"statements": [{
+					"text": "Hmmm. I’m gonna walk around some more. I’ll let you know if I find anything!",
+					"mood": "neutral"
+				}],
+				"optionText": "I should find another way to make him sweat",
+				"conditions": [],
+				"triggers": []
+			}
+		]
+	}]
+}

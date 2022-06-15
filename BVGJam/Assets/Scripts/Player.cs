@@ -14,6 +14,9 @@ public class Player : MonoBehaviour {
 
     public bool dialogOpen = false;
 
+    public int leftScreenBound = -2725;
+    public int rightScreenBound = 13800;
+
     void Start() {
         jumpForce = 4f;
         maxSpeed = 20000;
@@ -36,6 +39,15 @@ public class Player : MonoBehaviour {
             stopLeft();
             stopRight();
             standStill();
+        }
+
+        //Don't let the player fall off the left/right edges of the screen!
+        if (transform.position.x < leftScreenBound) {
+            transform.position = new Vector3(leftScreenBound, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.x > rightScreenBound) {
+            transform.position = new Vector3(rightScreenBound, transform.position.y, transform.position.z);
         }
     }
 

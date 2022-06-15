@@ -1,12 +1,10 @@
 **each conversation:**
 	needs to have unique id string. first one should be "opener_<name>"
 	needs to have starter == "npc" or "player"
-	finalStates (note capital S) is a list of numbers (as strings) - "3", "5", etc.
+	finalStates (note capital S) is a list of strings(as strings) - "3", "5", etc.
 		if conversation is repeatable, make it an empty list []
-	the first state of states should have "index" : "0" and then they count up in order from there.
 
 **each state's**
-	index has to be a number (as string)
 	speaker name should have underscores instead of spaces
 	statements is a list of objects each having text&mood, to be displayed one element per window
 		has to be a list, even if there's one element
@@ -23,3 +21,4 @@
 
 
 
+xxx	index has to be a number (as string)

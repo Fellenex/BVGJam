@@ -1,0 +1,139 @@
+{
+    "conversations" : [
+        {"id" : "GrandmaYaga_A",
+        "starter" : "npc",
+        "finalStates" : ["6"],
+        "metaconditions" : [],
+        "states" : [
+            {"index" : "0",
+                "speaker" : "Grandma_Yaga",
+                "statements" : [
+                    {"text" : "Good morning, sleepy head! I trust you slept well.",
+                        "mood" : "pleased"}
+                ]
+            },
+
+            {"index" : "1",
+                "speaker" : "Grandma_Yaga",
+                "statements" : [
+                        {"text" : "Oh, that? I um…",
+                            "mood" : "upset"},
+                    {"text" : "Nevermind that! I have a very special duty for you today!",
+                        "mood" : "pleased"}
+                ]
+            },
+
+            {"index" : "2",
+                "speaker" : "Grandma_Yaga",
+                "statements" : [
+                    {"text" : " I need you to collect some very important ingredients for me.",
+                        "mood" : "pleased"}
+                ]
+            },
+
+            {"index" : "3",
+                "speaker" : "Grandma_Yaga",
+                "statements" : [
+                    {"text" : " Sure! Yeah, let’s go with that.",
+                        "mood" : "neutral"}
+                ]
+            },
+            {"index" : "4",
+                "speaker" : "Grandma_Yaga",
+                "statements" : [
+                    {"text" : "Bring me BLUE, something strong and true. PURPLE and GREEN, and please keep it clean. And lastly seek out RED, drawn from the dead.",
+                        "mood" : "neutral"}
+                ]
+            },
+            {"index" : "5",
+                "speaker" : "Grandma_Yaga",
+                "statements" : [
+                    {"text" : "…for reasons.",
+                        "mood" : "neutral"}
+                ]
+            },
+            {"index" : "6",
+                "speaker" : "Grandma_Yaga",
+                "statements" : [
+                    {"text" : "Bring me BLUE, something strong and true. PURPLE and GREEN, and please keep it clean. And lastly seek out RED, drawn from the dead.",
+                        "mood" : "neutral"}
+                ]
+            }
+
+            
+        ],
+        "transitions" : [
+            {   "source" : "0",
+                "target" : "1",
+                "statements" : [
+                    {"text" : "I did, but...Grandma Yaga, did I hear you crying in your room last night?",
+                        "mood" : "upset"}
+                    ],
+                "optionText" : "",
+                "conditions" : [],
+                "triggers" : []                
+            },
+            {   "source" : "1",
+                "target" : "2",
+                "statements" : [
+                    {"text" : "But—",
+                        "mood" : "upset"}
+                ],
+                "optionText" : "",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "2",
+                "target" : "3",
+                "statements" : [
+                    {"text" : "Oh? Is this for a tea?",
+                        "mood" : "neutral"}
+                ],
+                "optionText" : "",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "3",
+                "target" : "4",
+                "statements" : [
+                    {"text" : "Okay, what kind of ingredients?",
+                        "mood" : "neutral"}
+                ],
+                "optionText" : "",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "4",
+                "target" : "5",
+                "statements" : [
+                    {"text" : "…Waitaminute! What do you need these for?!",
+                        "mood" : "upset"}
+                ],
+                "optionText" : "",
+                "conditions" : [],
+                "triggers" : []
+            },
+
+            {   "source" : "5",
+                "target" : "6",
+                "statements" : [
+                    {"text" : "I mean, I’ll try to get something BLUE, PURPLE, GREEN, and RED…but we’re gonna talk about this TEA later.",
+                        "mood" : "upset"}
+                ],
+                "optionText" : "That's...incredibly vague and unhelpful.",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "5",
+                "target" : "7",
+                "statements" : [
+                    {"text" : "Ooookay! Something BLUE. Something PURPLE. Something GREEN. And Something RED.",
+                        "mood" : "neutral"}
+                ],
+                "optionText" : "You got it, Grandma Yaga!",
+                "conditions" : [],
+                "triggers" : []
+            }
+        ]}
+    ]
+}

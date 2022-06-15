@@ -45,7 +45,7 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
         catch (NullReferenceException e) {
             //Break out of the start function early to avoid more errors
             //  due to an unavailable file
-            return;
+            closeConversation();
         }
 
         if (activeConversation.starter == "player") {
@@ -182,6 +182,8 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
             else {
                 //Swap from NPC speaking back to player dialog options
                 List<Conversation_Transition> currTransitions = getPossibleTransitions();
+                Debug.Log("Player is taking over and they have "+currTransitions.Count+" possible options");
+
                 if (currTransitions.Count > 0) {
                     //Force the transition if there's only one choice unless it
                     //  has a precondition or a trigger (a "special" transition)
@@ -206,7 +208,7 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
     public void closeConversation() {
         try {
             //If we are in a final state for the NPC, then we mark this conversation as completed
-            foreach (int state in activeConversation.finalStates) {
+            foreach (string state in activeConversation.finalStates) {
                 if (activeState.index == state) {
                     Debug.Log("Completed conversation "+activeState.index);
                     StoryConditions.finishConversation(activeConversation.id);
@@ -220,59 +222,47 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
         GetComponent<CloseDialogWindow>().dialogClose();
     }
 
-    public Conversation readFile(string _filename) {
-        Debug.Log("trying to find " + _filename);
-        activeConversation = null;
-
-        if (File.Exists(_filename)){
-            string fileContents = File.ReadAllText(_filename);
-            json = DialogDataJSON.CreateFromJSON(fileContents);
-
-            //Loop through the conversations to try to find a matching id
-            foreach (Conversation con in json.conversations) {
-                if (DialogData.getParam("id") == con.id){
-                    activeConversation = con;
-                    break;
-                }
-            }
-            if (activeConversation == null) {
-                Debug.Log("No conversation with id " + DialogData.getParam("id") + " found");
-            }
-        }
-        else{
-            Debug.Log("file doesn't exist");
-        }
-        return activeConversation;
-    }
-
-
     //Look through all the transitions to see if any match the currently active state
     //If any do, then also check whether the player meets the preconditions necessary for it
     public List<Conversation_Transition> getPossibleTransitions() {
         List<Conversation_Transition> possibleTransitions = new List<Conversation_Transition>();
+
         for (var i=0; i < activeConversation.transitions.Length; i++) {
-            if (activeConversation.transitions[i].source == activeState.index
+            Debug.Log("Comparing the two strings: '"+activeConversation.transitions[i].source.ToString()+"' and '"+activeState.index.ToString()+"'");
+            Debug.Log("The result is: ");
+            Debug.Log(activeConversation.transitions[i].source.ToString() == activeState.index.ToString());
+            Debug.Log("9" == activeState.index.ToString());
+            Debug.Log("9" == activeConversation.transitions[i].source.ToString());
+
+            Debug.Log("Comparing the two strings: '"+activeConversation.transitions[i].source+"' and '"+activeState.index+"'");
+            Debug.Log("The result is: ");
+            Debug.Log(activeConversation.transitions[i].source.ToString().Equals(activeState.index));
+            if (activeConversation.transitions[i].source.ToString() == activeState.index.ToString()
                     && playerMeetsPreconditions(activeConversation.transitions[i])){
                 
                 possibleTransitions.Add(activeConversation.transitions[i]);
                 Debug.Log("Adding the following possible transition: " + activeConversation.transitions[i].statements[0].text);
             }
         }
-
         return possibleTransitions;
     }
 
 
     //Gets the NPC state that will result from taking _transition
     public Conversation_NPCState getNewNPCState(Conversation_Transition _transition) {
-        return activeConversation.states[_transition.target];
+        foreach (Conversation_NPCState state in activeConversation.states) {
+            if (state.index.ToString() == _transition.target.ToString()) {
+                return state;
+            }
+        }
+        return null; //activeConversation.states[_transition.target];
     }
 
     //Checks to see if player meets the preconditions for a given transition
     public bool playerMeetsPreconditions(Conversation_Transition _transition) {
         Debug.Log("Condition(s) Required: " + _transition.conditions);
         foreach (string condition in _transition.conditions) {
-            if (!StoryConditions.doesPlayerMeetCondition(condition)){
+            if (!StoryConditions.playerMeetsCondition(condition)){
                 //We have found a precondition the player does not meet.
                 return false;
             }

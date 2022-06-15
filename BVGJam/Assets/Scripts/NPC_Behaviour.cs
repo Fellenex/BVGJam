@@ -7,16 +7,12 @@ public class NPC_Behaviour : MonoBehaviour {
     public string displayName = "Filler Name";
     public string conversationId = "opener";
 
+    public Sprite dialogIconPleased;
+    public Sprite dialogIconNeutral;
+    public Sprite dialogIconUpset;
+
     public TextAsset conversationJson;
 
     void Start() {
-        //rigidbody = GetComponent<Rigidbody2D>();
-
-        if (npcName == "Grandma_Yaga") {
-            displayName = "Grandma Yaga";
-        }
-        else{
-            displayName = npcName;
-        }
     }
 }

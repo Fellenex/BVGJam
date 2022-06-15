@@ -2,7 +2,8 @@
     "conversations" : [
         {"id" : "opener_joe",
         "starter" : "npc",
-        "finalStates" : ["4"],
+        "finalStates" : ["B4"],
+        "metaconditions" : ["hasClericsBlessing", "hasGreen"],
         "states" : [
             {"index" : "0",
                 "speaker" : "Sir_Jonathan",
@@ -16,7 +17,7 @@
                 ]
             },
 
-            {"index" : "1",
+            {"index" : "A1",
                 "speaker" : "Sir_Jonathan",
                 "statements" : [
                         {"text" : "Blue? Is that a friend of yours or...",
@@ -24,7 +25,7 @@
                 ]
             },
 
-            {"index" : "2",
+            {"index" : "A2",
                 "speaker" : "Sir_Jonathan",
                 "statements" : [
                     {"text" : "Oh?",
@@ -32,7 +33,7 @@
                 ]
             },
 
-            {"index" : "3",
+            {"index" : "B3",
                 "speaker" : "Sir_Jonathan",
                 "statements" : [
                     {"text" : "The concept of Blue?",
@@ -43,7 +44,7 @@
                         "mood" : "pleased"}
                 ]
             },
-            {"index" : "4",
+            {"index" : "B4",
                 "speaker" : "Sir_Jonathan",
                 "statements" : [
                     {"text" : "How can I help?",
@@ -54,7 +55,7 @@
         ],
         "transitions" : [
             {   "source" : "0",
-                "target" : "1",
+                "target" : "A1",
                 "statements" : [
                     {"text" : "Well...",
                         "mood" : "neutral"},
@@ -65,8 +66,8 @@
                 "conditions" : [],
                 "triggers" : []                
             },
-            {   "source" : "1",
-                "target" : "2",
+            {   "source" : "A1",
+                "target" : "A2",
                 "statements" : [
                     {"text" : "Not a friend, or a tangible thing really.",
                         "mood" : "pleased"}
@@ -75,8 +76,8 @@
                 "conditions" : [],
                 "triggers" : []
             },
-            {   "source" : "2",
-                "target" : "3",
+            {   "source" : "A2",
+                "target" : "B3",
                 "statements" : [
                     {"text" : "It's more of a conceptual thing",
                         "mood" : "pleased"}
@@ -85,8 +86,8 @@
                 "conditions" : [],
                 "triggers" : []
             },
-            {   "source" : "3",
-                "target" : "4",
+            {   "source" : "B3",
+                "target" : "B4",
                 "statements" : [
                     {"text" : "*Hmmmm. I wonder if Paladin sweat is blue enough...*",
                         "mood" : "neutral"},
@@ -98,7 +99,7 @@
                 "triggers" : []
             },
 
-            {   "source" : "4",
+            {   "source" : "B4",
                 "target" : "5",
                 "statements" : [
                     {"text" : "I doubt you’d be able to help. I could easily handle this on my own.",
@@ -109,7 +110,7 @@
                 "triggers" : ["getToxicSweat"]
             },
 
-            {   "source" : "4",
+            {   "source" : "B4",
                 "target" : "6",
                 "statements" : [
                     {"text" : "Hmmm. I’m gonna walk around some more. I’ll let you know if I find anything!",

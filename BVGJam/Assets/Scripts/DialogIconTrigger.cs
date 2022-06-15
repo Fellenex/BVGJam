@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class DialogIconTrigger : MonoBehaviour {
 
@@ -76,8 +77,6 @@ public class DialogIconTrigger : MonoBehaviour {
             if (!StoryConditions.hasFinishedConversation(behaviour.conversationId)) {
                 dialogIcon.GetComponent<SpriteRenderer>().sprite = dialogAvailableSprite;
 
-                playerReference.GetComponent<Player>().dialogOpen = true;
-
                 //Setup npc name and conversation ID to send over to the new scene
                 Dictionary<string, string> dData = new Dictionary<string,string>();
 
@@ -85,7 +84,28 @@ public class DialogIconTrigger : MonoBehaviour {
                 dData.Add("name", behaviour.npcName);
                 //jsonDict.Add("display_name", behaviour.displayName);
                 DialogData.setActiveConversation(advancedReadFile(behaviour.conversationJson, behaviour.conversationId));
-                DialogData.load(dialogSceneName, dData);
+
+
+                //Validate that we meet all the metaconditions for this conversation before starting it
+                string[] metaconditions = DialogData.getActiveConversation().metaconditions;
+                bool openConversation = true;
+                try {
+                    foreach (string condition in metaconditions) {
+                        //If the player doesn't meet all of the metaconditions, then don't start
+                        if (!StoryConditions.playerMeetsCondition(condition)) {
+                            openConversation = false;
+                        }
+                    }
+                }
+                catch (NullReferenceException e) {
+                    //If we didn't find any metaconditions set then break out too
+                    openConversation = false;
+                }
+
+                if (openConversation) {
+                    playerReference.GetComponent<Player>().dialogOpen = true;
+                    DialogData.load(dialogSceneName, dData);
+                }
             }
             else{
                 dialogIcon.GetComponent<SpriteRenderer>().sprite = dialogUnavailableSprite;
@@ -95,7 +115,7 @@ public class DialogIconTrigger : MonoBehaviour {
 
     public Conversation advancedReadFile(TextAsset _conversationsFile, string _id) {
         Debug.Log("trying to find " + _conversationsFile.name);
-        Conversation acCo = null;
+        Conversation acCo = null; //activeConversation-to-be
 
         string fileContents = _conversationsFile.ToString();
         Debug.Log("Found the following: ");
@@ -104,9 +124,9 @@ public class DialogIconTrigger : MonoBehaviour {
 
         Debug.Log("looking for id "+_id);
         //Loop through the conversations to try to find a matching id
-        foreach (Conversation con in json.conversations) {
-            if (_id == con.id){
-                acCo = con;
+        foreach (Conversation convo in json.conversations) {
+            if (_id == convo.id){
+                acCo = convo;
                 break;
             }
         }

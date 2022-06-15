@@ -1,0 +1,38 @@
+{
+	"conversations": [{
+		"id": "Paladin_B",
+		"starter": "npc",
+		"finalStates": [1],
+		"metaconditions": ["hasFoundKnife", "hasToxicSweat"],
+		"states": [{
+				"index": "0",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "Nice knife. Too bad you’d have to be some sort of Assassin to hurt me with that.",
+					"mood": "neutral"
+
+				}]
+			},
+
+			{
+				"index": "1",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "Yeah. That’s what they all say. Take a walk, if you know what’s good for you.",
+					"mood": "pleased"
+				}]
+			}
+		],
+		"transitions": [{
+			"source": "0",
+			"target": "1",
+			"statements": [{
+				"text": "I wasn’t going to-",
+				"mood": "neutral"
+			}],
+			"optionText": "",
+			"conditions": [],
+			"triggers": []
+		}]
+	}]
+}

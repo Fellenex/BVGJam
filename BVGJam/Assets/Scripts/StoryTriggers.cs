@@ -4,10 +4,10 @@ using UnityEngine;
 
 public static class StoryTriggers {
 
-    private static string triggerPrefix = "get";
-    private static string conditionPrefix = "have";
+    public static string triggerPrefix = "get";
+    public static string conditionPrefix = "has";
 
-    public static string[] triggers;
+    public static List<string> triggers;
     //Overarching colour triggers
     public static string getBlue = "getBlue";
     public static string getRed = "getRed";
@@ -39,6 +39,7 @@ public static class StoryTriggers {
     public static string getClericsBlessing = "getClericsBlessing";
     public static string getClericsMourning = "getClericsMourning";
     public static string getCursedAura = "getCursedAura";
+    public static string getEvilAura = "getEvilAura";
     public static string getPaladinRevived = "getPaladinRevived";
     public static string getMetCleric = "getMetCleric";
 
@@ -67,18 +68,34 @@ public static class StoryTriggers {
     public static string[] purpleBadTriggers;
     public static string[][] badTriggers;
 
-    /*Neutral triggers
+    /*
+    Neutral triggers
         blueHunt
         getPaladinDead
         getPaladinRevived
-        getMetCleric  
+        getMetCleric
+        getFoundKnife
     */
 
+
+    //Used if we have any triggers that don't follow the get-->have regular rule
     public static Dictionary<string,string> mapTriggerToCondition;
 
     public static void setupTriggers() {
-        mapTriggerToCondition = new Dictionary<string, string>();
+        triggers = new List<string>();
+
+        //Add the overarching colour triggers
         colourTriggers = new string[]{getBlue, getRed, getYellow, getGreen, getPurple};
+        foreach (string trigger in colourTriggers) {
+            triggers.Add(trigger);
+        }
+
+        //Add the neutral triggers
+        triggers.Add(getBlueHunt);
+        triggers.Add(getPaladinDead);
+        triggers.Add(getMetCleric);
+        triggers.Add(getFoundKnife);
+
 
         //Parental trigger collections
         blueGoodTriggers =   new string[]{ getJusticeSweat, getBardsRequiem };
@@ -86,7 +103,7 @@ public static class StoryTriggers {
         yellowGoodTriggers = new string[]{ getYellowGood };
         greenGoodTriggers =  new string[]{ getSonicSpore, getLakewaterSpore, getGreen };
         purpleGoodTriggers = new string[]{ getClericsBlessing, getClericsMourning };
-
+        //
         goodTriggers = new string[][]{
             blueGoodTriggers,
             redGoodTriggers,
@@ -94,13 +111,19 @@ public static class StoryTriggers {
             greenGoodTriggers,
             purpleGoodTriggers
         };
+        //
+        foreach (string[] triggerArray in goodTriggers) {
+            foreach (string trigger in triggerArray){
+                triggers.Add(trigger);
+            }
+        }
 
         blueBadTriggers =    new string[]{ getExistentialSweat, getToxicSweat };
         redBadTriggers =     new string[]{ getPaladinBloodBad };
         yellowBadTriggers =  new string[]{ getYellowBad };
         greenBadTriggers =   new string[]{ getCursedSpore };
-        purpleBadTriggers =  new string[]{ getCursedAura };
-
+        purpleBadTriggers =  new string[]{ getCursedAura, getEvilAura};
+        //
         badTriggers = new string[][]{
             blueBadTriggers,
             redBadTriggers,
@@ -108,6 +131,16 @@ public static class StoryTriggers {
             greenBadTriggers,
             purpleBadTriggers
         };
+        //
+        foreach (string[] triggerArray in badTriggers) {
+            foreach (string trigger in triggerArray){
+                triggers.Add(trigger);
+            }
+        }
+
+        trigger(getFoundKnife);
+        trigger(getToxicSweat);
+
     }
 
 
