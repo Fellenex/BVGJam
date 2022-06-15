@@ -7,5 +7,6 @@ public class SetupConditionsAndTriggers : MonoBehaviour {
     void Awake() {
         StoryConditions.setupConditionMapping();
         StoryTriggers.setupTriggers();
+        DramaticDialog.setupDramaticDialogs();
     }
 }

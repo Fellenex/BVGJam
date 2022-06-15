@@ -1,0 +1,28 @@
+{
+	"conversations": [{
+		"id": "Paladin_E_A",
+		"starter": "npc",
+		"finalStates": [],
+		"metaconditions": ["hasBardsRequiem"],
+		"states": [{
+			"index": "0",
+			"speaker": "Bard",
+			"statements": [{
+				"text": " …and scene!",
+				"mood": "pleased"
+
+			}]
+		}],
+		"transitions": [{
+			"source": "0",
+			"target": "1",
+			"statements": [{
+				"text": "That’s your favorite song?",
+				"mood": "neutral"
+			}],
+			"optionText": "",
+			"conditions": [],
+			"triggers": []
+		}]
+	}]
+}

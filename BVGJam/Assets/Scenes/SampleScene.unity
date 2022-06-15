@@ -276,7 +276,7 @@ Transform:
   m_LocalScale: {x: 50, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &338896889
 BoxCollider2D:
@@ -595,7 +595,7 @@ RectTransform:
   - {fileID: 882896972}
   - {fileID: 572700824}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -845,7 +845,7 @@ RectTransform:
   - {fileID: 411816944}
   - {fileID: 2122546976}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -942,7 +942,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1688286329
 PrefabInstance:
@@ -951,11 +951,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5362147572540200515, guid: 9c79140a5be04cb4fb485835f438e725,
-        type: 3}
-      propertyPath: conversationJson
-      value: 
-      objectReference: {fileID: 4900000, guid: 3263a26dcbbb41641a3fd95e1a7707dd, type: 3}
     - target: {fileID: 5362147572540200517, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_Name
@@ -1063,7 +1058,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1965482533
 MonoBehaviour:
@@ -1285,13 +1280,31 @@ PrefabInstance:
     - target: {fileID: 2214916798627622299, guid: e4b3ac6f82d7c5e439ce190072143fa4,
         type: 3}
       propertyPath: conversationId
-      value: Paladin_B
+      value: Paladin_A
       objectReference: {fileID: 0}
+    - target: {fileID: 2214916798627622299, guid: e4b3ac6f82d7c5e439ce190072143fa4,
+        type: 3}
+      propertyPath: dialogIconUpset
+      value: 
+      objectReference: {fileID: 21300000, guid: 854ee7aadd22cfb45b4141c67edacb74,
+        type: 3}
     - target: {fileID: 2214916798627622299, guid: e4b3ac6f82d7c5e439ce190072143fa4,
         type: 3}
       propertyPath: conversationJson
       value: 
-      objectReference: {fileID: 4900000, guid: f51943d0616e4d147995124ef67553d3, type: 3}
+      objectReference: {fileID: 4900000, guid: ec99acdbcb9edb34fa40b268298c2d1a, type: 3}
+    - target: {fileID: 2214916798627622299, guid: e4b3ac6f82d7c5e439ce190072143fa4,
+        type: 3}
+      propertyPath: dialogIconNeutral
+      value: 
+      objectReference: {fileID: 21300000, guid: eb1cf9769ac73294ba9552ff6af80a09,
+        type: 3}
+    - target: {fileID: 2214916798627622299, guid: e4b3ac6f82d7c5e439ce190072143fa4,
+        type: 3}
+      propertyPath: dialogIconPleased
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e2a014bc9f544a4faa2adba35671b3c,
+        type: 3}
     - target: {fileID: 2214916798627622301, guid: e4b3ac6f82d7c5e439ce190072143fa4,
         type: 3}
       propertyPath: m_Name
@@ -1300,7 +1313,7 @@ PrefabInstance:
     - target: {fileID: 2214916798627622303, guid: e4b3ac6f82d7c5e439ce190072143fa4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2214916798627622303, guid: e4b3ac6f82d7c5e439ce190072143fa4,
         type: 3}
@@ -1361,6 +1374,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3869033167887551810, guid: 8513dc2a51129ca468a50c6074d93802,
+        type: 3}
+      propertyPath: dialogIconUpset
+      value: 
+      objectReference: {fileID: 21300000, guid: 1710c27b300160e498d04f5ff67e7e2a,
+        type: 3}
+    - target: {fileID: 3869033167887551810, guid: 8513dc2a51129ca468a50c6074d93802,
+        type: 3}
+      propertyPath: dialogIconNeutral
+      value: 
+      objectReference: {fileID: 21300000, guid: 6496f07929408fa4ca936cec5a960f0b,
+        type: 3}
+    - target: {fileID: 3869033167887551810, guid: 8513dc2a51129ca468a50c6074d93802,
+        type: 3}
+      propertyPath: dialogIconPleased
+      value: 
+      objectReference: {fileID: 21300000, guid: 28df7e5bd8483fb41ba78579b1f50817,
+        type: 3}
     - target: {fileID: 3869033167887551812, guid: 8513dc2a51129ca468a50c6074d93802,
         type: 3}
       propertyPath: m_Name
@@ -1369,7 +1400,7 @@ PrefabInstance:
     - target: {fileID: 3869033167887551814, guid: 8513dc2a51129ca468a50c6074d93802,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3869033167887551814, guid: 8513dc2a51129ca468a50c6074d93802,
         type: 3}
@@ -1512,7 +1543,7 @@ PrefabInstance:
     - target: {fileID: 5893032097011642652, guid: a69fa0943192ad746b1795d4c6d19596,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5893032097011642652, guid: a69fa0943192ad746b1795d4c6d19596,
         type: 3}
@@ -1571,6 +1602,85 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a69fa0943192ad746b1795d4c6d19596, type: 3}
+--- !u!1001 &7495011766979069964
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4958054006044821081, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821081, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -701
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821081, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 398
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821081, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821081, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821081, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821081, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821081, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821081, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821081, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821081, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821083, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: m_Name
+      value: Mark
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821085, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: npcName
+      value: Mark_The_Bard
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958054006044821085, guid: 580fb7f7d2f36f44e94850a6f135d5ed,
+        type: 3}
+      propertyPath: displayName
+      value: Mark The Bard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 580fb7f7d2f36f44e94850a6f135d5ed, type: 3}
 --- !u!1001 &8609895227537337738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1586,7 +1696,7 @@ PrefabInstance:
     - target: {fileID: 3584980443798718802, guid: 1dce73c932d660f44ae9f892a3162283,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3584980443798718802, guid: 1dce73c932d660f44ae9f892a3162283,
         type: 3}
@@ -1638,5 +1748,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3584980443798718806, guid: 1dce73c932d660f44ae9f892a3162283,
+        type: 3}
+      propertyPath: dialogIconUpset
+      value: 
+      objectReference: {fileID: 21300000, guid: 68a237c2042e04143ad9257e65e76f0d,
+        type: 3}
+    - target: {fileID: 3584980443798718806, guid: 1dce73c932d660f44ae9f892a3162283,
+        type: 3}
+      propertyPath: dialogIconNeutral
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e779a54dcf4bcb4ba39f475a0b7a402,
+        type: 3}
+    - target: {fileID: 3584980443798718806, guid: 1dce73c932d660f44ae9f892a3162283,
+        type: 3}
+      propertyPath: dialogIconPleased
+      value: 
+      objectReference: {fileID: 21300000, guid: 9f7f401355419944b9fe949d25012131,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dce73c932d660f44ae9f892a3162283, type: 3}

@@ -1,0 +1,151 @@
+{
+	"conversations": [{
+		"id": "Paladin_E",
+		"starter": "npc",
+		"finalStates": ["6"],
+		"metaconditions": ["hasPaladinDead", "hasClericsMourning", "!hasBlue"],
+		"states": [{
+				"index": "0",
+				"speaker": "Bard",
+				"statements": [{
+					"text": "Why helloooooooo there!",
+					"mood": "neutral"
+
+				}]
+			},
+
+			{
+				"index": "1",
+				"speaker": "Bard",
+				"statements": [{
+						"text": "Who are any of us, really…",
+						"mood": "pleased"
+					},
+					{
+						"text": "…but instruments in the ballad the of time.",
+						"mood": "pleased"
+					}
+				]
+			},
+
+			{
+				"index": "2",
+				"speaker": "Bard",
+				"statements": [{
+					"text": "All of us, a symphony, waiting for our solo moment…",
+					"mood": "pleased"
+				}]
+			},
+
+			{
+				"index": "3",
+				"speaker": "Bard",
+				"statements": [{
+					"text": "Yearning to be heard! Yearning for their moment!",
+					"mood": "pleased"
+				}]
+			},
+			{
+				"index": "4",
+				"speaker": "Bard",
+				"statements": [{
+					"text": "Yearning for peace! That’s what I see in your eyes, my friend.",
+					"mood": "pleased"
+				}]
+			},
+
+			{
+				"index": "5",
+				"speaker": "Bard",
+				"statements": [{
+					"text": "Well, I’ve got just the thing if you’re feeling blue.",
+					"mood": "neutral"
+				}]
+			},
+
+			{
+				"index": "6",
+				"speaker": "Bard",
+				"statements": [{
+					"text": "Here’s one of my favorite songs to play.",
+					"mood": "pleased"
+				}]
+
+			}
+		],
+		"transitions": [{
+				"source": "0",
+				"target": "1",
+				"statements": [{
+						"text": "Who are you?",
+						"mood": "neutral"
+					},
+
+					{
+						"text": "Can't you see I’m grieving here…",
+						"mood": "upset"
+					}
+				],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "1",
+				"target": "2",
+				"statements": [{
+					"text": "I-",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "2",
+				"target": "3",
+				"statements": [{
+					"text": "Actually, I would like to be-",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "3",
+				"target": "4",
+				"statements": [{
+					"text": " I needed Blue. But all I got was Red.",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "4",
+				"target": "5",
+				"statements": [{
+					"text": "No, you misheard me I’m-",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "5",
+				"target": "6",
+				"statements": [{
+					"text": "Oh no",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": ["getBardsRequiem"]
+
+			}
+		]
+	}]
+}

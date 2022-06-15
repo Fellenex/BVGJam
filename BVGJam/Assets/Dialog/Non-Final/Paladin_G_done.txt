@@ -1,0 +1,107 @@
+{
+	"conversations": [{
+		"id": "Paladin_G",
+		"starter": "npc",
+		"finalStates": ["2"],
+		"metaconditions": ["hasPaladinRevived"],
+		"states": [{
+				"index": "0",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "AHHHHHHHHH!",
+					"mood": "upset"
+
+				}]
+			},
+
+			{
+				"index": "1",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "THE TORMENT! I’VE FELT IT ALL.",
+						"mood": "upset"
+					},
+
+					{
+						"text": "BROKEN BONE.",
+						"mood": "upset"
+					},
+
+					{
+						"text": "A G O N Y.",
+						"mood": "upset"
+					},
+
+					{
+						"text": "THE COLLECTIVE GRIEF OF ALL THAT DECAYS…",
+						"mood": "upset"
+					},
+
+					{
+						"text": "…",
+						"mood": "upset"
+					},
+
+					{
+						"text": "THE TORMENT! I’VE FELT IT ALL.",
+						"mood": "upset"
+					},
+
+					{
+						"text": "…then a deafening, all-encompassing silence.",
+						"mood": "upset"
+					}
+				]
+			},
+
+			{
+				"index": "2",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "After that…",
+					"mood": "upset"
+				}]
+			}
+		],
+		"transitions": [{
+				"source": "0",
+				"target": "1",
+				"statements": [{
+						"text": "I’m so happy you’re back!",
+						"mood": "pleased"
+					},
+
+					{
+						"text": "…Are you good?",
+						"mood": "upset"
+					}
+				],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "1",
+				"target": "2",
+				"statements": [{
+					"text": "A-aren’t you happy to be alive?",
+					"mood": "upset"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "2",
+				"target": "3",
+				"statements": [{
+					"text": "",
+					"mood": "upset"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": ["getExistentialSweat"]
+			}
+		]
+	}]
+}

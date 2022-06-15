@@ -36,19 +36,19 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogIconUpset
       value: 
-      objectReference: {fileID: 21300000, guid: 9d5706c507ccaa247aae706ecc4d10b8,
+      objectReference: {fileID: 21300000, guid: 0670241c85481dd46b79f9c7aeca768e,
         type: 3}
     - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: dialogIconNeutral
       value: 
-      objectReference: {fileID: 21300000, guid: 22d12e9fb926dda4ba25494df4101401,
+      objectReference: {fileID: 21300000, guid: 6ef8e3e72e888cb4f8c5dd5de37f173c,
         type: 3}
     - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: dialogIconPleased
       value: 
-      objectReference: {fileID: 21300000, guid: 4df23377aa4bb8147a862df2d734e12f,
+      objectReference: {fileID: 21300000, guid: 530ca35ae44eeb441988bbabab7bdd0a,
         type: 3}
     - target: {fileID: 3795280135728259500, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}

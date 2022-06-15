@@ -70,7 +70,7 @@ public class DEBUG_JSONS : MonoBehaviour {
                     Debug.Log(ment.mood);
 
                     if (ment.mood != "pleased" && ment.mood != "upset" && ment.mood != "neutral") {
-                        Debug.LogError("Convo: "+convo.id+" has incorrect mood labeling");
+                        Debug.LogError("Convo: "+convo.id+" has incorrect mood labeling ("+ment.mood+")");
                     }
                 }
             }
@@ -135,22 +135,41 @@ public class DEBUG_JSONS : MonoBehaviour {
         //Test to see if the triggers are all ones that we know about
         foreach (string trigger in triggers) {
             if (!StoryTriggers.triggers.Contains(trigger)) {
-                Debug.LogError("Trigger " + trigger + " is not a known trigger");
+                
+                string choppedString = trigger.Substring(1, trigger.Length-1);
+                //Check for inverted triggers (starting with a !)
+                if (!StoryTriggers.triggers.Contains(choppedString)) {
+                    Debug.LogError("Trigger " + trigger + " is not a known trigger ("+choppedString+")");
+                }
             }
         }
 
         //Test to see if the conditions are all ones that we know about
         foreach (string condition in conditions) {
-            if (!StoryTriggers.triggers.Contains(condition.Replace(StoryTriggers.conditionPrefix, StoryTriggers.triggerPrefix))) {
-                Debug.LogError("Condition " + condition + " is not a known condition");
+            string triggerNameFromCondition = condition.Replace(StoryTriggers.conditionPrefix, StoryTriggers.triggerPrefix);
+
+            //Check for inverted conditions (starting with a !)
+            if (!StoryTriggers.triggers.Contains(triggerNameFromCondition)) {
+
+                string choppedString = triggerNameFromCondition.Substring(1, triggerNameFromCondition.Length-1);
+                if (!StoryTriggers.triggers.Contains(choppedString)) {
+                    Debug.LogError("Condition " + condition + " is not a known condition ("+choppedString+")");
+                }
             }
         }
 
         //Test to see if the metaconditions are all ones that we know about
         foreach (string condition in metaconditions) {
-            if (!StoryTriggers.triggers.Contains(condition.Replace(StoryTriggers.conditionPrefix, StoryTriggers.triggerPrefix))) {
-                Debug.LogError("Tried to find "+condition.Replace(StoryTriggers.conditionPrefix, StoryTriggers.triggerPrefix));
-                Debug.LogError("Metacondition " + condition + " is not a known condition");
+            string triggerNameFromCondition = condition.Replace(StoryTriggers.conditionPrefix, StoryTriggers.triggerPrefix);
+
+            if (!StoryTriggers.triggers.Contains(triggerNameFromCondition)) {
+                
+                string choppedString = triggerNameFromCondition.Substring(1, triggerNameFromCondition.Length-1);
+                //Check for inverted conditions (starting with a !)
+                if (!StoryTriggers.triggers.Contains(choppedString)) {
+                    Debug.LogError("Tried to find "+condition.Replace(StoryTriggers.conditionPrefix, StoryTriggers.triggerPrefix));
+                    Debug.LogError("Metacondition " + condition + " is not a known condition ("+choppedString+")");
+                }
             }
         }
     }

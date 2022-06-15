@@ -53,20 +53,20 @@ public static class StoryTriggers {
 
 
     //Parental trigger collections
-    public static string[] colourTriggers; // = [getBlue, getRed, getYellow, getGreen, getPurple];
-    public static string[] blueGoodTriggers;
-    public static string[] redGoodTriggers;
-    public static string[] yellowGoodTriggers;
-    public static string[] greenGoodTriggers;
-    public static string[] purpleGoodTriggers;
-    public static string[][] goodTriggers;
+    public static List<string> colourTriggers; // = [getBlue, getRed, getYellow, getGreen, getPurple];
+    public static List<string> blueGoodTriggers;
+    public static List<string> redGoodTriggers;
+    public static List<string> yellowGoodTriggers;
+    public static List<string> greenGoodTriggers;
+    public static List<string> purpleGoodTriggers;
+    public static List<List<string>> goodTriggers;
 
-    public static string[] blueBadTriggers;
-    public static string[] redBadTriggers;
-    public static string[] yellowBadTriggers;
-    public static string[] greenBadTriggers;
-    public static string[] purpleBadTriggers;
-    public static string[][] badTriggers;
+    public static List<string> blueBadTriggers;
+    public static List<string> redBadTriggers;
+    public static List<string> yellowBadTriggers;
+    public static List<string> greenBadTriggers;
+    public static List<string> purpleBadTriggers;
+    public static List<List<string>> badTriggers;
 
     /*
     Neutral triggers
@@ -85,7 +85,8 @@ public static class StoryTriggers {
         triggers = new List<string>();
 
         //Add the overarching colour triggers
-        colourTriggers = new string[]{getBlue, getRed, getYellow, getGreen, getPurple};
+        colourTriggers = new List<string>();
+        colourTriggers.AddRange( new string[]{getBlue, getRed, getYellow, getGreen, getPurple} );
         foreach (string trigger in colourTriggers) {
             triggers.Add(trigger);
         }
@@ -93,46 +94,62 @@ public static class StoryTriggers {
         //Add the neutral triggers
         triggers.Add(getBlueHunt);
         triggers.Add(getPaladinDead);
+        triggers.Add(getPaladinRevived);
         triggers.Add(getMetCleric);
         triggers.Add(getFoundKnife);
 
+        colourTriggers = new List<string>(); 
+        blueGoodTriggers = new List<string>();
+        redGoodTriggers = new List<string>();
+        yellowGoodTriggers = new List<string>();
+        greenGoodTriggers = new List<string>();
+        purpleGoodTriggers = new List<string>();
+        goodTriggers = new List<List<string>>();
+
+        blueBadTriggers = new List<string>();
+        redBadTriggers = new List<string>();
+        yellowBadTriggers = new List<string>();
+        greenBadTriggers = new List<string>();
+        purpleBadTriggers = new List<string>();
+        badTriggers = new List<List<string>>();
+
 
         //Parental trigger collections
-        blueGoodTriggers =   new string[]{ getJusticeSweat, getBardsRequiem };
-        redGoodTriggers =    new string[]{ getPaladinBloodGood, getYourBlood, getAssassinsBlood};
-        yellowGoodTriggers = new string[]{ getYellowGood };
-        greenGoodTriggers =  new string[]{ getSonicSpore, getLakewaterSpore, getGreen };
-        purpleGoodTriggers = new string[]{ getClericsBlessing, getClericsMourning };
+        blueGoodTriggers.AddRange(      new string[]{ getJusticeSweat, getBardsRequiem });
+        redGoodTriggers.AddRange(       new string[]{ getPaladinBloodGood, getYourBlood, getAssassinsBlood});
+        yellowGoodTriggers.AddRange(    new string[]{ getYellowGood });
+        greenGoodTriggers.AddRange(     new string[]{ getSonicSpore, getLakewaterSpore });
+        purpleGoodTriggers.AddRange(    new string[]{ getClericsBlessing, getClericsMourning });
         //
-        goodTriggers = new string[][]{
+        goodTriggers = new List<List<string>>();
+        goodTriggers.AddRange( new List<string>[]{
             blueGoodTriggers,
             redGoodTriggers,
             yellowGoodTriggers,
             greenGoodTriggers,
-            purpleGoodTriggers
-        };
+            purpleGoodTriggers});
         //
-        foreach (string[] triggerArray in goodTriggers) {
+        foreach (List<string> triggerArray in goodTriggers) {
             foreach (string trigger in triggerArray){
                 triggers.Add(trigger);
             }
         }
 
-        blueBadTriggers =    new string[]{ getExistentialSweat, getToxicSweat };
-        redBadTriggers =     new string[]{ getPaladinBloodBad };
-        yellowBadTriggers =  new string[]{ getYellowBad };
-        greenBadTriggers =   new string[]{ getCursedSpore };
-        purpleBadTriggers =  new string[]{ getCursedAura, getEvilAura};
+        blueBadTriggers.AddRange(    new string[]{ getExistentialSweat, getToxicSweat });
+        redBadTriggers.AddRange(     new string[]{ getPaladinBloodBad });
+        yellowBadTriggers.AddRange(  new string[]{ getYellowBad });
+        greenBadTriggers.AddRange(   new string[]{ getCursedSpore });
+        purpleBadTriggers.AddRange(  new string[]{ getCursedAura, getEvilAura});
         //
-        badTriggers = new string[][]{
+        badTriggers = new List<List<string>>();
+        badTriggers.AddRange (new List<string>[]{
             blueBadTriggers,
             redBadTriggers,
             yellowBadTriggers,
             greenBadTriggers,
-            purpleBadTriggers
-        };
+            purpleBadTriggers});
         //
-        foreach (string[] triggerArray in badTriggers) {
+        foreach (List<string> triggerArray in badTriggers) {
             foreach (string trigger in triggerArray){
                 triggers.Add(trigger);
             }
@@ -146,7 +163,32 @@ public static class StoryTriggers {
 
     public static void trigger(string _triggerName) {
         Debug.Log("Triggering: " + _triggerName);
+        Dictionary<string, string> dData = new Dictionary<string, string>();
+
+        //Setup the parent colour triggers to fire off as well
+        if (blueGoodTriggers.Contains(_triggerName) || blueBadTriggers.Contains(_triggerName)) {
+            
+            //if this is the player's first time getting blue, do some extra triggers
+            if (!StoryConditions.playerMeetsCondition(getBlue)) {
+                trigger(getBlue);
+
+            }
+            
+        }
+        if (redGoodTriggers.Contains(_triggerName) || redBadTriggers.Contains(_triggerName)) {
+            trigger(getRed);
+        }
+        if (yellowGoodTriggers.Contains(_triggerName) || yellowBadTriggers.Contains(_triggerName)) {
+            trigger(getYellow);
+        }
+        if (greenGoodTriggers.Contains(_triggerName) || greenBadTriggers.Contains(_triggerName)) {
+            trigger(getGreen);
+        }
+        if (purpleGoodTriggers.Contains(_triggerName) || purpleBadTriggers.Contains(_triggerName)) {
+            trigger(getPurple);
+        }
         
+
         if(_triggerName == "oops"){
             //special case. can't use switch because it thinks it'll change
             //could always make the above variables constant to fix this,

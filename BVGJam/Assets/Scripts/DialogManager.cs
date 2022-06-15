@@ -12,14 +12,16 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
     enum Speaker {PLAYER, NPC, NONE}
     Speaker activeSpeaker;
 
+    public GameObject gameController;       // a handle to do game control things (audio quieting)
     public DialogGraphics graphics;        // a handle to update the graphics
 
-    DialogDataJSON json;
     Conversation activeConversation;
     Conversation_NPCState activeState;
     Conversation_Transition activeTransition;
     Conversation_Statement activeStatement;
     int activeStatementIndex;
+
+
 
     /*
     //How many seconds to wait for the player to read each character of text
@@ -31,11 +33,11 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
 
     void Start() {
         graphics = GetComponent<DialogGraphics>();
+        gameController = GameObject.FindGameObjectWithTag("GameController");
 
         //Load up the data setup through the DialogData class
         string npcName = DialogData.getParam("name");
         activeConversation = DialogData.getActiveConversation();
-
         try {
             //Setup things needed for starting a conversation
             StoryConditions.startConversation(npcName, activeConversation.id);
@@ -47,6 +49,10 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
             //  due to an unavailable file
             closeConversation();
         }
+
+        //Reduce the volume of music while in a conversation
+        gameController.GetComponent<AudioSource>().volume = 0.5f;
+
 
         if (activeConversation.starter == "player") {
             //If the player is starting the conversation and they only have
@@ -206,6 +212,9 @@ public class DialogManager : MonoBehaviour, IDialogMessages {
 
     //"Gracefully" close out the conversation.
     public void closeConversation() {
+        //Put the music back to normal
+        gameController.GetComponent<AudioSource>().volume = 1.0f;
+        
         try {
             //If we are in a final state for the NPC, then we mark this conversation as completed
             foreach (string state in activeConversation.finalStates) {

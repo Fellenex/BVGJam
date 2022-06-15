@@ -98,24 +98,24 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogIconUpset
       value: 
-      objectReference: {fileID: 21300000, guid: 87c4734c8b334574fab532d4d1ddd242,
+      objectReference: {fileID: 21300000, guid: 5ebb9142524d1714597726496c64d039,
         type: 3}
     - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: conversationJson
       value: 
-      objectReference: {fileID: 4900000, guid: 603806c6b327fbb4ba60dc0d369732e4, type: 3}
+      objectReference: {fileID: 4900000, guid: 3263a26dcbbb41641a3fd95e1a7707dd, type: 3}
     - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: dialogIconNeutral
       value: 
-      objectReference: {fileID: 21300000, guid: 511885e5039a8eb498017abbfc46d52f,
+      objectReference: {fileID: 21300000, guid: 418c361ed3ed6fe4c9712d7fea69d49f,
         type: 3}
     - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: dialogIconPleased
       value: 
-      objectReference: {fileID: 21300000, guid: 87620555c2f076b418c72c5ad0f856b5,
+      objectReference: {fileID: 21300000, guid: e88a7c29fb388a04c80bb81e1ac89423,
         type: 3}
     - target: {fileID: 3795280135728259500, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
@@ -160,7 +160,7 @@ PrefabInstance:
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1419
+      value: -1520
       objectReference: {fileID: 0}
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}

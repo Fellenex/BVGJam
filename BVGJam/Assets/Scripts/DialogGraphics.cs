@@ -43,7 +43,6 @@ public class DialogGraphics : MonoBehaviour {
             {"Mark", npcDialogIcons_mark},
             {"Maverick", npcDialogIcons_maverick},
             {"Nicki", npcDialogIcons_nicki},
-
             {"Grandma Yaga", npcDialogIcons_grandma}
         };
     }

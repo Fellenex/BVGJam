@@ -373,6 +373,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747989189}
     m_Modifications:
+    - target: {fileID: 1383306883, guid: 82260e348a455dc4c9a7f9b6651f4b6d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383306883, guid: 82260e348a455dc4c9a7f9b6651f4b6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 420
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383306884, guid: 82260e348a455dc4c9a7f9b6651f4b6d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383306884, guid: 82260e348a455dc4c9a7f9b6651f4b6d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383306884, guid: 82260e348a455dc4c9a7f9b6651f4b6d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189774132820575533, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -700
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189774132820575533, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 420
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465693593475250583, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465693593475250583, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465693593475250583, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465693593475250583, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8761101846414191305, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
         type: 3}
       propertyPath: m_RootOrder
@@ -432,6 +482,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761101848087288914, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761101848087288914, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 01a30cd12f11af34d88ca49b2ae8323c,
+        type: 3}
+    - target: {fileID: 8761101848087288914, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82260e348a455dc4c9a7f9b6651f4b6d, type: 3}

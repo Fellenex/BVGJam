@@ -1,0 +1,118 @@
+{
+	"conversations": [{
+		"id": "Cleric_B",
+		"starter": "npc",
+		"finalStates": ["4"],
+		"metaconditions": [],
+		"states": [{
+				"index": "0",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "Pal, it’s so nice to see you! How goes your-",
+					"mood": "pleased"
+				}]
+			},
+
+			{
+				"index": "1",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "Congratulations!",
+					"mood": "neutral"
+				}]
+			},
+
+			{
+				"index": "2",
+				"speaker": "Saint_Casey",
+				"statements": [{
+						"text": "Let me take a look.",
+						"mood": "neutral"
+					},
+
+					{
+						"text": "…",
+						"mood": "upset"
+					},
+
+					{
+						"text": "This is far from the “abstract concept of a colour”",
+						"mood": "neutral"
+					}
+				]
+			},
+
+			{
+				"index": "3",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "This is it! This is the fated moment!",
+					"mood": "neutral"
+				}]
+			}, {
+				"index": "4",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "What a wonderous day!",
+					"mood": "neutral"
+				}]
+			}
+		],
+	"transitions": [{
+			"source": "0",
+			"target": "1",
+			"statements": [{
+				"text": "I got Red.",
+				"mood": "upset"
+			}],
+			"optionText": "",
+			"conditions": [],
+			"triggers": []
+		},
+		{
+			"source": "1",
+			"target": "2",
+			"statements": [{
+				"text": "No, I mean- I got stabbed by an Assassin. I’m producing more Red as we speak.",
+				"mood": "upset"
+			}],
+			"optionText": "",
+			"conditions": [],
+			"triggers": []
+		},
+		{
+			"source": "2",
+			"target": "3",
+			"statements": [{
+				"text": "Well, my life is going to become a lot more abstract if we don’t move this along.",
+				"mood": "upset"
+			}],
+			"optionText": "",
+			"conditions": [],
+			"triggers": []
+		},
+		{
+			"source": "3",
+			"target": "4",
+			"statements": [{
+				"text": "I really want to be as excited as you are about this…but I’m kind of bleeding and-",
+				"mood": "neutral"
+			}],
+			"optionText": "",
+			"conditions": [],
+			"triggers": []
+		},
+		{
+			"source": "4",
+			"target": "5",
+			"statements": [{
+				"text": "Maybe for mosquitos-",
+				"mood": "neutral"
+			}],
+			"optionText": "",
+			"conditions": [],
+			"triggers": ["getClericsBlessing"]
+		}
+	]
+	}]
+}

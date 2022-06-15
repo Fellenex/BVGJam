@@ -1,0 +1,154 @@
+{
+	"conversations": [{
+		"id": "Opener_Cleric",
+		"starter": "npc",
+		"finalStates": ["6"],
+		"metaconditions": [],
+		"states": [{
+				"index": "0",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "Hello, kind soul! I’m Saint Casey, the Cleric.",
+					"mood": "pleased"
+				}]
+			},
+
+			{
+				"index": "1",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "I can sense your desire for progress. You yearn to interact with others. These are very kind traits.",
+					"mood": "neutral"
+				}]
+			},
+
+			{
+				"index": "2",
+				"speaker": "Saint_Casey",
+				"statements": [{
+						"text": "No, but I can see you running about…",
+						"mood": "neutral"
+					},
+
+					{
+						"text": "...from one person to another, having long-drawn-out conversations.",
+						"mood": "pleased"
+					}
+				]
+			},
+			{
+				"index": "3",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "Like this one.",
+					"mood": "neutral"
+				}]
+			},
+			{
+				"index": "4",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "Is that code for something?",
+					"mood": "neutral"
+				}]
+			},
+			{
+				"index": "5",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "It sounds like something that must be left up to fate.",
+					"mood": "neutral"
+				}]
+
+			},
+			{
+				"index": "6",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "When the time comes, yes. Until then, you must continue on your pilgrimage.",
+					"mood": "neutral"
+				}]
+
+			}
+		],
+		"transitions": [{
+				"source": "0",
+				"target": "1",
+				"statements": [{
+					"text": "Hello, presumptive Cleric. I’m Pal! How would you know if I’m kind?",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "1",
+				"target": "2",
+				"statements": [{
+					"text": "Can you sense them… with your Cleric magic?",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "2",
+				"target": "3",
+				"statements": [{
+					"text": "Like this one?",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "3",
+				"target": "4",
+				"statements": [{
+					"text": "So uh, can you give me some Purple?",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "4",
+				"target": "5",
+				"statements": [{
+					"text": "No. It’s more of an “abstract concept” sort of thing.",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "5",
+				"target": "6",
+				"statements": [{
+					"text": "So you can help me?",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "6",
+				"target": "7",
+				"statements": [{
+					"text": "Thank you- in advance I mean.",
+					"mood": "pleased"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": ["getMetCleric"]
+			}
+
+		]
+	}]
+}

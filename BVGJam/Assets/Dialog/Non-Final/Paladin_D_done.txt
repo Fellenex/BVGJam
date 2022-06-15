@@ -1,0 +1,56 @@
+{
+	"conversations": [{
+		"id": "Paladin_D",
+		"starter": "npc",
+		"finalStates": [],
+		"metaconditions": ["hasJusticeSweat"],
+		"states": [{
+				"index": "0",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "…",
+					"mood": "neutral"
+
+				}]
+			},
+
+			{
+				"index": "1",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "…",
+					"mood": "pleased"
+				}]
+			}
+		],
+		"transitions": [{
+				"source": "0",
+				"target": "1",
+				"statements": [{
+						"text": " I can’t believe he’s dead.",
+						"mood": "neutral"
+					},
+
+					{
+						"text": "He looks so…alive.",
+						"mood": "neutral"
+					}
+				],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "1",
+				"target": "2",
+				"statements": [{
+					"text": "If only there were someone who could help make him actually alive.",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			}
+		]
+	}]
+}

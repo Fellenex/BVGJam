@@ -1,0 +1,190 @@
+{
+	"conversations": [{
+		"id": "Paladin_C",
+		"starter": "npc",
+		"finalStates": ["7"],
+		"metaconditions": ["hasFoundKnife", "!hasToxicSweat"],
+		"states": [{
+				"index": "0",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "Welcome back, Pal! How goes your quest for Blue?",
+					"mood": "pleased"
+				}]
+			},
+
+			{
+				"index": "1",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+					"text": "Well, don’t give up! I’m sure a resourceful fellow like you will be Blue in no time.",
+					"mood": "neutral"
+				}]
+			},
+
+			{
+				"index": "2",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "Good heavens! That’s the blade of an Assassin…",
+						"mood": "neutral"
+					},
+
+					{
+						"text": "An assassin must be hiding amongst us. I can’t believe this.",
+						"mood": "upset"
+					}
+				]
+			},
+
+			{
+				"index": "3",
+				"speaker": "Sir_Jonathan",
+				"statements": [{
+						"text": "Of course I’ll be okay!",
+						"mood": "neutral"
+				}]
+			},
+
+				{
+					"index": "4",
+					"speaker": "Sir_Jonathan",
+					"statements": [{
+						"text": "I’m generating kinetic energy.",
+						"mood": "pleased"
+					}]
+				},
+				{
+					"index": "5",
+					"speaker": "Sir_Jonathan",
+					"statements": [{
+							"text": "That’s not sweat-",
+							"mood": "neutral"
+						},
+						{
+							"text": "It’s…",
+							"mood": "neutral"
+						},
+						{
+							"text": "THE FLUID OF J U S T I C E!",
+							"mood": "pleased"
+						}
+					]
+				},
+
+				{
+					"index": "6",
+					"speaker": "Sir_Jonathan",
+					"statements": [{
+						"text": "I will bring an end to this. Don’t you worry young Pal.",
+						"mood": "neutral"
+					}]
+
+				},
+				{
+					"index": "7",
+					"speaker": "Sir_Jonathan",
+					"statements": [{
+						"text": "Hmmm?",
+						"mood": "neutral"
+					}]
+
+
+				}],
+				"transitions": [{
+						"source": "0",
+						"target": "1",
+						"statements": [{
+							"text": "Well I found something, but it’s not Blue, unfortunately.",
+							"mood": "neutral"
+						}],
+						"optionText": "",
+						"conditions": [],
+						"triggers": []
+					},
+					{
+						"source": "1",
+						"target": "2",
+						"statements": [{
+								"text": "Yeah well, I’m a bit more worried about being Red.",
+								"mood": "neutral"
+							},
+							{
+								"text": "I found something S I N I S T E R.",
+								"mood": "neutral"
+							}
+						],
+						"optionText": "",
+						"conditions": [],
+						"triggers": []
+					},
+					{
+						"source": "2",
+						"target": "3",
+						"statements": [{
+							"text": "Are you going to be okay? You look stressed.",
+							"mood": "neutral"
+						}],
+						"optionText": "",
+						"conditions": [],
+						"triggers": []
+					},
+					{
+						"source": "3",
+						"target": "4",
+						"statements": [{
+							"text": "You’re shaking.",
+							"mood": "neutral"
+						}],
+						"optionText": "",
+						"conditions": [],
+						"triggers": []
+					},
+					{
+						"source": "4",
+						"target": "5",
+						"statements": [{
+							"text": "And the Blue sweat that’s beading on your head?",
+							"mood": "neutral"
+						}],
+						"optionText": "",
+						"conditions": [],
+						"triggers": []
+					},
+					{
+						"source": "5",
+						"target": "6",
+						"statements": [{
+							"text": "…",
+							"mood": "neutral"
+						}],
+						"optionText": "",
+						"conditions": [],
+						"triggers": []
+					},
+					{
+						"source": "6",
+						"target": "7",
+						"statements": [{
+							"text": "Thanks for the sweat!",
+							"mood": "pleased"
+						}],
+						"optionText": "",
+						"conditions": [],
+						"triggers": []
+					},
+					{
+						"source": "7",
+						"target": "8",
+						"statements": [{
+							"text": "Uh, don't worry about it! See you later!",
+							"mood": "neutral"
+						}],
+						"optionText": "",
+						"conditions": [],
+						"triggers": ["getJusticeSweat"]
+					}
+				]
+			}
+		]
+	}

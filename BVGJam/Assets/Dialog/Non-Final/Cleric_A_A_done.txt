@@ -1,0 +1,70 @@
+{
+	"conversations": [{
+		"id": "Cleric_A_A",
+		"starter": "npc",
+		"finalStates": [],
+		"metaconditions": ["hasMetCleric"],
+		"states": [{
+				"index": "0",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "Hmmm.",
+					"mood": "upset"
+				}]
+			},
+
+			{
+				"index": "1",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "Hmmm. Yeah. This isn’t our fated moment.",
+					"mood": "neutral"
+				}]
+			},
+
+			{
+				"index": "2",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "The vibes are off.",
+					"mood": "neutral"
+
+				}]
+			}
+		],
+		"transitions": [{
+				"source": "0",
+				"target": "1",
+				"statements": [{
+					"text": "Yeah?",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "1",
+				"target": "2",
+				"statements": [{
+					"text": "Why?",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "2",
+				"target": "3",
+				"statements": [{
+					"text": "I guess you can’t rush fate!",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			}
+		]
+	}]
+}

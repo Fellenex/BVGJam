@@ -78,6 +78,8 @@ public class DramaticDialogManager : MonoBehaviour {
         if (canvas.GetAlpha() >= 1){
             playerCanMoveOn = true;
         }
+
+        checkForPlayerClose();
     }
 
     void checkForPlayerClose() {

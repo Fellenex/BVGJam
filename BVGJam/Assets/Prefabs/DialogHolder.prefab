@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -695, y: -260}
-  m_SizeDelta: {x: 250, y: 250}
+  m_AnchoredPosition: {x: -741, y: -79}
+  m_SizeDelta: {x: 225, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &533046221
 CanvasRenderer:
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7d4b2f94abb190747b9c97dca7c4b7ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed42b23540f23e84682a3921149ef492, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -108,7 +108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -304}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 780, y: 440}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1102231432
@@ -186,7 +186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 682.1, y: 58.5}
+  m_AnchoredPosition: {x: 682.1, y: 384}
   m_SizeDelta: {x: 388, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1383306885
@@ -264,7 +264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -304}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 780, y: 440}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2045714885
@@ -498,7 +498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -696.4, y: 58.3}
+  m_AnchoredPosition: {x: -696.4, y: 421}
   m_SizeDelta: {x: 388, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9007510083504127523
@@ -1216,33 +1216,33 @@ MonoBehaviour:
   npcText: {fileID: 2045714884}
   playerText: {fileID: 1102231431}
   playerDialogIcons:
-  - {fileID: 21300000, guid: 859e7232ad216114396ed29f4cfa3a0f, type: 3}
-  - {fileID: 21300000, guid: 28194c57b0e76eb4ead5c1d380f5b548, type: 3}
-  - {fileID: 21300000, guid: 65341581706cffa4dab8622b2c96e7f8, type: 3}
+  - {fileID: 21300000, guid: ed42b23540f23e84682a3921149ef492, type: 3}
+  - {fileID: 21300000, guid: d2c6f4203e24c6a468aeceaee64ba242, type: 3}
+  - {fileID: 21300000, guid: cba41598bcf367d4b94d7cb9a5272e53, type: 3}
   npcDialogIcons_casey:
-  - {fileID: 21300000, guid: 9f2ed14937f24074fb7fe60e7097ce6c, type: 3}
-  - {fileID: 21300000, guid: 78bbf76db0502f04eb3d913bcd5b8164, type: 3}
-  - {fileID: 21300000, guid: 84058a32a65bf48489066661a179be92, type: 3}
+  - {fileID: 21300000, guid: 6496f07929408fa4ca936cec5a960f0b, type: 3}
+  - {fileID: 21300000, guid: 28df7e5bd8483fb41ba78579b1f50817, type: 3}
+  - {fileID: 21300000, guid: 1710c27b300160e498d04f5ff67e7e2a, type: 3}
   npcDialogIcons_joe:
-  - {fileID: 21300000, guid: b84b7825239812e49804ca5650d589a3, type: 3}
-  - {fileID: 21300000, guid: 5885e4298dd37164abcdd0da56060bd4, type: 3}
-  - {fileID: 21300000, guid: 292f3e9150a9a3b4da75f820b79c4a04, type: 3}
+  - {fileID: 21300000, guid: eb1cf9769ac73294ba9552ff6af80a09, type: 3}
+  - {fileID: 21300000, guid: 9e2a014bc9f544a4faa2adba35671b3c, type: 3}
+  - {fileID: 21300000, guid: 854ee7aadd22cfb45b4141c67edacb74, type: 3}
   npcDialogIcons_mark:
-  - {fileID: 21300000, guid: 2a7d794b615dd294bb10c7cc31403acb, type: 3}
-  - {fileID: 21300000, guid: 542727c39063c6642a3c142ee125a7e9, type: 3}
-  - {fileID: 21300000, guid: fd1607766d7601d42a3935332acfc400, type: 3}
+  - {fileID: 21300000, guid: 02b8a687802e5f6419c9b02cdce69677, type: 3}
+  - {fileID: 21300000, guid: c902fb9e85846a04cb11ee3b01a76513, type: 3}
+  - {fileID: 21300000, guid: 1d7e78f9c5b414348b419a8f82ca8572, type: 3}
   npcDialogIcons_maverick:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 6ef8e3e72e888cb4f8c5dd5de37f173c, type: 3}
+  - {fileID: 21300000, guid: 530ca35ae44eeb441988bbabab7bdd0a, type: 3}
+  - {fileID: 21300000, guid: 0670241c85481dd46b79f9c7aeca768e, type: 3}
   npcDialogIcons_nicki:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 9e779a54dcf4bcb4ba39f475a0b7a402, type: 3}
+  - {fileID: 21300000, guid: 9f7f401355419944b9fe949d25012131, type: 3}
+  - {fileID: 21300000, guid: 68a237c2042e04143ad9257e65e76f0d, type: 3}
   npcDialogIcons_grandma:
-  - {fileID: 21300000, guid: 9f2ed14937f24074fb7fe60e7097ce6c, type: 3}
-  - {fileID: 21300000, guid: 78bbf76db0502f04eb3d913bcd5b8164, type: 3}
-  - {fileID: 21300000, guid: 84058a32a65bf48489066661a179be92, type: 3}
+  - {fileID: 21300000, guid: 418c361ed3ed6fe4c9712d7fea69d49f, type: 3}
+  - {fileID: 21300000, guid: e88a7c29fb388a04c80bb81e1ac89423, type: 3}
+  - {fileID: 21300000, guid: 5ebb9142524d1714597726496c64d039, type: 3}
 --- !u!114 &8761101847154650361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,8 +1376,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 685, y: -260}
-  m_SizeDelta: {x: 250, y: 250}
+  m_AnchoredPosition: {x: 685, y: -91}
+  m_SizeDelta: {x: 225, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8761101848473621949
 CanvasRenderer:
@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7d4b2f94abb190747b9c97dca7c4b7ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb1cf9769ac73294ba9552ff6af80a09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
