@@ -189,7 +189,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 6
 --- !u!61 &3154164743780478045
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -231,6 +231,8 @@ MonoBehaviour:
   jumpForce: 1000
   maxSpeed: 15000
   dialogOpen: 0
+  leftScreenBound: -2725
+  rightScreenBound: 13800
 --- !u!95 &3154164743780478047
 Animator:
   serializedVersion: 3

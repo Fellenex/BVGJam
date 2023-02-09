@@ -1,0 +1,28 @@
+{
+	"conversations": [{
+		"id": "Cleric_B_A",
+		"starter": "npc",
+		"finalStates": [],
+		"metaconditions": ["hasClericsBlessing", "!hasPaladinBloodGood"],
+		"states": [{
+			"index": "0",
+			"speaker": "Saint_Casey",
+			"statements": [{
+				"text": "Any more wounds I should know about?",
+				"mood": "neutral"
+
+			}]
+		}],
+		"transitions": [{
+			"source": "0",
+			"target": "1",
+			"statements": [{
+				"text": "I hope not.",
+				"mood": "neutral"
+			}],
+			"optionText": "",
+			"conditions": [],
+			"triggers": []
+		}]
+	}]
+}

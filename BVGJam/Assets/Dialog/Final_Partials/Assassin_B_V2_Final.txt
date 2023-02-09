@@ -1,0 +1,119 @@
+{
+	"conversations": [{
+		"id": "Assassin_B",
+		"starter": "npc",
+		"finalStates": ["2", "A2"],
+		"metaconditions": ["hasFoundKnife", "hasJusticeSweat", "!hasRed"],
+		"states": [{
+				"index": "0",
+				"speaker": "Nyx",
+				"statements": [{
+					"text": "That good-for-nothing Paladin is going to regret he ever…",
+					"mood": "upset"
+				}]
+			},
+
+			{
+				"index": "1",
+				"speaker": "Nyx",
+				"statements": [{
+					"text": "They might sweat BLUE, but they bleed RED…",
+					"mood": "pleased"
+				}]
+			},
+
+			{
+				"index": "2",
+				"speaker": "Nyx",
+				"statements": [{
+					"text": "[pointing behind you] Oh! What’s that over there?!",
+					"mood": "pleased"
+				}]
+			},
+
+			{
+				"index": "A1",
+				"speaker": "Bard",
+				"statements": [{
+						"text": "Hello! It is I, the Bard! Here to- ",
+						"mood": "pleased"
+					},
+					{
+						"text": "My lord, this garden is sad and pathetic.",
+						"mood": "upset"
+					}
+				]
+
+			},
+
+			{
+				"index": "A2",
+				"speaker": "Bard",
+				"statements": [{
+					"text": "Allow me!",
+					"mood": "pleased"
+				}]
+			}
+		],
+		"transitions": [{
+				"source": "0",
+				"target": "1",
+				"statements": [{
+					"text": "What was that?",
+					"mood": "upset"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "1",
+				"target": "2",
+				"statements": [{
+					"text": "What was that about RED? ",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "2",
+				"target": "3",
+				"statements": [{
+					"text": "",
+					"mood": "upset"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": ["getPaladinBloodGood", "getPaladinDead"]
+			},
+			{
+				"source": "A1",
+				"target": "A2",
+				"statements": [{
+					"text": "I was really hoping to find some Green.",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "A2",
+				"target": "A3",
+				"statements": [{
+					"text": "",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": ["getSonicSpore"]
+			}
+
+
+
+
+		]
+	}]
+}

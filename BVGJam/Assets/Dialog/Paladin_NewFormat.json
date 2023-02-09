@@ -1,0 +1,732 @@
+{
+    "conversations": [
+        {
+            "id": "Paladin_A",
+            "finalStates": [
+                "A2",
+                "B2"
+            ],
+            "metaconditions": [],
+            "states": [
+                {
+                    "index": "0",
+                    "statements": [
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Why hello there fellow traveler!",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "My Name is Sir Jonathan!",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "What brings you to me today?",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Well...",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "I'm looking for Blue",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Blue? Is that a friend of yours or...",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Not a friend, or a tangible thing really.",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Oh?",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "It's more of a conceptual thing",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "The concept of Blue?",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Oh!",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "How very abstract!",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "*Hmmmm. I wonder if Paladin sweat is blue enough...*",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "How can I help?",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Well...",
+                            "mood": "neutral"
+                        }
+                    ]
+                },
+                {
+                    "index": "A1",
+                    "statements": [
+                        {
+                            "speaker": "Pal",
+                            "text": "I doubt you’d be able to help. I could easily handle this on my own.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Helping others brings me joy! Please, I insist.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "But your muscles…",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Yes? I’ve been working on them for quite some time.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "That’s surprising. They look neglected…",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "as if you’ve been questless for quite some time.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "I’ll have you know that I organize all of my Quests by Muscle Groupings!",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "In fact...",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "I'll have you know that today is Chest Quest day.",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Well, let’s see if you’ve got the XP to back that up…",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "…in a push-up competition!",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Bring it on, coward!",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "I will not yield to my lactic acids!",
+                            "mood": "neutral"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "statements": [
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "I doubled your push-up count.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "That better prove my worth to you.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Now, what can I help you with?",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "You already have.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Excuse me?",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "I just needed some of your Blue sweat.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "How did you know I sweat Blue?",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "I didn’t…",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "…",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "…",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "…",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Well, have a nice day!",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "…",
+                            "mood": "neutral"
+                        }
+
+                    ]
+                },
+                {
+                    "index": "B1",
+                    "statements": [
+                        {
+                            "speaker": "Pal",
+                            "text": "Hmmm. I’m gonna walk around some more. I’ll let you know if I find anything!",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Sounds like a plan, young one. What’s your name?",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "I’m Pal!",
+                            "mood": "neutral"
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "statements": [
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "A fitting name. Good luck on your quest for Blue!",
+                            "mood": "neutral"
+                        }
+                    ]
+                }
+            ],
+            "transitions": [
+                {
+                    "source": "0",
+                    "options": [
+                        {
+                            "target": "A1",
+                            "optionText": "I could challenge his masculinity in a push-up contest...",
+                            "conditions": [],
+                            "triggers": []
+                        },
+                        {
+                            "target": "B1",
+                            "optionText": "I should find another way to make him sweat",
+                            "conditions": [],
+                            "triggers": []
+                        }
+
+                    ]
+                },
+
+                {
+                    "source": "A1",
+                    "options": [
+                        {
+                            "target": "A2",
+                            "optionText": "",
+                            "conditions": [],
+                            "triggers": [
+                                "getToxicSweat"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "source": "B1",
+                    "options": [
+                        {
+                            "target": "B2",
+                            "optionText": "",
+                            "conditions": [],
+                            "triggers": [
+                                "getBlueHunt"
+                            ]
+                        }
+                    ]
+                }
+                
+            ]
+        },
+        {
+            "id": "Paladin_B",
+            "finalStates": [
+                "1"
+            ],
+            "metaconditions": [
+                "hasFoundKnife",
+                "hasToxicSweat"
+            ],
+            "states": [
+                {
+                    "index": "0",
+                    "statements": [
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Nice knife. Too bad you’d have to be some sort of Assassin to hurt me with that.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "I wasn’t going to-",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Yeah. That’s what they all say. Take a walk, if you know what’s good for you.",
+                            "mood": "upset"
+                        }
+                    ]
+                }
+            ],
+            "transitions": []
+        },
+        {
+            "id": "Paladin_C",
+            "finalStates": [
+                "1"
+            ],
+            "metaconditions": [
+                "hasFoundKnife",
+                "!hasToxicSweat"
+            ],
+            "states": [
+                {
+                    "index": "0",
+                    "statements": [
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Welcome back, Pal! How goes your quest for Blue?",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Well I found something, but it’s not Blue, unfortunately.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Well, don’t give up! I’m sure a resourceful fellow like you will be Blue in no time.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Yeah well, I’m a bit more worried about being Red.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "I found something S I N I S T E R.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Good heavens! That’s the blade of an Assassin…",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "An assassin must be hiding amongst us. I can’t believe this.",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Are you going to be okay? You look stressed.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Of course I’ll be okay!",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "You’re shaking.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "I’m generating kinetic energy.",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "And the Blue sweat that’s beading on your head?",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "That’s not sweat-",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "It’s…",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "THE FLUID OF J U S T I C E!",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "…",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "I will bring an end to this. Don’t you worry young Pal.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Thanks for the sweat!",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Hmmm?",
+                            "mood": "neutral"
+                        }
+                    ]
+                },
+                {
+                    "index": "1",
+                    "statements": [
+                        {
+                            "speaker": "Pal",
+                            "text": "Uh, don't worry about it! See you later!",
+                            "mood": "neutral"
+                        }
+                    ]
+                }
+            ],
+            "transitions": [
+                {
+                    "source": "0",
+                    "options": [
+                        {
+                            "target": "1",
+                            "optionText": "",
+                            "conditions": [],
+                            "triggers": [
+                                "getJusticeSweat"
+                            ]
+                        }    
+                    ]
+                    
+                }
+            ]
+        },
+        {
+            "id": "Paladin_D",
+            "finalStates": [],
+            "metaconditions": [
+                "hasJusticeSweat",
+                "hasPaladinDead"
+            ],
+            "states": [
+                {
+                    "index": "0",
+                    "statements": [
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "…",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": " I can’t believe he’s dead.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "He looks so…alive.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "…",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "If only there were someone who could help make him actually alive.",
+                            "mood": "neutral"
+                        }
+                    ]
+                }
+            ],
+            "transitions": []
+        },
+        {
+            "id": "Paladin_E",
+            "finalStates": [
+                "1"
+            ],
+            "metaconditions": [
+                "hasPaladinDead",
+                "hasClericsMourning",
+                "!hasBlue"
+            ],
+            "states": [
+                {
+                    "index": "0",
+                    "statements": [
+                        {
+                            "speaker": "Bard",
+                            "text": "Why helloooooooo there!",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Who are you?",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Can't you see I’m grieving here…",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Bard",
+                            "text": "Who are any of us, really…",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Bard",
+                            "text": "…but instruments in the ballad the of time.",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "I-",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Bard",
+                            "text": "All of us, a symphony, waiting for our solo moment…",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Actually, I would like to be-",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Bard",
+                            "text": "Yearning to be heard! Yearning for their moment!",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "I needed Blue. But all I got was Red.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Bard",
+                            "text": "Yearning for peace! That’s what I see in your eyes, my friend.",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "No, you misheard me I’m-",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Bard",
+                            "text": "Well, I’ve got just the thing if you’re feeling blue.",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "Oh no",
+                            "mood": "neutral"
+                        },
+                        {
+                            "speaker": "Bard",
+                            "text": "Here’s one of my favorite songs to play.",
+                            "mood": "pleased"
+                        }
+                    ]
+                },
+                {
+                    "index": "1",
+                    "statements": []
+                }
+            ],
+            "transitions": [
+                {
+                    "source": "0",
+                    "options": [
+                        {
+                            "target": "1",
+                            "optionText": "",
+                            "conditions": [],
+                            "triggers": [
+                                "getBardsRequiem"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "Paladin_G",
+            "finalStates": [
+                "1"
+            ],
+            "metaconditions": [
+                "hasPaladinRevived"
+            ],
+            "states": [
+                {
+                    "index": "0",
+                    "statements": [
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "AHHHHHHHHH!",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "I’m so happy you’re back!",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "…Are you good?",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "THE TORMENT! I’VE FELT IT ALL.",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "BROKEN BONE.",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "A G O N Y.",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "THE COLLECTIVE GRIEF OF ALL THAT DECAYS…",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "…",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "THE TORMENT! I’VE FELT IT ALL.",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "…then a deafening, all-encompassing silence.",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Pal",
+                            "text": "A-aren’t you happy to be alive?",
+                            "mood": "upset"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "After that…",
+                            "mood": "upset"
+                        }
+                    ]
+                },
+                {
+                    "index": "1",
+                    "statements": []
+                }
+            ],
+            "transitions": [
+                {
+                    "source": "0",
+                    "options": [
+                        {
+                            "target": "1",
+                            "optionText": "",
+                            "conditions": [],
+                            "triggers": [
+                                "getExistentialSweat"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

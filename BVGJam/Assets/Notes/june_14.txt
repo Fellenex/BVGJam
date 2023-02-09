@@ -1,0 +1,50 @@
+
+v Dialog icon loading consistency
+v Resized dialog window for new 1920x1080 resolution 
+v Big big big debug script
+
+Prioritized
+	Remove conversation exiting
+	~ Add game-exiting (screen to confirm after pressing escape?)
+	v Camera clamping
+
+
+	v Box collider positioning (player slowly slowly falls downwards but we need the rigidbody for movement)
+		locked movement in the y-axis (make sure NPCs are all reachable)
+	As they come in:
+x		dialog icons inclusion
+x		overworld sprite inclusion
+		.json files inclusion
+
+
+	Dramatic dialog triggers	
+v	"meets all metaconditions" checking function for starting new conversations
+v		.json file change for this
+
+
+
+Total Listing
+Conversations
+	Metacondition directives between NPC conversation IDs
+v	Character dialog icons (7/7 characters completed)
+x	Available dialog overhead icon
+x	Unavailable dialog overhead icon
+x	Avail/Unavail icon swaps
+	Conversation .json files (1/7 characters completed)
+	Validate conversation flows, triggers, etc
+
+Overworld
+v	Prevent camera from looking offscreen (either movement lock the player or clamp camera)
+v	Character idle sprites (7/7 characters completed)
+
+UI
+	Passing text+colour to the dramatic dialog screen
+	Remove conversation-exiting
+v	Add game-exiting
+	A way to explain input methods
+		(screen for name input and keybind display)
+
+Probably not happening
+	Little sounds while NPCs are talking
+	Coloured text based on speaker's mood
+	Fluid jumping

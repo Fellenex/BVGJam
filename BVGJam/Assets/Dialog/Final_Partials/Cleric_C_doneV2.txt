@@ -1,0 +1,437 @@
+{
+	"conversations": [{
+		"id": "Cleric_C",
+		"starter": "npc",
+		"finalStates": ["E5", "D3", "B4", "F2"],
+		"metaconditions": ["hasPaladinBloodGood"],
+		"states": [{
+				"index": "0",
+				"speaker": "Saint_Casey",
+				"statements": [{
+						"text": "Hello there, young one.",
+						"mood": "neutral"
+					},
+					{
+						"text": "What joyous fate brings us together?",
+						"mood": "pleased"
+					}
+				]
+			},
+
+			{
+				"index": "1",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "What did?",
+					"mood": "upset"
+				}]
+			},
+
+			{
+				"index": "2",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "It sounds like the Assassin is the one to blame here. You simply found a knife.",
+					"mood": "neutral"
+				}]
+			},
+
+			{
+				"index": "3",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "Well…",
+					"mood": "pleased"
+				}]
+
+			},
+
+			{
+				"index": "B1",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "That’s breaking a sacred law! I simply cannot…even to bring back my friend.",
+					"mood": "upset"
+				}]
+
+			},
+			{
+				"index": "B2",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "These laws exist for a reason. Breaking them could spell condemnation.",
+					"mood": "upset"
+				}]
+
+			},
+			{
+				"index": "B3",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "I-I don’t know…",
+					"mood": "upset"
+				}]
+
+			},
+			{
+				"index": "B4",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "I suppose you’re right… ",
+					"mood": "upset"
+				}]
+
+
+			},
+			{
+				"index": "D1",
+				"speaker": "Casey_The_Heretic",
+				"statements": [{
+						"text": "It…",
+						"mood": "upset"
+					},
+					{
+						"text": "…it worked.",
+						"mood": "neutral"
+					}
+				]
+
+			},
+			{
+				"index": "D2",
+				"speaker": "Casey_The_Heretic",
+				"statements": [{
+						"text": "No- not nice. I shouldn’t have done this.",
+						"mood": "upset"
+					},
+					{
+						"text": "This was wrong.",
+						"mood": "upset"
+					},
+					{
+						"text": "I’ve been cursed, and Sir Jonathan suffers from a Rotted Soul.",
+						"mood": "upset"
+					}
+				]
+
+
+			},
+			{
+				"index": "D3",
+				"speaker": "Casey_The_Heretic",
+				"statements": [{
+					"text": "Don’t ask. Please just, leave him be. He’s suffered enough.",
+					"mood": "upset"
+				}]
+
+
+			},
+			{
+				"index": "E1",
+				"speaker": "Casey_The_Heretic",
+				"statements": [{
+					"text": "Oh…no….What have I done?!",
+					"mood": "upset"
+				}]
+
+
+			},
+			{
+				"index": "E2",
+				"speaker": "Casey_The_Heretic",
+				"statements": [{
+						"text": "Of course not! It defies the holy order! Now he will suffer for all eternity…because of me.",
+						"mood": "upset"
+					},
+
+					{
+						"text": "Wait- why are you smiling?!",
+						"mood": "upset"
+					}
+				]
+
+			},
+			{
+				"index": "E3",
+				"speaker": "Casey_The_Heretic",
+				"statements": [{
+					"text": "You got Purple?! That’s what you’re concerned about?",
+					"mood": "upset"
+				}]
+			},
+			{
+				"index": "E4",
+				"speaker": "Casey_The_Heretic",
+				"statements": [{
+					"text": "My Afterlife is over... I have committed an unforgivable sin, and will forever be inflicted with Undeath.",
+					"mood": "upset"
+				}]
+
+			},
+			{
+				"index": "E5",
+				"speaker": "Casey_The_Heretic",
+				"statements": [{
+					"text": "It’s really not.",
+					"mood": "neutral"
+				}]
+			},
+
+			{
+				"index": "F1",
+				"speaker": "Saint_Casey",
+				"statements": [{
+						"text": "We simply cannot bring back the dead. It goes against Divine Law.",
+						"mood": "upset"
+					},
+					{
+						"text": "However…we can still do something for the dead.",
+						"mood": "neutral"
+					}
+				]
+			},
+			{
+				"index": "F2",
+				"speaker": "Saint_Casey",
+				"statements": [{
+					"text": "You can bear witness to his Funeral Rites. Fate has brought us together for this purpose.",
+					"mood": "neutral"
+				}]
+
+			}
+		],
+		"transitions": [{
+				"source": "0",
+				"target": "1",
+				"statements": [{
+					"text": "It-it all happened so fast.",
+					"mood": "upset"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "1",
+				"target": "2",
+				"statements": [{
+						"text": "Sir Jonathan sort of…died, and it’s all my fault.",
+						"mood": "upset"
+					},
+					{
+						"text": "I tried to do the right thing, and before I knew it, an Assassin was ready to murder him.",
+						"mood": "upset"
+					}
+				],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "2",
+				"target": "3",
+				"statements": [{
+					"text": "Isn’t there anything we can do with your Cleric magic?",
+					"mood": "upset"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "3",
+				"target": "B1",
+				"statements": [{
+					"text": "Could you try to bring him back with your Cleric magic?",
+					"mood": "neutral"
+				}],
+				"optionText": "Maybe I could convince her to resurrect Sir Jonathan",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "3",
+				"target": "F1",
+				"statements": [{
+					"text": "Is there anything we can do?",
+					"mood": "neutral"
+				}],
+				"optionText": "Ask the Cleric if she has any other ideas",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "B1",
+				"target": "B2",
+				"statements": [{
+					"text": "You have the power to perform miracles!",
+					"mood": "neutral"
+				}, {
+					"text": "What good are those powers if you don’t use them.",
+					"mood": "upset"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "B2",
+				"target": "B3",
+				"statements": [{
+					"text": "Is that condemnation worse than the death of your friend?",
+					"mood": "upset"
+
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "B3",
+				"target": "B4",
+				"statements": [{
+					"text": "Come on, we have to at least try.",
+					"mood": "pleased"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "B4",
+				"target": "D1",
+				"statements": [{
+					"text": "",
+					"mood": "upset"
+				}],
+				"optionText": "",
+				"conditions": ["!hasBlue"],
+				"triggers": ["getCursedAura", "getPaladinRevived"]
+			},
+			{
+				"source": "D1",
+				"target": "D2",
+				"statements": [{
+					"text": "You reversed death and I got Purple! Nice!",
+					"mood": "pleased"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "D2",
+				"target": "D3",
+				"statements": [{
+					"text": "A Rotted Soul?",
+					"mood": "upset"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "D3",
+				"target": "D4",
+				"statements": [{
+					"text": "…",
+					"mood": "I don’t know… I could still use some Blue…"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "B4",
+				"target": "E1",
+				"statements": [{
+					"text": "Uh oh.",
+					"mood": "upset"
+				}],
+				"optionText": "",
+				"conditions": ["hasBlue"],
+				"triggers": ["getEvilAura"]
+			},
+			{
+				"source": "E1",
+				"target": "E2",
+				"statements": [{
+					"text": "Did it work?",
+					"mood": "pleased"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "E2",
+				"target": "E3",
+				"statements": [{
+					"text": "I mean…I got Purple…",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "E3",
+				"target": "E4",
+				"statements": [{
+					"text": "It’s kinda the whole reason I’m here.",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "E4",
+				"target": "E5",
+				"statements": [{
+					"text": "Sounds kind of cool to me.",
+					"mood": "pleased"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "E5",
+				"target": "E6",
+				"statements": [{
+					"text": "Maybe they should call it something less cool then…",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "F1",
+				"target": "F2",
+				"statements": [{
+					"text": "How can I help?",
+					"mood": "pleased"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": []
+			},
+			{
+				"source": "F2",
+				"target": "F3",
+				"statements": [{
+					"text": "",
+					"mood": "neutral"
+				}],
+				"optionText": "",
+				"conditions": [],
+				"triggers": ["getClericsMourning"]
+			}
+
+
+
+		]
+	}]
+}

@@ -24,10 +24,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
+      propertyPath: npcName
+      value: Mark_The_Bard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: classType
+      value: Bard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: displayName
+      value: Mark The Bard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: conversationId
+      value: Bard_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
       propertyPath: dialogIconUpset
       value: 
       objectReference: {fileID: 21300000, guid: 1d7e78f9c5b414348b419a8f82ca8572,
         type: 3}
+    - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: conversationJson
+      value: 
+      objectReference: {fileID: 4900000, guid: 3263a26dcbbb41641a3fd95e1a7707dd, type: 3}
     - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: dialogIconNeutral
@@ -68,17 +93,17 @@ PrefabInstance:
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3263.168
+      value: 1105
       objectReference: {fileID: 0}
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 466.07162
+      value: 376
       objectReference: {fileID: 0}
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
@@ -128,6 +153,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3795280135728259499, guid: 53f6ba81b93ac4b41a00149b9b1f0332, type: 3}
+    - {fileID: 3795280135728259500, guid: 53f6ba81b93ac4b41a00149b9b1f0332, type: 3}
+    - {fileID: 3795280135728259498, guid: 53f6ba81b93ac4b41a00149b9b1f0332, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 53f6ba81b93ac4b41a00149b9b1f0332, type: 3}
 --- !u!1 &4958054006044821083 stripped
 GameObject:

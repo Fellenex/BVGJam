@@ -86,6 +86,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
+      propertyPath: classType
+      value: Grandma_Yaga
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
       propertyPath: displayName
       value: Grandma Yaga
       objectReference: {fileID: 0}
@@ -160,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1520
+      value: -1780
       objectReference: {fileID: 0}
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
@@ -245,6 +250,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3795280135728259499, guid: 53f6ba81b93ac4b41a00149b9b1f0332, type: 3}
+    - {fileID: 3795280135728259500, guid: 53f6ba81b93ac4b41a00149b9b1f0332, type: 3}
+    - {fileID: 3795280135728259498, guid: 53f6ba81b93ac4b41a00149b9b1f0332, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 53f6ba81b93ac4b41a00149b9b1f0332, type: 3}
 --- !u!1 &5362147572540200517 stripped
 GameObject:

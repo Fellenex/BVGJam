@@ -33,7 +33,7 @@ public class DEBUG_JSONS : MonoBehaviour {
         //Start by trying to find any undefined entries (debug.log will receive null and get upset)
         foreach (Conversation convo in json.conversations) {
             Debug.Log(convo.id);
-            Debug.Log(convo.starter);
+            Debug.Log(convo.states[0].statements[0].speaker);
 
             Debug.Log(convo.finalStates);
             foreach (string fs in convo.finalStates) {
@@ -49,8 +49,10 @@ public class DEBUG_JSONS : MonoBehaviour {
                 }
             }
 
+            /*
+
             Debug.Log(convo.states);
-            foreach (Conversation_NPCState state in convo.states) {
+            foreach (Conversation_State state in convo.states) {
                 Debug.Log(state.index);
 
                 //keep track of the state indices for alter
@@ -118,6 +120,8 @@ public class DEBUG_JSONS : MonoBehaviour {
                     }
                 }
             }
+
+            */
         }
 
         //Test to see if the NPC state labels and the player transition labels are the same set
@@ -173,4 +177,30 @@ public class DEBUG_JSONS : MonoBehaviour {
             }
         }
     }
+
+    /*
+    public Conversation advancedReadFile(TextAsset _conversationsFile, string _id) {
+        Debug.Log("trying to find " + _conversationsFile.name);
+        Conversation acCo = null; //activeConversation-to-be
+
+        string fileContents = _conversationsFile.ToString();
+        Debug.Log("Found the following: ");
+        Debug.Log(fileContents);
+        json = DialogDataJSON.CreateFromJSON(fileContents);
+
+        Debug.Log("looking for id "+_id);
+        //Loop through the conversations to try to find a matching id
+        foreach (Conversation convo in json.conversations) {
+            if (_id == convo.id){
+                acCo = convo;
+                break;
+            }
+        }
+        if (acCo == null) {
+            Debug.Log("No conversation(x) with id " + _id + " found");
+        }
+        return acCo;
+    }
+    */
+    
 }

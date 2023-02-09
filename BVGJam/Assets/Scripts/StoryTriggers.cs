@@ -165,31 +165,55 @@ public static class StoryTriggers {
         Debug.Log("Triggering: " + _triggerName);
         Dictionary<string, string> dData = new Dictionary<string, string>();
 
+        //TODO here is where to put the dramatic dialog initiation
+
         //Setup the parent colour triggers to fire off as well
         if (blueGoodTriggers.Contains(_triggerName) || blueBadTriggers.Contains(_triggerName)) {
             
             //if this is the player's first time getting blue, do some extra triggers
             if (!StoryConditions.playerMeetsCondition(getBlue)) {
                 trigger(getBlue);
-
             }
             
         }
         if (redGoodTriggers.Contains(_triggerName) || redBadTriggers.Contains(_triggerName)) {
             trigger(getRed);
+
+            //if this is the player's first time getting red, do some extra triggers
+            if (!StoryConditions.playerMeetsCondition(getRed)) {
+                trigger(getRed);
+            }
         }
         if (yellowGoodTriggers.Contains(_triggerName) || yellowBadTriggers.Contains(_triggerName)) {
             trigger(getYellow);
+
+            //if this is the player's first time getting yellow, do some extra triggers
+            if (!StoryConditions.playerMeetsCondition(getYellow)) {
+                trigger(getYellow);
+            }
         }
         if (greenGoodTriggers.Contains(_triggerName) || greenBadTriggers.Contains(_triggerName)) {
             trigger(getGreen);
+
+            //if this is the player's first time getting green, do some extra triggers
+            if (!StoryConditions.playerMeetsCondition(getGreen)) {
+                trigger(getGreen);
+            }
         }
         if (purpleGoodTriggers.Contains(_triggerName) || purpleBadTriggers.Contains(_triggerName)) {
             trigger(getPurple);
+
+            //if this is the player's first time getting purple, do some extra triggers
+            if (!StoryConditions.playerMeetsCondition(getPurple)) {
+                trigger(getPurple);
+            }
         }
         
 
-        if(_triggerName == "oops"){
+        if(_triggerName == getBlue){
+            //Disable the hunt for blue, if blue is found
+            StoryConditions.playerHasUnmetCondition(convertTriggerIntoCondition(getBlueHunt));
+
             //special case. can't use switch because it thinks it'll change
             //could always make the above variables constant to fix this,
             //  but i don't think we have very many special triggers
