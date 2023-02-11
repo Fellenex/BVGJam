@@ -42,7 +42,7 @@ public class DialogController : MonoBehaviour {
             advanceConversation();
         }
         if (Input.GetKeyDown(KeyCode.X)) {
-            DialogManager.instance.OnStopConversation(activeConversation);
+            DialogManager.instance.OnStopConversation();
         }
     }
 
@@ -69,18 +69,11 @@ public class DialogController : MonoBehaviour {
             }
         }
         if (activeNPC == "") {
-            Debug.LogError("DailogController::StartConversation() Couldn't find who the player is speaking with");
+            Debug.LogError("DialogController::StartConversation() Couldn't find who the player is speaking with");
         }
 
-        startStatements(activeState);
-
-        //Setup the dialog window differently depending on who's starting the conversation
         graphics.initializeConversation(activeNPC);
-        if (activeStatement.speaker == PLAYER_STRING) {
-            graphics.playerStatement(activeStatement);
-        } else {
-            graphics.npcStatement(activeStatement);
-        }
+        startStatements(activeState);
     }
 
     //TODO timers to auto-advance based on how many characters the text is?
@@ -97,7 +90,7 @@ public class DialogController : MonoBehaviour {
                 //No more statements available, and no transitions available
                 Debug.Log("Stopping conversation - no more statements available");
                 //Let the manager know we're stopping this conversation
-                DialogManager.instance.OnStopConversation(activeConversation);
+                DialogManager.instance.OnStopConversation();
             }
         }
     }
@@ -142,8 +135,28 @@ public class DialogController : MonoBehaviour {
         graphics.playerIsChoosing(_playerOptions);
     }
 
-    private void StopConversation(Conversation _conversation) {
-        Debug.Log("DialogController::StopConversation() has begun ("+activeConversation.id+")");
+    private void StopConversation(){
+        Debug.Log("DialogController::StopConversation() has begun");
+
+
+        /*
+        try {
+            //If we are in a final state for the NPC, then we mark this conversation as completed
+            foreach (string state in activeConversation.finalStates) {
+                if (activeState.index == state) {
+                    Debug.Log("Completed conversation "+activeState.index);
+                    StoryConditions.finishConversation(activeConversation.id, npcClass);
+
+                    //get a handle to the npc to change their conversation id
+                }
+            }
+        }
+        catch (NullReferenceException e) {
+            //If we are closing out of the conversation because there was some issue
+            //  obtaining the conversation, then it won't have any finalStates property.
+        }
+        */
+        //GetComponent<CloseDialogWindow>().dialogClose();
     }
 
 

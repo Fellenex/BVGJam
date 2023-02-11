@@ -5,7 +5,7 @@ public class Conversation_State {
     public Conversation_Statement[] statements;
 
     public bool hasMoreStatements(int _index) {
-        return _index < statements.Length - 1;
+        return _index < statements.Length;
     }
 
     //Gets the first speaker in a conversation.

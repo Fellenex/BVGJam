@@ -8,13 +8,14 @@ public class DialogManager : MonoBehaviour {
 
     public static DialogManager instance;
 
+    public bool dialogOpen = false;
 
     public GameObject audioController;       // a handle to change audio volume based on conversation status
     public GameObject dialogCanvas;         // a handle to change the relevant conversation shown
     public GameObject environment;          // a handle to disable/enable the environment
 
     public event Action<Conversation> StartConversationEvent;
-    public event Action<Conversation> StopConversationEvent;
+    public event Action StopConversationEvent;
     public event Action AdvanceConversation;
 
 
@@ -52,6 +53,7 @@ public class DialogManager : MonoBehaviour {
         Debug.Log("Started a conversation with " + _npcName);
 
         //environment.SetActive(false);
+        dialogOpen = true;
         dialogCanvas.SetActive(true);
 
         //Dispatch an event that the dialog prefab can pick up
@@ -114,13 +116,12 @@ public class DialogManager : MonoBehaviour {
         //}
     //}
 
+    public void OnStopConversation(){
+        Debug.Log("Ending the active conversation");
 
-
-
-
-    public void OnStopConversation(Conversation _conversation) {
-        Debug.Log("Ended a conversation " + _conversation.id);
-
+        dialogOpen = false;
+        dialogCanvas.SetActive(false);
+        StopConversationEvent?.Invoke();
         /*
         Receive a list of triggers that should get flipped as a result of this conversation ending
         Receive a list of the state label that the conversation was stopped in
@@ -131,37 +132,14 @@ public class DialogManager : MonoBehaviour {
         */
 
         //environment.SetActive(true);
-        dialogCanvas.SetActive(false);
-
-        StopConversationEvent?.Invoke(_conversation);
     }
+    
 
     //"Gracefully" close out the conversation.
     public void closeConversation() {
         //Put the music back to normal
         audioController.GetComponent<AudioSource>().volume = 1.0f;
 
-
-
-        //TODO fix this up
-        /*
-        try {
-            //If we are in a final state for the NPC, then we mark this conversation as completed
-            foreach (string state in activeConversation.finalStates) {
-                if (activeState.index == state) {
-                    Debug.Log("Completed conversation "+activeState.index);
-                    StoryConditions.finishConversation(activeConversation.id, npcClass);
-
-                    //get a handle to the npc to change their conversation id
-                }
-            }
-        }
-        catch (NullReferenceException e) {
-            //If we are closing out of the conversation because there was some issue
-            //  obtaining the conversation, then it won't have any finalStates property.
-        }
-        GetComponent<CloseDialogWindow>().dialogClose();
-        */
     }
 
 

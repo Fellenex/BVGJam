@@ -3,8 +3,8 @@
         {
             "id": "Paladin_A",
             "finalStates": [
-                "A2",
-                "B2"
+                "B1",
+                "A2"
             ],
             "metaconditions": [],
             "states": [
@@ -246,12 +246,7 @@
                             "speaker": "Pal",
                             "text": "I’m Pal!",
                             "mood": "neutral"
-                        }
-                    ]
-                },
-                {
-                    "index": "B2",
-                    "statements": [
+                        },
                         {
                             "speaker": "Sir_Jonathan",
                             "text": "A fitting name. Good luck on your quest for Blue!",
@@ -287,26 +282,10 @@
                             "target": "A2",
                             "optionText": "",
                             "conditions": [],
-                            "triggers": [
-                                "getToxicSweat"
-                            ]
+                            "triggers": [ "getToxicSweat" ]
                         }
                     ]
-                },
-                {
-                    "source": "B1",
-                    "options": [
-                        {
-                            "target": "B2",
-                            "optionText": "",
-                            "conditions": [],
-                            "triggers": [
-                                "getBlueHunt"
-                            ]
-                        }
-                    ]
-                }
-                
+                }                
             ]
         },
         {

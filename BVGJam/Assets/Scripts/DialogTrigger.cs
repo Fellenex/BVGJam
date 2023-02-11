@@ -68,20 +68,20 @@ public class DialogTrigger : MonoBehaviour {
         }
     }
 
-    public void checkForDialogInitiation()
-    {
+    public void checkForDialogInitiation() {
 
-        if (!playerReference.GetComponent<Player>().dialogOpen
-                && Input.GetKeyDown(dialogTriggerKey))
-        {
+        if (!DialogManager.instance.dialogOpen && Input.GetKeyDown(dialogTriggerKey)) {
 
             Debug.Log("Player has tried to start a conversation");
+
+            //TODO all of this logic should be in DialogManager.
+            //DialogTrigger should only be responsible for telling DialogManager to try and open the conversation
 
             //Only let the player open a dialog if they have not finished this conversation
             Debug.Log(behaviour.classType);
             Debug.Log(StoryConditions.nextConversationIdByActor);
 
-            playerReference.GetComponent<Player>().dialogOpen = true;
+            DialogManager.instance.dialogOpen = true;
             DialogManager.instance.OnStartConversation(npc.name);
 
             /*

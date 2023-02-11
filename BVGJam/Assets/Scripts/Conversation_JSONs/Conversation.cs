@@ -37,7 +37,7 @@ public class Conversation {
                 return transition;
             }
         }
-        Debug.LogError("Conversation::getTransitionByIndex() Unknown conversaiton index " + _index);
+        Debug.Log("Conversation::getTransitionByIndex() Unknown conversation index " + _index);
         return null;
     }
 }

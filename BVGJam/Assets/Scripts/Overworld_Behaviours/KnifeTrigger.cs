@@ -6,13 +6,12 @@ public class KnifeTrigger : MonoBehaviour {
     
 
     public GameObject knifeAlertIcon;
-    private GameObject playerReference;
+    //private GameObject playerReference;
     private bool triggerActive = false;
     private bool knifeFound;
 
     void Start() {
-        playerReference = GameObject.FindGameObjectWithTag("Player");
-        
+        //playerReference = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -39,8 +38,7 @@ public class KnifeTrigger : MonoBehaviour {
     }
 
     void checkForKnifePickup() {
-        if (!playerReference.GetComponent<Player>().dialogOpen
-                && Input.GetKeyDown(KeyCode.E)){
+        if (!DialogManager.instance.dialogOpen && Input.GetKeyDown(KeyCode.E)) {
     
             StoryTriggers.trigger(StoryTriggers.getFoundKnife);
             knifeAlertIcon.SetActive(false);

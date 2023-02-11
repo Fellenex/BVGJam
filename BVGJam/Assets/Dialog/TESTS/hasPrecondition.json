@@ -1,0 +1,49 @@
+{
+    "conversations": [
+        {
+            "id": "Paladin_A",
+            "finalStates": ["1"],
+            "metaconditions": ["getExistentialSweat"],
+            "states": [
+                {
+                    "index": "0",
+                    "statements": [
+                        {
+                            "speaker": "Grandma_Yaga",
+                            "text": "You got it!",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Grandma_Yaga",
+                            "text": "Great job!",
+                            "mood": "upset"
+                        }
+                    ]
+                },
+                {
+                    "index": "1",
+                    "statements": [
+                        {
+                            "speaker": "Pal",
+                            "text": "Thanks!!",
+                            "mood": "pleased"
+                        }
+                    ]
+                }
+            ],
+            "transitions": [
+                {
+                    "source": "0",
+                    "options": [
+                        {
+                            "target": "1",
+                            "optionText": "",
+                            "conditions": [],
+                            "triggers": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

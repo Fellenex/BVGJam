@@ -1,0 +1,51 @@
+{
+    "conversations": [
+        {
+            "id": "Paladin_A",
+            "finalStates": ["1"],
+            "metaconditions": [],
+            "states": [
+                {
+                    "index": "0",
+                    "statements": [
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Oh!",
+                            "mood": "pleased"
+                        },
+                        {
+                            "speaker": "Sir_Jonathan",
+                            "text": "Ahh!",
+                            "mood": "upset"
+                        }
+                    ]
+                },
+                {
+                    "index": "1",
+                    "statements": [
+                        {
+                            "speaker": "Pal",
+                            "text": "Thanks!!",
+                            "mood": "pleased"
+                        }
+                    ]
+                }
+            ],
+            "transitions": [
+                {
+                    "source": "0",
+                    "options": [
+                        {
+                            "target": "1",
+                            "optionText": "",
+                            "conditions": [],
+                            "triggers": [
+                                "getExistentialSweat"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

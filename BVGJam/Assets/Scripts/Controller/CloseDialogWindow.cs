@@ -4,20 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CloseDialogWindow : MonoBehaviour {
-    
-    private GameObject playerReference;
 
     void Awake() {
-        playerReference = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void dialogClose() {
-        playerReference.GetComponent<Player>().dialogOpen = false;
+        //TODO do we need this now that we have the registered events in DialogManager?
+        //Probably this could all be handled in dialogmanager
+        DialogManager.instance.dialogOpen = false;
         SceneManager.UnloadSceneAsync("DialogWindow");
     }
 
     public void dramaticDialogClose() {
-        playerReference.GetComponent<Player>().dialogOpen = false;
+        DialogManager.instance.dialogOpen = false;
         SceneManager.UnloadSceneAsync("DramaticDialogWindow");
     }
 }

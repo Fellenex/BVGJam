@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class DramaticDialogManager : MonoBehaviour {
 
-    public GameObject playerReference;
     public GameObject panel;
     public Text dramaticTextHolder;
     public CanvasRenderer canvas;
@@ -37,8 +36,7 @@ public class DramaticDialogManager : MonoBehaviour {
     void Start() {
         //Don't let the player skip these scenes until things have properly faded in
         playerCanMoveOn = false;
-        playerReference = GameObject.FindGameObjectWithTag("Player");
-        playerReference.GetComponent<Player>().dialogOpen = true;
+        DialogManager.instance.dialogOpen = true;
 
         //Reset the canvas to have no alpha and be totally black
         canvas = panel.GetComponent<CanvasRenderer>();
