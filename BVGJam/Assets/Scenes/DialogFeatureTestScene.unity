@@ -840,32 +840,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1688286329}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &851252246
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851252241}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 20.8033, y: 24.18}
-    newSize: {x: 3, y: 3}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 6, y: 20}
-  m_EdgeRadius: 0
 --- !u!1 &882896971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,9 +1315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29905186651d4ea4cbc1895ce6d64a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogOpen: 0
   audioController: {fileID: 1965482530}
   dialogCanvas: {fileID: 1207629989}
-  environment: {fileID: 805255943}
   npcs:
   - {fileID: 1223561347}
   - {fileID: 1638860983}
@@ -1434,7 +1408,7 @@ PrefabInstance:
         type: 3}
       propertyPath: conversationJSON
       value: 
-      objectReference: {fileID: 4900000, guid: 51a7382f9c621ba49a3286fbce30887c, type: 3}
+      objectReference: {fileID: 4900000, guid: 58d2221ec767a6f40af67d88c1dae6cd, type: 3}
     - target: {fileID: 5362147572540200517, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_Name
@@ -1448,7 +1422,7 @@ PrefabInstance:
     - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1780
+      value: -2827
       objectReference: {fileID: 0}
     - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
@@ -1809,7 +1783,7 @@ PrefabInstance:
         type: 3}
       propertyPath: conversationJSON
       value: 
-      objectReference: {fileID: 4900000, guid: f1089389c189bfb4ab8684e8a0f14b9d, type: 3}
+      objectReference: {fileID: 4900000, guid: 9b1bb2174d2be36478507fa90ed4e7b7, type: 3}
     - target: {fileID: 2214916798627622301, guid: e4b3ac6f82d7c5e439ce190072143fa4,
         type: 3}
       propertyPath: m_Name
@@ -1823,7 +1797,7 @@ PrefabInstance:
     - target: {fileID: 2214916798627622303, guid: e4b3ac6f82d7c5e439ce190072143fa4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2409
+      value: -2162
       objectReference: {fileID: 0}
     - target: {fileID: 2214916798627622303, guid: e4b3ac6f82d7c5e439ce190072143fa4,
         type: 3}

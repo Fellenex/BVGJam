@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 
 public class DialogManager : MonoBehaviour {
@@ -12,19 +12,17 @@ public class DialogManager : MonoBehaviour {
 
     public GameObject audioController;       // a handle to change audio volume based on conversation status
     public GameObject dialogCanvas;         // a handle to change the relevant conversation shown
-    public GameObject environment;          // a handle to disable/enable the environment
+    //public GameObject environment;          // a handle to disable/enable the environment
 
     public event Action<Conversation> StartConversationEvent;
     public event Action StopConversationEvent;
-    public event Action AdvanceConversation;
+    //public event Action AdvanceConversation;
 
 
     //map npc names to their respective dialog files
     public List<GameObject> npcs;
     public Dictionary<string, DialogDataJSON> npcDialogFiles;
     private Dictionary<string, Conversation> npcActiveConversations;
-
-    private string dialogSceneName = "DialogWindow";
 
     void Awake() {
         //Spoofing a static class while also allowing it to inherit from MonoBehaviour
