@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
-//TODO gotta have some other script that checks the secondary conditions
-//  and assigns their truth value based on what is happening in-game
-
 public static class StoryConditions {
 
     //Keep track of which NPC conversations have been entered.
@@ -23,12 +19,6 @@ public static class StoryConditions {
     public enum ConversationStatus { Started, Finished };
     public static Dictionary<string, ConversationStatus> conversationStatus = new Dictionary<string, ConversationStatus>();
 
-
-    /*
-    We don't need to populate any of the default conditions, since
-        we automatically set them as false if we are checking the condition
-        and it has yet to be added to secondaryConditions.
-    */
 
 
     public static bool playerMeetsCondition(string _condition) {

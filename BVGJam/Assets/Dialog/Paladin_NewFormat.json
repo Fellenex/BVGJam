@@ -430,16 +430,6 @@
                             "mood": "neutral"
                         }
                     ]
-                },
-                {
-                    "index": "1",
-                    "statements": [
-                        {
-                            "speaker": "Pal",
-                            "text": "Uh, don't worry about it! See you later!",
-                            "mood": "neutral"
-                        }
-                    ]
                 }
             ],
             "transitions": [
@@ -448,11 +438,9 @@
                     "options": [
                         {
                             "target": "1",
-                            "optionText": "",
+                            "optionText": "Uh, don't worry about it! See you later!",
                             "conditions": [],
-                            "triggers": [
-                                "getJusticeSweat"
-                            ]
+                            "triggers": [ "getJusticeSweat" ]
                         }    
                     ]
                     

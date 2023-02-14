@@ -2,8 +2,8 @@
     "conversations": [
         {
             "id": "Grandma_Yaga_A",
-            "finalStates": ["1"],
-            "metaconditions": ["existentialSweat"],
+            "finalStates": ["1","2"],
+            "metaconditions": [],
             "states": [
                 {
                     "index": "0",
@@ -29,6 +29,16 @@
                             "mood": "pleased"
                         }
                     ]
+                },
+                {
+                    "index": "2",
+                    "statements": [
+                        {
+                            "speaker": "Pal",
+                            "text": "Boooo!!",
+                            "mood": "upset"
+                        }
+                    ]
                 }
             ],
             "transitions": [
@@ -40,6 +50,12 @@
                             "optionText": "Wowie",
                             "conditions": [],
                             "triggers": []
+                        },
+                        {
+                            "target": "2",
+                            "optionText": "Zowie",
+                            "conditions" : ["existentialSweat"],
+                            "triggers" : ["based"]
                         }
                     ]
                 }

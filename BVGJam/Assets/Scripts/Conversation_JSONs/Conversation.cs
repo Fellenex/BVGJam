@@ -42,6 +42,7 @@ public class Conversation {
         return null;
     }
 
+    //Whether the current state is an accepting state
     public bool isAcceptingState(string _index) {
         return Array.Exists(finalStates, x => x == "index");
     }

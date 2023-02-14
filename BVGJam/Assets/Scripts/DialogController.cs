@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+using System.Linq;
 using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour {
@@ -120,7 +121,6 @@ public class DialogController : MonoBehaviour {
     //Start with this set of statements
     private void startStatements(Conversation_State _state) {
         PLAYER_CHOOSING = false;
-        activeState = _state;   //redundant but maybe good to keep in
         activeStatement = _state.getFirstStatement();
         activeStatementIndex = 0;
 
@@ -131,7 +131,7 @@ public class DialogController : MonoBehaviour {
         }
     }
 
-    //Move onto the next statement
+    //Move onto the next statement in the current state
     private void nextStatement(Conversation_State _state) {
         PLAYER_CHOOSING = false;
         activeStatement = _state.statements[activeStatementIndex];
@@ -145,64 +145,19 @@ public class DialogController : MonoBehaviour {
     }
 
     //Hand control over to the player for choosing between a few options
-    private void playerChoosing(Conversation_Transition _playerOptions) {
+    private void playerChoosing(Conversation_Transition _transition) {
         PLAYER_CHOOSING = true;
-        graphics.playerIsChoosing(_playerOptions);
+
+        //Only show the options to which the player currently has access
+        graphics.playerIsChoosing(getCurrentlyAvailableOptions(_transition));
     }
 
-
-    /*
-    //Look through all the transitions to see if any match the currently active state
-    //If any do, then also check whether the player meets the preconditions necessary for it
-    public Conversation_Transition getPossibleTransitions() {
-        //Find which transition leads out of the current state
-        Conversation_Transition possibleTransitions = new List<Conversation_Transition>();
-
-        /*
-        for (var i=0; i < activeConversation.transitions.Length; i++) {
-
-            //Debug.Log("Comparing the two strings: '"+activeConversation.transitions[i].source.ToString()+"' and '"+activeState.index.ToString()+"'");
-            //Debug.Log("The result is: ");
-            //Debug.Log(activeConversation.transitions[i].source.ToString() == activeState.index.ToString());
-            //Debug.Log("9" == activeState.index.ToString());
-            //Debug.Log("9" == activeConversation.transitions[i].source.ToString());
-
-            //Debug.Log("Comparing the two strings: '"+activeConversation.transitions[i].source+"' and '"+activeState.index+"'");
-            //Debug.Log("The result is: ");
-            //Debug.Log(activeConversation.transitions[i].source.ToString().Equals(activeState.index));
-
-            if (activeConversation.transitions[i].source.ToString() == activeState.index.ToString()
-                    && playerMeetsPreconditions(activeConversation.transitions[i])){
-                
-                possibleTransitions.Add(activeConversation.transitions[i]);
-                Debug.Log("Adding the following possible transition: " + activeConversation.transitions[i].statements[0].text);
-            }
-        }
-        */
-        /*
-        return possibleTransitions;
-    }
-    */
-
-    
-
-
-    //Gets the NPC state that will result from taking _transition
-    public Conversation_State getNewNPCState(Conversation_Transition _transition) {
-        return null;
-        /*
-        TODO was not referenced when I commented it out
-        foreach (Conversation_State state in activeConversation.states) {
-            if (state.index.ToString() == _transition.target.ToString()) {
-                return state;
-            }
-        }
-        return null; //activeConversation.states[_transition.target];
-        */
+    private List<Conversation_Option> getCurrentlyAvailableOptions(Conversation_Transition _transition) {
+        return _transition.options.Where(x => playerMeetsConditions(x)).ToList();
     }
 
     //Checks to see if player meets the conditions for a given transition option
-    public bool playerMeetsConditions(Conversation_Option _transitionOption) {
+    private bool playerMeetsConditions(Conversation_Option _transitionOption) {
 
         Debug.Log("Condition(s) Required: " + _transitionOption.conditions);
         foreach (string condition in _transitionOption.conditions) {
@@ -214,22 +169,4 @@ public class DialogController : MonoBehaviour {
         //If we have not yet returned false, then we have met all the preconditions
         return true;
     }
-
-    /*
-    //User has selected a text option! We should display it
-    public void buttonClicked(Button button) {
-        //TODO not just option 0
-        var targetState = button.GetComponent<OptionHolder>().option.target;
-        playerSpeaking(button.GetComponent<OptionHolder>().transition);
-    }
-    */
-
-
-    /*
-    //How many seconds to wait for the player to read each character of text
-    public float secondsPerCharacterToWait = 5f;
-    IEnumerator StatementWait() {
-        yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.E));
-    }
-    */
 }
