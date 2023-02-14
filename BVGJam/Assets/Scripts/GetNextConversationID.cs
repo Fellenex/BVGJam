@@ -7,6 +7,8 @@ public static class GetNextConversationID {
     public static Dictionary<string, string> currentConversationPerNPC;
     public static Dictionary<string,string[]> dialogMap;
 
+    public static Dictionary<string, string> nextConversationIdByActor;
+
     public static void setupDialogIDMappings(){ 
         currentConversationPerNPC = new Dictionary<string,string>();
         currentConversationPerNPC.Add("Paladin", "Paladin_A");
@@ -36,5 +38,12 @@ public static class GetNextConversationID {
         dialogMap["Bard_A"] = new string[]{};
         dialogMap["Monk_A"] = new string[]{};
         dialogMap["Druid_A"] = new string[]{}; //maybe assassin
+
+        nextConversationIdByActor = new Dictionary<string, string>();
+        nextConversationIdByActor["Cleric"] = currentConversationPerNPC["Cleric"];
+        nextConversationIdByActor["Monk"] = currentConversationPerNPC["Monk"];
+        nextConversationIdByActor["Bard"] = currentConversationPerNPC["Bard"];
+        nextConversationIdByActor["Druid"] = currentConversationPerNPC["Druid"];
+        nextConversationIdByActor["Paladin"] = currentConversationPerNPC["Paladin"];
     }
 }

@@ -1,78 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3795280134575161700
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3795280134575161699}
-  - component: {fileID: 3795280134575161697}
-  - component: {fileID: 3795280134575161698}
-  m_Layer: 0
-  m_Name: DialogTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3795280134575161699
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795280134575161700}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.56, y: 0.19, z: 0}
-  m_LocalScale: {x: 9.008331, y: 19.62656, z: 3.333333}
-  m_Children: []
-  m_Father: {fileID: 3795280135728259501}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &3795280134575161697
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795280134575161700}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &3795280134575161698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795280134575161700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab8624df7498f8498ae63010bf04471, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogIcon: {fileID: 593147592443714946}
-  dialogAvailableSprite: {fileID: 0}
-  dialogUnavailableSprite: {fileID: 0}
 --- !u!1 &3795280135728259503
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,6 +14,7 @@ GameObject:
   - component: {fileID: 3795280135728259500}
   - component: {fileID: 3795280135728259498}
   - component: {fileID: 3795280135728259497}
+  - component: {fileID: 7937604188104971435}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -105,7 +33,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3795280134575161699}
   - {fileID: 5647117409125959814}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -205,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 6, y: 20}
   m_EdgeRadius: 0
 --- !u!114 &3795280135728259498
 MonoBehaviour:
@@ -231,10 +158,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fda0f1b66853d4a896d9d84ce8baec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcName: FillerName
-  displayName: Filler Name
-  conversationId: opener
-  conversationJson: {fileID: 0}
+  classType: 
+  conversationJSON: {fileID: 0}
+--- !u!114 &7937604188104971435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3795280135728259503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab8624df7498f8498ae63010bf04471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogIcon: {fileID: 0}
+  dialogAvailableSprite: {fileID: 0}
+  dialogUnavailableSprite: {fileID: 0}
 --- !u!1001 &3116311121244952734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -255,7 +195,7 @@ PrefabInstance:
     - target: {fileID: 7305343447668822040, guid: b11c50234792b274c900ff724093094f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7305343447668822040, guid: b11c50234792b274c900ff724093094f,
         type: 3}
@@ -317,14 +257,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6899754641326493659, guid: b11c50234792b274c900ff724093094f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b11c50234792b274c900ff724093094f, type: 3}
---- !u!1 &593147592443714946 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2523164658934465820, guid: b11c50234792b274c900ff724093094f,
-    type: 3}
-  m_PrefabInstance: {fileID: 3116311121244952734}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5647117409125959814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7305343447668822040, guid: b11c50234792b274c900ff724093094f,

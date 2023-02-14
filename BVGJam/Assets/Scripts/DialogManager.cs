@@ -10,14 +10,12 @@ public class DialogManager : MonoBehaviour {
 
     public bool dialogOpen = false;
 
+    public DialogController dialogController;
     public GameObject audioController;       // a handle to change audio volume based on conversation status
     public GameObject dialogCanvas;         // a handle to change the relevant conversation shown
-    //public GameObject environment;          // a handle to disable/enable the environment
 
-    public event Action<Conversation> StartConversationEvent;
-    public event Action StopConversationEvent;
+    //public event Action<Conversation> StartConversationEvent;
     //public event Action AdvanceConversation;
-
 
     //map npc names to their respective dialog files
     public List<GameObject> npcs;
@@ -29,7 +27,7 @@ public class DialogManager : MonoBehaviour {
         if (instance == null) { instance = this; }
         else { Destroy(this); }
 
-        Debug.Log("Dialog Manager has awoken");
+        DialogController.StopConversationEvent += OnStopConversation;
     }
 
    void Start() {
@@ -48,78 +46,74 @@ public class DialogManager : MonoBehaviour {
     }
 
     public void OnStartConversation(string _npcName) {
-        Debug.Log("Started a conversation with " + _npcName);
+        Debug.Log("Trying to start a conversation with " + _npcName);
+        Conversation attemptedConversation = npcActiveConversations[_npcName];
 
-        //environment.SetActive(false);
-        dialogOpen = true;
-        dialogCanvas.SetActive(true);
-
-        //Dispatch an event that the dialog prefab can pick up
-        StartConversationEvent?.Invoke(npcActiveConversations[_npcName]);
+        if (playerMeetsMetaconditions(attemptedConversation.metaconditions)) {
+            dialogController.StartConversation(attemptedConversation);
+            dialogOpen = true;
+            dialogCanvas.SetActive(true);
+            //Dispatch an event that the dialog prefab can pick up
+            //StartConversationEvent?.Invoke(npcActiveConversations[_npcName]);
+        }
     }
 
-    //void Start() {
-        /*
-        graphics = GetComponent<DialogGraphics>();
-
-        //Load up the data setup through the DialogData class
-        npcName = DialogData.getParam("name");
-        npcClass = DialogData.getParam("class");
-        activeConversation = DialogData.getActiveConversation();
-        try {
-            //Setup things needed for starting a conversation
-            StoryConditions.startConversation(npcName, activeConversation.id);
-            activeState = activeConversation.states[0]; 
-            activeTransition = null;
-        }
-        catch (NullReferenceException e) {
-            //Break out of the start function early to avoid more errors
-            //  due to an unavailable file
-            closeConversation();
-        }
-
-        //Reduce the volume of music while in a conversation
-        audioController.GetComponent<AudioSource>().volume = 0.5f;
-
-        //We always start with a statement, whether it's from the player or the NPC
-        if (activeState.statements[0].speaker == "player") {
-
-            beginStateSpeech(activeState);
-
-            //playerSpeaking(activeState);
-
-            /*
-
-            //If the player is starting the conversation and they only have
-            //  one opening line, then they just say it right away
-            List<Conversation_Transition> initialOptions = getPossibleTransitions();
-            if (initialOptions.Count == 1){
-                activeTransition = initialOptions[0];
-                playerSpeaking(initialOptions[0]);
-            }
-            //If the player has no initial options then don't start the conversation
-            else if (initialOptions.Count == 0){
-                Debug.Log("Conversation "+DialogData.getParam("id")+" had no options. Exiting before it starts");
-                closeConversation();
-            }
-            //If the player has more than one choice, then let them choose!
-            else {
-                playerChoosing(getPossibleTransitions());
-            }
-
-            */
-        //}
-        //else{
-        //    npcSpeaking(activeState);
-        //}
-    //}
-
-    public void OnStopConversation(){
+    public void OnStopConversation(string _activeStateIndex){
         Debug.Log("Ending the active conversation");
 
         dialogOpen = false;
         dialogCanvas.SetActive(false);
-        StopConversationEvent?.Invoke();
+        audioController.GetComponent<AudioSource>().volume = 1.0f;
+
+        //TODO
+        //Setup what the next conversation for that NPC should be.
+        //Probably we should pass the conversation itself over, but we also need to know whether that conversation got finished
+        //Currently DialogController keeps track of whether the conversation was completed
+        //Here, then, we should just be deciding which conversation comes next.
+        //If the previous conversation was finished, then setup for the next one. 
+
+        /*
+            if (!StoryConditions.hasFinishedConversation(StoryConditions.nextConversationIdByActor[behaviour.classType])) {
+
+                
+
+                //Setup npc name and conversation ID to send over to the new scene
+                Dictionary<string, string> dData = new Dictionary<string,string>();
+
+                //dData.Add("id", behaviour.conversationID);
+                dData.Add("name", behaviour.npcName);
+                dData.Add("class", behaviour.classType);
+                //jsonDict.Add("display_name", behaviour.displayName);
+                
+                Debug.Log("Opening up "+behaviour.conversationJson);
+                Debug.Log("Looking for "+behaviour.activeConversation.id);
+
+
+                //DialogData.setActiveConversation(advancedReadFile(behaviour.conversationJson, behaviour.conversationId));
+
+                foreach (Conversation x in behaviour.jsonFile.conversations) {
+
+                    Debug.Log("checking to see if player meets metaconditions "+x.metaconditions);
+                    if (x.id == StoryConditions.nextConversationIdByActor[behaviour.classType]
+                            && playerMeetsMetaconditions(x.metaconditions)) {
+                        
+
+                        Debug.Log("They did meet the metaconditions!");
+                        DialogData.setActiveConversation(x);
+                    }
+                }
+
+                DialogData.load(dialogSceneName, dData);
+
+                
+            }
+            else{
+                //dialogIcon.GetComponent<SpriteRenderer>().sprite = dialogUnavailableSprite;
+            }
+
+        */
+
+        //StopConversationEvent?.Invoke();
         /*
         Receive a list of triggers that should get flipped as a result of this conversation ending
         Receive a list of the state label that the conversation was stopped in
@@ -131,19 +125,22 @@ public class DialogManager : MonoBehaviour {
 
         //environment.SetActive(true);
     }
-    
-
-    //"Gracefully" close out the conversation.
-    public void closeConversation() {
-        //Put the music back to normal
-        audioController.GetComponent<AudioSource>().volume = 1.0f;
-
-    }
 
 
     //Short and sweet. Get the whole JSON for debugging
     public DialogDataJSON readWholeConversationFile(TextAsset _conversationsFile) {
         string fileContents = _conversationsFile.ToString();
         return DialogDataJSON.CreateFromJSON(fileContents);
+    }
+
+    public bool playerMeetsMetaconditions(string[] metaconditions) {
+        bool conditionsMet = true;
+        foreach (string condition in metaconditions) {
+            if (!StoryConditions.playerMeetsCondition(condition)) {
+                Debug.Log("Player has not yet met condition " + condition);
+                conditionsMet = false;
+            }
+        }
+        return conditionsMet; 
     }
 }

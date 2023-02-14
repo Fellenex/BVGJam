@@ -3,7 +3,7 @@
         {
             "id": "Paladin_A",
             "finalStates": ["1"],
-            "metaconditions": ["getExistentialSweat"],
+            "metaconditions": ["existentialSweat"],
             "states": [
                 {
                     "index": "0",

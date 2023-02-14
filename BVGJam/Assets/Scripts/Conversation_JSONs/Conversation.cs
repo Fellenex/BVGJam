@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 [System.Serializable]
 public class Conversation {
@@ -40,4 +41,9 @@ public class Conversation {
         Debug.Log("Conversation::getTransitionByIndex() Unknown conversation index " + _index);
         return null;
     }
+
+    public bool isAcceptingState(string _index) {
+        return Array.Exists(finalStates, x => x == "index");
+    }
+
 }

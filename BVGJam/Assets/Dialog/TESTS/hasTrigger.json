@@ -37,10 +37,10 @@
                     "options": [
                         {
                             "target": "1",
-                            "optionText": "",
+                            "optionText": "Grr",
                             "conditions": [],
                             "triggers": [
-                                "getExistentialSweat"
+                                "existentialSweat"
                             ]
                         }
                     ]

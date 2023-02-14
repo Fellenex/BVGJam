@@ -24,7 +24,7 @@ public class DialogGraphics : MonoBehaviour {
     public CharacterDisplay playerDisplay;
     public CharacterDisplay npcDisplay;
 
-    public event Action<string> SetNextStateEvent;
+    public event Action<Conversation_Option> SetNextStateEvent;
 
     void Awake() {
         if (instance == null) { instance = this; }
@@ -69,6 +69,7 @@ public class DialogGraphics : MonoBehaviour {
     }
 
     //Display all of the elements to let a player choose their next dialog option
+    //TODO soon(ish). Should take a list of options, not a transition itself
     public void playerIsChoosing(Conversation_Transition _transition) {
         resetTextElements();
 
@@ -79,6 +80,7 @@ public class DialogGraphics : MonoBehaviour {
         } else {
             Debug.Log("Player has options to choose from: " + _transition.options);
 
+            //TODO does not consider conditions of specific options. Currently all options are just shown.
             for (int i = 0; i < _transition.options.Length; i++) {
                 //Add a reference on the button to the text (needed for onClick functionality)
                 playerTextButtonBoxes[i].GetComponent<OptionHolder>().option = _transition.options[i];
@@ -124,7 +126,8 @@ public class DialogGraphics : MonoBehaviour {
         Debug.Log("Button " + _index + " clicked");
         Debug.Log("Now we should go to state "+playerTextButtonBoxes[_index].GetComponent<OptionHolder>().option.target);
 
-        SetNextStateEvent?.Invoke(playerTextButtonBoxes[_index].GetComponent<OptionHolder>().option.target);
+        //SetNextStateEvent?.Invoke(playerTextButtonBoxes[_index].GetComponent<OptionHolder>().option.target);
+        SetNextStateEvent?.Invoke(playerTextButtonBoxes[_index].GetComponent<OptionHolder>().option);
     }
 
     private void resetTextElements() {

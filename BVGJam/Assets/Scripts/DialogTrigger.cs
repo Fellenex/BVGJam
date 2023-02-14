@@ -9,6 +9,8 @@ public class DialogTrigger : MonoBehaviour {
 
     //A link to the dialog icon for this NPC
     public GameObject dialogIcon;
+
+    //TODO overworld sprites+availability (remember how much time got wasted with this?)
     public Sprite dialogAvailableSprite;
     public Sprite dialogUnavailableSprite;
 
@@ -19,12 +21,9 @@ public class DialogTrigger : MonoBehaviour {
     private bool triggerActive = false;
 
     private KeyCode dialogTriggerKey = KeyCode.E;
-
-    DialogDataJSON json;
     
     void Start() {
-        npc = gameObject.transform.parent.gameObject;
-        behaviour = npc.GetComponent<NPC_Attributes>();
+        behaviour = gameObject.GetComponent<NPC_Attributes>();
         playerReference = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -59,82 +58,21 @@ public class DialogTrigger : MonoBehaviour {
         //Player is to the left of the NPC, so make the NPC face left
         if (playerReference.transform.position.x < transform.position.x) {
             //Debug.Log("player is left of "+npc.name);
-            npc.GetComponent<SpriteFlip>().faceLeft();
+            gameObject.GetComponent<SpriteFlip>().faceLeft();
         }
         //Player is to the right of the NPC, so make the NPC face right
         else if (playerReference.transform.position.x > transform.position.x) {
             //Debug.Log("player is right of "+npc.name);
-            npc.GetComponent<SpriteFlip>().faceRight();
+            GetComponent<SpriteFlip>().faceRight();
         }
     }
 
     public void checkForDialogInitiation() {
 
         if (!DialogManager.instance.dialogOpen && Input.GetKeyDown(dialogTriggerKey)) {
-
             Debug.Log("Player has tried to start a conversation");
-
-            //TODO all of this logic should be in DialogManager.
-            //DialogTrigger should only be responsible for telling DialogManager to try and open the conversation
-
-            //Only let the player open a dialog if they have not finished this conversation
-            Debug.Log(behaviour.classType);
-            Debug.Log(StoryConditions.nextConversationIdByActor);
-
-            DialogManager.instance.dialogOpen = true;
-            DialogManager.instance.OnStartConversation(npc.name);
-
-            /*
-            if (!StoryConditions.hasFinishedConversation(StoryConditions.nextConversationIdByActor[behaviour.classType])) {
-
-                
-
-                //Setup npc name and conversation ID to send over to the new scene
-                Dictionary<string, string> dData = new Dictionary<string,string>();
-
-                //dData.Add("id", behaviour.conversationID);
-                dData.Add("name", behaviour.npcName);
-                dData.Add("class", behaviour.classType);
-                //jsonDict.Add("display_name", behaviour.displayName);
-                
-                Debug.Log("Opening up "+behaviour.conversationJson);
-                Debug.Log("Looking for "+behaviour.activeConversation.id);
-
-
-                //DialogData.setActiveConversation(advancedReadFile(behaviour.conversationJson, behaviour.conversationId));
-
-                foreach (Conversation x in behaviour.jsonFile.conversations) {
-
-                    Debug.Log("checking to see if player meets metaconditions "+x.metaconditions);
-                    if (x.id == StoryConditions.nextConversationIdByActor[behaviour.classType]
-                            && playerMeetsMetaconditions(x.metaconditions)) {
-                        
-
-                        Debug.Log("They did meet the metaconditions!");
-                        DialogData.setActiveConversation(x);
-                    }
-                }
-
-                DialogData.load(dialogSceneName, dData);
-
-                
-            }
-            else{
-                //dialogIcon.GetComponent<SpriteRenderer>().sprite = dialogUnavailableSprite;
-            }
-
-            */
+            DialogManager.instance.OnStartConversation(gameObject.name);   
         }
-    }
-
-    public bool playerMeetsMetaconditions(string[] metaconditions) {
-        bool conditionsMet = true;
-        foreach (string cond in metaconditions) {
-            if (!StoryConditions.playerMeetsCondition(cond)) {
-                conditionsMet = false;
-            }
-        }
-        return conditionsMet; 
     }
     
 }

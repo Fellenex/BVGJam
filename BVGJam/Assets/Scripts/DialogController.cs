@@ -20,40 +20,35 @@ public class DialogController : MonoBehaviour {
     Conversation_Statement activeStatement;
     int activeStatementIndex;
 
+    public static event Action<string> StopConversationEvent;
+
     void Awake() {
 
         Debug.Log("Adding event handlers for Start/Stop conversation");
 
         //Add the StartConversation and StopConversation functions as handlers
         //  for when we receive an event from the DialogManager
-        DialogManager.instance.StartConversationEvent += StartConversation;
-        DialogManager.instance.StopConversationEvent += StopConversation;
+        //DialogManager.instance.StartConversationEvent += StartConversation;
+        //DialogManager.instance.StopConversationEvent += StopConversation;
+
 
     }
     public void Start() {
-        DialogGraphics.instance.SetNextStateEvent += MoveToState;
-
+        DialogGraphics.instance.SetNextStateEvent += ChooseOption;
     }
 
     void Update() {
         //Only let the player advance the state if they are not currently choosing
-        if (!PLAYER_CHOOSING &&
-                (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
-            advanceConversation();
+        if (!PLAYER_CHOOSING && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
+            AdvanceConversation();
         }
         if (Input.GetKeyDown(KeyCode.X)) {
-            DialogManager.instance.OnStopConversation();
+            DialogManager.instance.OnStopConversation(activeState.index);
         }
     }
 
-    private void StartConversation(Conversation _conversation) {
+    public void StartConversation(Conversation _conversation) {
         Debug.Log("DialogController::StartConversation() has begun ("+_conversation.id+")");
-
-        /*
-        1. Determine which conversation should be shown for this NPC at the current point in time
-        2. Determine whether the player currently meets the conditions for that conversation
-        3. Initialize the conversation by loading a new Dialog Scene
-        */
 
         activeConversation = _conversation;
         activeState = _conversation.getFirstState();
@@ -72,12 +67,26 @@ public class DialogController : MonoBehaviour {
             Debug.LogError("DialogController::StartConversation() Couldn't find who the player is speaking with");
         }
 
+        //Initialize the finished status of this conversation
+        StoryConditions.startConversation(activeNPC, _conversation.id);
         graphics.initializeConversation(activeNPC);
         startStatements(activeState);
     }
 
+    public void StopConversation(){
+        Debug.Log("DialogController::StopConversation() has begun");
+
+        if (activeConversation.isAcceptingState(activeState.index)) {
+            //We've finished this conversation.
+            StoryConditions.finishConversation(activeConversation.id, "Paladin");
+        }
+
+        //Here we should fire an event to tell the dialog manager that the conversation can be closed
+        StopConversationEvent?.Invoke(activeState.index);
+    }
+
     //TODO timers to auto-advance based on how many characters the text is?
-    public void advanceConversation(){
+    private void AdvanceConversation(){
         if (activeState.hasMoreStatements(activeStatementIndex)) {
             nextStatement(activeState);
         } else {
@@ -85,21 +94,27 @@ public class DialogController : MonoBehaviour {
             Conversation_Transition tr = activeConversation.getTransitionByIndex(activeState.index);
             if (tr != null) {
                 //Then we show the player the transition options
+                //TODO Should only show transition options that the player has met the conditions for
                 playerChoosing(tr);
             } else {
                 //No more statements available, and no transitions available
                 Debug.Log("Stopping conversation - no more statements available");
-                //Let the manager know we're stopping this conversation
-                DialogManager.instance.OnStopConversation();
+                StopConversation();
             }
         }
     }
 
 
-    //Wrapper for the other MoveToState function so that
-    // our graphics script doesn't need to know about Conversation_State objects
-    private void MoveToState(string _stateIndex) {
-        startStatements(activeConversation.getStateByIndex(_stateIndex));
+    //The player has chosen a speech option - update the conversation to reflect this choice
+    private void ChooseOption(Conversation_Option _option) {
+        //If there were triggers, then cause them here
+        foreach (string trigger in _option.triggers) {
+            StoryConditions.playerHasMetCondition(trigger);
+        }
+
+        //Update the active state
+        activeState = activeConversation.getStateByIndex(_option.target);
+        AdvanceConversation();
     }
 
     //Start with this set of statements
@@ -133,30 +148,6 @@ public class DialogController : MonoBehaviour {
     private void playerChoosing(Conversation_Transition _playerOptions) {
         PLAYER_CHOOSING = true;
         graphics.playerIsChoosing(_playerOptions);
-    }
-
-    private void StopConversation(){
-        Debug.Log("DialogController::StopConversation() has begun");
-
-
-        /*
-        try {
-            //If we are in a final state for the NPC, then we mark this conversation as completed
-            foreach (string state in activeConversation.finalStates) {
-                if (activeState.index == state) {
-                    Debug.Log("Completed conversation "+activeState.index);
-                    StoryConditions.finishConversation(activeConversation.id, npcClass);
-
-                    //get a handle to the npc to change their conversation id
-                }
-            }
-        }
-        catch (NullReferenceException e) {
-            //If we are closing out of the conversation because there was some issue
-            //  obtaining the conversation, then it won't have any finalStates property.
-        }
-        */
-        //GetComponent<CloseDialogWindow>().dialogClose();
     }
 
 
@@ -210,8 +201,8 @@ public class DialogController : MonoBehaviour {
         */
     }
 
-    //Checks to see if player meets the preconditions for a given transition option
-    public bool playerMeetsPreconditions(Conversation_Option _transitionOption) {
+    //Checks to see if player meets the conditions for a given transition option
+    public bool playerMeetsConditions(Conversation_Option _transitionOption) {
 
         Debug.Log("Condition(s) Required: " + _transitionOption.conditions);
         foreach (string condition in _transitionOption.conditions) {
