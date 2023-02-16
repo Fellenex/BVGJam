@@ -1,0 +1,39 @@
+If we let players exit out of conversations, then either:
+    we have to do a bunch of extra work to remember which
+    state and/or statement we left off in, so that they
+    can resume from the same place, or we end up with the
+    potential for repeated conversations.
+
+I think exiting out of a conversation shouldn't be an option
+for players. Just a debug thing.
+
+
+
+
+Longer-Term Development
+    Lighting
+    Audio Slider
+    Main Screen Menu
+    Credits Menu
+    "Typing" text for DialogGraphics
+
+
+
+
+Options for directing conversations:
+
+    Each conversation has a specified follower
+        Pro: simpler JSON
+        Con: Kinda railroady as a structure.
+            Also eliminates the some precedence flows
+
+    Each conversation has a list of specified followers
+        Pro: Localizes precedence errors
+            Only have to be careful about metacondition correctness in a small range
+        Con: Clunkier JSON - again :'(
+            A more restrictive structure - conversations need to know about each other
+        
+    Treat every conversation as a possible follower
+        Pro: Simplest JSON - no need for attribute changes
+        Con: Every conversation needs to have good metaconditions.
+            Could result in a lot of data edits for small conversation edits

@@ -22,6 +22,8 @@ public class DialogManager : MonoBehaviour {
     public Dictionary<string, DialogDataJSON> npcDialogFiles;
     private Dictionary<string, Conversation> npcActiveConversations;
 
+    private new Dictionary<string, List<Conversation>> npcConversations;
+
     void Awake() {
         //Spoofing a static class while also allowing it to inherit from MonoBehaviour
         if (instance == null) { instance = this; }
@@ -32,29 +34,32 @@ public class DialogManager : MonoBehaviour {
 
    void Start() {
         npcDialogFiles = new Dictionary<string, DialogDataJSON>();
-        npcActiveConversations = new Dictionary<string, Conversation>();
+        npcConversations = new Dictionary<string, List<Conversation>>();
 
         //Read all of the conversation files for NPCs managed by DialogManager
         foreach (GameObject npc in npcs) {
 
             npcDialogFiles[npc.name] = readWholeConversationFile(npc.GetComponent<NPC_Attributes>().conversationJSON);
-            
+            npcConversations[npc.name] = new List<Conversation>(npcDialogFiles[npc.name].conversations);
+
             //Assume the first conversation is the starting one if we don't have one defined otherwise
             //TODO allow for custom starting conversation IDs to be specified
-            npcActiveConversations[npc.name] = npcDialogFiles[npc.name].conversations[0];
+            //npcActiveConversations[npc.name] = npcDialogFiles[npc.name].conversations[0];
         }
     }
 
     public void OnStartConversation(string _npcName) {
         Debug.Log("Trying to start a conversation with " + _npcName);
-        Conversation attemptedConversation = npcActiveConversations[_npcName];
 
-        if (playerMeetsMetaconditions(attemptedConversation.metaconditions)) {
-            dialogController.StartConversation(attemptedConversation);
+
+        //Start a conversation if it's unambiguous which one should come next
+        Conversation nextConversation = getNextConversation(_npcName);
+        if (nextConversation != null) {
+            Debug.Log("About to start conversation " + nextConversation.id);
+            audioController.GetComponent<AudioSource>().volume = 0.5f;
+            dialogController.StartConversation(nextConversation);
             dialogOpen = true;
             dialogCanvas.SetActive(true);
-            //Dispatch an event that the dialog prefab can pick up
-            //StartConversationEvent?.Invoke(npcActiveConversations[_npcName]);
         }
     }
 
@@ -127,13 +132,46 @@ public class DialogManager : MonoBehaviour {
     }
 
 
+    //Gets the next conversation for a given NPC name.
+    //If there's more than one available, reports an error
+    private Conversation getNextConversation(string _npcName) {
+        List<Conversation> possibleConversations = getPossibleConversations(_npcName);
+        switch(possibleConversations.Count) {
+            case 0:
+                return null;
+            case 1:
+                return possibleConversations[0];
+            default:
+                Debug.LogError("DialogManager::getNextConversation() Too many Conversations available");
+                foreach (Conversation c in possibleConversations) {
+                    Debug.LogError(String.Join(", ", c.id));    
+                }
+                return null;
+        }
+    }
+
+    //Gets a list of all the possible conversations the NPC might have
+    private List<Conversation> getPossibleConversations(string _npcName) {
+        List<Conversation> possibleConversations = new List<Conversation>();
+
+        //Check the metaconditions for each one, and make sure we haven't
+        //  already finished the conversation
+        foreach (Conversation conversation in npcConversations[_npcName]){
+            if (playerMeetsMetaconditions(conversation.metaconditions) &&
+                !StoryConditions.hasFinishedConversation(conversation.id)) {
+                    possibleConversations.Add(conversation);
+            }
+        }
+        return possibleConversations;
+    }
+
     //Short and sweet. Get the whole JSON for debugging
-    public DialogDataJSON readWholeConversationFile(TextAsset _conversationsFile) {
+    private DialogDataJSON readWholeConversationFile(TextAsset _conversationsFile) {
         string fileContents = _conversationsFile.ToString();
         return DialogDataJSON.CreateFromJSON(fileContents);
     }
 
-    public bool playerMeetsMetaconditions(string[] metaconditions) {
+    private bool playerMeetsMetaconditions(string[] metaconditions) {
         bool conditionsMet = true;
         foreach (string condition in metaconditions) {
             if (!StoryConditions.playerMeetsCondition(condition)) {

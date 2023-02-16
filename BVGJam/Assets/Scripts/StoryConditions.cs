@@ -16,10 +16,10 @@ public static class StoryConditions {
 
 
     public static List<string> conditions = new List<string>();
-    public enum ConversationStatus { Started, Finished };
+    public enum ConversationStatus { Uninitiated, Started, Finished };
     public static Dictionary<string, ConversationStatus> conversationStatus = new Dictionary<string, ConversationStatus>();
 
-
+    
 
     public static bool playerMeetsCondition(string _condition) {
         if (_condition[0] == '!'){ 
@@ -41,6 +41,7 @@ public static class StoryConditions {
 
     //A li'l wrapper to set a condition to true and instantiate the list entry if it has yet to be set
     public static void playerHasMetCondition(string _condition){
+        //TODO should handle all the colour stuff here. Take a Conversation_Trigger instead a string here
         Debug.Log("Player has just met condition " + _condition);
         conditions.Add(_condition);
     }
@@ -51,7 +52,7 @@ public static class StoryConditions {
         catch (Exception e) { Debug.Log("Couldn't remove condition " + _condition); }
     }
 
-    public static void startConversation(string _npcName, string _conversationId){
+    public static void StartConversation(string _npcName, string _conversationId){
         try {
             npcConversations[_npcName].Add(_conversationId);
         }
@@ -67,7 +68,7 @@ public static class StoryConditions {
 
         try{
             //TODO assumes there's only ever one follow-up conversation
-            nextConversationIdByActor[_npcClass] = dialogMap[_conversationId][0];
+            //nextConversationIdByActor[_npcClass] = dialogMap[_conversationId][0];
         }
         catch (Exception e) {
             //no more available conversations, just move along
@@ -75,8 +76,15 @@ public static class StoryConditions {
     }
 
     //A li'l wrapper to safely check if a conversation has been completed
+    
+    //TODO take an npc name and a conversation ID so that they dont' have to be unique between NPCs
     public static bool hasFinishedConversation(string _conversationId) {
-        try { return conversationStatus[_conversationId] == ConversationStatus.Finished; }
-        catch (KeyNotFoundException) { return false; }
+        try {
+            return conversationStatus[_conversationId] == ConversationStatus.Finished;
+            }
+        catch (KeyNotFoundException) {
+            conversationStatus[_conversationId] = ConversationStatus.Uninitiated;
+            return false;
+        }
     }
 }

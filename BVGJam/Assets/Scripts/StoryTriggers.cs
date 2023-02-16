@@ -155,9 +155,8 @@ public static class StoryTriggers {
             }
         }
 
-        trigger(getFoundKnife);
-        trigger(getToxicSweat);
-
+        //trigger(getFoundKnife);
+        //trigger(getToxicSweat);
     }
 
 

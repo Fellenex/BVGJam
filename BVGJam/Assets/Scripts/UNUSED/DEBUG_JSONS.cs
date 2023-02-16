@@ -36,9 +36,6 @@ public class DEBUG_JSONS : MonoBehaviour {
             Debug.Log(convo.states[0].statements[0].speaker);
 
             Debug.Log(convo.finalStates);
-            foreach (string fs in convo.finalStates) {
-                Debug.Log(fs);
-            }
 
             Debug.Log(convo.metaconditions);
             foreach (string mc in convo.metaconditions) {

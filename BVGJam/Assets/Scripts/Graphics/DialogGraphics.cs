@@ -103,8 +103,7 @@ public class DialogGraphics : MonoBehaviour {
         Debug.Log("Button " + _index + " clicked");
         Debug.Log("Now we should go to state "+playerTextButtonBoxes[_index].GetComponent<OptionHolder>().option.target);
 
-        //SetNextStateEvent?.Invoke(playerTextButtonBoxes[_index].GetComponent<OptionHolder>().option.target);
-        SetNextStateEvent?.Invoke(playerTextButtonBoxes[_index].GetComponent<OptionHolder>().option);
+        SetNextStateEvent?.Invoke(getOptionFromButton(_index));
     }
 
     //Update the main text body
@@ -136,7 +135,9 @@ public class DialogGraphics : MonoBehaviour {
         speechText.text = "";
     }
 
-
+    private Conversation_Option getOptionFromButton(int _buttonIndex) {
+        return playerTextButtonBoxes[_buttonIndex].GetComponent<OptionHolder>().option;
+    }
 
     /*
     //How many seconds to wait for the player to read each character of text

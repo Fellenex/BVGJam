@@ -43,34 +43,23 @@ public class DialogController : MonoBehaviour {
         if (!PLAYER_CHOOSING && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
             AdvanceConversation();
         }
+
+        //DEBUG ONLY. TODO REMOVE.
         if (Input.GetKeyDown(KeyCode.X)) {
             DialogManager.instance.OnStopConversation(activeState.index);
         }
     }
 
+    //Takes a conversation object and starts delivering it to the user
+    //Initializes relevant 
     public void StartConversation(Conversation _conversation) {
         Debug.Log("DialogController::StartConversation() has begun ("+_conversation.id+")");
 
         activeConversation = _conversation;
         activeState = _conversation.getFirstState();
 
-        //TODO Need a better way to know who we're talking with.
-        //Assume (for now!!!) that the NPC will speak in the first state
-        //Bad limitation but I don't want to change the JSON again right now
-        string activeNPC = "";
-        foreach (Conversation_Statement statement in activeState.statements) {
-            if (statement.speaker != PLAYER_STRING) {
-                activeNPC = statement.speaker;
-                break;
-            }
-        }
-        if (activeNPC == "") {
-            Debug.LogError("DialogController::StartConversation() Couldn't find who the player is speaking with");
-        }
-
-        //Initialize the finished status of this conversation
-        StoryConditions.startConversation(activeNPC, _conversation.id);
-        graphics.initializeConversation(activeNPC);
+        StoryConditions.StartConversation(_conversation.getNPCName(), _conversation.id);
+        graphics.initializeConversation(_conversation.getNPCName());
         startStatements(activeState);
     }
 
@@ -81,22 +70,21 @@ public class DialogController : MonoBehaviour {
             //We've finished this conversation.
             StoryConditions.finishConversation(activeConversation.id, "Paladin");
         }
-
-        //Here we should fire an event to tell the dialog manager that the conversation can be closed
+                                                                                                                                                                                                                                                                                                            
+        //Everything has been wrapped up, so hand back control to the DialogManager
         StopConversationEvent?.Invoke(activeState.index);
     }
 
-    //TODO timers to auto-advance based on how many characters the text is?
     private void AdvanceConversation(){
         if (activeState.hasMoreStatements(activeStatementIndex)) {
             nextStatement(activeState);
         } else {
             //No more statements - see if we have a transition that we can take to another state
             Conversation_Transition tr = activeConversation.getTransitionByIndex(activeState.index);
+        
             if (tr != null) {
-                //Then we show the player the transition options
-                //TODO Should only show transition options that the player has met the conditions for
-                playerChoosing(tr);
+                //Handle the transition
+                StartTransition(tr);
             } else {
                 //No more statements available, and no transitions available
                 Debug.Log("Stopping conversation - no more statements available");
@@ -105,16 +93,32 @@ public class DialogController : MonoBehaviour {
         }
     }
 
+    private void StartTransition(Conversation_Transition _transition) {
+        //A few special cases if there's only one transition option.
+        if (_transition.options.Count() == 1) {
+            if (String.IsNullOrEmpty(_transition.options[0].optionText)) {
+                //No option text to show, and only one choice, so just make that choice
+                ChooseOption(_transition.options[0]);
+            } else {
+                //Option text we want to show, but only one choice. Still let them choose it.
+                playerChoosing(_transition);
+            }
+        } else {
+            playerChoosing(_transition);
+        }
+    }
 
     //The player has chosen a speech option - update the conversation to reflect this choice
     private void ChooseOption(Conversation_Option _option) {
         //If there were triggers, then cause them here
-        foreach (string trigger in _option.triggers) {
-            StoryConditions.playerHasMetCondition(trigger);
+        foreach (Conversation_Trigger trigger in _option.triggers) {
+            StoryConditions.playerHasMetCondition(trigger.text);
         }
 
-        //Update the active state
+        //Update the active state+statement index
         activeState = activeConversation.getStateByIndex(_option.target);
+        activeStatement = activeState.getFirstStatement();
+        activeStatementIndex = 0;
         AdvanceConversation();
     }
 
@@ -148,17 +152,18 @@ public class DialogController : MonoBehaviour {
     private void playerChoosing(Conversation_Transition _transition) {
         PLAYER_CHOOSING = true;
 
+
+
         //Only show the options to which the player currently has access
         graphics.playerIsChoosing(getCurrentlyAvailableOptions(_transition));
     }
 
     private List<Conversation_Option> getCurrentlyAvailableOptions(Conversation_Transition _transition) {
-        return _transition.options.Where(x => playerMeetsConditions(x)).ToList();
+        return _transition.options.Where(x => playerMeetsOptionConditions(x)).ToList();
     }
 
     //Checks to see if player meets the conditions for a given transition option
-    private bool playerMeetsConditions(Conversation_Option _transitionOption) {
-
+    private bool playerMeetsOptionConditions(Conversation_Option _transitionOption) {
         Debug.Log("Condition(s) Required: " + _transitionOption.conditions);
         foreach (string condition in _transitionOption.conditions) {
             if (!StoryConditions.playerMeetsCondition(condition)){

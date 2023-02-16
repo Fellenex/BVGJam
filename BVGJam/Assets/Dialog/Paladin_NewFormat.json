@@ -2,10 +2,7 @@
     "conversations": [
         {
             "id": "Paladin_A",
-            "finalStates": [
-                "B1",
-                "A2"
-            ],
+            "finalStates": ["B1", "A2"],
             "metaconditions": [],
             "states": [
                 {
@@ -282,7 +279,7 @@
                             "target": "A2",
                             "optionText": "",
                             "conditions": [],
-                            "triggers": [ "getToxicSweat" ]
+                            "triggers": [ "toxicSweat" ]
                         }
                     ]
                 }                
