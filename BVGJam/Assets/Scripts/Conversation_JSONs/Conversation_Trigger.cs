@@ -16,8 +16,7 @@ public class Conversation_Trigger {
 
     public void validate() {
         //If we have a trigger, then the text can't be empty
-        //Debug.Assert(!String.IsNullOrEmpty(text));
-        //TODO this seems to be firing when the list of triggers is empty
+        Debug.Assert(!String.IsNullOrEmpty(text));
 
         //If we have a quality attribute, then we need to have a colour attribute
         //(Not necessarily the other way around)

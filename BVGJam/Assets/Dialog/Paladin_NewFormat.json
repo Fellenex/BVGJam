@@ -279,7 +279,7 @@
                             "target": "A2",
                             "optionText": "",
                             "conditions": [],
-                            "triggers": [ "toxicSweat" ]
+                            "triggers": [{"text": "toxicSweat", "colour": "blue", "quality": "bad"}]
                         }
                     ]
                 }                
@@ -441,7 +441,7 @@
                             "target": "1",
                             "optionText": "Uh, don't worry about it! See you later!",
                             "conditions": [],
-                            "triggers": [ "justiceSweat" ]
+                            "triggers": [{"text": "justiceSweat", "colour": "blue", "quality": "good"}]
                         }    
                     ]
                     
@@ -593,7 +593,7 @@
                             "target": "1",
                             "optionText": "",
                             "conditions": [],
-                            "triggers": ["bardsRequiem"]
+                            "triggers": [{"text": "bardsRequiem", "colour": "blue", "quality": "good"}]
                         }
                     ]
                 }
@@ -686,7 +686,7 @@
                             "target": "1",
                             "optionText": "",
                             "conditions": [],
-                            "triggers": [ "existentialSweat" ]
+                            "triggers": [{"text": "existentialSweat", "colour": "blue", "quality": "bad"}]
                         }
                     ]
                 }
