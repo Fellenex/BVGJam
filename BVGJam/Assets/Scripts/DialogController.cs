@@ -110,9 +110,23 @@ public class DialogController : MonoBehaviour {
 
     //The player has chosen a speech option - update the conversation to reflect this choice
     private void ChooseOption(Conversation_Option _option) {
-        //If there were triggers, then cause them here
+
+        bool showDramaticDialog = false;
+        Conversation_Trigger specialTrigger = null;
+        //If there were triggers, then cause them here.
         foreach (Conversation_Trigger trigger in _option.triggers) {
+
+            //Track the trigger's name
             StoryConditions.playerHasMetCondition(trigger.text);
+
+            if (trigger.isSpecialTrigger()) {
+                showDramaticDialog = true;
+                specialTrigger = trigger;
+            }
+        }
+
+        if (specialTrigger != null) {
+            
         }
 
         //Update the active state+statement index

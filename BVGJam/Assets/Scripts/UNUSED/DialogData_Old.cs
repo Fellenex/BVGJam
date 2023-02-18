@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public static class DialogData {
+public static class DialogData_Old {
 
     private static Conversation activeConversation;
     private static Dictionary<string, string> parameters;
 
     public static void load(string _sceneName, Dictionary<string, string> _parameters = null) {
-        DialogData.parameters = _parameters;
+        DialogData_Old.parameters = _parameters;
         
         if (_sceneName == "DialogWindow" || _sceneName == "DramaticDialogWindow") {
             SceneManager.LoadScene(_sceneName, LoadSceneMode.Additive);
@@ -20,8 +20,8 @@ public static class DialogData {
     }
 
     public static void load(string _sceneName, string _key, string _val) {
-        DialogData.parameters = new Dictionary<string, string>();
-        DialogData.parameters.Add(_key, _val);
+        DialogData_Old.parameters = new Dictionary<string, string>();
+        DialogData_Old.parameters.Add(_key, _val);
 
         if (_sceneName == "DialogWindow" || _sceneName == "DramaticDialogWindow") {
             SceneManager.LoadScene(_sceneName, LoadSceneMode.Additive);
@@ -44,8 +44,8 @@ public static class DialogData {
 
     public static void setParam(string _key, string _val) {
         if (parameters == null) {
-            DialogData.parameters = new Dictionary<string, string>();
+            DialogData_Old.parameters = new Dictionary<string, string>();
         }
-        DialogData.parameters.Add(_key, _val);
+        DialogData_Old.parameters.Add(_key, _val);
     }
 }

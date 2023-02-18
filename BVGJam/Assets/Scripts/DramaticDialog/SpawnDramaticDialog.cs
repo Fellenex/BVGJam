@@ -8,7 +8,7 @@ public class SpawnDramaticDialog : MonoBehaviour {
     void Start() {
         
     }
-
+    /*
     // Update is called once per frame
     void Update() {
         if (Input.GetKeyDown(KeyCode.P)) {
@@ -31,4 +31,5 @@ public class SpawnDramaticDialog : MonoBehaviour {
         dData.Add("text", "Test text");
         DialogData.load(dramaticDialogSceneName, dData);
     }
+    */
 }

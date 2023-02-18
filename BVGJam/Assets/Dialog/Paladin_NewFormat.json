@@ -427,6 +427,10 @@
                             "mood": "neutral"
                         }
                     ]
+                },
+                {
+                    "index": "1",
+                    "statements": []
                 }
             ],
             "transitions": [
@@ -437,7 +441,7 @@
                             "target": "1",
                             "optionText": "Uh, don't worry about it! See you later!",
                             "conditions": [],
-                            "triggers": [ "getJusticeSweat" ]
+                            "triggers": [ "justiceSweat" ]
                         }    
                     ]
                     
@@ -446,7 +450,7 @@
         },
         {
             "id": "Paladin_D",
-            "finalStates": [],
+            "finalStates": ["0"],
             "metaconditions": [
                 "hasJusticeSweat",
                 "hasPaladinDead"
@@ -589,9 +593,7 @@
                             "target": "1",
                             "optionText": "",
                             "conditions": [],
-                            "triggers": [
-                                "getBardsRequiem"
-                            ]
+                            "triggers": ["bardsRequiem"]
                         }
                     ]
                 }
@@ -684,9 +686,7 @@
                             "target": "1",
                             "optionText": "",
                             "conditions": [],
-                            "triggers": [
-                                "getExistentialSweat"
-                            ]
+                            "triggers": [ "existentialSweat" ]
                         }
                     ]
                 }

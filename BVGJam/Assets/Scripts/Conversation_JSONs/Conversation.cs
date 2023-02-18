@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class Conversation {
@@ -62,9 +63,65 @@ public class Conversation {
         return "";
     }
 
-    //Whether the given state is an accepting state
+    //Whether or not the given state is an accepting state
     public bool isAcceptingState(string _index) {
         return Array.Exists(finalStates, x => x == _index);
     }
 
+    public List<String> getTriggerLabels() {
+        List<String> triggers = new List<String>();
+
+        foreach (Conversation_Transition transition in transitions) {
+            foreach (Conversation_Option option in transition.options) {
+                foreach (Conversation_Trigger trigger in option.triggers) {
+                    triggers.Add(trigger.text);
+                }
+            }
+        }
+        return triggers;
+    }
+
+    public List<String> getConditionLabels() {
+        List<String> conditions = new List<String>();
+
+        //We may have conditions preceding a conversation
+        foreach (String metacondition in metaconditions) {
+            conditions.Add(metacondition);
+        }
+        
+        //Otherwise, the rest of the conditions appear as part of a transition's option
+        foreach (Conversation_Transition transition in transitions) {
+            foreach (Conversation_Option option in transition.options) {
+                foreach (String condition in option.conditions) {
+                    conditions.Add(condition);
+                }
+            }
+        }
+        
+        return conditions;
+    }
+
+    public void validate() {
+        //We need a name for this conversation for tracking conversation completeness
+        Debug.Assert(!String.IsNullOrEmpty(id));
+
+        //We need at least one final state to know when we can consider the conversation "complete"
+        Debug.Assert(finalStates.Length > 0);
+
+        //We need at least one state to be able to deliver any statements
+        Debug.Assert(states.Length > 0);
+
+        //If we have more than one state, then we should have at least one transition
+        if (states.Length > 1) {
+            Debug.Assert(transitions.Length > 0);
+        }
+
+        foreach (Conversation_State state in states) {
+            state.validate();
+        }
+
+        foreach (Conversation_Transition transition in transitions) {
+            transition.validate();
+        }
+    }
 }

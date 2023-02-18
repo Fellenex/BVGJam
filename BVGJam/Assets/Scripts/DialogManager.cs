@@ -19,7 +19,7 @@ public class DialogManager : MonoBehaviour {
 
     //map npc names to their respective dialog files
     public List<GameObject> npcs;
-    public Dictionary<string, DialogDataJSON> npcDialogFiles;
+    public Dictionary<string, DialogData> npcDialogFiles;
     private Dictionary<string, Conversation> npcActiveConversations;
 
     private new Dictionary<string, List<Conversation>> npcConversations;
@@ -33,7 +33,7 @@ public class DialogManager : MonoBehaviour {
     }
 
    void Start() {
-        npcDialogFiles = new Dictionary<string, DialogDataJSON>();
+        npcDialogFiles = new Dictionary<string, DialogData>();
         npcConversations = new Dictionary<string, List<Conversation>>();
 
         //Read all of the conversation files for NPCs managed by DialogManager
@@ -166,14 +166,14 @@ public class DialogManager : MonoBehaviour {
     }
 
     //Short and sweet. Get the whole JSON for debugging
-    private DialogDataJSON readWholeConversationFile(TextAsset _conversationsFile) {
+    private DialogData readWholeConversationFile(TextAsset _conversationsFile) {
         string fileContents = _conversationsFile.ToString();
-        return DialogDataJSON.CreateFromJSON(fileContents);
+        return DialogData.CreateFromJSON(fileContents);
     }
 
     private bool playerMeetsMetaconditions(string[] metaconditions) {
         bool conditionsMet = true;
-        foreach (string condition in metaconditions) {
+        foreach (String condition in metaconditions) {
             if (!StoryConditions.playerMeetsCondition(condition)) {
                 Debug.Log("Player has not yet met condition " + condition);
                 conditionsMet = false;

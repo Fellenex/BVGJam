@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class DialogDataJSON {
+public class DialogData {
     
     public Conversation[] conversations;
 
-    public static DialogDataJSON CreateFromJSON(string data) {
-        return JsonUtility.FromJson<DialogDataJSON>(data);
+    public static DialogData CreateFromJSON(string data) {
+        return JsonUtility.FromJson<DialogData>(data);
     }
 }
