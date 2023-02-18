@@ -70,7 +70,7 @@ public class CharacterDisplay {
             //Debug.Log("about to load '"+CharacterDisplay.rootFilepath[_name] + mood);
             currImages[mood] = Resources.Load<Sprite>(CharacterDisplay.rootFilepath[_name] + mood);
         }
-        Debug.Log(currImages);
+
         //Construct the object
         return new CharacterDisplay(
             _name,

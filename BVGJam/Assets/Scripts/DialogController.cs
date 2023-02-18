@@ -12,30 +12,21 @@ public class DialogController : MonoBehaviour {
     public static string GOOD_QUALITY = "good";
     public static string BAD_QUALITY = "bad";
 
+
+    //Prevent the player from advancing the conversation arbitrarily when they have to make a choice
     bool PLAYER_CHOOSING = false;
 
     public DialogGraphics graphics;        // a handle to update the graphics
 
 
+    //TODO should make a model for an "Active Conversation" with this info.
     Conversation activeConversation;
     Conversation_State activeState;
-    Conversation_Transition activeTransition;
     Conversation_Statement activeStatement;
     int activeStatementIndex;
 
     public static event Action<string> StopConversationEvent;
 
-    void Awake() {
-
-        Debug.Log("Adding event handlers for Start/Stop conversation");
-
-        //Add the StartConversation and StopConversation functions as handlers
-        //  for when we receive an event from the DialogManager
-        //DialogManager.instance.StartConversationEvent += StartConversation;
-        //DialogManager.instance.StopConversationEvent += StopConversation;
-
-
-    }
     public void Start() {
         DialogGraphics.instance.SetNextStateEvent += ChooseOption;
     }
@@ -138,7 +129,7 @@ public class DialogController : MonoBehaviour {
                 Debug.LogError("DialogController::ChooseOption() bad quality (" + specialTrigger.quality + ")");
             }
 
-            
+
             //TODO Show dramatic dialog for this colour and quality
         }
 
@@ -149,7 +140,7 @@ public class DialogController : MonoBehaviour {
         AdvanceConversation();
     }
 
-    //Start with this set of statements
+    //Start a state's set of statements
     private void startStatements(Conversation_State _state) {
         PLAYER_CHOOSING = false;
         activeStatement = _state.getFirstStatement();
@@ -179,12 +170,12 @@ public class DialogController : MonoBehaviour {
     private void playerChoosing(Conversation_Transition _transition) {
         PLAYER_CHOOSING = true;
 
-
-
         //Only show the options to which the player currently has access
         graphics.playerIsChoosing(getCurrentlyAvailableOptions(_transition));
     }
 
+
+    //A small helper function to filter out options for which a player doesn't meet the conditions
     private List<Conversation_Option> getCurrentlyAvailableOptions(Conversation_Transition _transition) {
         return _transition.options.Where(x => playerMeetsOptionConditions(x)).ToList();
     }

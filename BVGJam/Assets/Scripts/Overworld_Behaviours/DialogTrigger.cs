@@ -58,7 +58,7 @@ public class DialogTrigger : MonoBehaviour {
         //Player is to the left of the NPC, so make the NPC face left
         if (playerReference.transform.position.x < transform.position.x) {
             //Debug.Log("player is left of "+npc.name);
-            gameObject.GetComponent<SpriteFlip>().faceLeft();
+            GetComponent<SpriteFlip>().faceLeft();
         }
         //Player is to the right of the NPC, so make the NPC face right
         else if (playerReference.transform.position.x > transform.position.x) {

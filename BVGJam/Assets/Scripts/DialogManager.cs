@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System;
 //using UnityEngine.SceneManagement;
@@ -17,12 +18,11 @@ public class DialogManager : MonoBehaviour {
     //public event Action<Conversation> StartConversationEvent;
     //public event Action AdvanceConversation;
 
-    //map npc names to their respective dialog files
+    //A list of all of the NPC gameob
     public List<GameObject> npcs;
-    public Dictionary<string, DialogData> npcDialogFiles;
-    private Dictionary<string, Conversation> npcActiveConversations;
+    public List<DialogData> dialogFiles;
 
-    private new Dictionary<string, List<Conversation>> npcConversations;
+    private Dictionary<string, List<Conversation>> npcConversations;
 
     void Awake() {
         //Spoofing a static class while also allowing it to inherit from MonoBehaviour
@@ -33,19 +33,26 @@ public class DialogManager : MonoBehaviour {
     }
 
    void Start() {
-        npcDialogFiles = new Dictionary<string, DialogData>();
+        dialogFiles = new List<DialogData>();
         npcConversations = new Dictionary<string, List<Conversation>>();
 
         //Read all of the conversation files for NPCs managed by DialogManager
         foreach (GameObject npc in npcs) {
 
-            npcDialogFiles[npc.name] = readWholeConversationFile(npc.GetComponent<NPC_Attributes>().conversationJSON);
-            npcConversations[npc.name] = new List<Conversation>(npcDialogFiles[npc.name].conversations);
+            //TODO for now, skip over inactive NPCs (avoid noisy JSON debugging)            
+            if (npc.activeSelf) {
+                TextAsset dialogFile = npc.GetComponent<NPC_Attributes>().dialogFile;
+                DialogData dialog = DialogIO.ReadDialogFile(dialogFile);
 
-            //Assume the first conversation is the starting one if we don't have one defined otherwise
-            //TODO allow for custom starting conversation IDs to be specified
-            //npcActiveConversations[npc.name] = npcDialogFiles[npc.name].conversations[0];
+                //Validate the conversations in this dialog file
+                dialog.validate();
+
+                npcConversations[npc.name] = new List<Conversation>(dialog.conversations);
+            }
         }
+
+        //Validate the conditions+triggers across all NPCs
+        crossCheckConditionsAndTriggers(dialogFiles);
     }
 
     public void OnStartConversation(string _npcName) {
@@ -164,12 +171,6 @@ public class DialogManager : MonoBehaviour {
         return possibleConversations;
     }
 
-    //Short and sweet. Get the whole JSON for debugging
-    private DialogData readWholeConversationFile(TextAsset _conversationsFile) {
-        string fileContents = _conversationsFile.ToString();
-        return DialogData.CreateFromJSON(fileContents);
-    }
-
     private bool playerMeetsMetaconditions(string[] metaconditions) {
         bool conditionsMet = true;
         foreach (String condition in metaconditions) {
@@ -179,5 +180,32 @@ public class DialogManager : MonoBehaviour {
             }
         }
         return conditionsMet; 
+    }
+
+    private static void crossCheckConditionsAndTriggers(List<DialogData> _dialogs) {
+        List<String> triggers = new List<String>();
+        List<String> conditions = new List<String>();
+
+        //Collect all of the trigger and condition text labels from the dialog files
+        foreach (DialogData dialog in _dialogs) {
+            foreach (Conversation conversation in dialog.conversations) {
+                triggers.AddRange(conversation.getTriggerLabels());
+                conditions.AddRange(conversation.getConditionLabels());
+            }
+        }
+
+        //Each trigger should also be, at some point, required as a condition
+        foreach (String trigger in triggers) {
+            if (!conditions.Exists(condition => condition == trigger)) {
+                Debug.LogError("Trigger " + trigger + " is not found on any condition");
+            }
+        }
+
+        //Each condition should also be, at some point, meetable by a trigger
+        foreach (String condition in conditions) {
+            if (!triggers.Exists(trigger => trigger == condition)) {
+                Debug.LogError("Condition " + condition + "is not found on any trigger");
+            }
+        }
     }
 }

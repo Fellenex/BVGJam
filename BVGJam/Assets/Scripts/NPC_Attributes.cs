@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//A small class to load a TextAsset onto an NPC from the Unity Editor
 public class NPC_Attributes : MonoBehaviour {
-
-    public string classType;
-
-    //The pipeline from TextAsset (file) to DialogData (serialized data) to current conversation
-    public TextAsset conversationJSON;
+    public TextAsset dialogFile;
 }

@@ -34,8 +34,6 @@ public class DialogGraphics : MonoBehaviour {
     public void initializeConversation(string npcSpeaker) {
         resetTextElements();
 
-        Debug.Log("Initializing DialogGraphics attributes");
-
         //Update player-side nameplate and image
         playerDisplay = CharacterDisplay.ConstructByName(PLAYER_NAME);
         playerNameplate.text = PLAYER_NAME;
@@ -99,14 +97,19 @@ public class DialogGraphics : MonoBehaviour {
         speakStatement(_npcStatement);
     }
 
-    public void onOptionButtonClicked(int _index) {
-        Debug.Log("Button " + _index + " clicked");
-        Debug.Log("Now we should go to state "+playerTextButtonBoxes[_index].GetComponent<OptionHolder>().option.target);
 
+    //Used as the OnClick function by the buttons created when a player has a choic
+    public void onOptionButtonClicked(int _index) {
+        Debug.Log("Now we should go to state "+playerTextButtonBoxes[_index].GetComponent<OptionHolder>().option.target);
         SetNextStateEvent?.Invoke(getOptionFromButton(_index));
     }
 
-    //Update the main text body
+    //A small helper function to get a Conversation_Option object from one of the buttons we've setup
+    private Conversation_Option getOptionFromButton(int _buttonIndex) {
+        return playerTextButtonBoxes[_buttonIndex].GetComponent<OptionHolder>().option;
+    }
+
+    //Update the main text body using a new statement
     private void speakStatement(Conversation_Statement _statement) {
         resetTextElements();
 
@@ -133,10 +136,6 @@ public class DialogGraphics : MonoBehaviour {
         }
 
         speechText.text = "";
-    }
-
-    private Conversation_Option getOptionFromButton(int _buttonIndex) {
-        return playerTextButtonBoxes[_buttonIndex].GetComponent<OptionHolder>().option;
     }
 
     /*
