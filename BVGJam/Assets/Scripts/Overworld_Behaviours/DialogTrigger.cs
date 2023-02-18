@@ -68,9 +68,8 @@ public class DialogTrigger : MonoBehaviour {
     }
 
     public void checkForDialogInitiation() {
-
+        //Don't let a player start a dialog if there's already one open
         if (!DialogManager.instance.dialogOpen && Input.GetKeyDown(dialogTriggerKey)) {
-            Debug.Log("Player has tried to start a conversation");
             DialogManager.instance.OnStartConversation(gameObject.name);   
         }
     }

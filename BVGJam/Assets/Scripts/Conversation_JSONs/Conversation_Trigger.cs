@@ -7,6 +7,9 @@ public class Conversation_Trigger {
     public string quality;
     public string colour;
 
+    private static string GOOD_QUALITY = "good";
+    private static string BAD_QUALITY = "bad";
+
     //If a trigger has colour+quality, then it's a special "event trigger"
     //In this case, we need to know because we'll show them a "dramatic dailog"
     public bool isSpecialTrigger() {
@@ -22,6 +25,8 @@ public class Conversation_Trigger {
         //(Not necessarily the other way around)
         if (!string.IsNullOrEmpty(quality)) {
             Debug.Assert(!String.IsNullOrEmpty(colour));
+
+            Debug.Assert(quality == GOOD_QUALITY || quality == BAD_QUALITY);
         }
     }
 }

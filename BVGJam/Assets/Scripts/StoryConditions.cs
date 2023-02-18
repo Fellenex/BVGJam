@@ -9,17 +9,13 @@ public static class StoryConditions {
     //  Maps an NPC name to a list of conversation IDs
     public static Dictionary<string, List<string>> npcConversations = new Dictionary<string, List<string>>();
 
-    //Keep track of which NPC conversation should be given next
-    public static Dictionary<string, string> nextConversationIdByActor;
-    public static Dictionary<string, string> currentConversationPerNPC;
-    public static Dictionary<string,string[]> dialogMap;
-
-
     public static List<string> conditions = new List<string>();
     public enum ConversationStatus { Uninitiated, Started, Finished };
     public static Dictionary<string, ConversationStatus> conversationStatus = new Dictionary<string, ConversationStatus>();
 
-    
+    public static int goodColoursCount = 0;
+    public static int badColoursCount = 0;
+
 
     public static bool playerMeetsCondition(string _condition) {
         if (_condition[0] == '!'){ 
@@ -35,7 +31,7 @@ public static class StoryConditions {
     //Returns bool indicating whether or not _condition is set to true in secondaryConditions
     //A li'l wrapper to check a condition and instantiate the list entry if it has yet to be set
     private static bool checkCondition(string _condition) {
-        Debug.Log("Checking if player has met condition " + _condition);
+        //Debug.Log("Checking if player has met condition " + _condition);
         return conditions.Contains(_condition);
     }
 
@@ -81,8 +77,7 @@ public static class StoryConditions {
     public static bool hasFinishedConversation(string _conversationId) {
         try {
             return conversationStatus[_conversationId] == ConversationStatus.Finished;
-            }
-        catch (KeyNotFoundException) {
+        } catch (KeyNotFoundException) {
             conversationStatus[_conversationId] = ConversationStatus.Uninitiated;
             return false;
         }

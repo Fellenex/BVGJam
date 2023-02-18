@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class DialogController : MonoBehaviour {
 
     public static string PLAYER_STRING = "Pal";
+    public static string GOOD_QUALITY = "good";
+    public static string BAD_QUALITY = "bad";
 
     bool PLAYER_CHOOSING = false;
 
@@ -110,9 +112,9 @@ public class DialogController : MonoBehaviour {
 
     //The player has chosen a speech option - update the conversation to reflect this choice
     private void ChooseOption(Conversation_Option _option) {
-
         bool showDramaticDialog = false;
         Conversation_Trigger specialTrigger = null;
+
         //If there were triggers, then cause them here.
         foreach (Conversation_Trigger trigger in _option.triggers) {
 
@@ -125,8 +127,19 @@ public class DialogController : MonoBehaviour {
             }
         }
 
+        //If we have a special trigger, then we have some additional 
         if (specialTrigger != null) {
+            StoryConditions.playerHasMetCondition(specialTrigger.colour);
+            if (specialTrigger.quality == GOOD_QUALITY) {
+                StoryConditions.goodColoursCount++;
+            } else if (specialTrigger.quality == BAD_QUALITY) {
+                StoryConditions.badColoursCount++;
+            } else {
+                Debug.LogError("DialogController::ChooseOption() bad quality (" + specialTrigger.quality + ")");
+            }
+
             
+            //TODO Show dramatic dialog for this colour and quality
         }
 
         //Update the active state+statement index

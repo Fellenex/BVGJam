@@ -4,6 +4,15 @@ using UnityEngine;
 
 public static class GetNextConversationID {
 
+    /*
+    CK Note Feb 17 2023
+    Only useful as a historical mapping showing which dialogs should follow the next.
+    Refer to it in debugging but otherwise irrelevant since this is a bad structure.
+
+    Govern the conversation flows by using triggers+conditions, not with predestined lines.
+    */
+
+
     public static Dictionary<string, string> currentConversationPerNPC;
     public static Dictionary<string,string[]> dialogMap;
 

@@ -701,6 +701,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2529840197004290998}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &792520181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5022398679895670777, guid: 82260e348a455dc4c9a7f9b6651f4b6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 639242369}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc064dbe603de2d40ba5bc4f2daff55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &805255943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,9 +1353,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29905186651d4ea4cbc1895ce6d64a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogOpen: 0
+  dialogController: {fileID: 792520181}
   audioController: {fileID: 1965482530}
   dialogCanvas: {fileID: 1207629989}
-  environment: {fileID: 805255943}
   npcs:
   - {fileID: 1223561347}
   - {fileID: 1638860983}
@@ -1434,7 +1447,7 @@ PrefabInstance:
         type: 3}
       propertyPath: conversationJSON
       value: 
-      objectReference: {fileID: 4900000, guid: 51a7382f9c621ba49a3286fbce30887c, type: 3}
+      objectReference: {fileID: 4900000, guid: b84bedf2f82038d458f67d6e851a7713, type: 3}
     - target: {fileID: 5362147572540200517, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_Name
@@ -1724,6 +1737,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2006579549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006579550}
+  - component: {fileID: 2006579551}
+  m_Layer: 0
+  m_Name: Dialog_Debugger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2006579550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006579549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2114.5461, y: 470.5831, z: -97.329956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2006579551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006579549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0690e2045b92dd4782aa463f2bf6d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonToTest: {fileID: 4900000, guid: f1089389c189bfb4ab8684e8a0f14b9d, type: 3}
 --- !u!1 &2122546975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,7 +2001,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8012487518621530176, guid: 8513dc2a51129ca468a50c6074d93802, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8513dc2a51129ca468a50c6074d93802, type: 3}
 --- !u!1001 &3154164743843291272
 PrefabInstance:

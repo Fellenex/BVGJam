@@ -67,7 +67,7 @@ public class CharacterDisplay {
         //Collect the relevant images
         Dictionary<string, Sprite> currImages = new Dictionary<string, Sprite>();
         foreach (string mood in CharacterDisplay.moods){
-            Debug.Log("about to load '"+CharacterDisplay.rootFilepath[_name] + mood);
+            //Debug.Log("about to load '"+CharacterDisplay.rootFilepath[_name] + mood);
             currImages[mood] = Resources.Load<Sprite>(CharacterDisplay.rootFilepath[_name] + mood);
         }
         Debug.Log(currImages);

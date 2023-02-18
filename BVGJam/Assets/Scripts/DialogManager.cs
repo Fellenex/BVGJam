@@ -51,11 +51,10 @@ public class DialogManager : MonoBehaviour {
     public void OnStartConversation(string _npcName) {
         Debug.Log("Trying to start a conversation with " + _npcName);
 
-
         //Start a conversation if it's unambiguous which one should come next
         Conversation nextConversation = getNextConversation(_npcName);
         if (nextConversation != null) {
-            Debug.Log("About to start conversation " + nextConversation.id);
+            Debug.Log("About to start conversation (" + nextConversation.id + ")");
             audioController.GetComponent<AudioSource>().volume = 0.5f;
             dialogController.StartConversation(nextConversation);
             dialogOpen = true;
@@ -175,7 +174,7 @@ public class DialogManager : MonoBehaviour {
         bool conditionsMet = true;
         foreach (String condition in metaconditions) {
             if (!StoryConditions.playerMeetsCondition(condition)) {
-                Debug.Log("Player has not yet met condition " + condition);
+                Debug.Log("Player has not yet met metacondition " + condition);
                 conditionsMet = false;
             }
         }

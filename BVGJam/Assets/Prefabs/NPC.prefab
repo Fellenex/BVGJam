@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3795280135728259500}
   - component: {fileID: 3795280135728259498}
   - component: {fileID: 3795280135728259497}
-  - component: {fileID: 7937604188104971435}
+  - component: {fileID: -3254154113623533534}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   classType: 
   conversationJSON: {fileID: 0}
---- !u!114 &7937604188104971435
+--- !u!114 &-3254154113623533534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3795280135728259503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab8624df7498f8498ae63010bf04471, type: 3}
+  m_Script: {fileID: 11500000, guid: 18ba3c93fc38cd24d948b6962ef1fdab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogIcon: {fileID: 0}
