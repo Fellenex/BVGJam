@@ -21,6 +21,7 @@ public static class StoryConditions {
 
 
     public static bool playerMeetsCondition(String _condition) {
+        Debug.Log("Checking if player meets " + _condition);
         if (_condition[0] == '!'){ 
             //We want to check that the player has /not/ met the condition
             return !checkCondition(_condition.Substring(1, _condition.Length-2));
@@ -67,8 +68,6 @@ public static class StoryConditions {
     }
 
     //A li'l wrapper to safely check if a conversation has been completed
-    
-    //TODO take an npc name and a conversation ID so that they dont' have to be unique between NPCs
     public static bool hasFinishedConversation(String _npcName, String _conversationId) {
         try {
             return conversationStatus[(_npcName, _conversationId)] == ConversationStatus.Finished;

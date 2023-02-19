@@ -163,12 +163,15 @@ public class DialogManager : MonoBehaviour {
         //Check the metaconditions for each one, and make sure we haven't
         //  already finished the conversation
         foreach (Conversation conversation in npcConversations[_npcName]){
-            if (playerMeetsMetaconditions(conversation.metaconditions) &&
-                !StoryConditions.hasFinishedConversation(_npcName, conversation.id)) {
+            if (playerMeetsMetaconditions(conversation.metaconditions)){
+                if (!StoryConditions.hasFinishedConversation(_npcName, conversation.id)) {
                     Debug.Log("Player has not yet finished conversation " + conversation.id);
                     possibleConversations.Add(conversation);
+                } else {
+                    Debug.Log("Player already finished conversation " + conversation.id);
+                }
             } else {
-                Debug.Log("Player already finished conversation " + conversation.id);
+                Debug.Log("Player does not meet the conditions for " + conversation.id);
             }
         }
         return possibleConversations;
