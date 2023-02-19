@@ -164,8 +164,11 @@ public class DialogManager : MonoBehaviour {
         //  already finished the conversation
         foreach (Conversation conversation in npcConversations[_npcName]){
             if (playerMeetsMetaconditions(conversation.metaconditions) &&
-                !StoryConditions.hasFinishedConversation(conversation.id)) {
+                !StoryConditions.hasFinishedConversation(_npcName, conversation.id)) {
+                    Debug.Log("Player has not yet finished conversation " + conversation.id);
                     possibleConversations.Add(conversation);
+            } else {
+                Debug.Log("Player already finished conversation " + conversation.id);
             }
         }
         return possibleConversations;

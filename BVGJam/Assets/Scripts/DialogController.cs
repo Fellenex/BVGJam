@@ -53,15 +53,15 @@ public class DialogController : MonoBehaviour {
 
         StoryConditions.StartConversation(_conversation.getNPCName(), _conversation.id);
         graphics.initializeConversation(_conversation.getNPCName());
-        startStatements(activeState);
+        StartStatements(activeState);
     }
 
     public void StopConversation(){
         Debug.Log("DialogController::StopConversation() has begun");
-
+        Debug.Log("Checking if " + activeState.index + " is a final state");
         if (activeConversation.isAcceptingState(activeState.index)) {
-            //We've finished this conversation.
-            StoryConditions.finishConversation(activeConversation.id, "Paladin");
+            //Keep track of having finished this conversation
+            StoryConditions.FinishConversation(activeConversation.getNPCName(), activeConversation.id);
         }
                                                                                                                                                                                                                                                                                                             
         //Everything has been wrapped up, so hand back control to the DialogManager
@@ -70,7 +70,7 @@ public class DialogController : MonoBehaviour {
 
     private void AdvanceConversation(){
         if (activeState.hasMoreStatements(activeStatementIndex)) {
-            nextStatement(activeState);
+            NextStatement(activeState);
         } else {
             //No more statements - see if we have a transition that we can take to another state
             Conversation_Transition tr = activeConversation.getTransitionByIndex(activeState.index);
@@ -94,10 +94,10 @@ public class DialogController : MonoBehaviour {
                 ChooseOption(_transition.options[0]);
             } else {
                 //Option text we want to show, but only one choice. Still let them choose it.
-                playerChoosing(_transition);
+                PlayerChoosing(_transition);
             }
         } else {
-            playerChoosing(_transition);
+            PlayerChoosing(_transition);
         }
     }
 
@@ -141,7 +141,7 @@ public class DialogController : MonoBehaviour {
     }
 
     //Start a state's set of statements
-    private void startStatements(Conversation_State _state) {
+    private void StartStatements(Conversation_State _state) {
         PLAYER_CHOOSING = false;
         activeStatement = _state.getFirstStatement();
         activeStatementIndex = 0;
@@ -154,7 +154,7 @@ public class DialogController : MonoBehaviour {
     }
 
     //Move onto the next statement in the current state
-    private void nextStatement(Conversation_State _state) {
+    private void NextStatement(Conversation_State _state) {
         PLAYER_CHOOSING = false;
         activeStatement = _state.statements[activeStatementIndex];
         activeStatementIndex += 1;
@@ -167,7 +167,7 @@ public class DialogController : MonoBehaviour {
     }
 
     //Hand control over to the player for choosing between a few options
-    private void playerChoosing(Conversation_Transition _transition) {
+    private void PlayerChoosing(Conversation_Transition _transition) {
         PLAYER_CHOOSING = true;
 
         //Only show the options to which the player currently has access

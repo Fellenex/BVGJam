@@ -5,23 +5,9 @@ If we let players exit out of conversations, then either:
     potential for repeated conversations.
 
 I think exiting out of a conversation shouldn't be an option
-for players. Just a debug thing.
-
-
-
-
-Longer-Term Development
-    Lighting
-    Audio Slider
-    Main Screen Menu
-    Credits Menu
-    "Typing" text for DialogGraphics
-
-
-
+    for players. Just a debug thing.
 
 Options for directing conversations:
-
     Each conversation has a specified follower
         Pro: simpler JSON
         Con: Kinda railroady as a structure.
@@ -34,6 +20,27 @@ Options for directing conversations:
             A more restrictive structure - conversations need to know about each other
         
     Treat every conversation as a possible follower
+        (i went with this option as the solution)
         Pro: Simplest JSON - no need for attribute changes
         Con: Every conversation needs to have good metaconditions.
             Could result in a lot of data edits for small conversation edits
+
+
+Adding a new NPC to the game:
+    Add an NPC prefab to the scene
+    Create a prefab variant with your specific NPC name (if you want).
+    Update the sprite from default image
+    Add a Dialog JSON to the NPC_Attributes component
+    Add the gameobject to DialogManager's Dialog Manager component
+
+
+
+Longer-Term Development
+    Lighting
+    Audio Slider
+    Main Screen Menu
+    Credits Menu
+    "Typing" text for DialogGraphics
+
+    Use Unity Editor layer collision settings instead of IgnorePlayerCollide.cs
+    Make the camera snapping not so rigid (a little wiggle room in the middle w the fancy camera)

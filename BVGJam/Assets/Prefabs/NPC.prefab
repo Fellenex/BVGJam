@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3795280135728259501}
   - component: {fileID: 3795280135728259502}
-  - component: {fileID: 3795280135728259499}
-  - component: {fileID: 3795280135728259500}
-  - component: {fileID: 3795280135728259498}
   - component: {fileID: 3795280135728259497}
   - component: {fileID: -3254154113623533534}
+  - component: {fileID: 2939035744621546317}
+  - component: {fileID: 3795280135728259499}
+  - component: {fileID: 3795280135728259500}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3795280135728259503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children:
   - {fileID: 5647117409125959814}
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f810968816e99764dafa88998aeb9a5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75d9fd9949b6eaf46ba46fb1db95ae2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,6 +87,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3795280135728259497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3795280135728259503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37fda0f1b66853d4a896d9d84ce8baec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogFile: {fileID: 4900000, guid: 4423553ef57965646b5b12a15ff7d594, type: 3}
+--- !u!114 &-3254154113623533534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3795280135728259503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ba3c93fc38cd24d948b6962ef1fdab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogIcon: {fileID: 0}
+  dialogAvailableSprite: {fileID: 0}
+  dialogUnavailableSprite: {fileID: 0}
+--- !u!114 &2939035744621546317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3795280135728259503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165f7d8797cc9b846b0fcc5ddd7c4a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftFacingSprite: {fileID: 0}
+  rightFacingSprite: {fileID: 0}
+  sr: {fileID: 0}
 --- !u!50 &3795280135728259499
 Rigidbody2D:
   serializedVersion: 4
@@ -118,14 +161,14 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 18.32, y: 19.3}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 3, y: 3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -134,47 +177,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6, y: 20}
   m_EdgeRadius: 0
---- !u!114 &3795280135728259498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795280135728259503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b56996d50a2d23e46a1465d1ebe04e73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3795280135728259497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795280135728259503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37fda0f1b66853d4a896d9d84ce8baec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  classType: 
-  conversationJSON: {fileID: 0}
---- !u!114 &-3254154113623533534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795280135728259503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ba3c93fc38cd24d948b6962ef1fdab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogIcon: {fileID: 0}
-  dialogAvailableSprite: {fileID: 0}
-  dialogUnavailableSprite: {fileID: 0}
 --- !u!1001 &3116311121244952734
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,6 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5362147572540200515, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
+      propertyPath: dialogFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 63f4941a2f17d8c40ba4583221fedbd8, type: 3}
+    - target: {fileID: 5362147572540200515, guid: 9c79140a5be04cb4fb485835f438e725,
+        type: 3}
       propertyPath: displayName
       value: Sir Jonathan
       objectReference: {fileID: 0}
@@ -94,7 +99,7 @@ PrefabInstance:
     - target: {fileID: 5362147572540200517, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_Name
-      value: Sir_Jonathan
+      value: Joe
       objectReference: {fileID: 0}
     - target: {fileID: 5362147572540200518, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
@@ -176,6 +181,23 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6199251695021685927, guid: 9c79140a5be04cb4fb485835f438e725,
+        type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 2214916798627622300}
+    - target: {fileID: 6199251695021685927, guid: 9c79140a5be04cb4fb485835f438e725,
+        type: 3}
+      propertyPath: leftFacingSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f880d42bf5748264d978d403f3679d6f,
+        type: 3}
+    - target: {fileID: 6199251695021685927, guid: 9c79140a5be04cb4fb485835f438e725,
+        type: 3}
+      propertyPath: rightFacingSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 530c3366e1504bc4aaae37384bf47e5f,
+        type: 3}
     - target: {fileID: 8121322402105224697, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: sr
@@ -197,6 +219,7 @@ PrefabInstance:
     - {fileID: 1468070609, guid: 9c79140a5be04cb4fb485835f438e725, type: 3}
     - {fileID: 5362147572540200513, guid: 9c79140a5be04cb4fb485835f438e725, type: 3}
     - {fileID: 8485307417369812817, guid: 9c79140a5be04cb4fb485835f438e725, type: 3}
+    - {fileID: 6199251695021685927, guid: 9c79140a5be04cb4fb485835f438e725, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c79140a5be04cb4fb485835f438e725, type: 3}
 --- !u!1 &2214916798627622301 stripped
 GameObject:

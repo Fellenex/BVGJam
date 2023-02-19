@@ -25,9 +25,10 @@ public class CharacterDisplay {
     private static string MAVERICK_NAME = "Maverick_The_Monk";
     private static string NICKI_NAME = "Nyx";
     private static string GRANDMA_NAME = "Grandma_Yaga";
+    private static string KNIFE_NAME = "Knife";
 
     public static List<string> DISPLAY_NAMES = new List<string> {
-        PAL_NAME, CASEY_NAME, CASEY_NAME_TWO, JOE_NAME, MARK_NAME, MAVERICK_NAME, NICKI_NAME, GRANDMA_NAME
+        PAL_NAME, CASEY_NAME, CASEY_NAME_TWO, JOE_NAME, MARK_NAME, MAVERICK_NAME, NICKI_NAME, GRANDMA_NAME, KNIFE_NAME
     };
 
     private static Dictionary<string, string> rootFilepath = new Dictionary<string, string> {
@@ -38,7 +39,8 @@ public class CharacterDisplay {
         {MARK_NAME, "Sprites/Mark/dialogIcon_"},
         {MAVERICK_NAME, "Sprites/Maverick/dialogIcon_"},
         {NICKI_NAME, "Sprites/Nicki/dialogIcon_"},
-        {GRANDMA_NAME, "Sprites/Grandma_Yaga/dialogIcon_"}
+        {GRANDMA_NAME, "Sprites/Grandma_Yaga/dialogIcon_"},
+        {KNIFE_NAME, "Sprites/Knife/dialogIcon_"}
     };
 
     private static Dictionary<string, Vector2> dimensionsByCharacter = new Dictionary<string, Vector2> {
@@ -49,7 +51,8 @@ public class CharacterDisplay {
         {MARK_NAME, new Vector2(225, 350)},
         {MAVERICK_NAME, new Vector2(200, 350)},
         {NICKI_NAME, new Vector2(350,350)},
-        {GRANDMA_NAME, new Vector2(350,400)}
+        {GRANDMA_NAME, new Vector2(350,400)},
+        {KNIFE_NAME, new Vector2(200,400)}
     };
 
     public CharacterDisplay(string _codeName, string _displayName, Dictionary<string, Sprite> _images, Vector2 _dimensions) {

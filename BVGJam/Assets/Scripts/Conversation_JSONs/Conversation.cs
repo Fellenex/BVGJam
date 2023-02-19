@@ -102,6 +102,8 @@ public class Conversation {
     }
 
     public void validate() {
+        Debug.Log("Starting validation on " + id);
+        
         //We need a name for this conversation for tracking conversation completeness
         Debug.Assert(!String.IsNullOrEmpty(id));
 
