@@ -51,8 +51,7 @@ public class DialogGraphics : MonoBehaviour {
         activeNPCImage.enabled = true;
     }
 
-    //Display all of the elements to let a player choose their next dialog option
-    //TODO soon(ish). Should take a list of options, not a transition itself
+    //Display all of the player's elements to let a player choose their next dialog option
     public void playerIsChoosing(List<Conversation_Option> _options) {
         resetTextElements();
 
@@ -63,7 +62,7 @@ public class DialogGraphics : MonoBehaviour {
         } else {
             Debug.Log("Player has options to choose from: " + _options);
 
-            //TODO does not consider conditions of specific options. Currently all options are just shown.
+            //Fill up the option buttons with the options we've been given
             for (int i = 0; i < _options.Count; i++) {
                 //Add a reference on the button to the text (needed for onClick functionality)
                 playerTextButtonBoxes[i].GetComponent<OptionHolder>().option = _options[i];

@@ -11,14 +11,12 @@ public class DialogManager : MonoBehaviour {
 
     public bool dialogOpen = false;
 
+    //These should all be set in the Unity Editor
     public DialogController dialogController;
     public GameObject audioController;       // a handle to change audio volume based on conversation status
-    public GameObject dialogCanvas;         // a handle to change the relevant conversation shown
 
-    //public event Action<Conversation> StartConversationEvent;
-    //public event Action AdvanceConversation;
 
-    //A list of all of the NPC gameob
+    //A list of all of the NPC gameobjects
     public List<GameObject> npcs;
     public List<DialogData> dialogFiles;
 
@@ -29,6 +27,7 @@ public class DialogManager : MonoBehaviour {
         if (instance == null) { instance = this; }
         else { Destroy(this); }
 
+        //When the controller tells us the conversation is over, take back control
         DialogController.StopConversationEvent += OnStopConversation;
     }
 
@@ -65,7 +64,7 @@ public class DialogManager : MonoBehaviour {
             audioController.GetComponent<AudioSource>().volume = 0.5f;
             dialogController.StartConversation(nextConversation);
             dialogOpen = true;
-            dialogCanvas.SetActive(true);
+            //dialogCanvas.SetActive(true);
         }
     }
 
@@ -73,7 +72,7 @@ public class DialogManager : MonoBehaviour {
         Debug.Log("Ending the active conversation");
 
         dialogOpen = false;
-        dialogCanvas.SetActive(false);
+        //dialogCanvas.SetActive(false);
         audioController.GetComponent<AudioSource>().volume = 1.0f;
 
         //TODO

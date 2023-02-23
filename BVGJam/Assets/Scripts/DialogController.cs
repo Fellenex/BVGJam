@@ -16,6 +16,8 @@ public class DialogController : MonoBehaviour {
     //Prevent the player from advancing the conversation arbitrarily when they have to make a choice
     bool PLAYER_CHOOSING = false;
 
+    //A handle to the graphics script on the panel.
+    //Should be set in 
     public DialogGraphics graphics;        // a handle to update the graphics
 
 
@@ -32,8 +34,9 @@ public class DialogController : MonoBehaviour {
     }
 
     void Update() {
-        //Only let the player advance the state if they are not currently choosing
-        if (!PLAYER_CHOOSING && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
+        //Only let the player advance the state if there is an active conversation, and they are not currently choosing
+        if (!PLAYER_CHOOSING && activeConversation != null &&
+            (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
             AdvanceConversation();
         }
 
@@ -52,6 +55,7 @@ public class DialogController : MonoBehaviour {
         activeState = _conversation.getFirstState();
 
         StoryConditions.StartConversation(_conversation.getNPCName(), _conversation.id);
+        graphics.gameObject.SetActive(true);
         graphics.initializeConversation(_conversation.getNPCName());
         StartStatements(activeState);
     }
@@ -63,12 +67,21 @@ public class DialogController : MonoBehaviour {
             //Keep track of having finished this conversation
             StoryConditions.FinishConversation(activeConversation.getNPCName(), activeConversation.id);
         }
-                                                                                                                                                                                                                                                                                                            
+
+        //Disable the conversation window
+        graphics.gameObject.SetActive(false);
+
+        //TODO should really have a separated model for this
+        activeConversation = null;
+        activeState = null;
+        activeStatement = null;
+        activeStatementIndex = 0;
+
         //Everything has been wrapped up, so hand back control to the DialogManager
         StopConversationEvent?.Invoke(activeState.index);
     }
 
-    private void AdvanceConversation(){
+    private void AdvanceConversation() {
         if (activeState.hasMoreStatements(activeStatementIndex)) {
             NextStatement(activeState);
         } else {

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3795280135728259497}
   - component: {fileID: -3254154113623533534}
   - component: {fileID: 2939035744621546317}
-  - component: {fileID: 3795280135728259499}
   - component: {fileID: 3795280135728259500}
   m_Layer: 0
   m_Name: NPC
@@ -130,27 +129,6 @@ MonoBehaviour:
   leftFacingSprite: {fileID: 0}
   rightFacingSprite: {fileID: 0}
   sr: {fileID: 0}
---- !u!50 &3795280135728259499
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795280135728259503}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &3795280135728259500
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -35,12 +35,36 @@ Adding a new NPC to the game:
 
 
 
-Longer-Term Development
-    Lighting
-    Audio Slider
+
+Main Features Completed
+    Conversations can only be started if their preconditions are met
+    Conversations are considered finished + unrepeatable after some point
+    Pal (left) and NPC (right) can speak back and forth to each other
+    Player can make choices during conversations that
+        a) can have preconditions before allowing to be chosen
+        b) can trigger conditions as a result of taking the choice
+    
+Main Features Remaining
+    When the player collects a colour trigger (for the first time), we show a dramatic dialog
+
+Longer-Term Development and Improvements
+    More than just flat lighting
+    Audio Slider UI element
     Main Screen Menu
     Credits Menu
     "Typing" text for DialogGraphics
+    Dynamic background image for dialogs based on Pal's coordinates
+
+
+    v Consistent prefab+prefab variants for NPCs. One NPC prefab with many variants. As-is there are a couple parent classes
+        Only Joe was a child prefab of Grandma. Everyone else was properly parented
+    v Use proper canvas rendering layers instead of whatever z-hacking I've been doing so far
 
     Use Unity Editor layer collision settings instead of IgnorePlayerCollide.cs
     Make the camera snapping not so rigid (a little wiggle room in the middle w the fancy camera)
+    Use proper pixels per unit style scaling instead of this massive 20x20 blow-up of everything. The game is enormous
+    Fix left/right overworld sprites. (At the least, Joe is wrong. Different size and different model)
+
+
+If we put DialogGraphics on the Canvas, then its references can be initialized properly
+If we put DialogGraphics on the Panel, then it can disable/enable the "correct" part of graphics
