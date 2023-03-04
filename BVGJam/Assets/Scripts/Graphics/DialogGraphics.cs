@@ -21,6 +21,9 @@ public class DialogGraphics : MonoBehaviour {
 
     public Text speechText;
 
+    //Canvas with DialogGraphics should only have one child panel
+    public GameObject childPanel;
+
     public CharacterDisplay playerDisplay;
     public CharacterDisplay npcDisplay;
 
@@ -30,6 +33,10 @@ public class DialogGraphics : MonoBehaviour {
         if (instance == null) { instance = this; }
         else { Destroy(this); }
     }
+
+    //Handle activation/deactivation here so that the logic can be separate fromm DialogController
+    public void activate() { childPanel.gameObject.SetActive(true); }
+    public void deactivate() { childPanel.gameObject.SetActive(false); }
 
     public void initializeConversation(string npcSpeaker) {
         resetTextElements();
@@ -97,7 +104,7 @@ public class DialogGraphics : MonoBehaviour {
     }
 
 
-    //Used as the OnClick function by the buttons created when a player has a choic
+    //Used as the OnClick function by the buttons created when a player has a choice
     public void onOptionButtonClicked(int _index) {
         Debug.Log("Now we should go to state "+playerTextButtonBoxes[_index].GetComponent<OptionHolder>().option.target);
         SetNextStateEvent?.Invoke(getOptionFromButton(_index));

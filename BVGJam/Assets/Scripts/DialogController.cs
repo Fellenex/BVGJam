@@ -17,8 +17,8 @@ public class DialogController : MonoBehaviour {
     bool PLAYER_CHOOSING = false;
 
     //A handle to the graphics script on the panel.
-    //Should be set in 
-    public DialogGraphics graphics;        // a handle to update the graphics
+    //Should be set in the inspector
+    public DialogGraphics graphics;
 
 
     //TODO should make a model for an "Active Conversation" with this info.
@@ -42,7 +42,7 @@ public class DialogController : MonoBehaviour {
 
         //DEBUG ONLY. TODO REMOVE.
         if (Input.GetKeyDown(KeyCode.X)) {
-            DialogManager.instance.OnStopConversation(activeState.index);
+            StopConversation();
         }
     }
 
@@ -55,7 +55,7 @@ public class DialogController : MonoBehaviour {
         activeState = _conversation.getFirstState();
 
         StoryConditions.StartConversation(_conversation.getNPCName(), _conversation.id);
-        graphics.gameObject.SetActive(true);
+        graphics.activate();
         graphics.initializeConversation(_conversation.getNPCName());
         StartStatements(activeState);
     }
@@ -65,11 +65,16 @@ public class DialogController : MonoBehaviour {
         Debug.Log("Checking if " + activeState.index + " is a final state");
         if (activeConversation.isAcceptingState(activeState.index)) {
             //Keep track of having finished this conversation
+            Debug.Log("It is!");
             StoryConditions.FinishConversation(activeConversation.getNPCName(), activeConversation.id);
+        } else {
+            Debug.Log("It was not");
         }
 
         //Disable the conversation window
-        graphics.gameObject.SetActive(false);
+        graphics.deactivate();
+
+        String oldConversationIndex = activeState.index;
 
         //TODO should really have a separated model for this
         activeConversation = null;
@@ -78,7 +83,7 @@ public class DialogController : MonoBehaviour {
         activeStatementIndex = 0;
 
         //Everything has been wrapped up, so hand back control to the DialogManager
-        StopConversationEvent?.Invoke(activeState.index);
+        StopConversationEvent?.Invoke(oldConversationIndex);
     }
 
     private void AdvanceConversation() {
