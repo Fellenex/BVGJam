@@ -29,7 +29,8 @@ public class Conversation {
                 return state;
             }
         }
-        Debug.LogError("Conversation::getStateByIndex() Unknown state index " + _index);
+        Debug.LogError("Conversation::getStateByIndex() Unknown state index " + _index
+                + " in conversation " + id);
         return null;
     }
 
@@ -41,7 +42,8 @@ public class Conversation {
                 return transition;
             }
         }
-        Debug.Log("Conversation::getTransitionByIndex() Unknown conversation index " + _index);
+        Debug.Log("Conversation::getTransitionByIndex() No transitions with source " + _index
+                + " in conversation " + id);
         return null;
     }
 
@@ -59,7 +61,8 @@ public class Conversation {
                 return statement.speaker;
             }
         }
-        Debug.LogError("Conversation::getNPCName() Couldn't find who the player is speaking with");
+        Debug.LogError("Conversation::getNPCName() Couldn't find who the player is speaking with "
+                + " in conversation " + id);
         return "";
     }
 

@@ -1,6 +1,6 @@
 {
     "conversations" : [
-        {"id" : "Knife_A", "finalStates" : ["1", "2"], "metaconditions" : [], "states" : [
+        {"id" : "Knife_A", "finalStates" : ["1"], "metaconditions" : [], "states" : [
             {"index" : "0",
                 "statements" : [
                     {

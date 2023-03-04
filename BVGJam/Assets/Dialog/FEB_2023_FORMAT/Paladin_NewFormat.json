@@ -75,10 +75,10 @@
                     ]
                 },
                 { "source": "A1", "options": [
-                        { "target": "A2",
-                            "optionText": "",
-                            "conditions": [], "triggers": [{"text": "toxicSweat", "colour": "blue", "quality": "bad"}]
-                        }
+                    { "target": "A2",
+                        "optionText": "",
+                        "conditions": [], "triggers": [{"text": "toxicSweat", "colour": "blue", "quality": "bad"}]
+                    }
                     ]
                 }                
             ]

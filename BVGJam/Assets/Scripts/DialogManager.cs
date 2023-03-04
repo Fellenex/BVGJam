@@ -60,11 +60,10 @@ public class DialogManager : MonoBehaviour {
         //Start a conversation if it's unambiguous which one should come next
         Conversation nextConversation = getNextConversation(_npcName);
         if (nextConversation != null) {
-            Debug.Log("About to start conversation (" + nextConversation.id + ")");
+            Debug.Log("About to start conversation '" + nextConversation.id + "' with '" + _npcName + "'");
             audioController.GetComponent<AudioSource>().volume = 0.5f;
             dialogController.StartConversation(nextConversation);
             dialogOpen = true;
-            //dialogCanvas.SetActive(true);
         }
     }
 
@@ -72,7 +71,6 @@ public class DialogManager : MonoBehaviour {
         Debug.Log("Ending the active conversation");
 
         dialogOpen = false;
-        //dialogCanvas.SetActive(false);
         audioController.GetComponent<AudioSource>().volume = 1.0f;
 
         //TODO
@@ -159,6 +157,10 @@ public class DialogManager : MonoBehaviour {
     private List<Conversation> getPossibleConversations(string _npcName) {
         List<Conversation> possibleConversations = new List<Conversation>();
 
+        foreach ((String,String) x in StoryConditions.conversationStatus.Keys) {
+            Debug.Log(x + " --> " + StoryConditions.conversationStatus[x]);
+        }
+
         //Check the metaconditions for each one, and make sure we haven't
         //  already finished the conversation
         foreach (Conversation conversation in npcConversations[_npcName]){
@@ -170,23 +172,30 @@ public class DialogManager : MonoBehaviour {
                     Debug.Log("Player already finished conversation " + conversation.id);
                 }
             } else {
-                Debug.Log("Player does not meet the conditions for " + conversation.id);
+                //Debug.Log("Player does not meet the conditions for " + conversation.id);
             }
         }
         return possibleConversations;
     }
 
+    //Returns boolean corresponding to whether or not the player has already met a list of metaconditions
     private bool playerMeetsMetaconditions(string[] metaconditions) {
         bool conditionsMet = true;
         foreach (String condition in metaconditions) {
             if (!StoryConditions.playerMeetsCondition(condition)) {
-                Debug.Log("Player has not yet met metacondition " + condition);
+                //Debug.Log("Player has not yet met metacondition " + condition);
                 conditionsMet = false;
             }
         }
         return conditionsMet; 
     }
 
+    /*
+    Compares all of the dialog files to make sure that
+        1. Every condition required to enter a conversation has some transition which triggers it
+        2. Every condition required to take a transition has some transition which triggers it
+        3. Every trigger found on a transition has some condition which requires it
+    */
     private static void crossCheckConditionsAndTriggers(List<DialogData> _dialogs) {
         List<String> triggers = new List<String>();
         List<String> conditions = new List<String>();

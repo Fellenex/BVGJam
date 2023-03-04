@@ -63,7 +63,7 @@ public static class StoryConditions {
     }
 
     public static void FinishConversation(String _npcName, String _conversationId){
-        Debug.Log("Finishing conversation " + _conversationId + " with " + _npcName);
+        Debug.Log("Finishing conversation '" + _conversationId + "' with '" + _npcName + "'");
         conversationStatus[(_npcName, _conversationId)] = ConversationStatus.Finished;
     }
 
