@@ -1,53 +1,37 @@
 {
     "conversations" : [
-        {"id" : "Knife_A", "finalStates" : ["1"], "metaconditions" : [], "states" : [
-            {"index" : "0",
-                "statements" : [
-                    {
-                        "speaker" : "Pal",
-                        "text" : "Oh, a knife!",
-                        "mood" : "neutral"
-                    },
-                    {
-                        "speaker" : "Knife",
-                        "text" : "* S H I N G *",
-                        "mood" : "neutral"
-                    },
-                    {
-                        "speaker" : "Pal",
-                        "text" : "That looks...sharp.",
-                        "mood" : "upset"
-                    }
+        { "id" : "Knife_A",
+            "finalStates" : ["1"],
+            "metaconditions" : [],
+            "states" : [
+            {"index" : "0", "statements" : [
+                    { "speaker" : "Pal",    "mood" : "neutral", "text" : "Oh, a knife!" },
+                    { "speaker" : "Knife",  "mood" : "neutral", "text" : "* S H I N G *" },
+                    { "speaker" : "Pal",    "mood" : "upset", "text" : "That looks...sharp." }
                 ]
             },
-
             {"index" : "1", "statements" : [
                 {"speaker" : "Pal", "text": "This'll come in handy...", "mood": "pleased"}
-            ] },
-
+                ]
+            },
             {"index" : "2", "statements" : [
                 {"speaker": "Pal", "text": "I better leave that alone!", "mood": "upset"}
-            ] }
-        ],
-        "transitions" : [
-            {   
-                "source" : "0",
-                "options" : [
-                    {
-                        "target" : "1",
-                        "optionText" : "*Pick up the knife*",
-                        "conditions" : [],
-                        "triggers" : [{"text":"foundKnife", "colour":"", "quality":""}]
-                    },
-                    {
-                        "target" : "2",
-                        "optionText" : "Leave the knife on the ground",
-                        "conditions" : [],
-                        "triggers" : []
-                    }
                 ]
             }
-        ]
+            ],
+            "transitions" : [
+                { "source" : "0", "options" : [
+                        { "target" : "1",
+                            "optionText" : "*Pick up the knife*",
+                            "conditions" : [], "triggers" : [{"text":"foundKnife", "colour":"", "quality":""}]
+                        },
+                        { "target" : "2",
+                            "optionText" : "Leave the knife on the ground",
+                            "conditions" : [], "triggers" : []
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
