@@ -1,0 +1,81 @@
+{
+	"conversations": [{
+		"id": "Druid_A",
+		"finalStates": ["A2", "B2"],
+		"metaconditions": ["foundKnife", "!green"],
+		"states": [
+            { "index": "0", "statements": [
+                { "speaker": "Nyx", "mood": "neutral", "text": "Hey, hey! Look at you! What are you doing here?" },
+                { "speaker": "Nyx", "mood": "pleased", "text": "I am the Druid Nyx. I love nature and growing things!" },
+                { "speaker": "Pal", "mood": "neutral", "text": "Well, hello there! My name is Pal and I’m on a quest." },
+                { "speaker": "Nyx", "mood": "pleased", "text": "That’s SO exciting! What kind of quest?" },
+                { "speaker": "Pal", "mood": "neutral", "text": "I think you might be able to help me, actually!" },
+                { "speaker": "Pal", "mood": "pleased", "text": "I'm looking for Green." },
+                { "speaker": "Nyx", "mood": "neutral", "text": "Well, remember waaaay back when I told you that I love nature and growing things?" },
+                { "speaker": "Nyx", "mood": "upset",   "text": "Turns out, it’s harder to grow Green then you’d think." },
+                { "speaker": "Pal", "mood": "upset",   "text": "Oh." },
+                { "speaker": "Nyx", "mood": "upset",   "text": "Yes. Look at my sad little garden. All I’ve been able to grow is one measly, wrinkly little mushroom." },
+                { "speaker": "Nyx", "mood": "neutral", "text": "You could have that, if you want. I'm not sure that really counts as GREEN though..." }
+            ]},
+            { "index": "A1", "statements": [
+                { "speaker": "Pal", "mood": "neutral", "text": "It's my dumpy little mushroom now!" },
+                { "speaker": "Nyx", "mood": "pleased", "text": "Take good care of it!" },
+                { "speaker": "Nyx", "mood": "neutral", "text": "Now where did I put my knife..." }
+            ]},
+            { "index": "A2", "statements": [] },
+            { "index": "B1", "statements": [
+                { "speaker": "Pal", "mood": "neutral", "text": "Would you like some help with your garden?" },
+                { "speaker": "Nyx", "mood": "pleased", "text": "Oh, aren’t you sweet! But I’m not doing anything wrong..." },
+                { "speaker": "Pal", "mood": "upset",   "text": "Well, why don’t you show me what you’ve been doing so far?" },
+                { "speaker": "Nyx", "mood": "neutral", "text": "Okay! You see, first I dig a hole in the ground..." },
+                { "speaker": "Pal", "mood": "pleased", "text": "Uh-huh." },
+                { "speaker": "Nyx", "mood": "pleased", "text": "Then I place the roots in and pull the soil over like I'm tucking it into bed." },
+                { "speaker": "Nyx", "mood": "pleased", "text": "Then I give it a little goodnight smooch." },
+                { "speaker": "Pal", "mood": "pleased", "text": "Awww! So sweet! What next?" },
+                { "speaker": "Nyx", "mood": "neutral", "text": "Then I go to my shed..." },
+                { "speaker": "Nyx", "mood": "neutral", "text": "And I open up my Gardening refrigerator..." },
+                { "speaker": "Nyx", "mood": "neutral", "text": "Then I grab the bucket of blood..." },
+                { "speaker": "Pal", "mood": "neutral", "text": "Wait- what?" },
+                { "speaker": "Nyx", "mood": "pleased", "text": "And then I pour the blood on the plants!" },
+                { "speaker": "Pal", "mood": "upset",   "text": "You’re watering your plants with blood? Whose blo-?" },
+                { "speaker": "Nyx", "mood": "pleased", "text": "Of course! Blood is very vitamin-rich!" },
+                { "speaker": "Pal", "mood": "upset",   "text": "..." },
+                { "speaker": "Nyx", "mood": "neutral", "text": "..." },
+                { "speaker": "Pal", "mood": "neutral", "text": "Now hear me out..." },
+                { "speaker": "Pal", "mood": "neutral", "text": "Have you considered using water?" },
+                { "speaker": "Nyx", "mood": "pleased", "text": "Water? Hahahahaha! Silly, everyone knows living things need blood!" },
+                { "speaker": "Pal", "mood": "neutral", "text": "Maybe just give it a little sprinkle." },
+                { "speaker": "Nyx", "mood": "neutral", "text": "I guess it's worth a shot!" }
+            ]},
+            { "index": "B2", "statements": [] }
+        ],
+
+		"transitions": [
+			{ "source": "0", "options": [
+                { "target": "A1",
+                    "optionText": "I'll just take the gross mushroom.",
+                    "conditions": [], "triggers": []
+                },
+                { "target": "B1",
+                    "optionText": "Maybe I can help her grow her garden somehow...",
+                    "conditions": [], "triggers": []
+                }
+                ]
+            },
+            { "source": "A1", "options": [
+                { "target": "A2",
+                    "optionText": "",
+                    "conditions": [],
+                    "triggers": [{"text": "cursedSpore", "colour": "green", "quality": "bad"}]
+                }]
+            }
+            { "source": "A1", "options": [
+                { "target": "A2",
+                    "optionText": "",
+                    "conditions": [],
+                    "triggers": [{"text": "lakewaterSpore", "colour": "green", "quality": "good"}]
+                }]
+            }
+        ]
+	}]
+}
