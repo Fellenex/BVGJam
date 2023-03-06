@@ -1,0 +1,178 @@
+{
+	"conversations": [
+        { "id": "Assassin_A",
+            "finalStates": ["B2", "C4", "D2"],
+            "metaconditions": ["foundKnife", "!justiceSweat"],
+            "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Nyx", "mood": "upset",   "text": "Hey is that my knife?" },
+                    { "speaker": "Nyx", "mood": "neutral", "text": "Wait, I mean- uh..." },
+                    { "speaker": "Pal", "mood": "upset",   "text": "YOU’RE the Assassin!?" },
+                    { "speaker": "Nyx", "mood": "pleased", "text": "At your service! Tell me something… Do you think violence is sometimes justifiable?" },
+                    ]
+                },
+                { "index": "A1", "statements": [
+                    { "speaker": "Pal", "mood": "neutral", "text": "Honestly, yeah. Sometimes it’s necessary." },
+                    { "speaker": "Nyx", "mood": "pleased", "text": "I think so, too!" },
+                    { "speaker": "Nyx", "mood": "neutral", "text": "We think so alike! I’d love to get your opinion on something..." },
+                    { "speaker": "Nyx", "mood": "neutral", "text": "Do you think violence solves everything?" },
+                    ]
+                },
+                { "index": "B1", "statements": [
+                    { "speaker": "Pal", "mood": "upset", "text": "Oh." },
+                    { "speaker": "Nyx", "mood": "upset", "text": "Wait- what are you doing?" },    
+                    ]
+                },
+                { "index": "B2", "statements": [
+                    { "speaker": "Nyx", "mood": "upset",   "text": "Wow! Getting stabbed really hurts!" },
+                    { "speaker": "Pal", "mood": "neutral", "text": "I mean...yeah. That’s what I was trying to tell you." },
+                    { "speaker": "Nyx", "mood": "pleased", "text": "Who knew?" },
+                    { "speaker": "Nyx", "mood": "upset",   "text": "This is what I've been doing to people this whole time?" },
+                    { "speaker": "Nyx", "mood": "upset",   "text": "..." },
+                    { "speaker": "Nyx", "mood": "upset",   "text": "Wow. Violence isn't very nice, is it?" },
+                    { "speaker": "Nyx", "mood": "neutral", "text": "I think I may need to quit violence entirely." },
+                    { "speaker": "Pal", "mood": "neutral", "text": "Maybe there’s like, a nicotine patch. But for violence." },
+                    { "speaker": "Nyx", "mood": "neutral", "text": "Is that like a blood pumpkin patch?" },
+                    { "speaker": "Pal", "mood": "neutral", "text": "Sure! Just minus the blood." },
+                    { "speaker": "Nyx", "mood": "pleased", "text": "That actually sounds so much easier! Thanks for showing me a life without violence!" },
+                    { "speaker": "Pal", "mood": "pleased", "text": "It was nice stabbing you!" }            
+                    ]
+                },
+                { "index": "C1", "statements": [
+                    { "speaker": "Pal", "mood": "neutral", "text": "Love me some violence." },
+                    { "speaker": "Nyx", "mood": "pleased", "text": "Finally! Someone gets it!" },
+                    { "speaker": "Nyx", "mood": "pleased", "text": "It makes me feel so much better about what happens next." },
+                    { "speaker": "Pal", "mood": "neutral", "text": "What happens next?" },
+                    { "speaker": "Nyx", "mood": "pleased", "text": "Now I go kill that pesky Paladin..." },
+                    { "speaker": "Nyx", "mood": "neutral", "text": "Before they pin me for all the murders my knife has committed!" },
+                    { "speaker": "Pal", "mood": "pleased", "text": "Would you mind bringing me back some RED while you’re doing that?" },
+                    { "speaker": "Nyx", "mood": "pleased", "text": "It would be my pleasure!" }
+                    ]
+                },
+                { "index": "C2", "statements": [
+                    { "speaker": "Nyx", "mood": "pleased", "text": "Well, now that the Paladin is taken care of, I can use their blood to nourish my garden!" },      
+                    ]
+                },
+                { "index": "C3", "statements": [
+                    { "speaker": "Pal", "mood": "pleased", "text": "That’s so metal and cool!" }
+                    { "speaker": "Nyx", "mood": "neutral", "text": "I suppose you deserve a reward as well." }
+                    { "speaker": "Nyx", "mood": "pleased", "text": "Feel free to take one of my lovely mushrooms!" }
+                    ]
+                },
+                { "index": "C4", "statements": [] },
+                { "index": "D1", "statements": [
+                    { "speaker": "Pal", "mood": "neutral", "text": "Maybe violence isn't always the answer" },
+                    { "speaker": "Nyx", "mood": "neutral", "text": "I can’t say that I agree..." }
+                    { "speaker": "Nyx", "mood": "upset",   "text": "It's stabbing time!" }
+                    ]
+                },
+                { "index": "D2", "statements": [
+                    { "speaker": "Pal", "mood": "upset", "text": "Ouch! At least I’m not dead...yet. I should really see someone about getting healed." },
+                ]}
+            ],
+            "transitions": [
+                { "source": "0", "options": [
+                    { "target": "A1",
+                        "optionText": "Honestly, yeah. Sometimes it's necessary.",
+                        "conditions": [], "triggers": []
+                    },
+                    { "target": "B1",
+                        "optionText": "Never! [stab the Assassin with their own knife!]",
+                        "conditions": [], "triggers": []}
+                    ]
+                },
+                { "source": "A1", "options": [
+                    { "target": "C1",
+                        "optionText": "Yup. Violence is awesome!",
+                        "conditions": [], "triggers": []
+                    },
+                    { "target": "D1",
+                        "optionText": "Maybe violence isn't always the answer.",
+                        "conditions": [], "triggers": [] }
+                    ]
+                },
+                { "source": "C1", "options": [
+                    { "target": "C2",
+                        "optionText": "",
+                        "conditions": [],
+                        "triggers": [
+                            {"text": "paladinBloodBad", "colour": "red", "quality": "bad"},
+                            {"text": "paladinDead", "colour": "", "quality": ""}
+                        ]}
+                ]},
+                { "source": "C2", "options": [
+                    { "target": "C3",
+                        "optionText": "",
+                        "conditions": [ "!green" ],
+                        "triggers": []
+                    }
+                ]},
+                { "source": "C3", "options": [
+                    { "target": "C4",
+                        "optionText": "",
+                        "conditions": [ ],
+                        "triggers": [
+                            {"text": "cursedSpore", "colour": "green", "quality": "bad"}
+                        ]}
+                ]},
+                { "source": "B1", "options": [
+                    { "target": "B2",
+                        "optionText": "",
+                        "conditions": [ ],
+                        "triggers": [
+                            {"text": "assassinsBlood", "colour": "red", "quality": "good"}
+                        ]}
+                ]},
+                { "source": "D1", "options": [
+                    { "target": "D2",
+                        "optionText": "",
+                        "conditions": [ ],
+                        "triggers": [
+                            {"text": "yourBlood", "colour": "red", "quality": "good"}
+                        ]}
+                ]}
+            ]
+        },
+        { "id": "Assassin_B",
+        "finalStates": ["1", "A2"],
+		"metaconditions": ["hasFoundKnife", "hasJusticeSweat", "!hasRed"],
+		"states": [
+            { "index": "0", "statements": [
+                { "speaker": "Nyx", "mood": "upset", "text": "That good-for-nothing Paladin is going to regret he ever..." },
+                { "speaker": "Pal", "mood": "upset", "text": "What was that?" },
+                { "speaker": "Nyx", "mood": "pleased", "text": "They might sweat BLUE, but they bleed RED..." },
+                { "speaker": "Pal", "mood": "neutral", "text": "What was that about RED?" },
+                { "speaker": "Nyx", "mood": "pleased", "text": "[pointing behind you] Oh! What’s that over there?!" }
+            ]
+            },
+            { "index": "1", "statements": [] },
+            { "index": "A1", "statements": [
+                { "speaker": "Bard", "mood": "pleased", "text": "Hello! It is I, the Bard! Here to- " },
+                { "speaker": "Bard", "mood": "upset",   "text": "My lord, this garden is sad and pathetic." },
+                { "speaker": "Pal",  "mood": "neutral", "text": "I was really hoping to find some Green." },
+                { "speaker": "Bard", "mood": "pleased", "text": "Allow me!" },
+            ]},
+            { "index": "A2", "statements": [] }
+        ],
+        "transitions": [
+            { "source": "A1", "options": [
+                { "target": "A2",
+                    "optionText": "",
+                    "conditions": [],
+                    "triggers": [{"text": "sonicSpore", "colour": "green", "quality": "good"}]
+                }
+                ]
+            },
+            { "source": "0", "options": [
+                { "target": "1",
+                    "optionText": "",
+                    "conditions": [],
+                    "triggers": [
+                        {"text": "paladinBloodGood", "colour": "red", "quality": "good"},
+                        {"text": "paladinDead",      "colour": "",    "quality": ""}
+                    ]
+                }
+            ]}
+        ]
+	}]
+}

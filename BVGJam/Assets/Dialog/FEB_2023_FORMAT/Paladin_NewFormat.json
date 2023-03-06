@@ -84,7 +84,7 @@
             ]
         },
         { "id": "Paladin_B",
-            "finalStates": [ "1" ],
+            "finalStates": [ "0" ],
             "metaconditions": [ "foundKnife", "toxicSweat" ],
             "states": [
                 { "index": "0", "statements": [
@@ -128,13 +128,12 @@
                 }
             ],
             "transitions": [
-                { "source": "0",
-                    "options": [
-                        { "target": "1",
-                            "optionText": "",
-                            "conditions": [],
-                            "triggers": [{"text": "justiceSweat", "colour": "blue", "quality": "good"}]
-                        }    
+                { "source": "0", "options": [
+                    { "target": "1",
+                        "optionText": "",
+                        "conditions": [],
+                        "triggers": [{"text": "justiceSweat", "colour": "blue", "quality": "good"}]
+                    }    
                     ]
                 }
             ]
@@ -158,35 +157,32 @@
             "finalStates": [ "1" ],
             "metaconditions": [ "paladinDead", "clericsMourning", "!blue" ],
             "states": [
-                { "index": "0",
-                    "statements": [
-                        { "speaker": "Bard",    "text": "Why helloooooooo there!", "mood": "neutral" },
-                        { "speaker": "Pal",     "text": "Who are you?", "mood": "neutral" },
-                        { "speaker": "Pal",     "text": "Can't you see I’m grieving here…", "mood": "upset" },
-                        { "speaker": "Bard",    "text": "Who are any of us, really…", "mood": "pleased" },
-                        { "speaker": "Bard",    "text": "…but instruments in the ballad the of time.", "mood": "pleased" },
-                        { "speaker": "Pal",     "text": "I-", "mood": "neutral" },
-                        { "speaker": "Bard",    "text": "All of us, a symphony, waiting for our solo moment…", "mood": "pleased" },
-                        { "speaker": "Pal",     "text": "Actually, I would like to be-", "mood": "neutral" },
-                        { "speaker": "Bard",    "text": "Yearning to be heard! Yearning for their moment!", "mood": "pleased" },
-                        { "speaker": "Pal",     "text": "I needed Blue. But all I got was Red.", "mood": "neutral" },
-                        { "speaker": "Bard",    "text": "Yearning for peace! That’s what I see in your eyes, my friend.", "mood": "pleased" },
-                        { "speaker": "Pal",     "text": "No, you misheard me I’m-", "mood": "neutral" },
-                        { "speaker": "Bard",    "text": "Well, I’ve got just the thing if you’re feeling blue.", "mood": "neutral" },
-                        { "speaker": "Pal",     "text": "Oh no", "mood": "neutral" },
-                        { "speaker": "Bard",    "text": "Here’s one of my favorite songs to play.", "mood": "pleased" }
-                    ]
-                },
+                { "index": "0", "statements": [
+                    { "speaker": "Bard",    "text": "Why helloooooooo there!", "mood": "neutral" },
+                    { "speaker": "Pal",     "text": "Who are you?", "mood": "neutral" },
+                    { "speaker": "Pal",     "text": "Can't you see I’m grieving here…", "mood": "upset" },
+                    { "speaker": "Bard",    "text": "Who are any of us, really…", "mood": "pleased" },
+                    { "speaker": "Bard",    "text": "…but instruments in the ballad the of time.", "mood": "pleased" },
+                    { "speaker": "Pal",     "text": "I-", "mood": "neutral" },
+                    { "speaker": "Bard",    "text": "All of us, a symphony, waiting for our solo moment…", "mood": "pleased" },
+                    { "speaker": "Pal",     "text": "Actually, I would like to be-", "mood": "neutral" },
+                    { "speaker": "Bard",    "text": "Yearning to be heard! Yearning for their moment!", "mood": "pleased" },
+                    { "speaker": "Pal",     "text": "I needed Blue. But all I got was Red.", "mood": "neutral" },
+                    { "speaker": "Bard",    "text": "Yearning for peace! That’s what I see in your eyes, my friend.", "mood": "pleased" },
+                    { "speaker": "Pal",     "text": "No, you misheard me I’m-", "mood": "neutral" },
+                    { "speaker": "Bard",    "text": "Well, I’ve got just the thing if you’re feeling blue.", "mood": "neutral" },
+                    { "speaker": "Pal",     "text": "Oh no", "mood": "neutral" },
+                    { "speaker": "Bard",    "text": "Here’s one of my favorite songs to play.", "mood": "pleased" }
+                ]},
                 { "index": "1", "statements": [] }
             ],
             "transitions": [
-                { "source": "0",
-                    "options": [
-                        { "target": "1",
-                            "optionText": "",
-                            "conditions": [],
-                            "triggers": [{"text": "bardsRequiem", "colour": "blue", "quality": "good"}]
-                        }
+                { "source": "0", "options": [
+                    { "target": "1",
+                        "optionText": "",
+                        "conditions": [],
+                        "triggers": [{"text": "bardsRequiem", "colour": "blue", "quality": "good"}]
+                    }
                     ]
                 }
             ]
@@ -195,8 +191,7 @@
             "finalStates": [ "1" ],
             "metaconditions": [ "paladinRevived" ],
             "states": [
-                { "index": "0",
-                    "statements": [
+                { "index": "0", "statements": [
                         { "speaker": "Sir_Jonathan",    "text": "AHHHHHHHHH!", "mood": "upset" },
                         { "speaker": "Pal",             "text": "I’m so happy you’re back!", "mood": "pleased" },
                         { "speaker": "Pal",             "text": "…Are you good?", "mood": "upset" },
@@ -214,13 +209,12 @@
                 { "index": "1", "statements": [] }
             ],
             "transitions": [
-                { "source": "0",
-                    "options": [
-                        { "target": "1",
-                            "optionText": "",
-                            "conditions": [],
-                            "triggers": [{"text": "existentialSweat", "colour": "blue", "quality": "bad"}]
-                        }
+                { "source": "0", "options": [
+                    { "target": "1",
+                        "optionText": "",
+                        "conditions": [],
+                        "triggers": [{"text": "existentialSweat", "colour": "blue", "quality": "bad"}]
+                    }
                     ]
                 }
             ]
