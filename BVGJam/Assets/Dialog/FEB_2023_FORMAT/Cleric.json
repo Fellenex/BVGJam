@@ -18,7 +18,7 @@
                     { "speaker": "Pal",         "mood": "neutral", "text": "No. It’s more of an “abstract concept” sort of thing." },
                     { "speaker": "Saint_Casey", "mood": "neutral", "text": "It sounds like something that must be left up to fate." },
                     { "speaker": "Pal",         "mood": "neutral", "text": "So you can help me?" },
-                    { "speaker": "Saint_Casey", "mood": "neutral", "text": "When the time comes, yes. Until then, you must continue on your pilgrimage." },
+                    { "speaker": "Saint_Casey", "mood": "neutral", "text": "When the time comes, yes. Until then, you must continue on your pilgrimage." }
                 ]
 			    },
                 {"index": "1", "statements": [
@@ -29,7 +29,8 @@
                 { "source": "0", "options": [
                     { "target": "1",
                         "optionText": "",
-                        "conditions": [], "triggers": ["metCleric"]
+                        "conditions": [],
+                        "triggers": [{"text": "metCleric", "colour": "none", "quality": "none"}]
                     }
                     ]
                 }
@@ -54,13 +55,15 @@
                     { "speaker": "Pal",         "mood": "neutral",  "text": "Maybe for mosquitos-" }
                     ]
                 },
-                { "index": "1", "statements" [] }
+                { "index": "1", "statements": [] }
             ],
             "transitions": [
                 {"source": "0", "options": [
                     { "target": "1",
                         "optionText": "",
-                        "conditions": [], "triggers": ["clericsBlessing"]}
+                        "conditions": [],
+                        "triggers": [{"text": "clericsBlessing", "colour": "purple", "quality": "good" }]
+                    }
                     ]
                 }
             ]
@@ -79,7 +82,7 @@
                     { "speaker": "Pal",         "mood": "upset",    "text": "I tried to do the right thing, and before I knew it, an Assassin was ready to murder him." },
                     { "speaker": "Saint_Casey", "mood": "neutral",  "text": "It sounds like the Assassin is the one to blame here. You simply found a knife." },
                     { "speaker": "Pal",         "mood": "upset",    "text": "Isn’t there anything we can do with your Cleric magic?" },
-                    { "speaker": "Saint_Casey", "mood": "pleased",  "text": "Well..." },
+                    { "speaker": "Saint_Casey", "mood": "pleased",  "text": "Well..." }
                 ]
                 },
                 { "index": "B1", "statements": [
@@ -91,7 +94,7 @@
                     { "speaker": "Pal",         "mood": "upset",    "text": "Is that condemnation worse than the death of your friend?" },
                     { "speaker": "Saint_Casey", "mood": "upset",    "text": "I-I don’t know..." },
                     { "speaker": "Pal",         "mood": "neutral",  "text": "Come on, we have to at least try." },
-                    { "speaker": "Saint_Casey", "mood": "upset",    "text": "I suppose you're right..." },
+                    { "speaker": "Saint_Casey", "mood": "upset",    "text": "I suppose you're right..." }
                 ]
                 },
                 { "index": "D1", "statements": [
@@ -103,9 +106,9 @@
                     { "speaker": "Casey_The_Heretic",   "mood": "upset",    "text": "I’ve been cursed, and Sir Jonathan suffers from a Rotted Soul." },
                     { "speaker": "Pal",                 "mood": "upset",    "text": "A rotted soul?" },
                     { "speaker": "Casey_The_Heretic",   "mood": "upset",    "text": "Don’t ask. Please just, leave him be. He’s suffered enough." },
-                    { "speaker": "Pal"                  "mood": "neutral",  "text": "I don’t know... I could still use some Blue..." }
+                    { "speaker": "Pal",                 "mood": "neutral",  "text": "I don’t know... I could still use some Blue..." }
                 ]
-                }
+                },
                 { "index": "E1", "statements": [
                     { "speaker": "Pal",                 "mood": "upset",    "text": "Uh-oh..." },
                     { "speaker": "Casey_The_Heretic",   "mood": "upset",    "text": "Oh...no...What have I done?!" },
@@ -118,7 +121,7 @@
                     { "speaker": "Casey_The_Heretic",   "mood": "upset",    "text": "My Afterlife is over... I have committed an unforgivable sin, and will forever be inflicted with Undeath." },
                     { "speaker": "Pal",                 "mood": "pleased",  "text": "Sounds kind of cool to me." },
                     { "speaker": "Casey_The_Heretic",   "mood": "neutral",  "text": "It's really not." },
-                    { "speaker": "Pal",                 "mood": "pleased",  "text": "Maybe they should call it something less cool then..." },
+                    { "speaker": "Pal",                 "mood": "pleased",  "text": "Maybe they should call it something less cool then..." }
                 ]
                 },
                 { "index": "F1", "statements": [
@@ -126,7 +129,7 @@
                     { "speaker": "Saint_Casey", "mood": "upset",    "text": "We simply cannot bring back the dead. It goes against Divine Law." },
                     { "speaker": "Saint_Casey", "mood": "neutral",  "text": "However...we can still do something for the dead." },
                     { "speaker": "Pal",         "mood": "pleased",  "text": "How can I help?" },
-                    { "speaker": "Saint_Casey", "mood": "neutral",  "text": "You can bear witness to his Funeral Rites. Fate has brought us together for this purpose." },
+                    { "speaker": "Saint_Casey", "mood": "neutral",  "text": "You can bear witness to his Funeral Rites. Fate has brought us together for this purpose." }
                 ]
                 }
             ],
@@ -145,18 +148,24 @@
                 { "source": "B1", "options": [
                     { "target": "D1",
                         "optionText": "",
-                        "conditions": ["!blue"], "triggers": ["purple", "cursedAura", "paladinRevived"]
+                        "conditions": ["!blue"],
+                        "triggers": [
+                            { "text": "cursedAura", "colour": "purple", "quality":"bad" },
+                            {" text": "paladinRevived", "colour": "none", "quality": "neutral"}
+                        ]
                     },
                     { "target": "E1",
                         "optionText": "",
-                        "conditions": ["blue"], "triggers": ["purple", "evilAura"]
+                        "conditions": ["blue"],
+                        "triggers": [{ "text": "evilAura", "colour": "purple", "quality": "bad" }]
                     }
                     ]
-                }
+                },
                 { "source": "F1", "options": [
                     { "target": "F2",
                         "optionText": "",
-                        "conditions": [], "triggers": ["purple", "clericsMourning"]
+                        "conditions": [],
+                        "triggers": [{"text": "clericsMourning", "colour": "purple", "quality": "good" }]
                     }
                     ]
                 }
