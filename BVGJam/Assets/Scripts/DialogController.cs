@@ -27,7 +27,7 @@ public class DialogController : MonoBehaviour {
     Conversation_Statement activeStatement;
     int activeStatementIndex;
 
-    public static event Action<string> StopConversationEvent;
+    public static event Action<Conversation> StopConversationEvent;
 
     public void Start() {
         DialogGraphics.instance.SetNextStateEvent += ChooseOption;
@@ -54,36 +54,34 @@ public class DialogController : MonoBehaviour {
         activeConversation = _conversation;
         activeState = _conversation.getFirstState();
 
-        StoryConditions.StartConversation(_conversation.getNPCName(), _conversation.id);
+        ConditionManager.StartConversation(_conversation.getNPCName(), _conversation.id);
         graphics.activate();
         graphics.initializeConversation(_conversation.getNPCName());
         StartStatements(activeState);
     }
 
     public void StopConversation(){
-        Debug.Log("DialogController::StopConversation() has begun");
-        Debug.Log("Checking if " + activeState.index + " is a final state");
+        //Debug.Log("DialogController::StopConversation() has begun");
         if (activeConversation.isAcceptingState(activeState.index)) {
             //Keep track of having finished this conversation
-            Debug.Log("It is!");
-            StoryConditions.FinishConversation(activeConversation.getNPCName(), activeConversation.id);
+            Debug.Log(activeState.index + " is a final state");
+            ConditionManager.FinishConversation(activeConversation.getNPCName(), activeConversation.id);
         } else {
-            Debug.Log("It was not");
+            Debug.Log(activeState.index + " is *not* a final state");
         }
 
         //Disable the conversation window
         graphics.deactivate();
 
-        String oldConversationIndex = activeState.index;
+        Conversation previousConversation = activeConversation;
 
-        //TODO should really have a separated model for this
         activeConversation = null;
         activeState = null;
         activeStatement = null;
         activeStatementIndex = 0;
 
         //Everything has been wrapped up, so hand back control to the DialogManager
-        StopConversationEvent?.Invoke(oldConversationIndex);
+        StopConversationEvent?.Invoke(previousConversation);
     }
 
     private void AdvanceConversation() {
@@ -128,9 +126,9 @@ public class DialogController : MonoBehaviour {
         foreach (Conversation_Trigger trigger in _option.triggers) {
 
             //Track the trigger's name
-            StoryConditions.playerHasMetCondition(trigger.text);
+            ConditionManager.MeetCondition(trigger.text);
 
-            if (trigger.isSpecialTrigger()) {
+            if (trigger.isColourTrigger()) {
                 showDramaticDialog = true;
                 specialTrigger = trigger;
             }
@@ -138,11 +136,11 @@ public class DialogController : MonoBehaviour {
 
         //If we have a special trigger, then we have some additional 
         if (specialTrigger != null) {
-            StoryConditions.playerHasMetCondition(specialTrigger.colour);
+            ConditionManager.MeetCondition(specialTrigger.colour);
             if (specialTrigger.quality == GOOD_QUALITY) {
-                StoryConditions.goodColoursCount++;
+                ConditionManager.goodColoursCount++;
             } else if (specialTrigger.quality == BAD_QUALITY) {
-                StoryConditions.badColoursCount++;
+                ConditionManager.badColoursCount++;
             } else {
                 Debug.LogError("DialogController::ChooseOption() bad quality (" + specialTrigger.quality + ")");
             }
@@ -202,7 +200,7 @@ public class DialogController : MonoBehaviour {
     private bool playerMeetsOptionConditions(Conversation_Option _transitionOption) {
         Debug.Log("Condition(s) Required: " + _transitionOption.conditions);
         foreach (string condition in _transitionOption.conditions) {
-            if (!StoryConditions.playerMeetsCondition(condition)){
+            if (!ConditionManager.hasMetCondition(condition)){
                 //We have found a precondition the player does not meet.
                 return false;
             }

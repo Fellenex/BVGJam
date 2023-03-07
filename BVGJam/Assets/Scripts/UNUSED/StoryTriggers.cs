@@ -170,7 +170,7 @@ public static class StoryTriggers {
         if (blueGoodTriggers.Contains(_triggerName) || blueBadTriggers.Contains(_triggerName)) {
             
             //if this is the player's first time getting blue, do some extra triggers
-            if (!StoryConditions.playerMeetsCondition(getBlue)) {
+            if (!ConditionManager.hasMetCondition(getBlue)) {
                 trigger(getBlue);
             }
             
@@ -179,7 +179,7 @@ public static class StoryTriggers {
             trigger(getRed);
 
             //if this is the player's first time getting red, do some extra triggers
-            if (!StoryConditions.playerMeetsCondition(getRed)) {
+            if (!ConditionManager.hasMetCondition(getRed)) {
                 trigger(getRed);
             }
         }
@@ -187,7 +187,7 @@ public static class StoryTriggers {
             trigger(getYellow);
 
             //if this is the player's first time getting yellow, do some extra triggers
-            if (!StoryConditions.playerMeetsCondition(getYellow)) {
+            if (!ConditionManager.hasMetCondition(getYellow)) {
                 trigger(getYellow);
             }
         }
@@ -195,7 +195,7 @@ public static class StoryTriggers {
             trigger(getGreen);
 
             //if this is the player's first time getting green, do some extra triggers
-            if (!StoryConditions.playerMeetsCondition(getGreen)) {
+            if (!ConditionManager.hasMetCondition(getGreen)) {
                 trigger(getGreen);
             }
         }
@@ -203,7 +203,7 @@ public static class StoryTriggers {
             trigger(getPurple);
 
             //if this is the player's first time getting purple, do some extra triggers
-            if (!StoryConditions.playerMeetsCondition(getPurple)) {
+            if (!ConditionManager.hasMetCondition(getPurple)) {
                 trigger(getPurple);
             }
         }
@@ -211,7 +211,7 @@ public static class StoryTriggers {
 
         if(_triggerName == getBlue){
             //Disable the hunt for blue, if blue is found
-            StoryConditions.playerHasUnmetCondition(convertTriggerIntoCondition(getBlueHunt));
+            //ConditionManager.playerHasUnmetCondition(convertTriggerIntoCondition(getBlueHunt));
 
             //special case. can't use switch because it thinks it'll change
             //could always make the above variables constant to fix this,
@@ -221,7 +221,7 @@ public static class StoryTriggers {
         else{
             //Unless there was a special case, we just turn
             //  "get<TRIGGER>" into "have<TRIGGER>"
-            StoryConditions.playerHasMetCondition(convertTriggerIntoCondition(_triggerName));
+            ConditionManager.MeetCondition(convertTriggerIntoCondition(_triggerName));
         }
     }
 

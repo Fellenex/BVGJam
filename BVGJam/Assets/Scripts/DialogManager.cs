@@ -67,59 +67,11 @@ public class DialogManager : MonoBehaviour {
         }
     }
 
-    public void OnStopConversation(string _activeStateIndex){
+    public void OnStopConversation(Conversation _previousConversation){
         Debug.Log("Ending the active conversation");
 
         dialogOpen = false;
         audioController.GetComponent<AudioSource>().volume = 1.0f;
-
-        //TODO
-        //Setup what the next conversation for that NPC should be.
-        //Probably we should pass the conversation itself over, but we also need to know whether that conversation got finished
-        //Currently DialogController keeps track of whether the conversation was completed
-        //Here, then, we should just be deciding which conversation comes next.
-        //If the previous conversation was finished, then setup for the next one. 
-
-        /*
-            if (!StoryConditions.hasFinishedConversation(StoryConditions.nextConversationIdByActor[behaviour.classType])) {
-
-                
-
-                //Setup npc name and conversation ID to send over to the new scene
-                Dictionary<string, string> dData = new Dictionary<string,string>();
-
-                //dData.Add("id", behaviour.conversationID);
-                dData.Add("name", behaviour.npcName);
-                dData.Add("class", behaviour.classType);
-                //jsonDict.Add("display_name", behaviour.displayName);
-                
-                Debug.Log("Opening up "+behaviour.conversationJson);
-                Debug.Log("Looking for "+behaviour.activeConversation.id);
-
-
-                //DialogData.setActiveConversation(advancedReadFile(behaviour.conversationJson, behaviour.conversationId));
-
-                foreach (Conversation x in behaviour.jsonFile.conversations) {
-
-                    Debug.Log("checking to see if player meets metaconditions "+x.metaconditions);
-                    if (x.id == StoryConditions.nextConversationIdByActor[behaviour.classType]
-                            && playerMeetsMetaconditions(x.metaconditions)) {
-                        
-
-                        Debug.Log("They did meet the metaconditions!");
-                        DialogData.setActiveConversation(x);
-                    }
-                }
-
-                DialogData.load(dialogSceneName, dData);
-
-                
-            }
-            else{
-                //dialogIcon.GetComponent<SpriteRenderer>().sprite = dialogUnavailableSprite;
-            }
-
-        */
 
         //StopConversationEvent?.Invoke();
         /*
@@ -130,8 +82,6 @@ public class DialogManager : MonoBehaviour {
         Compare supplied state label against final states set for this Conversation object
 
         */
-
-        //environment.SetActive(true);
     }
 
 
@@ -157,15 +107,15 @@ public class DialogManager : MonoBehaviour {
     private List<Conversation> getPossibleConversations(string _npcName) {
         List<Conversation> possibleConversations = new List<Conversation>();
 
-        foreach ((String,String) x in StoryConditions.conversationStatus.Keys) {
-            Debug.Log(x + " --> " + StoryConditions.conversationStatus[x]);
+        foreach ((String,String) x in ConditionManager.conversationStatus.Keys) {
+            Debug.Log(x + " --> " + ConditionManager.conversationStatus[x]);
         }
 
         //Check the metaconditions for each one, and make sure we haven't
         //  already finished the conversation
         foreach (Conversation conversation in npcConversations[_npcName]){
-            if (playerMeetsMetaconditions(conversation.metaconditions)){
-                if (!StoryConditions.hasFinishedConversation(_npcName, conversation.id)) {
+            if (hasMetMetaconditions(conversation.metaconditions)){
+                if (!ConditionManager.hasFinishedConversation(_npcName, conversation.id)) {
                     Debug.Log("Player has not yet finished conversation " + conversation.id);
                     possibleConversations.Add(conversation);
                 } else {
@@ -179,10 +129,10 @@ public class DialogManager : MonoBehaviour {
     }
 
     //Returns boolean corresponding to whether or not the player has already met a list of metaconditions
-    private bool playerMeetsMetaconditions(string[] metaconditions) {
+    private bool hasMetMetaconditions(string[] metaconditions) {
         bool conditionsMet = true;
         foreach (String condition in metaconditions) {
-            if (!StoryConditions.playerMeetsCondition(condition)) {
+            if (!ConditionManager.hasMetCondition(condition)) {
                 //Debug.Log("Player has not yet met metacondition " + condition);
                 conditionsMet = false;
             }

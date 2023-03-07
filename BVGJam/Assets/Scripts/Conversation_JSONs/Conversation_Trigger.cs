@@ -12,7 +12,7 @@ public class Conversation_Trigger {
 
     //If a trigger has colour+quality, then it's a special "event trigger"
     //In this case, we need to know because we'll show them a "dramatic dailog"
-    public bool isSpecialTrigger() {
+    public bool isColourTrigger() {
         return (!String.IsNullOrEmpty(quality) && !String.IsNullOrEmpty(colour));
     }
 
