@@ -8,10 +8,7 @@ using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour {
 
-    public static string PLAYER_STRING = "Pal";
-    public static string GOOD_QUALITY = "good";
-    public static string BAD_QUALITY = "bad";
-
+    public static String PLAYER_STRING = "Pal";
 
     //Prevent the player from advancing the conversation arbitrarily when they have to make a choice
     bool PLAYER_CHOOSING = false;
@@ -19,7 +16,6 @@ public class DialogController : MonoBehaviour {
     //A handle to the graphics script on the panel.
     //Should be set in the inspector
     public DialogGraphics graphics;
-
 
     //TODO should make a model for an "Active Conversation" with this info.
     Conversation activeConversation;
@@ -53,11 +49,12 @@ public class DialogController : MonoBehaviour {
 
         activeConversation = _conversation;
         activeState = _conversation.getFirstState();
+        activeStatementIndex = -1;
 
         ConditionManager.StartConversation(_conversation.getNPCName(), _conversation.id);
         graphics.activate();
         graphics.initializeConversation(_conversation.getNPCName());
-        StartStatements(activeState);
+        NextStatement(activeState);
     }
 
     public void StopConversation(){
@@ -107,6 +104,7 @@ public class DialogController : MonoBehaviour {
         if (_transition.options.Count() == 1) {
             if (String.IsNullOrEmpty(_transition.options[0].optionText)) {
                 //No option text to show, and only one choice, so just make that choice
+                //Sometimes we have a transition just to grant the player a condition
                 ChooseOption(_transition.options[0]);
             } else {
                 //Option text we want to show, but only one choice. Still let them choose it.
@@ -124,29 +122,13 @@ public class DialogController : MonoBehaviour {
 
         //If there were triggers, then cause them here.
         foreach (Conversation_Trigger trigger in _option.triggers) {
-
             //Track the trigger's name
             ConditionManager.MeetCondition(trigger.text);
 
             if (trigger.isColourTrigger()) {
                 showDramaticDialog = true;
-                specialTrigger = trigger;
+                StoryConditions.HandleTrigger(trigger);
             }
-        }
-
-        //If we have a special trigger, then we have some additional 
-        if (specialTrigger != null) {
-            ConditionManager.MeetCondition(specialTrigger.colour);
-            if (specialTrigger.quality == GOOD_QUALITY) {
-                ConditionManager.goodColoursCount++;
-            } else if (specialTrigger.quality == BAD_QUALITY) {
-                ConditionManager.badColoursCount++;
-            } else {
-                Debug.LogError("DialogController::ChooseOption() bad quality (" + specialTrigger.quality + ")");
-            }
-
-
-            //TODO Show dramatic dialog for this colour and quality
         }
 
         //Update the active state+statement index
@@ -156,24 +138,11 @@ public class DialogController : MonoBehaviour {
         AdvanceConversation();
     }
 
-    //Start a state's set of statements
-    private void StartStatements(Conversation_State _state) {
-        PLAYER_CHOOSING = false;
-        activeStatement = _state.getFirstStatement();
-        activeStatementIndex = 0;
-
-        if (activeStatement.speaker == PLAYER_STRING) {
-            graphics.playerStatement(activeStatement);
-        } else {
-            graphics.npcStatement(activeStatement);
-        }
-    }
-
     //Move onto the next statement in the current state
     private void NextStatement(Conversation_State _state) {
         PLAYER_CHOOSING = false;
-        activeStatement = _state.statements[activeStatementIndex];
         activeStatementIndex += 1;
+        activeStatement = _state.statements[activeStatementIndex];
 
         if (activeStatement.speaker == PLAYER_STRING) {
             graphics.playerStatement(activeStatement);

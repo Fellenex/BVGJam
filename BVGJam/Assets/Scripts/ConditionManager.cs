@@ -14,12 +14,6 @@ public static class ConditionManager {
 
     public static Dictionary<ValueTuple<String, String>, ConversationStatus> conversationStatus = new Dictionary<ValueTuple<String, String>, ConversationStatus>();
 
-    //public static Dictionary<string, ConversationStatus> conversationStatus = new Dictionary<string, ConversationStatus>();
-
-    public static int goodColoursCount = 0;
-    public static int badColoursCount = 0;
-
-
     //Keep track of this conversation having started
     public static void StartConversation(String _npcName, String _conversationId){
         try {
@@ -44,7 +38,6 @@ public static class ConditionManager {
         conditions.Add(_condition);
     }
 
-
     public static bool hasMetCondition(String _condition) {
         Debug.Log("Checking if player meets " + _condition);
         if (isNegativeCondition(_condition)) {
@@ -56,6 +49,7 @@ public static class ConditionManager {
         }
     }
 
+    //Currently in the json we use (e.g.,) !paladinDead to mean "not paladinDead"
     private static bool isNegativeCondition(String _condition) {
         return _condition[0] == '!';
     }
