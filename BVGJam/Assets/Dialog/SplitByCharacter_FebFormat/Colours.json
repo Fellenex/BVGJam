@@ -1,0 +1,102 @@
+{
+    "colourConversations": [
+        {
+            "id": "toxicSweat",
+            "statements": [
+                { "speaker": "", "mood": "", "text": "You've obtained the Paladin's Toxic Masculinity Sweat!"}
+            ]
+        },
+        {
+            "id": "justiceSweat",
+            "statements": [
+                { "speaker": "", "mood": "", "text": "You obtain a few droplets of Jonathan’s profuse J U S T I C E  S W E A T."}
+            ]
+        },
+        {
+            "id": "existentialSweat",
+            "statements": [
+                { "speaker": "Sir_Jonathan", "mood": "upset", "text": "...I don’t know if I am capable of feeling happiness."},
+                { "speaker": "", "mood": "", "text": "You received The Paladin’s Existential Sweat!"},
+            ]
+        },
+        {
+            "id": "bardsRequiem",
+            "statements": [
+                { "speaker": "Bard", "mood": "neutral", "text": "As the sun goes down, on this Blue night."},
+                { "speaker": "Bard", "mood": "neutral", "text": "A friend cries eternal, tears for the knight."},
+                { "speaker": "Bard", "mood": "neutral", "text": "A solemn hymn, for a solid him."},
+                { "speaker": "Bard", "mood": "neutral", "text": "A moment grim, from the Reaper’s whim."},
+                { "speaker": "", "mood": "", "text": "..."},
+                { "speaker": "", "mood": "", "text": "You stomached The Bard’s Requiem!"}
+            ]
+        },
+        {
+            "id": "clericsBlessing",
+            "statements": [
+                { "speaker": "", "mood": "", "text": "Saint Casey heals you with her Cleric magic." },
+                { "speaker": "", "mood": "", "text": "You receive \"Cleric's Blessing\"!" },
+                { "speaker": "", "mood": "", "text": "And also you stop bleeding!" }
+            ]
+        },
+        {
+            "id": "clericsMourning",
+            "statements": [
+                { "speaker": "", "mood": "", "text": "Sir Jonathan’s soul rests and finds eternal peace as a Purple tear slides down Saint Casey’s face." },
+                { "speaker": "Casey_The_Cleric", "mood": "upset", "text": "Rest easy...friend." },
+                { "speaker": "", "mood": "", "text": "You obtain \"Cleric's Mourning\"" }
+            ]
+        },
+        {
+            "id": "evilAura",
+            "statements": [
+                { "speaker": "", "mood": "", "text": "Saint Casey begins to speak in tongues as darkness suffocates the sky. The clouds are split asunder, as a primordial moan echoes across space and time." },
+                { "speaker": "", "mood": "", "text": "Saint Casey has broken her holy vow." },
+                { "speaker": "", "mood": "", "text": "You have obtained an Evil Cleric's Aura!" }
+            ]
+        },
+        {
+            "id": "cursedAura",
+            "statements": [
+                { "speaker": "", "mood": "", "text": "Saint Casey begins to speak in tongues as darkness suffocates the sky. For a brief moment, Sir Jonathan can be heard screaming \"Put me back!\"" },
+                { "speaker": "", "mood": "", "text": "Saint Casey has broken her holy vow." },
+                { "speaker": "", "mood": "", "text": "You have obtained a Cursed Cleric's Aura" }
+            ]
+        },
+        {
+            "id": "paladinBloodGood",
+            "statements": [ { "speaker": "", "mood": "", "text": "TODO" } ]
+        },
+        {
+            "id": "yourBlood",
+            "statements": [ { "speaker": "", "mood": "", "text": "TODO" } ]
+        },
+        {
+            "id": "assassinsBlood",
+            "statements": [ { "speaker": "", "mood": "", "text": "TODO" } ]
+        },
+        {
+            "id": "paladinBloodBad",
+            "statements": [ { "speaker": "", "mood": "", "text": "TODO" } ]
+        },
+        {
+            "id": "yellowGood",
+            "statements": [ { "speaker": "", "mood": "", "text": "TODO" } ]
+        },
+        {
+            "id": "yellowBad",
+            "statements": [ { "speaker": "", "mood": "", "text": "TODO" } ]
+        },
+        {
+            "id": "sonicSpore",
+            "statements": [ { "speaker": "", "mood": "", "text": "TODO" } ]
+        },
+        {
+            "id": "lakewaterSpore",
+            "statements": [ { "speaker": "", "mood": "", "text": "TODO" } ]
+        },
+        {
+            "id": "cursedSore",
+            "statements": [ { "speaker": "", "mood": "", "text": "TODO" } ]
+        },
+    ]
+}
