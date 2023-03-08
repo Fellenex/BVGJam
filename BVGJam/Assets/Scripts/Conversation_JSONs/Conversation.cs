@@ -121,6 +121,21 @@ public class Conversation {
             Debug.Assert(transitions.Length > 0);
         }
 
+        //Do some cross-validation between transition labels and state labels
+        foreach (Conversation_Transition transition in transitions) {
+            //Make sure all of our transitions start at real states
+            if (!Array.Exists(states, state => state.index == transition.source)) {
+                Debug.LogError("Transition source " + transition.source + " can't be found among the states in conversation " + id);
+            }
+
+            //Make sure all of our transitions end at real states
+            foreach (Conversation_Option option in transition.options) {
+                if (!Array.Exists(states, state => state.index == option.target)) {
+                    Debug.LogError("Transition destination "+option.target+" can't be found among the states in conversation " + id);
+                }   
+            }
+        }
+
         foreach (Conversation_State state in states) {
             state.validate();
         }

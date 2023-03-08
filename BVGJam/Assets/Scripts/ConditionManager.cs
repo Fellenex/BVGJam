@@ -20,7 +20,7 @@ public static class ConditionManager {
             npcConversations[_npcName].Add(_conversationId);
         }
         catch (KeyNotFoundException e) {
-            npcConversations[_npcName] = new List<string>();
+            npcConversations[_npcName] = new List<String>();
             npcConversations[_npcName].Add(_conversationId);
         }
         conversationStatus[(_npcName, _conversationId)] = ConversationStatus.Started;

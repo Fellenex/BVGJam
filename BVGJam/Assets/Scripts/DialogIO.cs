@@ -6,14 +6,14 @@ public static class DialogIO {
 
     //validateDialogFile(readWholeConversationFile(jsonToTest));
 
-    public static DialogData CreateFromJSON(string _data) {
-        return JsonUtility.FromJson<DialogData>(_data);
+    public static List<Conversation>CreateFromJSON(string _data) {
+        return JsonUtility.FromJson<List<Conversation>>(_data);
     }
 
     //Short and sweet. Get the whole JSON
-    public static DialogData ReadDialogFile(TextAsset _conversationsFile) {
+    public static List<Conversation> ReadDialogFile(TextAsset _conversationsFile) {
         String fileContents = _conversationsFile.ToString();
-        DialogData convos = CreateFromJSON(fileContents);
+        List<Conversation> convos = CreateFromJSON(fileContents);
         return convos;
     }
 }

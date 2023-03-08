@@ -1,5 +1,5 @@
 {
-    "colourConversations": [
+    "dramaticConversations": [
         {
             "id": "toxicSweat",
             "statements": [
@@ -16,7 +16,7 @@
             "id": "existentialSweat",
             "statements": [
                 { "speaker": "Sir_Jonathan", "mood": "upset", "text": "...I don’t know if I am capable of feeling happiness."},
-                { "speaker": "", "mood": "", "text": "You received The Paladin’s Existential Sweat!"},
+                { "speaker": "", "mood": "", "text": "You received The Paladin’s Existential Sweat!"}
             ]
         },
         {
@@ -97,6 +97,6 @@
         {
             "id": "cursedSore",
             "statements": [ { "speaker": "", "mood": "", "text": "TODO" } ]
-        },
+        }
     ]
 }

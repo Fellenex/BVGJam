@@ -18,9 +18,9 @@ public class DialogManager : MonoBehaviour {
 
     //A list of all of the NPC gameobjects
     public List<GameObject> npcs;
-    public List<DialogData> dialogFiles;
+    public List<List<Conversation>> dialogFiles;
 
-    private Dictionary<string, List<Conversation>> npcConversations;
+    private Dictionary<String, List<Conversation>> npcConversations;
 
     void Awake() {
         //Spoofing a static class while also allowing it to inherit from MonoBehaviour
@@ -32,8 +32,7 @@ public class DialogManager : MonoBehaviour {
     }
 
    void Start() {
-        dialogFiles = new List<DialogData>();
-        npcConversations = new Dictionary<string, List<Conversation>>();
+        npcConversations = new Dictionary<String, List<Conversation>>();
 
         //Read all of the conversation files for NPCs managed by DialogManager
         foreach (GameObject npc in npcs) {
@@ -41,20 +40,22 @@ public class DialogManager : MonoBehaviour {
             //TODO for now, skip over inactive NPCs (avoid noisy JSON debugging)            
             if (npc.activeSelf) {
                 TextAsset dialogFile = npc.GetComponent<NPC_Attributes>().dialogFile;
-                DialogData dialog = DialogIO.ReadDialogFile(dialogFile);
+                List<Conversation> conversations = DialogIO.ReadDialogFile(dialogFile);
 
                 //Validate the conversations in this dialog file
-                dialog.validate();
+                foreach (Conversation conversation in conversations){
+                    conversation.validate();
+                }
 
-                npcConversations[npc.name] = new List<Conversation>(dialog.conversations);
+                npcConversations[npc.name] = new List<Conversation>(conversations);
             }
         }
 
         //Validate the conditions+triggers across all NPCs
-        crossCheckConditionsAndTriggers(dialogFiles);
+        crossCheckConditionsAndTriggers(npcConversations);
     }
 
-    public void OnStartConversation(string _npcName) {
+    public void OnStartConversation(String _npcName) {
         Debug.Log("Trying to start a conversation with " + _npcName);
 
         //Start a conversation if it's unambiguous which one should come next
@@ -87,7 +88,7 @@ public class DialogManager : MonoBehaviour {
 
     //Gets the next conversation for a given NPC name.
     //If there's more than one available, reports an error
-    private Conversation getNextConversation(string _npcName) {
+    private Conversation getNextConversation(String _npcName) {
         List<Conversation> possibleConversations = getPossibleConversations(_npcName);
         switch(possibleConversations.Count) {
             case 0:
@@ -104,7 +105,7 @@ public class DialogManager : MonoBehaviour {
     }
 
     //Gets a list of all the possible conversations the NPC might have
-    private List<Conversation> getPossibleConversations(string _npcName) {
+    private List<Conversation> getPossibleConversations(String _npcName) {
         List<Conversation> possibleConversations = new List<Conversation>();
 
         foreach ((String,String) x in ConditionManager.conversationStatus.Keys) {
@@ -129,7 +130,7 @@ public class DialogManager : MonoBehaviour {
     }
 
     //Returns boolean corresponding to whether or not the player has already met a list of metaconditions
-    private bool hasMetMetaconditions(string[] metaconditions) {
+    private bool hasMetMetaconditions(String[] metaconditions) {
         bool conditionsMet = true;
         foreach (String condition in metaconditions) {
             if (!ConditionManager.hasMetCondition(condition)) {
@@ -141,18 +142,18 @@ public class DialogManager : MonoBehaviour {
     }
 
     /*
-    Compares all of the dialog files to make sure that
+    Compares all of the conversations to make sure that
         1. Every condition required to enter a conversation has some transition which triggers it
         2. Every condition required to take a transition has some transition which triggers it
         3. Every trigger found on a transition has some condition which requires it
     */
-    private static void crossCheckConditionsAndTriggers(List<DialogData> _dialogs) {
+    private static void crossCheckConditionsAndTriggers(Dictionary<String, List<Conversation>> npcConversations) {
         List<String> triggers = new List<String>();
         List<String> conditions = new List<String>();
 
         //Collect all of the trigger and condition text labels from the dialog files
-        foreach (DialogData dialog in _dialogs) {
-            foreach (Conversation conversation in dialog.conversations) {
+        foreach (List<Conversation> conversations in npcConversations.Values) {
+            foreach (Conversation conversation in conversations) {
                 triggers.AddRange(conversation.getTriggerLabels());
                 conditions.AddRange(conversation.getConditionLabels());
             }
