@@ -38,7 +38,7 @@
 	    },
         { "id": "Cleric_B",
             "finalStates": ["1"],
-            "metaconditions": ["hasYourBlood"],
+            "metaconditions": ["yourBlood"],
             "states": [
                 { "index": "0", "statements": [
                     { "speaker": "Saint_Casey", "mood": "pleased",  "text": "Pal, it’s so nice to see you! How goes your-" },

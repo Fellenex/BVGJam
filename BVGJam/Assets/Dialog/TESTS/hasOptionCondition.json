@@ -1,62 +1,32 @@
 {
     "conversations": [
         {
-            "id": "Grandma_Yaga_A",
-            "finalStates": ["1","2"],
+            "id": "Paladin_A",
+            "finalStates": ["1"],
             "metaconditions": [],
             "states": [
-                {
-                    "index": "0",
-                    "statements": [
-                        {
-                            "speaker": "Grandma_Yaga",
-                            "text": "You got it!",
-                            "mood": "pleased"
-                        },
-                        {
-                            "speaker": "Grandma_Yaga",
-                            "text": "Great job!",
-                            "mood": "upset"
-                        }
+                { "index": "0", "statements": [
+                    { "speaker": "Sir_Jonathan", "mood": "pleased", "text": "Statement 1" },
+                    { "speaker": "Sir_Jonathan", "mood": "upset", "text": "Statement 2" }
                     ]
                 },
                 {
                     "index": "1",
                     "statements": [
-                        {
-                            "speaker": "Pal",
-                            "text": "Thanks!!",
-                            "mood": "pleased"
-                        }
-                    ]
-                },
-                {
-                    "index": "2",
-                    "statements": [
-                        {
-                            "speaker": "Pal",
-                            "text": "Boooo!!",
-                            "mood": "upset"
-                        }
+                        { "speaker": "Pal", "mood": "pleased", "text": "Second State Statement 1" }
                     ]
                 }
             ],
             "transitions": [
-                {
-                    "source": "0",
-                    "options": [
-                        {
-                            "target": "1",
-                            "optionText": "Wowie",
-                            "conditions": [],
-                            "triggers": []
-                        },
-                        {
-                            "target": "2",
-                            "optionText": "Zowie",
-                            "conditions" : ["existentialSweat"],
-                            "triggers" : ["based"]
-                        }
+                { "source": "0", "options": [
+                    { "target": "1",
+                        "optionText": "Option Text 1",
+                        "conditions": [], "triggers": []
+                    },
+                    { "target": "1",
+                        "optionText": "Option Text 2",
+                        "conditions": [], "triggers": []
+                    }
                     ]
                 }
             ]

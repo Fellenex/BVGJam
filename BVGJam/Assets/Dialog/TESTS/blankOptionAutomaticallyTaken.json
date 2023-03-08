@@ -6,23 +6,22 @@
             "metaconditions": [],
             "states": [
                 { "index": "0", "statements": [
-                    { "speaker": "Sir_Jonathan", "mood": "pleased", "text": "Statement 1" },
-                    { "speaker": "Sir_Jonathan", "mood": "upset", "text": "Statement 2" }
+                    { "speaker": "Sir_Jonathan", "mood": "neutral", "text": "This transition should chain the statements from states 1 and 2" }
                     ]
                 },
                 {
                     "index": "1",
                     "statements": [
-                        { "speaker": "Pal", "mood": "pleased", "text": "Second State Statement 1" }
+                        { "speaker": "Pal", "mood": "pleased", "text": "Now in second state" }
                     ]
                 }
             ],
             "transitions": [
                 { "source": "0", "options": [
                     { "target": "1",
-                        "optionText": "Option Text (must be chosen)",
+                        "optionText": "",
                         "conditions": [], "triggers": []
-                        }
+                    }
                     ]
                 }
             ]
