@@ -55,7 +55,11 @@
                     { "speaker": "Pal",         "mood": "neutral",  "text": "Maybe for mosquitos-" }
                     ]
                 },
-                { "index": "1", "statements": [] }
+                { "index": "1", "statements": [
+                    { "speaker": "", "mood": "", "text": "Saint Casey heals you with her Cleric magic." },
+                    { "speaker": "", "mood": "", "text": "You receive \"Cleric's Blessing\"!" },
+                    { "speaker": "", "mood": "", "text": "And also you stop bleeding!" }
+                ] }
             ],
             "transitions": [
                 {"source": "0", "options": [
@@ -70,7 +74,7 @@
         },
 
         { "id": "Cleric_C",
-            "finalStates": ["E5", "D3", "B4", "F2"],
+            "finalStates": ["E1", "D1", "E1", "F2"],
             "metaconditions": ["paladinBloodGood"],
             "states": [
                 { "index": "0", "statements": [
@@ -98,6 +102,9 @@
                 ]
                 },
                 { "index": "D1", "statements": [
+                    { "speaker": "",                    "mood": "",         "text": "Saint Casey begins to speak in tongues as darkness suffocates the sky. For a brief moment, Sir Jonathan can be heard screaming \"Put me back!\"" },
+                    { "speaker": "",                    "mood": "",         "text": "Saint Casey has broken her holy vow." },
+                    { "speaker": "",                    "mood": "",         "text": "You have obtained a Cursed Cleric's Aura" },
                     { "speaker": "Casey_The_Heretic",   "mood": "upset",    "text": "It..." },
                     { "speaker": "Casey_The_Heretic",   "mood": "neutral",  "text": "...it worked." },
                     { "speaker": "Pal",                 "mood": "pleased",  "text": "You reversed death and I got Purple! Nice!" },
@@ -110,6 +117,9 @@
                 ]
                 },
                 { "index": "E1", "statements": [
+                    { "speaker": "",                    "mood": "",         "text": "Saint Casey begins to speak in tongues as darkness suffocates the sky. The clouds are split asunder, as a primordial moan echoes across space and time." },
+                    { "speaker": "",                    "mood": "",         "text": "Saint Casey has broken her holy vow." },
+                    { "speaker": "",                    "mood": "",         "text": "You have obtained an Evil Cleric's Aura!" },
                     { "speaker": "Pal",                 "mood": "upset",    "text": "Uh-oh..." },
                     { "speaker": "Casey_The_Heretic",   "mood": "upset",    "text": "Oh...no...What have I done?!" },
                     { "speaker": "Pal",                 "mood": "pleased",  "text": "Did it work?" },
@@ -130,6 +140,12 @@
                     { "speaker": "Saint_Casey", "mood": "neutral",  "text": "However...we can still do something for the dead." },
                     { "speaker": "Pal",         "mood": "pleased",  "text": "How can I help?" },
                     { "speaker": "Saint_Casey", "mood": "neutral",  "text": "You can bear witness to his Funeral Rites. Fate has brought us together for this purpose." }
+                ]
+                },
+                { "index": "F2", "statements": [
+                    { "speaker": "",                 "mood": "",      "text": "Sir Jonathan’s soul rests and finds eternal peace as a Purple tear slides down Saint Casey’s face." },
+                    { "speaker": "Casey_The_Cleric", "mood": "upset", "text": "Rest easy...friend." },
+                    { "speaker": "",                 "mood": "",      "text": "You obtain \"Cleric's Mourning\"" }
                 ]
                 }
             ],

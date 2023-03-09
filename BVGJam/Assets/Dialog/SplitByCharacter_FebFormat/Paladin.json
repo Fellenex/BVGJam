@@ -39,9 +39,7 @@
                     ]
                 },
                 {"index": "A2", "statements": [
-                    { "speaker": "", "mood": "", "text": "You've obtained the Paladin's Toxic Masculinity Sweat!"}
-                ]},
-                { "index": "A3", "statements": [
+                    { "speaker": "",            "mood": "", "text": "You've obtained the Paladin's Toxic Masculinity Sweat!"},
                     { "speaker": "Sir_Jonathan",    "text": "I doubled your push-up count.", "mood": "neutral" },
                     { "speaker": "Sir_Jonathan",    "text": "That better prove my worth to you.", "mood": "neutral" },
                     { "speaker": "Sir_Jonathan",    "text": "Now, what can I help you with?", "mood": "neutral" },
@@ -83,14 +81,7 @@
                         "conditions": [], "triggers": [{"text": "toxicSweat", "colour": "blue", "quality": "bad"}]
                     }
                     ]
-                },
-                { "source": "A2", "options": [
-                    { "target": "A3",
-                        "optionText": "",
-                        "conditions": [], "triggers": []
-                    }
-                    ]
-                }               
+                }             
             ]
         },
         { "id": "Paladin_B",
@@ -133,7 +124,8 @@
                     ]
                 },
                 { "index": "1", "statements": [
-                    {"speaker": "Pal", "text": "Uh, don't worry about it! See you later!", "mood":"pleased"}
+                    { "speaker": "",    "mood": "",         "text": "You obtain a few droplets of Jonathan’s profuse J U S T I C E  S W E A T."},
+                    {"speaker": "Pal",  "mood":"pleased",   "text": "Uh, don't worry about it! See you later!" }
                     ]
                 }
             ],
@@ -184,7 +176,14 @@
                     { "speaker": "Pal",     "text": "Oh no", "mood": "neutral" },
                     { "speaker": "Bard",    "text": "Here’s one of my favorite songs to play.", "mood": "pleased" }
                 ]},
-                { "index": "1", "statements": [] }
+                { "index": "1", "statements": [
+                    { "speaker": "Bard",    "mood": "neutral",  "text": "As the sun goes down, on this Blue night."},
+                    { "speaker": "Bard",    "mood": "neutral",  "text": "A friend cries eternal, tears for the knight."},
+                    { "speaker": "Bard",    "mood": "neutral",  "text": "A solemn hymn, for a solid him."},
+                    { "speaker": "Bard",    "mood": "neutral",  "text": "A moment grim, from the Reaper’s whim."},
+                    { "speaker": "",        "mood": "",         "text": "..."},
+                    { "speaker": "",        "mood": "",         "text": "You stomached The Bard’s Requiem!"}
+                ] }
             ],
             "transitions": [
                 { "source": "0", "options": [
