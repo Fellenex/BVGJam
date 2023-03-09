@@ -33,21 +33,25 @@ public class DialogManager : MonoBehaviour {
 
    void Start() {
         npcConversations = new Dictionary<String, List<Conversation>>();
-
+        Debug.Log("dialog manager starting");
         //Read all of the conversation files for NPCs managed by DialogManager
         foreach (GameObject npc in npcs) {
 
             //TODO for now, skip over inactive NPCs (avoid noisy JSON debugging)            
             if (npc.activeSelf) {
+                Debug.Log("Loading up for " + npc.name);
                 TextAsset dialogFile = npc.GetComponent<NPC_Attributes>().dialogFile;
                 List<Conversation> conversations = DialogIO.ReadDialogFile(dialogFile);
 
                 //Validate the conversations in this dialog file
                 foreach (Conversation conversation in conversations){
+                    Debug.Log(conversation);
                     conversation.validate();
                 }
 
-                npcConversations[npc.name] = new List<Conversation>(conversations);
+                npcConversations[npc.name] = conversations;//new List<Conversation>(conversations);
+            } else {
+                Debug.Log(npc.name + " is inactive");
             }
         }
 
@@ -92,6 +96,7 @@ public class DialogManager : MonoBehaviour {
         List<Conversation> possibleConversations = getPossibleConversations(_npcName);
         switch(possibleConversations.Count) {
             case 0:
+                Debug.Log("DialogManager::getNextConversation() Didn't find any available conversations");
                 return null;
             case 1:
                 return possibleConversations[0];
@@ -162,14 +167,14 @@ public class DialogManager : MonoBehaviour {
         //Each trigger should also be, at some point, required as a condition
         foreach (String trigger in triggers) {
             if (!conditions.Exists(condition => condition == trigger)) {
-                Debug.LogError("Trigger " + trigger + " is not found on any condition");
+                Debug.Log("Trigger " + trigger + " is not found on any condition");
             }
         }
 
         //Each condition should also be, at some point, meetable by a trigger
         foreach (String condition in conditions) {
             if (!triggers.Exists(trigger => trigger == condition)) {
-                Debug.LogError("Condition " + condition + "is not found on any trigger");
+                Debug.Log("Condition " + condition + " is not found on any trigger");
             }
         }
     }

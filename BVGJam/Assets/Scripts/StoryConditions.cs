@@ -32,7 +32,9 @@ public static class StoryConditions {
         }
 
         if (isSpecialCondition(_trigger.text)) {
-            //TODO do the biz
+            //Handle weird cases
+            //TODO foundKnife
+            //TODO clericTransformation
         }
 
     }

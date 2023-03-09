@@ -1,0 +1,31 @@
+{
+    "conversations": [
+        { "id": "Colour_A",
+            "finalStates": ["1"],
+            "metaconditions": [],
+            "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Pal",    "text": "Statement before trigger", "mood": "pleased" },
+                    { "speaker": "Sir_Jonathan",    "text": "Second statement before trigger", "mood": "pleased" }
+                    ]
+                },
+                { "index": "1", "statements": [
+                    { "speaker": "",             "text": "Statement right after trigger", "mood": "neutral" },
+                    { "speaker": "",             "text": "Second statement after trigger", "mood": "neutral" },
+                    { "speaker": "Pal",             "text": "Third statement (pal speaking)", "mood": "neutral" }
+                    ]
+                }
+            ],
+            "transitions": [
+                { "source": "0", "options": [
+                    { "target": "1",
+                        "optionText": "I could challenge his masculinity in a push-up contest...",
+                        "conditions": [],
+                        "triggers": [{"text": "toxicSweat", "colour": "blue", "quality": "bad"}]
+                    }
+                    ]
+                }
+            ]
+        }
+    ]
+}

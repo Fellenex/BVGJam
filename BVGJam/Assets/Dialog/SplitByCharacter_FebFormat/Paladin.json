@@ -38,7 +38,10 @@
                     { "speaker": "Sir_Jonathan",    "text": "I will not yield to my lactic acids!", "mood": "neutral" }
                     ]
                 },
-                { "index": "A2", "statements": [
+                {"index": "A2", "statements": [
+                    { "speaker": "", "mood": "", "text": "You've obtained the Paladin's Toxic Masculinity Sweat!"}
+                ]},
+                { "index": "A3", "statements": [
                     { "speaker": "Sir_Jonathan",    "text": "I doubled your push-up count.", "mood": "neutral" },
                     { "speaker": "Sir_Jonathan",    "text": "That better prove my worth to you.", "mood": "neutral" },
                     { "speaker": "Sir_Jonathan",    "text": "Now, what can I help you with?", "mood": "neutral" },
@@ -80,7 +83,14 @@
                         "conditions": [], "triggers": [{"text": "toxicSweat", "colour": "blue", "quality": "bad"}]
                     }
                     ]
-                }                
+                },
+                { "source": "A2", "options": [
+                    { "target": "A3",
+                        "optionText": "",
+                        "conditions": [], "triggers": []
+                    }
+                    ]
+                }               
             ]
         },
         { "id": "Paladin_B",

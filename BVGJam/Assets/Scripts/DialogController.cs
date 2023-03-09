@@ -32,7 +32,8 @@ public class DialogController : MonoBehaviour {
     void Update() {
         //Only let the player advance the state if there is an active conversation, and they are not currently choosing
         if (!PLAYER_CHOOSING && activeConversation != null &&
-            (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
+            (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
+            Debug.Log("Player-triggered advancing");
             AdvanceConversation();
         }
 
@@ -49,7 +50,7 @@ public class DialogController : MonoBehaviour {
 
         activeConversation = _conversation;
         activeState = _conversation.getFirstState();
-        activeStatementIndex = -1;
+        activeStatementIndex = 0;
 
         ConditionManager.StartConversation(_conversation.getNPCName(), _conversation.id);
         graphics.activate();
@@ -82,6 +83,7 @@ public class DialogController : MonoBehaviour {
     }
 
     private void AdvanceConversation() {
+        Debug.Log("AdvanceConversation()");
         if (activeState.hasMoreStatements(activeStatementIndex)) {
             NextStatement(activeState);
         } else {
@@ -116,8 +118,10 @@ public class DialogController : MonoBehaviour {
     }
 
     //The player has chosen a speech option - update the conversation to reflect this choice
+    //If the player chose a special coloured trigger, then show the dramatic dialog before advancing the conversation
     private void ChooseOption(Conversation_Option _option) {
-        bool showDramaticDialog = false;
+        Debug.Log("ChooseOption()");
+        //Should be at most one special trigger per 
         Conversation_Trigger specialTrigger = null;
 
         //If there were triggers, then cause them here.
@@ -126,9 +130,14 @@ public class DialogController : MonoBehaviour {
             ConditionManager.MeetCondition(trigger.text);
 
             if (trigger.isColourTrigger()) {
-                showDramaticDialog = true;
+                specialTrigger = trigger;
                 StoryConditions.HandleTrigger(trigger);
             }
+        }
+
+        //Get the graphics to update - this is a special state now
+        if (specialTrigger != null) {
+            graphics.handleTrigger(specialTrigger);
         }
 
         //Update the active state+statement index
@@ -141,13 +150,19 @@ public class DialogController : MonoBehaviour {
     //Move onto the next statement in the current state
     private void NextStatement(Conversation_State _state) {
         PLAYER_CHOOSING = false;
-        activeStatementIndex += 1;
+        Debug.Log("Starting next statement of " + _state.index + " (starting the " + activeStatementIndex + "th statement)");
         activeStatement = _state.statements[activeStatementIndex];
+        activeStatementIndex += 1;
 
         if (activeStatement.speaker == PLAYER_STRING) {
+            Debug.Log("Player statement");
             graphics.playerStatement(activeStatement);
-        } else {
+        } else if (!String.IsNullOrEmpty(activeStatement.speaker)) {
+            Debug.Log("NPC statement");
             graphics.npcStatement(activeStatement);
+        } else {
+            Debug.Log("Speakerless statement");
+            graphics.speakerlessStatement(activeStatement);
         }
     }
 
