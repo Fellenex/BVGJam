@@ -60,6 +60,7 @@ public class DialogGraphics : MonoBehaviour {
 
     public void initializeConversation(string npcSpeaker) {
         resetTextElements();
+        resetBackgroundColour();
 
         //Update player-side nameplate and image
         playerDisplay = CharacterDisplay.ConstructByName(PLAYER_NAME);
@@ -135,12 +136,17 @@ public class DialogGraphics : MonoBehaviour {
     public void handleTrigger(Conversation_Trigger _trigger) {
         resetTextElements();
 
-        Debug.Log("About to change the colour to " + _trigger.colour + "(" + _trigger.quality + ")");
-        Debug.Log(childPanel.GetComponent<Image>().color);
         //Update the background's colour to reflect the current colour trigger
+        //TODO future - have something more dramatic. Fade-in, not just the default background image, etc
         childPanel.GetComponent<Image>().color = getColorByTrigger(_trigger);
         Debug.Log(childPanel.GetComponent<Image>().color);
+    }
 
+    //Reset the colour back to normal, in case there was a colour trigger before
+    //Used at the beginning of a new state, rather than a new statement, but
+    //  DialogGraphics doesn't need to know about states.
+    public void resetBackgroundColour() {
+        childPanel.GetComponent<Image>().color = FULL_VISIBILITY;
     }
 
     //Used as the OnClick function by the buttons created when a player has a choice

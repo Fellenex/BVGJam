@@ -973,7 +973,6 @@ MonoBehaviour:
   - {fileID: 266613677}
   - {fileID: 686471970}
   - {fileID: 278487879}
-  dialogFiles: []
 --- !u!1 &1461958088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,6 +1405,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 804712813}
     m_Modifications:
+    - target: {fileID: 7192262289471158649, guid: bcd5058787d1d7d4dac32442e998f5e1,
+        type: 3}
+      propertyPath: dialogFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 63f4941a2f17d8c40ba4583221fedbd8, type: 3}
     - target: {fileID: 7192262289471158653, guid: bcd5058787d1d7d4dac32442e998f5e1,
         type: 3}
       propertyPath: m_RootOrder
@@ -1760,6 +1764,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088359450949292124, guid: 3739768b3df3e4c46b1b972a4311489a,
+        type: 3}
+      propertyPath: m_Type
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6099461448698569919, guid: 3739768b3df3e4c46b1b972a4311489a,
         type: 3}

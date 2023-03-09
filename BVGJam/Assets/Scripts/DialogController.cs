@@ -102,6 +102,9 @@ public class DialogController : MonoBehaviour {
     }
 
     private void StartTransition(Conversation_Transition _transition) {
+        //If we had a colour trigger state before, we need to reset the background
+        graphics.resetBackgroundColour();
+
         //A few special cases if there's only one transition option.
         if (_transition.options.Count() == 1) {
             if (String.IsNullOrEmpty(_transition.options[0].optionText)) {
