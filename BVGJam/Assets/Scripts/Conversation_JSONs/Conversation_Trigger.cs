@@ -9,6 +9,7 @@ public class Conversation_Trigger {
 
     private static string GOOD_QUALITY = "good";
     private static string BAD_QUALITY = "bad";
+    private static string NONE_QUALITY = "none";
 
     //If a trigger has colour+quality, then it's a special "event trigger"
     //In this case, we need to know because we'll show them a "dramatic dailog"

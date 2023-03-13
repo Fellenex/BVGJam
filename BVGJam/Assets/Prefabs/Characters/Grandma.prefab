@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!61 &851252246
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362147572540200517}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 20.8033, y: 24.18}
+    newSize: {x: 3, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6, y: 20}
+  m_EdgeRadius: 0
 --- !u!114 &8121322402105224697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +53,23 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2939035744621546317, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 5362147572540200516}
+    - target: {fileID: 2939035744621546317, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: leftFacingSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 110b431a828ae6844b2f07e08994b758,
+        type: 3}
+    - target: {fileID: 2939035744621546317, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: rightFacingSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 90155ce2b4491714887748c1725712ac,
+        type: 3}
     - target: {fileID: 3795280134575161697, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: m_Size.x
@@ -89,6 +132,11 @@ PrefabInstance:
       propertyPath: classType
       value: Grandma_Yaga
       objectReference: {fileID: 0}
+    - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: dialogFile
+      value: 
+      objectReference: {fileID: 4900000, guid: b84bedf2f82038d458f67d6e851a7713, type: 3}
     - target: {fileID: 3795280135728259497, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: displayName
@@ -165,17 +213,17 @@ PrefabInstance:
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1780
+      value: 356.01892
       objectReference: {fileID: 0}
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 421
+      value: -133.2785
       objectReference: {fileID: 0}
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3795280135728259501, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
@@ -218,10 +266,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 90155ce2b4491714887748c1725712ac,
         type: 3}
+    - target: {fileID: 3795280135728259502, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795280135728259502, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1567844393
+      objectReference: {fileID: 0}
     - target: {fileID: 3795280135728259503, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}
       propertyPath: m_Name
-      value: Grandma
+      value: Grandma_Yaga
       objectReference: {fileID: 0}
     - target: {fileID: 5647117409125959814, guid: 53f6ba81b93ac4b41a00149b9b1f0332,
         type: 3}

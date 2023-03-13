@@ -30,7 +30,7 @@
                     { "target": "1",
                         "optionText": "",
                         "conditions": [],
-                        "triggers": [{"text": "metCleric", "colour": "none", "quality": "none"}]
+                        "triggers": [{"text": "metCleric", "colour": "", "quality": ""}]
                     }
                     ]
                 }
@@ -167,7 +167,7 @@
                         "conditions": ["!blue"],
                         "triggers": [
                             { "text": "cursedAura", "colour": "purple", "quality":"bad" },
-                            {" text": "paladinRevived", "colour": "none", "quality": "neutral"}
+                            { "text": "paladinRevived", "colour": "", "quality": ""}
                         ]
                     },
                     { "target": "E1",
