@@ -40,7 +40,6 @@ public static class StoryConditions {
             if (_trigger.text == "clericTransformation") {
                 GameObject.Find("Saint_Casey").name = "Casey_The_Heretic";
             }
-            //TODO clericTransformation
         }
 
     }

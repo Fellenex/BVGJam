@@ -213,7 +213,7 @@
     },
     { "id": "Assassin_B",
         "finalStates": ["1", "A2"],
-        "metaconditions": ["hasFoundKnife", "hasJusticeSweat", "!hasRed"],
+        "metaconditions": ["hasFoundKnife", "justiceSweat", "!red"],
         "states": [
             { "index": "0", "statements": [
                 { "speaker": "Nyx", "mood": "upset", "text": "That good-for-nothing Paladin is going to regret he ever..." },
