@@ -32,8 +32,14 @@ public static class StoryConditions {
         }
 
         if (isSpecialCondition(_trigger.text)) {
-            //Handle weird cases
-            //TODO foundKnife
+
+            if (_trigger.text == "foundKnife") {
+                GameObject.Find("Knife").SetActive(false);
+            }
+
+            if (_trigger.text == "clericTransformation") {
+                GameObject.Find("Saint_Casey").name = "Casey_The_Heretic";
+            }
             //TODO clericTransformation
         }
 

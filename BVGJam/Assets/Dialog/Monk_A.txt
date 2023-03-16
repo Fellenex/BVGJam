@@ -1,0 +1,109 @@
+{
+    "conversations" : [
+        {"id" : "opener_nmav",
+        "starter" : "npc",
+        "finalStates" : ["3", "A2"],
+        "states" : [
+            {"index" : "0",
+                "speaker" : "Monk_Mav",
+                "statements" : [
+                    {"text" : "...Hello, young Palette. ",
+                        "mood" : "neutral"}
+                ]
+            },
+
+            {"index" : "1",
+                "speaker" : "Monk_Mav",
+                "statements" : [
+                        {"text" : "To expect is to assume, and I assume nothing.",
+                            "mood" : "neutral"}
+                ]
+            },
+
+            {"index" : "2",
+                "speaker" : "Monk_Mav",
+                "statements" : [
+                    {"text" : "I do. But sometimes…it can be a burden.",
+                        "mood" : "neutral"}
+                ]
+            },
+
+            {"index" : "3",
+                "speaker" : "Monk_Mav",
+                "statements" : [
+                    {"text" : "You see, the more you learn, the more you realize you don’t know.",
+                        "mood" : "upset"},
+                    {"text" : "And the more you realize you don’t know, the more you must learn about.",
+                        "mood" : "neutral"},
+                    {"text" : " And the more you must learn about, the more ignorant you become!",
+                        "mood" : "upset"}
+                ]
+            },
+            {"index" : "A1",
+                "speaker" : "Monk_Mav",
+                "statements" : [
+                    {"text" : "That is very wise. You must know a lot of things…",
+                        "mood" : "upset"},
+                    {"text" : "Let’s share this newfound wisdom together.",
+                        "mood" : "neutral"},
+                    {"text" : "Yo, do you watch ‘Rick and Morty’? We might not like it though, I hear you have to have a really high IQ…",
+                        "mood" : "pleased"}
+                ]
+            },
+            {"index" : "B1",
+                "speaker" : "Monk_Mav",
+                "statements" : [
+                    {"text" : "That’s very wise. You must know a lot of things…",
+                        "mood" : "pleased"},
+                    {"text" : " I think we’ve both received something valuable today from one another, without departing any poorer.",
+                        "mood" : "neutral"}
+                ]
+            }
+            
+        ],
+        "transitions" : [
+            {   "source" : "0",
+                "target" : "1",
+                "statements" : [
+                    {"text" : "You were expecting me?",
+                        "mood" : "neutral"}
+                    ],
+                "optionText" : "",
+                "conditions" : [],
+                "triggers" : []                
+            },
+            {   "source" : "1",
+                "target" : "2",
+                "statements" : [
+                    {"text" : "That’s very wise. You must know a lot of things.",
+                        "mood" : "pleased"}
+                ],
+                "optionText" : "",
+                "conditions" : [],
+                "triggers" : []
+            },
+            {   "source" : "3",
+                "target" : "A1",
+                "statements" : [
+                    {"text" : "Embrace ignorance. A melted brain soothes the endless pain.",
+                        "mood" : "upset"}
+                ],
+                "optionText" : "Knowledge is depressing",
+                "conditions" : [],
+                "triggers" : ["getYellowBad"]
+            },
+            {   "source" : "3",
+                "target" : "B1",
+                "statements" : [
+                    {"text" : "At least you’ll never be ignorant about being ignorant!",
+                        "mood" : "pleased"},
+                    {"text" : "Learning can be a challenge, but challenges help us grow and become better people!",
+                        "mood" : "neutral"}
+                ],
+                "optionText" : "Never stop learning!",
+                "conditions" : [],
+                "triggers" : ["getYellowGood"]
+            }
+        ]}
+    ]
+}
