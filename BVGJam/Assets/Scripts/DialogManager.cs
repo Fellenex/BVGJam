@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using System;
+using System.Linq;
 //using UnityEngine.SceneManagement;
 
 
@@ -77,16 +78,6 @@ public class DialogManager : MonoBehaviour {
 
         dialogOpen = false;
         audioController.GetComponent<AudioSource>().volume = 1.0f;
-
-        //StopConversationEvent?.Invoke();
-        /*
-        Receive a list of triggers that should get flipped as a result of this conversation ending
-        Receive a list of the state label that the conversation was stopped in
-
-        Trigger relevant items
-        Compare supplied state label against final states set for this Conversation object
-
-        */
     }
 
 
@@ -113,15 +104,13 @@ public class DialogManager : MonoBehaviour {
     private List<Conversation> getPossibleConversations(String _npcName) {
         List<Conversation> possibleConversations = new List<Conversation>();
 
-        foreach ((String,String) x in ConditionManager.conversationStatus.Keys) {
-            Debug.Log(x + " --> " + ConditionManager.conversationStatus[x]);
-        }
+        ConditionManager.prettyPrintConditions();
 
         //Check the metaconditions for each one, and make sure we haven't
         //  already finished the conversation
         foreach (Conversation conversation in npcConversations[_npcName]){
             if (hasMetMetaconditions(conversation.metaconditions)){
-                if (!ConditionManager.hasFinishedConversation(_npcName, conversation.id)) {
+                if (!ConditionManager.hasFinishedConversation(conversation.id)) {
                     Debug.Log("Player has not yet finished conversation " + conversation.id);
                     possibleConversations.Add(conversation);
                 } else {
@@ -155,12 +144,14 @@ public class DialogManager : MonoBehaviour {
     private static void crossCheckConditionsAndTriggers(Dictionary<String, List<Conversation>> npcConversations) {
         List<String> triggers = new List<String>();
         List<String> conditions = new List<String>();
+        List<String> conversation_ids = new List<String>();
 
         //Collect all of the trigger and condition text labels from the dialog files
         foreach (List<Conversation> conversations in npcConversations.Values) {
             foreach (Conversation conversation in conversations) {
                 triggers.AddRange(conversation.getTriggerLabels());
                 conditions.AddRange(conversation.getConditionLabels());
+                conversation_ids.Add(conversation.id);
             }
         }
 
@@ -177,5 +168,8 @@ public class DialogManager : MonoBehaviour {
                 Debug.Log("Condition " + condition + " is not found on any trigger");
             }
         }
+
+        //There shouldn't be any duplicate conversation IDs
+        Debug.Assert(conversation_ids.Count == conversation_ids.Distinct().Count());
     }
 }

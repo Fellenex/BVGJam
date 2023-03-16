@@ -973,7 +973,6 @@ MonoBehaviour:
   - {fileID: 266613677}
   - {fileID: 686471970}
   - {fileID: 278487879}
-  dialogFiles: []
 --- !u!1 &1461958088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,7 +1062,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogFile
       value: 
-      objectReference: {fileID: 4900000, guid: b84bedf2f82038d458f67d6e851a7713, type: 3}
+      objectReference: {fileID: 4900000, guid: b5b32654414a3bc419aa68224e35c0aa, type: 3}
     - target: {fileID: 5362147572540200515, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: conversationJSON
@@ -1092,7 +1091,7 @@ PrefabInstance:
     - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 356.01892
+      value: -56
       objectReference: {fileID: 0}
     - target: {fileID: 5362147572540200519, guid: 9c79140a5be04cb4fb485835f438e725,
         type: 3}
@@ -1406,6 +1405,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 804712813}
     m_Modifications:
+    - target: {fileID: 7192262289471158649, guid: bcd5058787d1d7d4dac32442e998f5e1,
+        type: 3}
+      propertyPath: dialogFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 4628e510819a8b748adb5d3a085ad5ca, type: 3}
     - target: {fileID: 7192262289471158653, guid: bcd5058787d1d7d4dac32442e998f5e1,
         type: 3}
       propertyPath: m_RootOrder
@@ -1574,7 +1578,7 @@ PrefabInstance:
     - target: {fileID: 8234058876430779009, guid: 7795320e1ac4225429eb088043ce7e99,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -420.98108
+      value: -1190
       objectReference: {fileID: 0}
     - target: {fileID: 8234058876430779009, guid: 7795320e1ac4225429eb088043ce7e99,
         type: 3}

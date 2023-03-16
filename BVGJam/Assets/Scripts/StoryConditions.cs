@@ -27,10 +27,11 @@ public static class StoryConditions {
             goodColoursCount++;
         } else if (_trigger.quality == BAD_QUALITY) {
             badColoursCount++;
-        } else {
+        } else if (_trigger.quality != "") {
             Debug.LogError("StoryConditions::HandleTrigger() incorrect quality (" + _trigger.quality + ")");
         }
 
+        Debug.Log("Checking to see if this trigger (" + _trigger.text + " needs special handling");
         if (isSpecialCondition(_trigger.text)) {
 
             if (_trigger.text == "foundKnife") {

@@ -50,7 +50,7 @@ public class CharacterDisplay {
         {JOE_NAME, new Vector2(425, 750)},
         {MARK_NAME, new Vector2(425, 750)},
         {MAVERICK_NAME, new Vector2(400, 700)},
-        {NICKI_NAME, new Vector2(500,500)},
+        {NICKI_NAME, new Vector2(650,650)},
         {GRANDMA_NAME, new Vector2(600,750)},
         {KNIFE_NAME, new Vector2(250,250)}
     };
