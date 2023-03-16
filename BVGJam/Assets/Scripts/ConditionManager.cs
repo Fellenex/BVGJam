@@ -42,7 +42,7 @@ public static class ConditionManager {
         Debug.Log("Checking if player meets " + _condition);
         if (isNegativeCondition(_condition)) {
             //We want to check that the player has /not/ met the condition
-            return !conditions.Contains(_condition.Substring(1, _condition.Length - 2));
+            return !conditions.Contains(_condition.Substring(1, _condition.Length - 1));
         } else { 
             //We want to check that the player /has/ met the condition
             return conditions.Contains(_condition);

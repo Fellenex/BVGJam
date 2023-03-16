@@ -1,0 +1,26 @@
+{
+    "conversations": [
+        { "id": "Metacondition_A",
+            "finalStates": ["0"],
+            "metaconditions": ["blue"],
+            "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Nyx",    "text": "I've got the blue!", "mood": "pleased" }
+                    ]
+                }
+            ],
+            "transitions": []
+        },
+        { "id": "Metacondition_B",
+            "finalStates": ["0"],
+            "metaconditions": ["!blue"],
+            "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Nyx",    "text": "I don't have any blue :(", "mood": "pleased" }
+                    ]
+                }
+            ],
+            "transitions": []
+        }
+    ]
+}
