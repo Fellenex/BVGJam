@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using System;
+using System.Linq;
 //using UnityEngine.SceneManagement;
 
 
@@ -143,12 +144,14 @@ public class DialogManager : MonoBehaviour {
     private static void crossCheckConditionsAndTriggers(Dictionary<String, List<Conversation>> npcConversations) {
         List<String> triggers = new List<String>();
         List<String> conditions = new List<String>();
+        List<String> conversation_ids = new List<String>();
 
         //Collect all of the trigger and condition text labels from the dialog files
         foreach (List<Conversation> conversations in npcConversations.Values) {
             foreach (Conversation conversation in conversations) {
                 triggers.AddRange(conversation.getTriggerLabels());
                 conditions.AddRange(conversation.getConditionLabels());
+                conversation_ids.Add(conversation.id);
             }
         }
 
@@ -165,5 +168,8 @@ public class DialogManager : MonoBehaviour {
                 Debug.Log("Condition " + condition + " is not found on any trigger");
             }
         }
+
+        //There shouldn't be any duplicate conversation IDs
+        Debug.Assert(conversation_ids.Count == conversation_ids.Distinct().Count());
     }
 }
