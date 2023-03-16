@@ -67,7 +67,7 @@ public class DialogGraphics : MonoBehaviour {
         playerNameplate.text = PLAYER_NAME;
         playerNameplate.enabled = true;
         activePlayerImage.sprite = playerDisplay.images[DEFAULT_MOOD];
-        //activePlayerImage.GetComponent<RectTransform>().sizeDelta = playerDisplay.dimensions;
+        activePlayerImage.GetComponent<RectTransform>().sizeDelta = playerDisplay.dimensions;
         activePlayerImage.enabled = true;
         
         //Update npc-side nameplate and image

@@ -2015,7 +2015,7 @@ PrefabInstance:
     - target: {fileID: 3584980443798718800, guid: 1dce73c932d660f44ae9f892a3162283,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3584980443798718801, guid: 1dce73c932d660f44ae9f892a3162283,
         type: 3}
@@ -2087,5 +2087,6 @@ PrefabInstance:
       propertyPath: conversationJSON
       value: 
       objectReference: {fileID: 4900000, guid: 398f44a429ca9a448abf05a4d747ab98, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3288312606856733618, guid: 1dce73c932d660f44ae9f892a3162283, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1dce73c932d660f44ae9f892a3162283, type: 3}

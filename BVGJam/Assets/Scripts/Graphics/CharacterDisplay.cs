@@ -44,15 +44,15 @@ public class CharacterDisplay {
     };
 
     private static Dictionary<string, Vector2> dimensionsByCharacter = new Dictionary<string, Vector2> {
-        {PAL_NAME, new Vector2(200, 400)},
-        {CASEY_NAME, new Vector2(200,400)},
-        {CASEY_NAME_TWO, new Vector2(200,400)},
-        {JOE_NAME, new Vector2(225, 400)},
-        {MARK_NAME, new Vector2(225, 350)},
-        {MAVERICK_NAME, new Vector2(200, 350)},
-        {NICKI_NAME, new Vector2(350,350)},
-        {GRANDMA_NAME, new Vector2(350,400)},
-        {KNIFE_NAME, new Vector2(200,400)}
+        {PAL_NAME, new Vector2(400, 700)},
+        {CASEY_NAME, new Vector2(400,750)},
+        {CASEY_NAME_TWO, new Vector2(400,750)},
+        {JOE_NAME, new Vector2(425, 750)},
+        {MARK_NAME, new Vector2(425, 750)},
+        {MAVERICK_NAME, new Vector2(400, 700)},
+        {NICKI_NAME, new Vector2(500,500)},
+        {GRANDMA_NAME, new Vector2(600,750)},
+        {KNIFE_NAME, new Vector2(250,250)}
     };
 
     public CharacterDisplay(string _codeName, string _displayName, Dictionary<string, Sprite> _images, Vector2 _dimensions) {
