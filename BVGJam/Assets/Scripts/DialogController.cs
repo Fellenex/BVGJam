@@ -134,8 +134,9 @@ public class DialogController : MonoBehaviour {
 
             if (trigger.isColourTrigger()) {
                 specialTrigger = trigger;
-                StoryConditions.HandleTrigger(trigger);
             }
+
+            StoryConditions.HandleTrigger(trigger);
         }
 
         //Get the graphics to update - this is a special state now
