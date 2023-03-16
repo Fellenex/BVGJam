@@ -77,16 +77,6 @@ public class DialogManager : MonoBehaviour {
 
         dialogOpen = false;
         audioController.GetComponent<AudioSource>().volume = 1.0f;
-
-        //StopConversationEvent?.Invoke();
-        /*
-        Receive a list of triggers that should get flipped as a result of this conversation ending
-        Receive a list of the state label that the conversation was stopped in
-
-        Trigger relevant items
-        Compare supplied state label against final states set for this Conversation object
-
-        */
     }
 
 
@@ -113,15 +103,13 @@ public class DialogManager : MonoBehaviour {
     private List<Conversation> getPossibleConversations(String _npcName) {
         List<Conversation> possibleConversations = new List<Conversation>();
 
-        foreach ((String,String) x in ConditionManager.conversationStatus.Keys) {
-            Debug.Log(x + " --> " + ConditionManager.conversationStatus[x]);
-        }
+        ConditionManager.prettyPrintConditions();
 
         //Check the metaconditions for each one, and make sure we haven't
         //  already finished the conversation
         foreach (Conversation conversation in npcConversations[_npcName]){
             if (hasMetMetaconditions(conversation.metaconditions)){
-                if (!ConditionManager.hasFinishedConversation(_npcName, conversation.id)) {
+                if (!ConditionManager.hasFinishedConversation(conversation.id)) {
                     Debug.Log("Player has not yet finished conversation " + conversation.id);
                     possibleConversations.Add(conversation);
                 } else {

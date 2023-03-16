@@ -12,7 +12,7 @@ public static class ConditionManager {
     public static List<String> conditions = new List<String>();
     public enum ConversationStatus { Uninitiated, Started, Finished };
 
-    public static Dictionary<ValueTuple<String, String>, ConversationStatus> conversationStatus = new Dictionary<ValueTuple<String, String>, ConversationStatus>();
+    public static Dictionary<String, ConversationStatus> conversationStatus = new Dictionary<String, ConversationStatus>();
 
     //Keep track of this conversation having started
     public static void StartConversation(String _npcName, String _conversationId){
@@ -23,13 +23,13 @@ public static class ConditionManager {
             npcConversations[_npcName] = new List<String>();
             npcConversations[_npcName].Add(_conversationId);
         }
-        conversationStatus[(_npcName, _conversationId)] = ConversationStatus.Started;
+        conversationStatus[_conversationId] = ConversationStatus.Started;
     }
 
     //Keep track of this conversation having finished so that we won't start it again
     public static void FinishConversation(String _npcName, String _conversationId){
         Debug.Log("Finishing conversation '" + _conversationId + "' with '" + _npcName + "'");
-        conversationStatus[(_npcName, _conversationId)] = ConversationStatus.Finished;
+        conversationStatus[_conversationId] = ConversationStatus.Finished;
     }
 
     //A li'l wrapper to set a condition to true and instantiate the list entry if it has yet to be set
@@ -55,12 +55,18 @@ public static class ConditionManager {
     }
 
     //A li'l wrapper to safely check if a conversation has been completed
-    public static bool hasFinishedConversation(String _npcName, String _conversationId) {
+    public static bool hasFinishedConversation(String _conversationId) {
         try {
-            return conversationStatus[(_npcName, _conversationId)] == ConversationStatus.Finished;
+            return conversationStatus[_conversationId] == ConversationStatus.Finished;
         } catch (KeyNotFoundException) {
-            conversationStatus[(_npcName, _conversationId)] = ConversationStatus.Uninitiated;
+            conversationStatus[_conversationId] = ConversationStatus.Uninitiated;
             return false;
+        }
+    }
+
+    public static void prettyPrintConditions() {
+        foreach (String x in conversationStatus.Keys) {
+            Debug.Log(x + " --> " + conversationStatus[x]);
         }
     }
 }
