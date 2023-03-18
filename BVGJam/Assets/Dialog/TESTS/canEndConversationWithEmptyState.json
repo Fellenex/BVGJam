@@ -1,0 +1,25 @@
+{
+    "conversations": [
+        { "id": "EmptyState_A",
+            "finalStates": ["1"],
+            "metaconditions": [],
+            "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Nyx",    "text": "First and only statement in this conversation", "mood": "pleased" }
+                    ]
+                },
+                { "index": "1", "statements": [] }
+            ],
+            "transitions": [
+                { "source": "0", "options": [
+                    { "target": "1",
+                        "optionText": "Select the choice",
+                        "conditions": [],
+                        "triggers": [{"text": "toxicSweat", "colour": "blue", "quality": "bad"}]
+                    }
+                    ]
+                }
+            ]
+        }
+    ]
+}
