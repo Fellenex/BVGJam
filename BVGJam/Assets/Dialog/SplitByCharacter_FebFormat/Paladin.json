@@ -196,7 +196,7 @@
                 }
             ]
         },
-        { "id": "Paladin_G",
+        { "id": "Paladin_F",
             "finalStates": [ "1" ],
             "metaconditions": [ "paladinRevived" ],
             "states": [

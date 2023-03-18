@@ -2,7 +2,7 @@
 	"conversations": [
     { "id": "Druid_A",
 		"finalStates": ["A2", "B2"],
-		"metaconditions": ["foundKnife", "!green"],
+		"metaconditions": ["!green", "!red"],
 		"states": [
             { "index": "0", "statements": [
                 { "speaker": "Nyx", "mood": "neutral", "text": "Hey, hey! Look at you! What are you doing here?" },
@@ -69,8 +69,8 @@
                     "triggers": [{"text": "cursedSpore", "colour": "green", "quality": "bad"}]
                 }]
             },
-            { "source": "A1", "options": [
-                { "target": "A2",
+            { "source": "B1", "options": [
+                { "target": "B2",
                     "optionText": "",
                     "conditions": [],
                     "triggers": [{"text": "lakewaterSpore", "colour": "green", "quality": "good"}]
@@ -213,7 +213,7 @@
     },
     { "id": "Assassin_B",
         "finalStates": ["1", "A2"],
-        "metaconditions": ["hasFoundKnife", "justiceSweat", "!red"],
+        "metaconditions": ["foundKnife", "justiceSweat", "!red"],
         "states": [
             { "index": "0", "statements": [
                 { "speaker": "Nyx", "mood": "upset", "text": "That good-for-nothing Paladin is going to regret he ever..." },
@@ -233,14 +233,6 @@
             { "index": "A2", "statements": [] }
         ],
         "transitions": [
-            { "source": "A1", "options": [
-                { "target": "A2",
-                    "optionText": "",
-                    "conditions": [],
-                    "triggers": [{"text": "sonicSpore", "colour": "green", "quality": "good"}]
-                }
-                ]
-            },
             { "source": "0", "options": [
                 { "target": "1",
                     "optionText": "",
@@ -250,7 +242,15 @@
                         {"text": "paladinDead",      "colour": "",    "quality": ""}
                     ]
                 }
-            ]}
+            ]},
+            { "source": "A1", "options": [
+                { "target": "A2",
+                    "optionText": "",
+                    "conditions": [],
+                    "triggers": [{"text": "sonicSpore", "colour": "green", "quality": "good"}]
+                }
+                ]
+            }
         ]
     }]
 }
