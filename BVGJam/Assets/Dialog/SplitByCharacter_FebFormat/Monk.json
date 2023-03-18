@@ -1,0 +1,48 @@
+{
+    "conversations" : [
+        { "id": "Monk_A",
+		    "finalStates": ["A1,B1"],
+		    "metaconditions": [],
+		    "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Monk", "mood": "neutral", "text": "...Hello, young Palette." },
+                    { "speaker": "Pal",  "mood": "neutral", "text": "You were expecting me?" },
+                    { "speaker": "Monk", "mood": "neutral", "text": "To expect is to assume, and I assume nothing." },
+                    { "speaker": "Pal",  "mood": "pleased", "text": "That’s very wise. You must know a lot of things." },
+                    { "speaker": "Monk", "mood": "neutral", "text": "I do. But sometimes...it can be a burden." },
+                    { "speaker": "Monk", "mood": "upset",   "text": "You see, the more you learn, the more you realize you don’t know." },
+                    { "speaker": "Monk", "mood": "neutral", "text": "And the more you realize you don’t know, the more you must learn about." },
+                    { "speaker": "Monk", "mood": "upset", "text": "And the more you must learn about, the more ignorant you become!" },
+                ]
+			    },
+                {"index": "A1", "statements": [
+                    { "speaker": "Pal",         "mood": "upset",   "text": "Embrace ignorance. A melted brain soothes the endless pain." },
+                    { "speaker": "Monk",        "mood": "upset",   "text": "That is very wise. You must know a lot of things..." },
+                    { "speaker": "Monk",        "mood": "neutral", "text": "Let’s share this newfound wisdom together." },
+                    { "speaker": "Monk",        "mood": "pleased", "text": "Yo, do you watch ‘Rick and Morty’? We might not like it though, I hear you have to have a really high IQ..." },
+                ]},
+                {"index": "B1", "statements": [
+                    { "speaker": "Pal",         "mood": "pleased", "text": "At least you’ll never be ignorant about being ignorant!" },
+                    { "speaker": "Pal",         "mood": "neutral", "text": "Learning can be a challenge, but challenges help us grow and become better people!" },
+                    { "speaker": "Monk",        "mood": "pleased", "text": "That's very wise. You must know a lot of things..." },
+                    { "speaker": "Monk",        "mood": "neutral", "text": "I think we’ve both received something valuable today from one another, without departing any poorer." },
+                ]}
+            ],
+            "transitions": [
+                { "source": "0", "options": [
+                    { "target": "A1",
+                        "optionText": "Knowledge is depressing",
+                        "conditions": [],
+                        "triggers": [{"text": "yellowBad", "colour": "yellow", "quality": "bad"}]
+                    },
+                    { "target": "B1",
+                        "optionText": "Never stop learning!",
+                        "conditions": [],
+                        "triggers": [{"text": "yellowGood", "colour": "yellow", "quality": "good"}]
+                    }
+                    ]
+                }
+            ]
+	    }
+    ]
+}
