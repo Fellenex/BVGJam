@@ -7,14 +7,23 @@ public class Conversation_State {
     public string index;
     public Conversation_Statement[] statements;
 
-    public bool hasMoreStatements(int _index) {
-        return _index < statements.Length;
+    /*
+    Returns bool corresponding to whether or not
+        there are more statements in the current state
+    */
+    public bool hasMoreStatements(int _statementIndex) {
+        return _statementIndex < statements.Length;
     }
 
     //Gets the first speaker in a conversation.
     //Assumes the first state is listed first.
     public Conversation_Statement getFirstStatement() {
-        return statements[0];
+        try {
+            return statements[0];
+        } catch (IndexOutOfRangeException e) {
+            Debug.LogError("State " + index + " has no statements (" + e.Message + ")");
+            return null;
+        }
     }
 
     public void validate() {

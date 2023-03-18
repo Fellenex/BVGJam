@@ -146,9 +146,16 @@ public class DialogController : MonoBehaviour {
 
         //Update the active state+statement index
         activeState = activeConversation.getStateByIndex(_option.target);
-        activeStatement = activeState.getFirstStatement();
+
+        //If there are any statements available, we continue the conversation.
+        //Otherwise, the conversation is over.
         activeStatementIndex = 0;
-        AdvanceConversation();
+        if (!activeState.hasMoreStatements(activeStatementIndex)) {
+            StopConversation();
+        } else {
+            activeStatement = activeState.getFirstStatement();
+            AdvanceConversation();
+        }
     }
 
     //Move onto the next statement in the current state
