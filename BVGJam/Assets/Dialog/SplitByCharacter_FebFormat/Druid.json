@@ -2,7 +2,7 @@
 	"conversations": [
     { "id": "Druid_A",
 		"finalStates": ["A2", "B2"],
-		"metaconditions": ["!green", "!red"],
+		"metaconditions": ["!green", "!red", "!foundKnife"],
 		"states": [
             { "index": "0", "statements": [
                 { "speaker": "Nyx", "mood": "neutral", "text": "Hey, hey! Look at you! What are you doing here?" },
@@ -216,8 +216,8 @@
         ]
     },
     { "id": "Assassin_B",
-        "finalStates": ["1", "A2"],
-        "metaconditions": ["foundKnife", "justiceSweat", "!red"],
+        "finalStates": ["3"],
+        "metaconditions": ["foundKnife", "justiceSweat"],
         "states": [
             { "index": "0", "statements": [
                 { "speaker": "Nyx", "mood": "upset", "text": "That good-for-nothing Paladin is going to regret he ever..." },
@@ -227,14 +227,20 @@
                 { "speaker": "Nyx", "mood": "pleased", "text": "[pointing behind you] Oh! What’s that over there?!" }
             ]
             },
-            { "index": "1", "statements": [] },
-            { "index": "A1", "statements": [
+            { "index": "1", "statements": [
+                { "speaker": "", "mood": "", "text": "You hear a harrowing cry from across the valley." },
+                { "speaker": "", "mood": "", "text": "It sounded like your friend, the Paladin..." }
+            ] },
+            { "index": "2", "statements": [
                 { "speaker": "Bard", "mood": "pleased", "text": "Hello! It is I, the Bard! Here to- " },
                 { "speaker": "Bard", "mood": "upset",   "text": "My lord, this garden is sad and pathetic." },
                 { "speaker": "Pal",  "mood": "neutral", "text": "I was really hoping to find some Green." },
                 { "speaker": "Bard", "mood": "pleased", "text": "Allow me!" }
             ]},
-            { "index": "A2", "statements": [] }
+            { "index": "3", "statements": [
+                { "speaker": "", "mood": "", "text": "The Bard's musical genius causes the nearby mushrooms to shake with glee." },
+                { "speaker": "", "mood": "", "text": "You receive the sonic spore!" }
+            ] }
         ],
         "transitions": [
             { "source": "0", "options": [
@@ -247,8 +253,15 @@
                     ]
                 }
             ]},
-            { "source": "A1", "options": [
-                { "target": "A2",
+            { "source": "1", "options": [
+                { "target": "2",
+                    "optionText": "",
+                    "conditions": [], "triggers": []
+                }
+                ]
+            },
+            { "source": "2", "options": [
+                { "target": "3",
                     "optionText": "",
                     "conditions": [],
                     "triggers": [{"text": "sonicSpore", "colour": "green", "quality": "good"}]

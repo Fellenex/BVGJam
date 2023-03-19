@@ -138,7 +138,7 @@
                     { "speaker": "Sir_Jonathan",    "text": "Well, don’t give up! I’m sure a resourceful fellow like you will be Blue in no time.", "mood": "neutral" },
                     { "speaker": "Pal",             "text": "Yeah well, I’m a bit more worried about being Red.", "mood": "neutral" },
                     { "speaker": "Pal",             "text": "I found something S I N I S T E R.", "mood": "neutral" },
-                    { "speaker": "Sir_Jonathan",    "text": "Good heavens! That’s the blade of an Assassin…", "mood": "neutral" },
+                    { "speaker": "Sir_Jonathan",    "text": "Good heavens! That’s the blade of an Assassin...", "mood": "neutral" },
                     { "speaker": "Sir_Jonathan",    "text": "An assassin must be hiding amongst us. I can’t believe this.", "mood": "upset" },
                     { "speaker": "Pal",             "text": "Are you going to be okay? You look stressed.", "mood": "neutral" },
                     { "speaker": "Sir_Jonathan",    "text": "Of course I’ll be okay!", "mood": "neutral" },
@@ -248,7 +248,7 @@
             "states": [
                 { "index": "0", "statements": [
                     { "speaker": "Bard", "mood": "pleased",   "text": "...and scene!" },
-                    { "speaker": "Pal",  "mood": "neutral",   "text": "That's your favouriste song?" }
+                    { "speaker": "Pal",  "mood": "neutral",   "text": "That's your favourite song?" }
                     ]
                 }
             ],
