@@ -36,6 +36,24 @@
                 }
             ]
 	    },
+
+        { "id": "Cleric_A_Repeatable",
+            "finalStates": [ ],
+            "metaconditions": [ "metCleric", "!yourBlood" ],
+            "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Saint_Casey",  "mood": "upset",   "text": "Hmmm." },
+                    { "speaker": "Pal",          "mood": "neutral", "text": "Yeah?" },
+                    { "speaker": "Saint_Casey",  "mood": "neutral", "text": "Hmmm. Yeah. This isn’t our fated moment." },
+                    { "speaker": "Pal",          "mood": "neutral", "text": "Why?" },
+                    { "speaker": "Saint_Casey",  "mood": "neutral", "text": "The vibes are off." },
+                    { "speaker": "Pal",          "mood": "neutral", "text": "I guess you can’t rush fate!" }
+                    ]
+                }
+            ],
+            "transitions": []
+        },
+
         { "id": "Cleric_B",
             "finalStates": ["1"],
             "metaconditions": ["yourBlood"],
@@ -71,6 +89,19 @@
                     ]
                 }
             ]
+        },
+
+        { "id": "Cleric_B_Repeatable",
+            "finalStates": [ ],
+            "metaconditions": [ "clericsBlessing", "!paladinBloodGood" ],
+            "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Saint_Casey",  "mood": "upset",   "text": "Any more wounds I should know about?" },
+                    { "speaker": "Pal",          "mood": "neutral", "text": "I hope not" }
+                    ]
+                }
+            ],
+            "transitions": []
         },
 
         { "id": "Cleric_C",

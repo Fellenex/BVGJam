@@ -88,6 +88,33 @@
                 }             
             ]
         },
+
+        { "id": "Paladin_A_Repeatable_1",
+            "finalStates": [ ],
+            "metaconditions": [ "toxicSweat", "!foundKnife" ],
+            "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Sir_Jonathan", "mood": "upset",   "text": "I’m keeping the rest of my fluids to myself, thank you very much." }
+                    ]
+                }
+            ],
+            "transitions": []
+        },
+
+        { "id": "Paladin_A_Repeatable_2",
+            "finalStates": [ ],
+            "metaconditions": [ "metPaladin", "!foundKnife" ],
+            "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Sir_Jonathan", "mood": "neutral",   "text": "How goes it, Pal?" },
+                    { "speaker": "Pal",          "mood": "upset",     "text": "I'm still clueless and Blueless" },
+                    { "speaker": "Sir_Jonathan", "mood": "pleased",   "text": "Keep your chin up!" }
+                    ]
+                }
+            ],
+            "transitions": []
+        },
+
         { "id": "Paladin_B",
             "finalStates": [ "0" ],
             "metaconditions": [ "foundKnife", "toxicSweat" ],
@@ -144,6 +171,20 @@
                 }
             ]
         },
+
+        { "id": "Paladin_C_Repeatable",
+            "finalStates": [ ],
+            "metaconditions": [ "foundKnife", "justiceSweat" ],
+            "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Sir_Jonathan", "mood": "neutral",   "text": "Be careful with that horrible blade." },
+                    { "speaker": "Pal",          "mood": "neutral",   "text": "It's too bad I don't have a sheathe for it." }
+                    ]
+                }
+            ],
+            "transitions": []
+        },
+        
         { "id": "Paladin_D",
             "finalStates": [ "0" ],
             "metaconditions": [ "justiceSweat", "paladinDead" ],
@@ -200,6 +241,20 @@
                 }
             ]
         },
+
+        { "id": "Paladin_E_Repeatable",
+            "finalStates": [ ],
+            "metaconditions": [ "bardsRequiem" ],
+            "states": [
+                { "index": "0", "statements": [
+                    { "speaker": "Bard", "mood": "pleased",   "text": "...and scene!" },
+                    { "speaker": "Pal",  "mood": "neutral",   "text": "That's your favouriste song?" }
+                    ]
+                }
+            ],
+            "transitions": []
+        },
+
         { "id": "Paladin_F",
             "finalStates": [ "1" ],
             "metaconditions": [ "paladinRevived" ],
