@@ -56,7 +56,7 @@
 
         { "id": "Cleric_B",
             "finalStates": ["1"],
-            "metaconditions": ["yourBlood"],
+            "metaconditions": ["metCleric", "yourBlood"],
             "states": [
                 { "index": "0", "statements": [
                     { "speaker": "Saint_Casey", "mood": "pleased",  "text": "Pal, it’s so nice to see you! How goes your-" },
@@ -106,7 +106,7 @@
 
         { "id": "Cleric_C",
             "finalStates": ["E1", "D1", "E1", "F2"],
-            "metaconditions": ["paladinBloodGood"],
+            "metaconditions": ["metCleric", "paladinBloodGood"],
             "states": [
                 { "index": "0", "statements": [
                     { "speaker": "Saint_Casey", "mood": "neutral",  "text": "Hello there, young one." },

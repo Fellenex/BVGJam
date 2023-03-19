@@ -111,7 +111,10 @@ public class Conversation {
         Debug.Assert(!String.IsNullOrEmpty(id));
 
         //We need at least one final state to know when we can consider the conversation "complete"
-        Debug.Assert(finalStates.Length > 0);
+        //Some conversations are repeatable, and don't have final states.
+        if (finalStates.Length == 0) {
+            Debug.Log("Conversation " + id + " doesn't have any final states");
+        }
 
         //We need at least one state to be able to deliver any statements
         Debug.Assert(states.Length > 0);
