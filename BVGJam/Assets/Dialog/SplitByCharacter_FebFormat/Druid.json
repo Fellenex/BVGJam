@@ -47,7 +47,9 @@
                 { "speaker": "Pal", "mood": "neutral", "text": "Maybe just give it a little sprinkle." },
                 { "speaker": "Nyx", "mood": "neutral", "text": "I guess it's worth a shot!" }
             ]},
-            { "index": "B2", "statements": [] }
+            { "index": "B2", "statements": [
+                { "speaker": "", "mood": "", "text": "You got the lakewater spore!" }
+            ] }
         ],
 
 		"transitions": [
@@ -137,7 +139,9 @@
                 { "speaker": "Nyx", "mood": "pleased", "text": "Feel free to take one of my lovely mushrooms!" }
                 ]
             },
-            { "index": "C4", "statements": [] },
+            { "index": "C4", "statements": [
+                { "speaker": "Nyx", "mood": "neutral", "text": "You got the cursed spore!" }
+            ] },
             { "index": "D1", "statements": [
                 { "speaker": "Pal", "mood": "neutral", "text": "Maybe violence isn't always the answer" },
                 { "speaker": "Nyx", "mood": "neutral", "text": "I can’t say that I agree..." },

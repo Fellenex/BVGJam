@@ -71,14 +71,18 @@
                     },
                     { "target": "B1",
                         "optionText": "I should find another way to make him sweat",
-                        "conditions": [], "triggers": []
+                        "conditions": [],
+                        "triggers": [{"text": "metPaladin", "colour": "", "quality": ""}]
                     }
                     ]
                 },
                 { "source": "A1", "options": [
                     { "target": "A2",
                         "optionText": "",
-                        "conditions": [], "triggers": [{"text": "toxicSweat", "colour": "blue", "quality": "bad"}]
+                        "conditions": [],
+                        "triggers": [
+                            {"text": "toxicSweat", "colour": "blue", "quality": "bad"},
+                            {"text": "metPaladin", "colour": "", "quality": ""}]
                     }
                     ]
                 }             
@@ -99,7 +103,7 @@
         },
         { "id": "Paladin_C",
             "finalStates": [ "1" ],
-            "metaconditions": [ "foundKnife", "!toxicSweat" ],
+            "metaconditions": [ "metPaladin", "foundKnife", "!toxicSweat" ],
             "states": [
                 { "index": "0", "statements": [
                     { "speaker": "Sir_Jonathan",    "text": "Welcome back, Pal! How goes your quest for Blue?", "mood": "pleased" },
