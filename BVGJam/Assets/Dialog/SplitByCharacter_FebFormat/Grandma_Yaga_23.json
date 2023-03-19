@@ -1,7 +1,7 @@
 {
     "conversations" : [
         { "id" : "Grandma_Yaga_A",
-            "finalStates" : ["1, 2"],
+            "finalStates" : ["1", "2"],
             "metaconditions" : [],
             "states" : [
                 {"index" : "0", "statements" : [
@@ -45,6 +45,28 @@
                     ]
                 }
             ]
+        },
+
+        { "id" : "Grandma_Yaga_B",
+            "finalStates" : ["0"],
+            "metaconditions" : ["red", "blue", "green", "purple"],
+            "states" : [
+                {"index" : "0", "statements" : [
+                    { "speaker" : "Grandma_Yaga",   "mood" : "pleased", "text" : "Good job!" }
+                ]}
+            ],
+            "transitions" : []
+        },
+
+        { "id" : "Grandma_Yaga_C",
+            "finalStates" : ["0"],
+            "metaconditions" : ["red", "blue", "green", "purple", "yellow"],
+            "states" : [
+                {"index" : "0", "statements" : [
+                    { "speaker" : "Grandma_Yaga",   "mood" : "pleased", "text" : "Great job!" }
+                ]}
+            ],
+            "transitions" : []
         }
     ]
 }
