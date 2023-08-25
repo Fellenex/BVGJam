@@ -155,7 +155,7 @@ public class DialogController : MonoBehaviour {
         PLAYER_CHOOSING = false;
         Debug.Log("Starting next statement of " + _state.index + " (starting the " + activeStatementIndex + "th statement)");
         activeStatement = _state.statements[activeStatementIndex];
-        activeStatementIndex += 1;
+        Debug.Log("Statement belongs to " + activeStatement.speaker);
 
         if (activeStatement.speaker == PLAYER_STRING) {
             Debug.Log("Player statement");
@@ -167,6 +167,9 @@ public class DialogController : MonoBehaviour {
             Debug.Log("Speakerless statement");
             graphics.speakerlessStatement(activeStatement);
         }
+
+        //Get ready for the next statement
+        activeStatementIndex += 1;
     }
 
     //Hand control over to the player for choosing between a few options

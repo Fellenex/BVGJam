@@ -34,25 +34,26 @@ public class DialogManager : MonoBehaviour {
 
    void Start() {
         npcConversations = new Dictionary<String, List<Conversation>>();
-        Debug.Log("dialog manager starting");
+        Debug.Log("Dialog Manager start");
+
         //Read all of the conversation files for NPCs managed by DialogManager
         foreach (GameObject npc in npcs) {
-
-            //TODO for now, skip over inactive NPCs (avoid noisy JSON debugging)            
+            //Skip over inactive NPCs. They may not have been set up yet
             if (npc.activeSelf) {
-                Debug.Log("Loading up for " + npc.name);
                 TextAsset dialogFile = npc.GetComponent<NPC_Attributes>().dialogFile;
-                List<Conversation> conversations = DialogIO.ReadDialogFile(dialogFile);
 
-                //Validate the conversations in this dialog file
-                foreach (Conversation conversation in conversations){
-                    Debug.Log(conversation);
-                    conversation.validate();
+                if (dialogFile == null){
+                    Debug.LogWarning(npc.name + " missing a conversation file. Did you mean to do this?");
+                } else {
+                    List<Conversation> conversations = DialogIO.ReadDialogFile(dialogFile);
+                    //Validate the conversations in this dialog file
+                    foreach (Conversation conversation in conversations){
+                        conversation.validate();
+                    }
+
+                    npcConversations[npc.name] = conversations;
                 }
 
-                npcConversations[npc.name] = conversations;//new List<Conversation>(conversations);
-            } else {
-                Debug.Log(npc.name + " is inactive");
             }
         }
 
@@ -169,7 +170,11 @@ public class DialogManager : MonoBehaviour {
             }
         }
 
-        //There shouldn't be any duplicate conversation IDs
-        Debug.Assert(conversation_ids.Count == conversation_ids.Distinct().Count());
+        if (conversation_ids.Count != conversation_ids.Distinct().Count()) {
+            Debug.Log("There exist duplicate conversation ids");
+            foreach (String conversation_id in conversation_ids) {
+                Debug.Log(conversation_id);
+            }
+        }
     }
 }

@@ -34,6 +34,9 @@ public static class ConditionManager {
 
     //A li'l wrapper to set a condition to true and instantiate the list entry if it has yet to be set
     public static void MeetCondition(String _condition) {
+        if (_condition.Length == 0) {
+            Debug.LogWarning("ConditionManager::MeetCondition empty condition");
+        }
         Debug.Log("Player has just met condition " + _condition);
         conditions.Add(_condition);
     }
