@@ -118,7 +118,11 @@ public class DialogGraphics : MonoBehaviour {
         activePlayerImage.color = HALF_VISIBILITY;
         activeNPCImage.color = FULL_VISIBILITY;
 
+        //The NPC may have changed in-between states or statements.
+        npcDisplay = CharacterDisplay.ConstructByName(_npcStatement.speaker);
+
         //Update the NPC's image and nameplate
+        Debug.Log("About to show " + npcDisplay.displayName + " in a " + _npcStatement.mood + " mood");
         npcNameplate.text = npcDisplay.displayName;
         activeNPCImage.sprite = npcDisplay.images[_npcStatement.mood];
         speakStatement(_npcStatement);
