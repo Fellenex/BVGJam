@@ -205,29 +205,29 @@
             "metaconditions": [ "paladinDead", "clericsMourning", "!blue" ],
             "states": [
                 { "index": "0", "statements": [
-                    { "speaker": "Bard",    "text": "Why helloooooooo there!", "mood": "neutral" },
-                    { "speaker": "Pal",     "text": "Who are you?", "mood": "neutral" },
-                    { "speaker": "Pal",     "text": "Can't you see I’m grieving here…", "mood": "upset" },
-                    { "speaker": "Bard",    "text": "Who are any of us, really…", "mood": "pleased" },
-                    { "speaker": "Bard",    "text": "…but instruments in the ballad the of time.", "mood": "pleased" },
-                    { "speaker": "Pal",     "text": "I-", "mood": "neutral" },
-                    { "speaker": "Bard",    "text": "All of us, a symphony, waiting for our solo moment…", "mood": "pleased" },
-                    { "speaker": "Pal",     "text": "Actually, I would like to be-", "mood": "neutral" },
-                    { "speaker": "Bard",    "text": "Yearning to be heard! Yearning for their moment!", "mood": "pleased" },
-                    { "speaker": "Pal",     "text": "I needed Blue. But all I got was Red.", "mood": "neutral" },
-                    { "speaker": "Bard",    "text": "Yearning for peace! That’s what I see in your eyes, my friend.", "mood": "pleased" },
-                    { "speaker": "Pal",     "text": "No, you misheard me I’m-", "mood": "neutral" },
-                    { "speaker": "Bard",    "text": "Well, I’ve got just the thing if you’re feeling blue.", "mood": "neutral" },
-                    { "speaker": "Pal",     "text": "Oh no", "mood": "neutral" },
-                    { "speaker": "Bard",    "text": "Here’s one of my favorite songs to play.", "mood": "pleased" }
+                    { "speaker": "Mark_The_Bard",   "text": "Why helloooooooo there!", "mood": "neutral" },
+                    { "speaker": "Pal",             "text": "Who are you?", "mood": "neutral" },
+                    { "speaker": "Pal",             "text": "Can't you see I’m grieving here…", "mood": "upset" },
+                    { "speaker": "Mark_The_Bard",   "text": "Who are any of us, really…", "mood": "pleased" },
+                    { "speaker": "Mark_The_Bard",   "text": "…but instruments in the ballad the of time.", "mood": "pleased" },
+                    { "speaker": "Pal",             "text": "I-", "mood": "neutral" },
+                    { "speaker": "Mark_The_Bard",   "text": "All of us, a symphony, waiting for our solo moment…", "mood": "pleased" },
+                    { "speaker": "Pal",             "text": "Actually, I would like to be-", "mood": "neutral" },
+                    { "speaker": "Mark_The_Bard",   "text": "Yearning to be heard! Yearning for their moment!", "mood": "pleased" },
+                    { "speaker": "Pal",             "text": "I needed Blue. But all I got was Red.", "mood": "neutral" },
+                    { "speaker": "Mark_The_Bard",   "text": "Yearning for peace! That’s what I see in your eyes, my friend.", "mood": "pleased" },
+                    { "speaker": "Pal",             "text": "No, you misheard me I’m-", "mood": "neutral" },
+                    { "speaker": "Mark_The_Bard",   "text": "Well, I’ve got just the thing if you’re feeling blue.", "mood": "neutral" },
+                    { "speaker": "Pal",             "text": "Oh no", "mood": "neutral" },
+                    { "speaker": "Mark_The_Bard",   "text": "Here’s one of my favorite songs to play.", "mood": "pleased" }
                 ]},
                 { "index": "1", "statements": [
-                    { "speaker": "Bard",    "mood": "neutral",  "text": "As the sun goes down, on this Blue night."},
-                    { "speaker": "Bard",    "mood": "neutral",  "text": "A friend cries eternal, tears for the knight."},
-                    { "speaker": "Bard",    "mood": "neutral",  "text": "A solemn hymn, for a solid him."},
-                    { "speaker": "Bard",    "mood": "neutral",  "text": "A moment grim, from the Reaper’s whim."},
-                    { "speaker": "",        "mood": "",         "text": "..."},
-                    { "speaker": "",        "mood": "",         "text": "You stomached The Bard’s Requiem!"}
+                    { "speaker": "Mark_The_Bard",   "mood": "neutral",  "text": "As the sun goes down, on this Blue night."},
+                    { "speaker": "Mark_The_Bard",   "mood": "neutral",  "text": "A friend cries eternal, tears for the knight."},
+                    { "speaker": "Mark_The_Bard",   "mood": "neutral",  "text": "A solemn hymn, for a solid him."},
+                    { "speaker": "Mark_The_Bard",   "mood": "neutral",  "text": "A moment grim, from the Reaper’s whim."},
+                    { "speaker": "",                "mood": "",         "text": "..."},
+                    { "speaker": "",                "mood": "",         "text": "You stomached The Bard’s Requiem!"}
                 ] }
             ],
             "transitions": [
