@@ -174,7 +174,7 @@
 
         { "id": "Paladin_C_Repeatable",
             "finalStates": [ ],
-            "metaconditions": [ "foundKnife", "justiceSweat" ],
+            "metaconditions": [ "foundKnife", "justiceSweat", "!paladinDead" ],
             "states": [
                 { "index": "0", "statements": [
                     { "speaker": "Sir_Jonathan", "mood": "neutral",   "text": "Be careful with that horrible blade." },
@@ -188,12 +188,12 @@
         { "id": "Paladin_D",
             "finalStates": [ "0" ],
             "metaconditions": [ "justiceSweat", "paladinDead" ],
-            "states": [
+            "states": [ 
                 { "index": "0", "statements": [
                     { "speaker": "Sir_Jonathan",    "text": "…", "mood": "neutral" },
                     { "speaker": "Pal",             "text": " I can’t believe he’s dead.", "mood": "neutral" },
                     { "speaker": "Pal",             "text": "He looks so…alive.", "mood": "neutral" },
-                    { "speaker": "Sir_Jonathan",    "text": "…", "mood": "pleased" },
+                    { "speaker": "Sir_Jonathan",    "text": "…", "mood": "neutral" },
                     { "speaker": "Pal",             "text": "If only there were someone who could help make him actually alive.", "mood": "neutral" }
                     ]
                 }

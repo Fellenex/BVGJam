@@ -39,7 +39,7 @@
 
         { "id": "Cleric_A_Repeatable",
             "finalStates": [ ],
-            "metaconditions": [ "metCleric", "!yourBlood" ],
+            "metaconditions": [ "metCleric", "!yourBlood", "!paladinBloodGood" ],
             "states": [
                 { "index": "0", "statements": [
                     { "speaker": "Saint_Casey",  "mood": "upset",   "text": "Hmmm." },
