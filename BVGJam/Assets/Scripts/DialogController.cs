@@ -23,7 +23,7 @@ public class DialogController : MonoBehaviour {
     Conversation_Statement activeStatement;
     int activeStatementIndex;
 
-    public static event Action<Conversation> StopConversationEvent;
+    public static event Action<Conversation, bool> StopConversationEvent;
 
     public void Start() {
         DialogGraphics.instance.SetNextStateEvent += ChooseOption;
@@ -52,26 +52,20 @@ public class DialogController : MonoBehaviour {
         activeState = _conversation.getFirstState();
         activeStatementIndex = 0;
 
-        ConditionManager.StartConversation(_conversation.getNPCName(), _conversation.id);
+        //ConditionManager.StartConversation(_conversation.getNPCName(), _conversation.id);
         graphics.activate();
         graphics.initializeConversation(_conversation.getNPCName());
         NextStatement(activeState);
     }
 
     public void StopConversation(){
-        //Debug.Log("DialogController::StopConversation() has begun");
-        if (activeConversation.isAcceptingState(activeState.index)) {
-            //Keep track of having finished this conversation
-            Debug.Log(activeState.index + " is a final state");
-            ConditionManager.FinishConversation(activeConversation.getNPCName(), activeConversation.id);
-        } else {
-            Debug.Log(activeState.index + " is *not* a final state");
-        }
+        Debug.Log("DialogController::StopConversation() has begun");
 
         //Disable the conversation window
         graphics.deactivate();
 
         Conversation previousConversation = activeConversation;
+        bool isFinalState = activeConversation.isAcceptingState(activeState.index);
 
         activeConversation = null;
         activeState = null;
@@ -79,7 +73,7 @@ public class DialogController : MonoBehaviour {
         activeStatementIndex = 0;
 
         //Everything has been wrapped up, so hand back control to the DialogManager
-        StopConversationEvent?.Invoke(previousConversation);
+        StopConversationEvent?.Invoke(previousConversation, isFinalState);
     }
 
     private void AdvanceConversation() {

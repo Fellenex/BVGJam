@@ -23,6 +23,9 @@ public class DialogManager : MonoBehaviour {
 
     private Dictionary<String, List<Conversation>> npcConversations;
 
+    public enum ConversationStatus { Uninitiated, Started, Finished };
+    public static Dictionary<String, ConversationStatus> conversationStatus = new Dictionary<String, ConversationStatus>();
+
     void Awake() {
         //Spoofing a static class while also allowing it to inherit from MonoBehaviour
         if (instance == null) { instance = this; }
@@ -49,6 +52,7 @@ public class DialogManager : MonoBehaviour {
                     //Validate the conversations in this dialog file
                     foreach (Conversation conversation in conversations){
                         conversation.validate();
+                        conversationStatus[conversation.id] = ConversationStatus.Uninitiated;
                     }
 
                     npcConversations[npc.name] = conversations;
@@ -69,13 +73,20 @@ public class DialogManager : MonoBehaviour {
         if (nextConversation != null) {
             Debug.Log("About to start conversation '" + nextConversation.id + "' with '" + _npcName + "'");
             audioController.GetComponent<AudioSource>().volume = 0.5f;
+            conversationStatus[nextConversation.id] = ConversationStatus.Started;
             dialogController.StartConversation(nextConversation);
             dialogOpen = true;
         }
     }
 
-    public void OnStopConversation(Conversation _previousConversation){
+    public void OnStopConversation(Conversation _previousConversation, bool _isFinalState){
         Debug.Log("Ending the active conversation");
+
+        if (_isFinalState) {
+            //Keep track of having finished this conversation
+            Debug.Log("Final state. Finishing conversation '" + _previousConversation.id);
+            conversationStatus[_previousConversation.id] = ConversationStatus.Finished;
+        }
 
         dialogOpen = false;
         audioController.GetComponent<AudioSource>().volume = 1.0f;
@@ -111,7 +122,7 @@ public class DialogManager : MonoBehaviour {
         //  already finished the conversation
         foreach (Conversation conversation in npcConversations[_npcName]){
             if (hasMetMetaconditions(conversation.metaconditions)){
-                if (!ConditionManager.hasFinishedConversation(conversation.id)) {
+                if (!hasFinishedConversation(conversation.id)) {
                     Debug.Log("Player has not yet finished conversation " + conversation.id);
                     possibleConversations.Add(conversation);
                 } else {
@@ -134,6 +145,15 @@ public class DialogManager : MonoBehaviour {
             }
         }
         return conditionsMet; 
+    }
+
+    public bool hasFinishedConversation(String _conversationId) {
+        try {
+            return conversationStatus[_conversationId] == ConversationStatus.Finished;
+        } catch (KeyNotFoundException) {
+            conversationStatus[_conversationId] = ConversationStatus.Uninitiated;
+            return false;
+        }
     }
 
     /*

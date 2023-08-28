@@ -5,32 +5,8 @@ using System;
 
 public static class ConditionManager {
 
-    //Keep track of which NPC conversations have been entered.
-    //  Maps an NPC name to a list of conversation IDs
-    public static Dictionary<String, List<String>> npcConversations = new Dictionary<String, List<String>>();
-
     public static List<String> conditions = new List<String>();
-    public enum ConversationStatus { Uninitiated, Started, Finished };
 
-    public static Dictionary<String, ConversationStatus> conversationStatus = new Dictionary<String, ConversationStatus>();
-
-    //Keep track of this conversation having started
-    public static void StartConversation(String _npcName, String _conversationId){
-        try {
-            npcConversations[_npcName].Add(_conversationId);
-        }
-        catch (KeyNotFoundException e) {
-            npcConversations[_npcName] = new List<String>();
-            npcConversations[_npcName].Add(_conversationId);
-        }
-        conversationStatus[_conversationId] = ConversationStatus.Started;
-    }
-
-    //Keep track of this conversation having finished so that we won't start it again
-    public static void FinishConversation(String _npcName, String _conversationId){
-        Debug.Log("Finishing conversation '" + _conversationId + "' with '" + _npcName + "'");
-        conversationStatus[_conversationId] = ConversationStatus.Finished;
-    }
 
     //A li'l wrapper to set a condition to true and instantiate the list entry if it has yet to be set
     public static void MeetCondition(String _condition) {
@@ -57,19 +33,9 @@ public static class ConditionManager {
         return _condition[0] == '!';
     }
 
-    //A li'l wrapper to safely check if a conversation has been completed
-    public static bool hasFinishedConversation(String _conversationId) {
-        try {
-            return conversationStatus[_conversationId] == ConversationStatus.Finished;
-        } catch (KeyNotFoundException) {
-            conversationStatus[_conversationId] = ConversationStatus.Uninitiated;
-            return false;
-        }
-    }
-
     public static void prettyPrintConditions() {
-        foreach (String x in conversationStatus.Keys) {
-            Debug.Log(x + " --> " + conversationStatus[x]);
+        foreach (String x in conditions) {
+            Debug.Log(x + " --> " + x);
         }
     }
 }
