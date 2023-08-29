@@ -17,6 +17,10 @@ public class Conversation_Trigger {
         return (!String.IsNullOrEmpty(quality) && !String.IsNullOrEmpty(colour));
     }
 
+    public bool isGoodQualityTrigger() { return quality == GOOD_QUALITY; }
+    public bool isBadQualityTrigger() { return quality == BAD_QUALITY; }
+    public bool isNoneQualityTrigger() { return quality == NONE_QUALITY; }
+
 
     public void validate() {
         //If we have a trigger, then the text can't be empty
@@ -27,7 +31,7 @@ public class Conversation_Trigger {
         if (!string.IsNullOrEmpty(quality)) {
             Debug.Assert(!String.IsNullOrEmpty(colour));
 
-            Debug.Assert(quality == GOOD_QUALITY || quality == BAD_QUALITY);
+            Debug.Assert(isGoodQualityTrigger() || isBadQualityTrigger() || isNoneQualityTrigger());
         }
     }
 }

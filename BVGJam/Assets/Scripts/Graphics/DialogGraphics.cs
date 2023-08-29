@@ -6,8 +6,6 @@ using UnityEngine.UI;
 using TMPro;
 
 public class DialogGraphics : MonoBehaviour {
-    public static DialogGraphics instance;
-
     private static string PLAYER_NAME = "Pal";
 
     private static string DEFAULT_MOOD = "neutral";
@@ -48,11 +46,7 @@ public class DialogGraphics : MonoBehaviour {
     public CharacterDisplay npcDisplay;
 
     public event Action<Conversation_Option> SetNextStateEvent;
-
-    void Awake() {
-        if (instance == null) { instance = this; }
-        else { Destroy(this); }
-    }
+    
 
     //Handle activation/deactivation here so that the logic can be separate fromm DialogController
     public void activate() { childPanel.gameObject.SetActive(true); }

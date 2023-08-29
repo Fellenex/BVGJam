@@ -16,6 +16,7 @@ public class DialogController : MonoBehaviour {
     //A handle to the graphics script on the panel.
     //Should be set in the inspector
     public DialogGraphics graphics;
+    public StoryConditionManager conditionManager;
 
     //TODO should make a model for an "Active Conversation" with this info.
     Conversation activeConversation;
@@ -26,7 +27,7 @@ public class DialogController : MonoBehaviour {
     public static event Action<Conversation, bool> StopConversationEvent;
 
     public void Start() {
-        DialogGraphics.instance.SetNextStateEvent += ChooseOption;
+        graphics.SetNextStateEvent += ChooseOption;
     }
 
     void Update() {
@@ -52,7 +53,6 @@ public class DialogController : MonoBehaviour {
         activeState = _conversation.getFirstState();
         activeStatementIndex = 0;
 
-        //ConditionManager.StartConversation(_conversation.getNPCName(), _conversation.id);
         graphics.activate();
         graphics.initializeConversation(_conversation.getNPCName());
         NextStatement(activeState);
@@ -97,6 +97,7 @@ public class DialogController : MonoBehaviour {
 
     private void StartTransition(Conversation_Transition _transition) {
         //If we had a colour trigger state before, we need to reset the background
+        //TODO move this somewhere else. ideally DialogController is system-agnostic
         graphics.resetBackgroundColour();
 
         //A few special cases if there's only one transition option.
@@ -118,20 +119,9 @@ public class DialogController : MonoBehaviour {
     //If the player chose a special coloured trigger, then show the dramatic dialog before advancing the conversation
     private void ChooseOption(Conversation_Option _option) {
         Debug.Log("ChooseOption()");
-        //Should be at most one special trigger per 
-        Conversation_Trigger specialTrigger = null;
 
-        //If there were triggers, then cause them here.
-        foreach (Conversation_Trigger trigger in _option.triggers) {
-            //Track the trigger's name
-            ConditionManager.MeetCondition(trigger.text);
-
-            if (trigger.isColourTrigger()) {
-                specialTrigger = trigger;
-            }
-
-            StoryConditions.HandleTrigger(trigger);
-        }
+        conditionManager.HandleTriggers(_option.triggers);
+        Conversation_Trigger specialTrigger = conditionManager.getSpecialTrigger(_option.triggers);
 
         //Get the graphics to update - this is a special state now
         if (specialTrigger != null) {
@@ -184,7 +174,7 @@ public class DialogController : MonoBehaviour {
     private bool playerMeetsOptionConditions(Conversation_Option _transitionOption) {
         Debug.Log("Condition(s) Required: " + _transitionOption.conditions);
         foreach (string condition in _transitionOption.conditions) {
-            if (!ConditionManager.hasMetCondition(condition)){
+            if (!conditionManager.hasMetCondition(condition)){
                 //We have found a precondition the player does not meet.
                 return false;
             }

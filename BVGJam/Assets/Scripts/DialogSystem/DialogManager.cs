@@ -16,6 +16,7 @@ public class DialogManager : MonoBehaviour {
     public DialogController dialogController;
     public GameObject audioController;       // a handle to change audio volume based on conversation status
 
+    public StoryConditionManager conditionManager;
 
     //A list of all of the NPC gameobjects
     public List<GameObject> npcs;
@@ -116,7 +117,7 @@ public class DialogManager : MonoBehaviour {
     private List<Conversation> getPossibleConversations(String _npcName) {
         List<Conversation> possibleConversations = new List<Conversation>();
 
-        ConditionManager.prettyPrintConditions();
+        conditionManager.prettyPrintConditions();
 
         //Check the metaconditions for each one, and make sure we haven't
         //  already finished the conversation
@@ -139,7 +140,7 @@ public class DialogManager : MonoBehaviour {
     private bool hasMetMetaconditions(String[] metaconditions) {
         bool conditionsMet = true;
         foreach (String condition in metaconditions) {
-            if (!ConditionManager.hasMetCondition(condition)) {
+            if (!conditionManager.hasMetCondition(condition)) {
                 //Debug.Log("Player has not yet met metacondition " + condition);
                 conditionsMet = false;
             }

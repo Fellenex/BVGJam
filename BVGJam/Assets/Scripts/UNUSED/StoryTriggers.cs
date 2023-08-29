@@ -75,7 +75,7 @@ public static class StoryTriggers {
         getPaladinRevived
         getMetCleric
         getFoundKnife
-    */
+    
 
 
     //Used if we have any triggers that don't follow the get-->have regular rule
@@ -232,4 +232,5 @@ public static class StoryTriggers {
         Debug.Log(returnString);
         return(returnString);
     }
+    */
 }
