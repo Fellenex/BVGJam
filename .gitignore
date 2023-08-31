@@ -1,6 +1,12 @@
-# This .gitignore file should be placed at the root of your Unity project directory
+#Extra/Self-defined
+.vscode/
+[Pp]ackages/
+[Pp]rojectSettings/
+
+
+
 #
-# Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
+# Github's Unity .gitignore: https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 /[Ll]ibrary/
 /[Tt]emp/
