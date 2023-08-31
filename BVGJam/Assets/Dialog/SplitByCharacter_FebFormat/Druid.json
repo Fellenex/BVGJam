@@ -232,10 +232,10 @@
                 { "speaker": "", "mood": "", "text": "It sounded like your friend, the Paladin..." }
             ] },
             { "index": "2", "statements": [
-                { "speaker": "Bard", "mood": "pleased", "text": "Hello! It is I, the Bard! Here to- " },
-                { "speaker": "Bard", "mood": "upset",   "text": "My lord, this garden is sad and pathetic." },
-                { "speaker": "Pal",  "mood": "neutral", "text": "I was really hoping to find some Green." },
-                { "speaker": "Bard", "mood": "pleased", "text": "Allow me!" }
+                { "speaker": "Mark_The_Bard", "mood": "pleased", "text": "Hello! It is I, the Bard! Here to- " },
+                { "speaker": "Mark_The_Bard", "mood": "upset",   "text": "My lord, this garden is sad and pathetic." },
+                { "speaker": "Pal",           "mood": "neutral", "text": "I was really hoping to find some Green." },
+                { "speaker": "Mark_The_Bard", "mood": "pleased", "text": "Allow me!" }
             ]},
             { "index": "3", "statements": [
                 { "speaker": "", "mood": "", "text": "The Bard's musical genius causes the nearby mushrooms to shake with glee." },
