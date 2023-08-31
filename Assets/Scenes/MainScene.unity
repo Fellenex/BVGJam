@@ -878,6 +878,7 @@ GameObject:
   - component: {fileID: 1411508603}
   - component: {fileID: 1411508604}
   - component: {fileID: 1411508602}
+  - component: {fileID: 1411508605}
   m_Layer: 0
   m_Name: Dialog_Manager
   m_TagString: Untagged
@@ -898,6 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphics: {fileID: 1950714859}
+  conditionManager: {fileID: 1411508605}
 --- !u!4 &1411508603
 Transform:
   m_ObjectHideFlags: 0
@@ -927,6 +929,7 @@ MonoBehaviour:
   dialogOpen: 0
   dialogController: {fileID: 1411508602}
   audioController: {fileID: 1965482530}
+  conditionManager: {fileID: 1411508605}
   npcs:
   - {fileID: 1223561347}
   - {fileID: 1638860983}
@@ -935,6 +938,19 @@ MonoBehaviour:
   - {fileID: 266613677}
   - {fileID: 686471970}
   - {fileID: 278487879}
+--- !u!114 &1411508605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411508601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb49111b3c540e429a005713f139fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions: []
 --- !u!1 &1461958088
 GameObject:
   m_ObjectHideFlags: 0
