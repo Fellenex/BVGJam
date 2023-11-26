@@ -191,6 +191,7 @@ public class DialogManager : MonoBehaviour {
             }
         }
 
+        //Each conversation id should be unique
         if (conversation_ids.Count != conversation_ids.Distinct().Count()) {
             Debug.Log("There exist duplicate conversation ids");
             foreach (String conversation_id in conversation_ids) {
