@@ -9,6 +9,7 @@ using System.Linq;
 public class DialogManager : MonoBehaviour {
 
     public static DialogManager instance;
+    public DialogIO dialogLoader;
 
     public bool dialogOpen = false;
 
@@ -25,7 +26,7 @@ public class DialogManager : MonoBehaviour {
     private Dictionary<String, List<Conversation>> npcConversations;
 
     public enum ConversationStatus { Uninitiated, Started, Finished };
-    public static Dictionary<String, ConversationStatus> conversationStatus = new Dictionary<String, ConversationStatus>();
+    public Dictionary<String, ConversationStatus> conversationStatus = new Dictionary<String, ConversationStatus>();
 
     void Awake() {
         //Spoofing a static class while also allowing it to inherit from MonoBehaviour
@@ -33,7 +34,8 @@ public class DialogManager : MonoBehaviour {
         else { Destroy(this); }
 
         //When the controller tells us the conversation is over, take back control
-        DialogController.StopConversationEvent += OnStopConversation;
+        dialogController.StopConversationEvent += OnStopConversation;
+        dialogLoader = new DialogIO();
     }
 
    void Start() {
@@ -49,7 +51,7 @@ public class DialogManager : MonoBehaviour {
                 if (dialogFile == null){
                     Debug.LogWarning(npc.name + " missing a conversation file. Did you mean to do this?");
                 } else {
-                    List<Conversation> conversations = DialogIO.ReadDialogFile(dialogFile);
+                    List<Conversation> conversations = dialogLoader.ReadDialogFile(dialogFile);
                     //Validate the conversations in this dialog file
                     foreach (Conversation conversation in conversations){
                         conversation.validate();
@@ -163,7 +165,7 @@ public class DialogManager : MonoBehaviour {
         2. Every condition required to take a transition has some transition which triggers it
         3. Every trigger found on a transition has some condition which requires it
     */
-    private static void crossCheckConditionsAndTriggers(Dictionary<String, List<Conversation>> npcConversations) {
+    private void crossCheckConditionsAndTriggers(Dictionary<String, List<Conversation>> npcConversations) {
         List<String> triggers = new List<String>();
         List<String> conditions = new List<String>();
         List<String> conversation_ids = new List<String>();

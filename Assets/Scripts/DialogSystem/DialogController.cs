@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour {
 
-    public static String PLAYER_STRING = "Pal";
+    public const String PLAYER_STRING = "Pal";
 
     //Prevent the player from advancing the conversation arbitrarily when they have to make a choice
     bool PLAYER_CHOOSING = false;
@@ -24,7 +24,7 @@ public class DialogController : MonoBehaviour {
     Conversation_Statement activeStatement;
     int activeStatementIndex;
 
-    public static event Action<Conversation, bool> StopConversationEvent;
+    public event Action<Conversation, bool> StopConversationEvent;
 
     public void Start() {
         //Listen for when the graphics component tells us that a button has been clicked.

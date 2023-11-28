@@ -10,8 +10,8 @@ public abstract class DialogGraphics : MonoBehaviour {
     private const string PLAYER_NAME = "Pal";
     private const string DEFAULT_MOOD = "neutral";
 
-    private static Color FULL_VISIBILITY = new Color(1f, 1f, 1f, 1f);
-    private static Color HALF_VISIBILITY = new Color(1f, 1f, 1f, 0.5f);
+    private readonly Color FULL_VISIBILITY = new Color(1f, 1f, 1f, 1f);
+    private readonly Color HALF_VISIBILITY = new Color(1f, 1f, 1f, 0.5f);
 
     public Text playerNameplate;
     public Text npcNameplate;

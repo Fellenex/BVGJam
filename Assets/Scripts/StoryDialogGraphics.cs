@@ -9,7 +9,7 @@ public class StoryDialogGraphics : DialogGraphics {
     //Apparently we have to set Colors with normalized (0-1) values if it's editing an Image from a script
     //Problem: https://issuetracker.unity3d.com/issues/image-color-cannot-be-changed-via-script-when-image-type-is-set-to-simple
     //Solution: https://forum.unity.com/threads/ui-image-color-not-updating-correctly.674827/
-    private static Dictionary<ValueTuple<String, String>,Color> TRIGGER_COLOURS =
+    private readonly Dictionary<ValueTuple<String, String>,Color> TRIGGER_COLOURS =
         new System.Collections.Generic.Dictionary<ValueTuple<String, String>,Color>{
         {("red", "good"),       new Color(248f/255f,    25f/255f,   0f,         1f)},
         {("red", "bad"),        new Color(199f/255f,    120f/255f,  120f/255f,  1f)},
@@ -23,7 +23,7 @@ public class StoryDialogGraphics : DialogGraphics {
         {("green", "bad"),      new Color(209f/255f,    237f/255f,  119f/255f,  1f)}
     };
 
-    private static Color getColorByTrigger(Conversation_Trigger _trigger) {
+    private Color getColorByTrigger(Conversation_Trigger _trigger) {
         return TRIGGER_COLOURS[(_trigger.colour, _trigger.quality)];
     }
 
