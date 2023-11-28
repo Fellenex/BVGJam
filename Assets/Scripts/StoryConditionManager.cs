@@ -4,27 +4,20 @@ using System;
 
 public class StoryConditionManager : ConditionManager {
 
-    private static String GOOD_QUALITY = "good";
-    private static String BAD_QUALITY = "bad";
-
-    private static List<String> COLOURS = new List<String> { "blue", "red", "green", "purple", "yellow" };
+    private readonly String GOOD_QUALITY = "good";
+    private readonly String BAD_QUALITY = "bad";
+    private readonly List<String> COLOURS = new List<String> { "blue", "red", "green", "purple", "yellow" };
 
     private int goodColoursCount = 0;
     private int badColoursCount = 0;
 
+
+    //A list of conditions that cause us to do something in code
     private List<String> specialConditions = new List<String>{
         "foundKnife",               //Make the knife disappear when we "pick it up"
         "clericTransformation"      //Change the Cleric's name from "Casey_The_Cleric" to "Casey_The_Heretic"
-        };
+    };
 
-    /*
-    Returns the special trigger of the list
-    */
-    public void HandleTriggers(Conversation_Trigger[] _triggers) {
-        foreach (Conversation_Trigger trigger in _triggers) {
-            HandleTrigger(trigger);
-        }
-    }
 
     /*
     Returns true if it was a special trigger
@@ -36,14 +29,14 @@ public class StoryConditionManager : ConditionManager {
         MeetCondition(_trigger.text);
 
         //Keep track that the player has met this specific colour
-        if (_trigger.isColourTrigger()) {
+        if (isColourTrigger(_trigger)) {
             MeetCondition(_trigger.colour);
         }
         
         //Also keep track of the number of good+bad colours they have acquired
-        if (_trigger.isGoodQualityTrigger()) {
+        if (isGoodQualityTrigger(_trigger)) {
             goodColoursCount++;
-        } else if (_trigger.isBadQualityTrigger()) {
+        } else if (isBadQualityTrigger(_trigger)) {
             badColoursCount++;
         }
 
@@ -62,20 +55,41 @@ public class StoryConditionManager : ConditionManager {
         }
     }
 
+    public override bool isSpecialCondition(String _condition) {
+        return specialConditions.Contains(_condition);
+    }
+    public bool isColourTrigger(Conversation_Trigger _trigger) {
+        return (!String.IsNullOrEmpty(_trigger.quality) && !String.IsNullOrEmpty(_trigger.colour));
+    }
+
+    
+    public bool isGoodQualityTrigger(Conversation_Trigger _trigger) { return _trigger.text == GOOD_QUALITY; }
+    public bool isBadQualityTrigger(Conversation_Trigger _trigger) { return _trigger.text == BAD_QUALITY; }
+
     /*
-        Should be at most one special trigger per list
-        TODO tests for this
+    Should be at most one colour trigger per list
+    TODO test for this
     */
     public Conversation_Trigger getSpecialTrigger(Conversation_Trigger[] _triggers) {
         foreach (Conversation_Trigger trigger in _triggers) {
-            if (trigger.isColourTrigger()) {
+            if (isColourTrigger(trigger)) {
                 return trigger;
             }
         }
         return null;
     }
 
-    public override bool isSpecialCondition(String _condition) {
-        return specialConditions.Contains(_condition);
-    }
+    
+
+    /*
+        //If we have a quality attribute, then we need to have a colour attribute
+        //(Not necessarily the other way around)
+        if (!string.IsNullOrEmpty(quality)) {
+            Debug.Assert(!String.IsNullOrEmpty(colour));
+
+            Debug.Assert(isGoodQualityTrigger() || isBadQualityTrigger() || isNoneQualityTrigger());
+        }
+    */
+
+    
 }

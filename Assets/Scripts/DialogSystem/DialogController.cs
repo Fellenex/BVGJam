@@ -8,14 +8,14 @@ using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour {
 
-    public static String PLAYER_STRING = "Pal";
+    public const String PLAYER_STRING = "Pal";
 
     //Prevent the player from advancing the conversation arbitrarily when they have to make a choice
     bool PLAYER_CHOOSING = false;
 
     //A handle to the graphics script on the panel.
     //Should be set in the inspector
-    public DialogGraphics graphics;
+    public StoryDialogGraphics graphics;
     public StoryConditionManager conditionManager;
 
     //TODO should make a model for an "Active Conversation" with this info.
@@ -24,9 +24,10 @@ public class DialogController : MonoBehaviour {
     Conversation_Statement activeStatement;
     int activeStatementIndex;
 
-    public static event Action<Conversation, bool> StopConversationEvent;
+    public event Action<Conversation, bool> StopConversationEvent;
 
     public void Start() {
+        //Listen for when the graphics component tells us that a button has been clicked.
         graphics.SetNextStateEvent += ChooseOption;
     }
 
@@ -118,17 +119,17 @@ public class DialogController : MonoBehaviour {
     //The player has chosen a speech option - update the conversation to reflect this choice
     //If the player chose a special coloured trigger, then show the dramatic dialog before advancing the conversation
     private void ChooseOption(Conversation_Option _option) {
-        Debug.Log("ChooseOption()");
+        Debug.Log("ChooseOption() - headed to state "+_option.target);
 
         conditionManager.HandleTriggers(_option.triggers);
         Conversation_Trigger specialTrigger = conditionManager.getSpecialTrigger(_option.triggers);
 
         //Get the graphics to update - this is a special state now
         if (specialTrigger != null) {
-            graphics.handleTrigger(specialTrigger);
+            graphics.HandleTrigger(specialTrigger);
         }
 
-        //Update the active state+statement index, then try to get the first statement from that state
+        //Update the active state/statement index, then try to get the first statement from that state
         activeState = activeConversation.getStateByIndex(_option.target);
         activeStatementIndex = 0;
         AdvanceConversation();

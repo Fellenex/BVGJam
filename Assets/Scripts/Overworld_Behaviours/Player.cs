@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    private static readonly int WalkingLeftHash = Animator.StringToHash("WalkingLeft");
-    private static readonly int WalkingRightHash = Animator.StringToHash("WalkingRight");
+    private readonly int WalkingLeftHash = Animator.StringToHash("WalkingLeft");
+    private readonly int WalkingRightHash = Animator.StringToHash("WalkingRight");
 
     public float jumpForce;
     public float maxSpeed;

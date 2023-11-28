@@ -5,7 +5,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Conversation {
 
-    private static string PLAYER_STRING = "Pal";
+    private const string PLAYER_STRING = "Pal";
 
     public string id;
 

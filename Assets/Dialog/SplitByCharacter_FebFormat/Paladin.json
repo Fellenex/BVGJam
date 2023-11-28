@@ -156,7 +156,7 @@
                 },
                 { "index": "1", "statements": [
                     { "speaker": "",    "mood": "",         "text": "You obtain a few droplets of Jonathan’s profuse J U S T I C E  S W E A T."},
-                    {"speaker": "Pal",  "mood":"pleased",   "text": "Uh, don't worry about it! See you later!" }
+                    { "speaker": "Pal",  "mood":"pleased",   "text": "Uh, don't worry about it! See you later!" }
                     ]
                 }
             ],
