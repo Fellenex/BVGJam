@@ -40,15 +40,22 @@ public abstract class DialogGraphics : MonoBehaviour {
         resetBackgroundColour();
 
         //Update player-side nameplate and image
-        playerDisplay = CharacterDisplay.ConstructByName(PLAYER_NAME);
+        playerDisplay = new CharacterDisplay(PLAYER_NAME);
+        Debug.Log(playerDisplay.displayName);
+        Debug.Log(playerDisplay.images);
+        foreach (string img in playerDisplay.images.Keys)
+        {
+            Debug.Log(img);
+        }
         playerNameplate.text = PLAYER_NAME;
         playerNameplate.enabled = true;
+        Debug.Log(playerDisplay.images[DEFAULT_MOOD]);
         activePlayerImage.sprite = playerDisplay.images[DEFAULT_MOOD];
         activePlayerImage.GetComponent<RectTransform>().sizeDelta = playerDisplay.dimensions;
         activePlayerImage.enabled = true;
-        
+
         //Update npc-side nameplate and image
-        npcDisplay = CharacterDisplay.ConstructByName(npcSpeaker);
+        npcDisplay = new CharacterDisplay(npcSpeaker);
         npcNameplate.text = npcDisplay.displayName;
         npcNameplate.enabled = true;
         activeNPCImage.sprite = npcDisplay.images[DEFAULT_MOOD];
@@ -82,7 +89,7 @@ public abstract class DialogGraphics : MonoBehaviour {
                 Add the event listener to handle the player clicking this button
                 See https://stackoverflow.com/questions/271440/captured-variable-in-a-loop-in-c-sharp for this closure index magic
                 */
-                int closureIndex = i+1;
+                int closureIndex = i;
                 playerTextButtonBoxes[i].GetComponent<Button>().onClick.AddListener(() => onOptionButtonClicked(closureIndex));
                 playerTextButtonBoxes[i].gameObject.SetActive(true);
             }
@@ -91,6 +98,10 @@ public abstract class DialogGraphics : MonoBehaviour {
 
     private void onOptionButtonClicked(int _index) {
         Debug.Log("Clicked index "+_index);
+        //Clean up the event listeners
+        foreach (Button button in playerTextButtonBoxes) {
+            button.onClick.RemoveAllListeners();
+        }
         SetNextStateEvent?.Invoke(getOptionFromButton(_index));
     }
 
@@ -118,7 +129,9 @@ public abstract class DialogGraphics : MonoBehaviour {
         activeNPCImage.color = FULL_VISIBILITY;
 
         //The NPC may have changed in-between states or statements.
-        npcDisplay = CharacterDisplay.ConstructByName(_npcStatement.speaker);
+        if (!npcDisplay.codeName.Equals(_npcStatement.speaker)) {
+            npcDisplay = new CharacterDisplay(_npcStatement.speaker);
+        }
 
         //Update the NPC's image and nameplate
         Debug.Log("About to show " + npcDisplay.displayName + " in a " + _npcStatement.mood + " mood");

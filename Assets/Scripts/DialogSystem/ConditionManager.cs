@@ -36,10 +36,8 @@ public abstract class ConditionManager : MonoBehaviour {
         }
     }
 
-    public void HandleTriggers(Conversation_Trigger[] _triggers)
-    {
-        foreach (Conversation_Trigger trigger in _triggers)
-        {
+    public void HandleTriggers(Conversation_Trigger[] _triggers) {
+        foreach (Conversation_Trigger trigger in _triggers) {
             HandleTrigger(trigger);
         }
     }

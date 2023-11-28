@@ -129,7 +129,7 @@ public class DialogController : MonoBehaviour {
             graphics.HandleTrigger(specialTrigger);
         }
 
-        //Update the active state+statement index, then try to get the first statement from that state
+        //Update the active state/statement index, then try to get the first statement from that state
         activeState = activeConversation.getStateByIndex(_option.target);
         activeStatementIndex = 0;
         AdvanceConversation();
