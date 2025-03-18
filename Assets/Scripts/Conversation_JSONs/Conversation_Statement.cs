@@ -8,9 +8,9 @@ public class Conversation_Statement {
     public string text;
     public string mood;
 
-    private static string MOOD_PLEASED = "pleased";
-    private static string MOOD_NEUTRAL = "neutral";
-    private static string MOOD_UPSET = "upset";
+    private const string MOOD_PLEASED = "pleased";
+    private const string MOOD_NEUTRAL = "neutral";
+    private const string MOOD_UPSET = "upset";
 
     public void validate() {
         //The statement needs to have a speaker

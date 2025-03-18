@@ -5,7 +5,7 @@ using System;
 
 public abstract class ConditionManager : MonoBehaviour {
 
-    public List<String> conditions = new List<String>();
+    public List<String> conditionsMet = new List<String>();
 
     //A li'l wrapper to set a condition to true and instantiate the list entry if it has yet to be set
     public void MeetCondition(String _condition) {
@@ -13,28 +13,32 @@ public abstract class ConditionManager : MonoBehaviour {
             Debug.LogWarning("ConditionManager::MeetCondition empty condition");
         }
         Debug.Log("Player has just met condition " + _condition);
-        conditions.Add(_condition);
+        conditionsMet.Add(_condition);
     }
 
     public bool hasMetCondition(String _condition) {
         Debug.Log("Checking if player meets " + _condition);
         if (isNegativeCondition(_condition)) {
-            //We want to check that the player has /not/ met the condition
-            return !conditions.Contains(_condition.Substring(1, _condition.Length - 1));
+            return !conditionsMet.Contains(_condition.Substring(1, _condition.Length - 1));
         } else { 
-            //We want to check that the player /has/ met the condition
-            return conditions.Contains(_condition);
+            return conditionsMet.Contains(_condition);
         }
     }
 
-    //Currently in the json we use (e.g.,) !paladinDead to mean "not paladinDead"
+    //e.g., "!petDead" can be used to make sure the player has not yet met the condition "petDead"
     private bool isNegativeCondition(String _condition) {
         return _condition[0] == '!';
     }
 
     public void prettyPrintConditions() {
-        foreach (String x in conditions) {
+        foreach (String x in conditionsMet) {
             Debug.Log(x + " --> " + x);
+        }
+    }
+
+    public void HandleTriggers(Conversation_Trigger[] _triggers) {
+        foreach (Conversation_Trigger trigger in _triggers) {
+            HandleTrigger(trigger);
         }
     }
 
@@ -42,6 +46,5 @@ public abstract class ConditionManager : MonoBehaviour {
     The following methods should be defined in a child class based on what's needed for the story
     */
     public abstract bool isSpecialCondition(String _condition);
-
     public abstract void HandleTrigger(Conversation_Trigger trigger);
 }
